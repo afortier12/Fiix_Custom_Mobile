@@ -1,0 +1,77 @@
+@startuml
+
+interface PartController{
+
+}
+
+class Part{
+int partID
+String name
+String upcCode
+String make
+String model
+
+int : addPart()
+int : findPart()
+int : checkPart()
+
+}
+
+interface StorageController{
+int : checkPart(Part part)
+int : checkLocation(int trayID,int shelfID,int binID
+int : addPart(Part part,int trayID,int shelfID,int binID)
+Storage : getLocation(int trayID,int shelfID,int binID)
+int : updateStorage()
+
+}
+
+class Storage{
+List<Tray> trays
+int currentStock
+int requiredQty
+
+int : findPart(Part part)
+int : checkLocation(int tray,int shelf,int bin)
+int : addPart(Part part,int trayID,int shelfID,int binID)
+Location : getLocation(int trayID,int shelfID,int binID)
+int : updateStorage(int tray, int shelf, int bin)
+}
+
+class Location{
+int trayID
+int shelfID
+int binID
+
+}
+
+class Tray{
+List<Shelf> shelves
+
+int : getID()
+}
+
+class Shelf{
+List<Bin> bins
+
+int : getID()
+}
+
+class Bin{
+List<Part> parts
+
+int : getID()
+
+}
+
+Part -|> PartController
+Storage -|> StorageController
+
+Storage "1" *-- "many" Tray : contains
+Tray "1" *-- "many" Shelf : contains
+Shelf "1" *-- "many" Bin : contains
+Bin "1" *-- "many" Part : contains
+
+
+
+@enduml
