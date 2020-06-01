@@ -1,0 +1,2 @@
+rootProject.name='Fiix_Custom_Mobile'
+include ':app'
