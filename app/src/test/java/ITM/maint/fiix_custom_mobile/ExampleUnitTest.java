@@ -1,4 +1,4 @@
-package com.example.fiix_custom_mobile;
+package ITM.maint.fiix_custom_mobile;
 
 import org.junit.Test;
 

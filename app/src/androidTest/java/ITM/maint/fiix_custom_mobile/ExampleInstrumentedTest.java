@@ -1,4 +1,4 @@
-package com.example.fiix_custom_mobile;
+package ITM.maint.fiix_custom_mobile;
 
 import android.content.Context;
 
@@ -22,6 +22,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
 
-        assertEquals("com.example.fiix_custom_mobile", appContext.getPackageName());
+        assertEquals("fiix_custom_mobile", appContext.getPackageName());
     }
 }

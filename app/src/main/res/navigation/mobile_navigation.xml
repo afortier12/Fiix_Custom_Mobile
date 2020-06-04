@@ -7,26 +7,26 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.fiix_custom_mobile.ui.home.HomeFragment"
+        android:name="ITM.maint.fiix_custom_mobile.ui.view.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_navigation_home_to_navigation_dashboard"
-            app:destination="@id/navigation_dashboard" />
-        <action
             android:id="@+id/action_navigation_home_to_navigation_notifications"
             app:destination="@id/navigation_notifications" />
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_barcode"
+            app:destination="@id/navigation_barcode" />
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.example.fiix_custom_mobile.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_barcode"
+        android:name="ITM.maint.fiix_custom_mobile.ui.view.BarcodeFragment"
+        android:label="@string/title_barcode"
+        tools:layout="@layout/fragment_barcode" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.fiix_custom_mobile.ui.notifications.NotificationsFragment"
+        android:name="ITM.maint.fiix_custom_mobile.ui.view.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 </navigation>

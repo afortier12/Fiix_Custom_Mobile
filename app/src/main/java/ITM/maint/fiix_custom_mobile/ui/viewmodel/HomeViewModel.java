@@ -1,4 +1,4 @@
-package com.example.fiix_custom_mobile.ui.home;
+package ITM.maint.fiix_custom_mobile.ui.viewmodel;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
