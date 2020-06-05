@@ -21,13 +21,15 @@ import dagger.android.support.AndroidSupportInjectionModule;
         modules = {
                 AndroidSupportInjectionModule.class,
                 ITM.maint.barcodescan.di.AppModule.class,
-                ActivityModule.class
+                ActivityModule.class,
+                FragmentModule.class
         }
 )
 public interface AppComponent extends AndroidInjector<BaseApplication> {
 
-    void inject(BarcodeFragment barcodeFragment);
+    void inject(MainActivity mainActivity);
     void inject(CodeAnalyzer codeAnalyzer);
+    void inject(BarcodeFragment barcodeFragment);
 
 
     @Component.Builder

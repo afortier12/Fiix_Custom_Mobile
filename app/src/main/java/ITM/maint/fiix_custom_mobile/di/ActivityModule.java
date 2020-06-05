@@ -1,8 +1,7 @@
 package ITM.maint.fiix_custom_mobile.di;
 
+import ITM.maint.fiix_custom_mobile.MainActivity;
 
-import ITM.maint.fiix_custom_mobile.CodeAnalyzer;
-import ITM.maint.fiix_custom_mobile.ui.view.BarcodeFragment;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -14,9 +13,6 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class ActivityModule {
 
     @ContributesAndroidInjector
-    public abstract BarcodeFragment barcodeFragment();
-
-    @ContributesAndroidInjector
-    public abstract CodeAnalyzer codeAnalyzer();
+    public abstract MainActivity mainActivity();
 
 }

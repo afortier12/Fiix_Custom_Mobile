@@ -18,9 +18,17 @@ import androidx.navigation.ui.NavigationUI;
 
 import java.util.concurrent.ExecutionException;
 
-public class MainActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
+import javax.inject.Inject;
+
+import dagger.android.support.DaggerAppCompatActivity;
+
+public class MainActivity extends DaggerAppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 
     private static final int REQUEST_CAMERA_PERMISSION = 1;
+    private static final String TAG = "MainActivity";
+
+    @Inject
+    AppExecutor appExecutor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements ActivityCompat.On
                 R.id.navigation_home, R.id.navigation_barcode, R.id.navigation_notifications)
                 .build();
 
-        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-                .setGraph(R.id.nav_host_fragment, MainFrag);
+        NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
+                //.setGraph(R.id.nav_host_fragment, MainFrag);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 

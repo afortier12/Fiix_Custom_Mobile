@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "657296909822",
+    "firebase_url": "https://fiix-mobile.firebaseio.com",
+    "project_id": "fiix-mobile",
+    "storage_bucket": "fiix-mobile.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:657296909822:android:fe70cf47960b5322124caf",
+        "android_client_info": {
+          "package_name": "ITM.maint.fiix_custom_mobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "657296909822-nf48ked51esj6igbqtd82nk7qdq1ivbd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEHDTZ3qRNnkQ62MNRJF2SeuDKpvDmpU8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "657296909822-nf48ked51esj6igbqtd82nk7qdq1ivbd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
