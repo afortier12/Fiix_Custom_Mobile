@@ -36,7 +36,7 @@ import java.util.ArrayList;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.BarcodeField;
-import ITM.maint.fiix_custom_mobile.data.model.adapter.BarcodeFieldAdapter;
+import ITM.maint.fiix_custom_mobile.ui.adapter.BarcodeFieldAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
 
 /** Displays the bottom sheet to present barcode fields contained in the detected barcode. */

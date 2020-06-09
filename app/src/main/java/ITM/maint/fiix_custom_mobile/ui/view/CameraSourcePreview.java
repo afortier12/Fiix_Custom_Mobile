@@ -291,6 +291,7 @@ public class CameraSourcePreview extends RelativeLayout {
 
         @Override
         public void surfaceCreated(SurfaceHolder holder) {
+            surface = holder.getSurface();
             surfaceAvailable = true;
         }
 

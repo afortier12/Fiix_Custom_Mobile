@@ -25,7 +25,6 @@ import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.Preview;
 import androidx.camera.core.SurfaceRequest;
 import androidx.camera.lifecycle.ProcessCameraProvider;
-import androidx.camera.view.PreviewView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -148,7 +147,6 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
     private void bindPreview(@NonNull ProcessCameraProvider cameraProvider) {
 
         Preview preview = new Preview.Builder().build();
-        previewView = getView().findViewById(R.id.camera_preview);
         Surface surface = previewView.getSurface();
         previewSurfaceProvider = new PreviewSurfaceProvider(surface, mainThreadExecutor);
         preview.setSurfaceProvider(mainThreadExecutor, previewSurfaceProvider);

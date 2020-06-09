@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ITM.maint.fiix_custom_mobile.data.model.adapter;
+package ITM.maint.fiix_custom_mobile.ui.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
