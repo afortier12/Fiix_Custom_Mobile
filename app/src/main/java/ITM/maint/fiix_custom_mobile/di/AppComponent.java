@@ -5,7 +5,7 @@ import android.app.Application;
 import javax.inject.Singleton;
 
 import ITM.maint.fiix_custom_mobile.BaseApplication;
-import ITM.maint.fiix_custom_mobile.CodeAnalyzer;
+import ITM.maint.fiix_custom_mobile.firebase.CodeAnalyzer;
 import ITM.maint.fiix_custom_mobile.MainActivity;
 import ITM.maint.fiix_custom_mobile.ui.view.BarcodeFragment;
 import dagger.BindsInstance;

@@ -25,11 +25,8 @@ import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.Preview;
 import androidx.camera.core.SurfaceRequest;
 import androidx.camera.lifecycle.ProcessCameraProvider;
-import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.android.material.chip.Chip;
 import com.google.common.base.Objects;
@@ -41,8 +38,8 @@ import java.util.concurrent.Executor;
 
 import javax.inject.Inject;
 
-import ITM.maint.fiix_custom_mobile.AppExecutor;
-import ITM.maint.fiix_custom_mobile.CodeAnalyzer;
+import ITM.maint.fiix_custom_mobile.di.AppExecutor;
+import ITM.maint.fiix_custom_mobile.firebase.CodeAnalyzer;
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.BarcodeField;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeResultFragment;
@@ -121,6 +118,7 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
             @Override
             public void run() {
                 displayID = previewView.getDisplay().getDisplayId();
+                graphicOverlay.setCameraInfo(previewView.getCameraPreviewSize());
                 openCamera();
             }
         });

@@ -1,8 +1,10 @@
-package ITM.maint.fiix_custom_mobile;
+package ITM.maint.fiix_custom_mobile.firebase;
 
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.RectF;
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.Surface;
 import android.view.WindowManager;
@@ -24,10 +26,9 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 
-import javax.inject.Inject;
-
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeConfirmingGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeLoadingGraphic;
+import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeReticleGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.camera.CameraReticleAnimator;
 import ITM.maint.fiix_custom_mobile.ui.view.GraphicOverlay;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
@@ -36,7 +37,7 @@ import ITM.maint.fiix_custom_mobile.utils.PreferenceUtils;
 
 public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
 
-    public static final String TAG = "ITM.maint.fiix_custom_mobile.CodeAnalyzer";
+    public static final String TAG = "CodeAnalyzer";
     private Context context;
     private Executor executor;
     private GraphicOverlay graphicOverlay;
@@ -79,6 +80,7 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
         }
     }
 
+
     @Override
     @UseExperimental(markerClass = androidx.camera.core.ExperimentalGetImage.class)
     public void analyze(@NonNull ImageProxy image) {
@@ -94,14 +96,19 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
 
         FirebaseVisionImage visionImage = FirebaseVisionImage.fromMediaImage(image.getImage(), getFirebaseRotation(context) );
 
+        Log.d(TAG, String.format("Width = %d", visionImage.getBitmap().getWidth()));
+        Log.d(TAG, String.format("Height = %d", visionImage.getBitmap().getHeight()));
+
         Task<List<FirebaseVisionBarcode>> task;
         task = barcodeDetector.detectInImage(visionImage);
         task.addOnSuccessListener(executor, barcodes -> {
                     if (!barcodes.isEmpty()) {
                         FirebaseVisionBarcode barcodeInCenter = null;
                         for (FirebaseVisionBarcode barcode : barcodes) {
+                            int width = graphicOverlay.getWidth()/2;
+                            int height = graphicOverlay.getHeight()/2;
                             RectF box = graphicOverlay.translateRect(Objects.requireNonNull(barcode.getBoundingBox()));
-                            if (box.contains(graphicOverlay.getWidth() / 2f, graphicOverlay.getHeight() / 2f)) {
+                            if (box.contains(width , height)) {
                                 barcodeInCenter = barcode;
                                 break;
                             }

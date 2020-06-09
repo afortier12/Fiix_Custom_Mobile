@@ -1,4 +1,4 @@
-package ITM.maint.fiix_custom_mobile;
+package ITM.maint.fiix_custom_mobile.ui.graphics.barcode;
 
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -7,11 +7,12 @@ import android.graphics.RectF;
 
 import androidx.core.content.ContextCompat;
 
+import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeGraphicBase;
 import ITM.maint.fiix_custom_mobile.ui.graphics.camera.CameraReticleAnimator;
 import ITM.maint.fiix_custom_mobile.ui.view.GraphicOverlay;
 
-class BarcodeReticleGraphic extends BarcodeGraphicBase {
+public class BarcodeReticleGraphic extends BarcodeGraphicBase {
 
     private final CameraReticleAnimator animator;
 
@@ -20,7 +21,7 @@ class BarcodeReticleGraphic extends BarcodeGraphicBase {
     private final int rippleStrokeWidth;
     private final int rippleAlpha;
 
-    BarcodeReticleGraphic(GraphicOverlay overlay, CameraReticleAnimator animator) {
+    public BarcodeReticleGraphic(GraphicOverlay overlay, CameraReticleAnimator animator) {
         super(overlay);
         this.animator = animator;
 

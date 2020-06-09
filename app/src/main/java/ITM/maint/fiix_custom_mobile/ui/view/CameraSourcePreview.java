@@ -266,6 +266,10 @@ public class CameraSourcePreview extends RelativeLayout {
         return orientation;
     }
 
+    public Size getCameraPreviewSize() {
+        return cameraPreviewSize;
+    }
+
     public void setOrientation(int orientation) {
         this.orientation = orientation;
     }
@@ -275,16 +279,12 @@ public class CameraSourcePreview extends RelativeLayout {
     }
 
     public void setAspectRatio(int width, int height) {
-        //surfaceView.setAspectRatio(width, height);
         android.view.ViewGroup.LayoutParams lp = surfaceView.getLayoutParams();
         lp.width = width;
         lp.height = height;
         surfaceView.setLayoutParams(lp);
     }
 
-    public void setTransform(Matrix matrix) {
-        //surfaceView.setTransform(matrix);
-    }
 
     class surfaceCallback implements SurfaceHolder.Callback {
 

@@ -1,4 +1,4 @@
-package ITM.maint.fiix_custom_mobile;
+package ITM.maint.fiix_custom_mobile.di;
 
 import android.os.Handler;
 import android.os.Looper;

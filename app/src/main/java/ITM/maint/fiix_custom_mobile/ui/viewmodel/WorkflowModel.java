@@ -61,6 +61,13 @@ public class WorkflowModel extends AndroidViewModel {
         this.workflowState.setValue(workflowState);
     }
 
+    public MutableLiveData<FirebaseVisionBarcode> getBarcode(){
+        return detectedBarcode;
+    }
+
+    public String getBarcodeValue(){
+        return detectedBarcode.getValue().getRawValue();
+    }
 
     public void markCameraLive() {
         isCameraLive = true;

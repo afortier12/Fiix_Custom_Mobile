@@ -10,7 +10,7 @@ import java.util.concurrent.Executors;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import ITM.maint.fiix_custom_mobile.AppExecutor;
+import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import dagger.Module;
 import dagger.Provides;
 
@@ -31,7 +31,7 @@ public class AppModule {
     }
 
     /**
-     * ITM.maint.fiix_custom_mobile.AppExecutor.
+     * ITM.maint.fiix_custom_mobile.di.AppExecutor.
      */
     @Provides
     @Singleton

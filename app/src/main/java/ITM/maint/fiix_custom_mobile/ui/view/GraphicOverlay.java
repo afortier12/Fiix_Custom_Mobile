@@ -25,6 +25,7 @@ import android.util.AttributeSet;
 import android.util.Size;
 import android.view.View;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,12 +88,32 @@ public class GraphicOverlay extends View {
     }
 
 
+    public void setCameraInfo(Size previewSize) {
+        if (isPortraitMode(getContext())) {
+            // Swap width and height when in portrait, since camera's natural orientation is landscape.
+            previewWidth = previewSize.getHeight();
+            previewHeight = previewSize.getWidth();
+        } else {
+            previewWidth = previewSize.getWidth();
+            previewHeight = previewSize.getHeight();
+        }
+    }
+
     public float translateX(float x) {
-        return x * widthScaleFactor;
+        if (isPortraitMode(getContext())) {
+            return x * heightScaleFactor;
+        } else {
+            return x * widthScaleFactor;
+        }
     }
 
     public float translateY(float y) {
-        return y * heightScaleFactor;
+        if (isPortraitMode(getContext())) {
+            return y * widthScaleFactor;
+        } else {
+            return y * heightScaleFactor;
+        }
+
     }
 
     /**
@@ -112,8 +133,8 @@ public class GraphicOverlay extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         if (previewWidth > 0 && previewHeight > 0) {
-            widthScaleFactor = (float) getWidth() / previewWidth;
-            heightScaleFactor = (float) getHeight() / previewHeight;
+            widthScaleFactor = (float) getWidth()/previewWidth;
+            heightScaleFactor = (float) getHeight()/previewHeight;
         }
 
         synchronized (lock) {
