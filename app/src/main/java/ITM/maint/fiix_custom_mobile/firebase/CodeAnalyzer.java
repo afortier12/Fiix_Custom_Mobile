@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.experimental.UseExperimental;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.ImageProxy;
+import androidx.camera.lifecycle.ProcessCameraProvider;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
@@ -26,12 +27,14 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 
+import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeBoundGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeConfirmingGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeLoadingGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeReticleGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.camera.CameraReticleAnimator;
 import ITM.maint.fiix_custom_mobile.ui.view.GraphicOverlay;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel.WorkflowState;
 import ITM.maint.fiix_custom_mobile.utils.PreferenceUtils;
 
 
@@ -96,8 +99,8 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
 
         FirebaseVisionImage visionImage = FirebaseVisionImage.fromMediaImage(image.getImage(), getFirebaseRotation(context) );
 
-        Log.d(TAG, String.format("Width = %d", visionImage.getBitmap().getWidth()));
-        Log.d(TAG, String.format("Height = %d", visionImage.getBitmap().getHeight()));
+        //Log.d(TAG, String.format("Width = %d", visionImage.getBitmap().getWidth()));
+        //Log.d(TAG, String.format("Height = %d", visionImage.getBitmap().getHeight()));
 
         Task<List<FirebaseVisionBarcode>> task;
         task = barcodeDetector.detectInImage(visionImage);
@@ -105,8 +108,9 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                     if (!barcodes.isEmpty()) {
                         FirebaseVisionBarcode barcodeInCenter = null;
                         for (FirebaseVisionBarcode barcode : barcodes) {
-                            int width = graphicOverlay.getWidth()/2;
-                            int height = graphicOverlay.getHeight()/2;
+                            float width = graphicOverlay.getWidth()/2;
+                            float height = graphicOverlay.getHeight()/2;
+
                             RectF box = graphicOverlay.translateRect(Objects.requireNonNull(barcode.getBoundingBox()));
                             if (box.contains(width , height)) {
                                 barcodeInCenter = barcode;
@@ -116,6 +120,7 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                             graphicOverlay.clear();
                             if (barcodeInCenter == null) {
                                 cameraReticleAnimator.start();
+                                //graphicOverlay.add(new BarcodeBoundGraphic(graphicOverlay, box));
                                 graphicOverlay.add(new BarcodeReticleGraphic(graphicOverlay, cameraReticleAnimator));
                                 workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTING);
                             } else {
@@ -124,6 +129,7 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                                         PreferenceUtils.getProgressToMeetBarcodeSizeRequirement(graphicOverlay, barcodeInCenter);
                                 if (sizeProgress < 1) {
                                     // Barcode in the camera view is too small, so prompt user to move camera closer.
+                                    graphicOverlay.add(new BarcodeBoundGraphic(graphicOverlay, box));
                                     graphicOverlay.add(new BarcodeConfirmingGraphic(graphicOverlay, barcodeInCenter));
                                     workflowModel.setWorkflowState(WorkflowModel.WorkflowState.CONFIRMING);
                                 } else {
@@ -142,13 +148,13 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                             graphicOverlay.invalidate();
 
                         }
-                    } else {
+                    } /*else {
                         graphicOverlay.clear();
                         cameraReticleAnimator.start();
                         graphicOverlay.add(new BarcodeReticleGraphic(graphicOverlay, cameraReticleAnimator));
                         workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTING);
                         graphicOverlay.postInvalidate();
-                    }
+                    }*/
                 });
         image.close();
     }
@@ -162,6 +168,8 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                 animation -> {
                     if (Float.compare((float) loadingAnimator.getAnimatedValue(), endProgress) >= 0) {
                         graphicOverlay.clear();
+                        workflowModel.setWorkflowState(WorkflowState.SEARCHED);
+                        workflowModel.detectedBarcode.setValue(barcode);
                     } else {
                         graphicOverlay.invalidate();
                     }

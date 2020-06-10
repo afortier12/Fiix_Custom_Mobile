@@ -3,6 +3,7 @@ package ITM.maint.fiix_custom_mobile.ui.view;
 import android.Manifest;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.app.ActionBar;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.display.DisplayManager;
@@ -11,19 +12,24 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.camera.core.Camera;
+import androidx.camera.core.CameraInfo;
 import androidx.camera.core.CameraSelector;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.Preview;
 import androidx.camera.core.SurfaceRequest;
+import androidx.camera.core.TorchState;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -66,6 +72,7 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
     private WorkflowModel.WorkflowState currentWorkflowState;
     private Camera camera;
     private CameraSourcePreview previewView;
+    private ProcessCameraProvider cameraProvider;
     private DisplayManager displayManager;
     private int displayID;
     private ImageAnalysis imageAnalysis;
@@ -117,9 +124,11 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
         view.post(new Runnable() {
             @Override
             public void run() {
-                displayID = previewView.getDisplay().getDisplayId();
-                graphicOverlay.setCameraInfo(previewView.getCameraPreviewSize());
-                openCamera();
+                if (previewView !=null) {
+                    displayID = previewView.getDisplay().getDisplayId();
+                    graphicOverlay.setCameraInfo(previewView.getCameraPreviewSize());
+                    openCamera();
+                }
             }
         });
 
@@ -130,9 +139,27 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
         super.onDestroyView();
     }
 
+
     @Override
     public void onClick(View v) {
 
+        switch (v.getId()){
+            case R.id.close_button:
+                getParentFragmentManager().popBackStack();
+                break;
+            case R.id.flash_button:
+                CameraInfo info = camera.getCameraInfo();
+                if (info.getTorchState().getValue() == TorchState.ON){
+                    camera.getCameraControl().enableTorch(false);
+                } else {
+                    camera.getCameraControl().enableTorch(true);
+                }
+
+                break;
+            case R.id.settings_button:
+
+                break;
+        }
     }
 
     private boolean isCameraPermissionGranted() {
@@ -143,6 +170,8 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
 
 
     private void bindPreview(@NonNull ProcessCameraProvider cameraProvider) {
+
+        this.cameraProvider = cameraProvider;
 
         Preview preview = new Preview.Builder().build();
         Surface surface = previewView.getSurface();
@@ -186,14 +215,16 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
     }
 
     private void startCameraPreview() {
-        if (!workflowModel.isCameraLive() && camera != null) {
+        if (!workflowModel.isCameraLive() && cameraProvider != null) {
             workflowModel.markCameraLive();
+            bindPreview(cameraProvider);
         }
     }
 
     private void stopCameraPreview() {
         if (workflowModel.isCameraLive()) {
             workflowModel.markCameraFrozen();
+            cameraProvider.unbindAll();
             flashButton.setSelected(false);
         }
     }

@@ -99,6 +99,7 @@ public class GraphicOverlay extends View {
         }
     }
 
+
     public float translateX(float x) {
         if (isPortraitMode(getContext())) {
             return x * heightScaleFactor;
