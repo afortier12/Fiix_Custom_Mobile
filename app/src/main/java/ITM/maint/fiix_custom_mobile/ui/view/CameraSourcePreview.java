@@ -99,6 +99,20 @@ public class CameraSourcePreview extends RelativeLayout {
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity)this.getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
+        try {
+            CameraManager cameraManager = (CameraManager) this.getContext().getSystemService(Context.CAMERA_SERVICE);
+            for (String cameraId : cameraManager.getCameraIdList()) {
+                CameraCharacteristics cameraCharacteristics = cameraManager.getCameraCharacteristics(cameraId);
+                if (cameraCharacteristics.get(CameraCharacteristics.LENS_FACING) ==
+                        CameraCharacteristics.LENS_FACING_FRONT) {
+                    continue;
+                }
+                orientation = cameraCharacteristics.get(CameraCharacteristics.SENSOR_ORIENTATION);
+            }
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
+
         int displayRotation = ((Activity)context).getWindowManager().getDefaultDisplay().getRotation();
         boolean swappedDimensions = false;
         switch (displayRotation) {
@@ -116,7 +130,6 @@ public class CameraSourcePreview extends RelativeLayout {
                 break;
         }
 
-        Point displaySize = new Point();
         int rotatedPreviewWidth = width;
         int rotatedPreviewHeight = height;
         int maxPreviewWidth = displayMetrics.widthPixels;
@@ -149,7 +162,6 @@ public class CameraSourcePreview extends RelativeLayout {
 
         ViewGroup.LayoutParams layoutParams = surfaceView.getLayoutParams();
 
-        int orientation = context.getResources().getConfiguration().orientation;
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
             layoutParams.width = cameraPreviewSize.getWidth();
             layoutParams.height = cameraPreviewSize.getHeight();
@@ -160,17 +172,18 @@ public class CameraSourcePreview extends RelativeLayout {
         surfaceView.setLayoutParams(layoutParams);
     }
 
-    private static Size chooseOptimalSize(Size[] choices, int textureViewWidth,
-                                          int textureViewHeight, int maxWidth, int maxHeight, Size aspectRatio) {
+    private static Size chooseOptimalSize(Size[] choices, int viewWidth,
+                                          int viewHeight, int maxWidth, int maxHeight, Size aspectRatio) {
         List<Size> bigEnough = new ArrayList<>();
         List<Size> notBigEnough = new ArrayList<>();
         int w = aspectRatio.getWidth();
         int h = aspectRatio.getHeight();
         for (Size option : choices) {
+            int widthRatio = option.getWidth() * h / w;
             if (option.getWidth() <= maxWidth && option.getHeight() <= maxHeight &&
-                    option.getHeight() == option.getWidth() * h / w) {
-                if (option.getWidth() >= textureViewWidth &&
-                        option.getHeight() >= textureViewHeight) {
+                    option.getHeight() == widthRatio) {
+                if (option.getWidth() >= viewWidth &&
+                        option.getHeight() >= viewHeight) {
                     bigEnough.add(option);
                 } else {
                     notBigEnough.add(option);
