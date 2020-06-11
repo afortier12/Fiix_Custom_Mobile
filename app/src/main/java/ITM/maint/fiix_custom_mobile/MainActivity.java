@@ -39,12 +39,13 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                 .build();
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-                //.setGraph(R.id.nav_host_fragment, MainFrag);
+
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(navView, navController);
 
         checkCameraPermissions();
     }
+
 
     private void checkCameraPermissions() {
         if (!isCameraPermissionGranted()) {

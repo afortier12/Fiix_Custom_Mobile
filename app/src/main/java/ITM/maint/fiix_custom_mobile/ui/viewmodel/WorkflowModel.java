@@ -28,6 +28,8 @@ import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 import java.util.HashSet;
 import java.util.Set;
 
+import ITM.maint.fiix_custom_mobile.utils.SingleLiveEvent;
+
 /** View model for handling application workflow based on camera preview. */
 public class WorkflowModel extends AndroidViewModel {
 
@@ -54,6 +56,10 @@ public class WorkflowModel extends AndroidViewModel {
 
     public WorkflowModel(Application application) {
         super(application);
+    }
+
+    public WorkflowState getWorkFlowState(){
+        return this.workflowState.getValue();
     }
 
     @MainThread

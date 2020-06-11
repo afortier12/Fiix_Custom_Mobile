@@ -3,6 +3,7 @@ package ITM.maint.fiix_custom_mobile.ui.graphics.barcode;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Point;
 import android.graphics.RectF;
 
 import androidx.core.content.ContextCompat;
@@ -20,10 +21,12 @@ public class BarcodeReticleGraphic extends BarcodeGraphicBase {
     private final int rippleSizeOffset;
     private final int rippleStrokeWidth;
     private final int rippleAlpha;
+    private final Point[] corners;
 
-    public BarcodeReticleGraphic(GraphicOverlay overlay, CameraReticleAnimator animator) {
+    public BarcodeReticleGraphic(GraphicOverlay overlay, CameraReticleAnimator animator, Point[] corners) {
         super(overlay);
         this.animator = animator;
+        this.corners = corners;
 
         Resources resources = overlay.getResources();
         ripplePaint = new Paint();
@@ -51,5 +54,10 @@ public class BarcodeReticleGraphic extends BarcodeGraphicBase {
                         boxRect.right + offset,
                         boxRect.bottom + offset);
         canvas.drawRoundRect(rippleRect, boxCornerRadius, boxCornerRadius, ripplePaint);
+        canvas.drawCircle(corners[0].x, corners[0].y, 2f, ripplePaint);
+        canvas.drawCircle(corners[1].x, corners[1].y, 2f, ripplePaint);
+        canvas.drawCircle(corners[2].x, corners[2].y, 2f, ripplePaint);
+        canvas.drawCircle(corners[3].x, corners[3].y, 2f, ripplePaint);
+
     }
 }

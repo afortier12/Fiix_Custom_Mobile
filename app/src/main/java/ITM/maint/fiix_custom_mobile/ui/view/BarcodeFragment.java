@@ -3,23 +3,17 @@ package ITM.maint.fiix_custom_mobile.ui.view;
 import android.Manifest;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
-import android.app.ActionBar;
-import android.content.Context;
 import android.content.pm.PackageManager;
-import android.hardware.display.DisplayManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.util.Size;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -33,12 +27,12 @@ import androidx.camera.core.TorchState;
 import androidx.camera.lifecycle.ProcessCameraProvider;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.google.android.material.chip.Chip;
 import com.google.common.base.Objects;
 import com.google.common.util.concurrent.ListenableFuture;
 
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Executor;
 
@@ -47,13 +41,11 @@ import javax.inject.Inject;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.firebase.CodeAnalyzer;
 import ITM.maint.fiix_custom_mobile.R;
-import ITM.maint.fiix_custom_mobile.data.model.BarcodeField;
-import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeResultFragment;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.BarcodeViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
 import dagger.android.support.DaggerFragment;
 
-public class BarcodeFragment extends DaggerFragment implements  View.OnClickListener, DisplayManager.DisplayListener {
+public class BarcodeFragment extends DaggerFragment implements  View.OnClickListener {
 
     private static final String TAG = "BarcodeFragment";
     
@@ -73,7 +65,6 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
     private Camera camera;
     private CameraSourcePreview previewView;
     private ProcessCameraProvider cameraProvider;
-    private DisplayManager displayManager;
     private int displayID;
     private ImageAnalysis imageAnalysis;
     private MainThreadExecutor mainThreadExecutor;
@@ -82,10 +73,15 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         barcodeViewModel =
-                new ViewModelProvider(this).get(BarcodeViewModel.class);
+                new ViewModelProvider(requireActivity()).get(BarcodeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_barcode, container, false);
 
-        displayManager = (DisplayManager) this.getContext().getSystemService(Context.DISPLAY_SERVICE);
+        /*View decorView = ((Activity) this.getContext()).getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
+        decorView.setSystemUiVisibility(uiOptions);
+
+         */
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(this.getContext());
         mainThreadExecutor = new MainThreadExecutor();
@@ -125,8 +121,8 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
             @Override
             public void run() {
                 if (previewView !=null) {
-                    displayID = previewView.getDisplay().getDisplayId();
-                    graphicOverlay.setCameraInfo(previewView.getCameraPreviewSize());
+                    Size previewSize = previewView.getCameraPreviewSize();
+                    if (previewSize != null) graphicOverlay.setCameraInfo(previewView.getCameraPreviewSize());
                     openCamera();
                 }
             }
@@ -135,7 +131,26 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+
+    @Override
     public void onDestroyView() {
+
+        cameraProviderFuture = null;
+        previewSurfaceProvider = null;
+        previewView = null;
+        graphicOverlay = null;
+        workflowModel = null;
+        promptChip = null;
+        promptChipAnimator = null;
+        flashButton = null;
+        settingsButton = null;
+        barcodeViewModel = null;
+        mainThreadExecutor = null;
+        cameraProviderFuture = null;
         super.onDestroyView();
     }
 
@@ -193,7 +208,7 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
         //bind to lifecycle:
         camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageAnalysis);
 
-
+        startCameraPreview();
 
     }
 
@@ -217,7 +232,7 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
     private void startCameraPreview() {
         if (!workflowModel.isCameraLive() && cameraProvider != null) {
             workflowModel.markCameraLive();
-            bindPreview(cameraProvider);
+            if (!cameraProvider.isBound(imageAnalysis)) bindPreview(cameraProvider);
         }
     }
 
@@ -250,22 +265,22 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
                         case DETECTING:
                             promptChip.setVisibility(View.VISIBLE);
                             promptChip.setText(R.string.prompt_point_at_a_barcode);
-                            startCameraPreview();
+                            if (!workflowModel.isCameraLive()) startCameraPreview();
                             break;
                         case CONFIRMING:
                             promptChip.setVisibility(View.VISIBLE);
                             promptChip.setText(R.string.prompt_move_camera_closer);
-                            startCameraPreview();
+                            if (!workflowModel.isCameraLive()) startCameraPreview();
                             break;
                         case SEARCHING:
                             promptChip.setVisibility(View.VISIBLE);
                             promptChip.setText(R.string.prompt_searching);
-                            stopCameraPreview();
+                            if (workflowModel.isCameraLive()) stopCameraPreview();
                             break;
                         case DETECTED:
                         case SEARCHED:
                             promptChip.setVisibility(View.GONE);
-                            stopCameraPreview();
+                            if (workflowModel.isCameraLive()) stopCameraPreview();
                             break;
                         default:
                             promptChip.setVisibility(View.GONE);
@@ -283,11 +298,14 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
                 getViewLifecycleOwner(),
                 barcode -> {
                     if (barcode != null) {
-                        ArrayList<BarcodeField> barcodeFieldList = new ArrayList<>();
-                        barcodeFieldList.add(new BarcodeField("Raw Value", barcode.getRawValue()));
-                        BarcodeResultFragment.show(getParentFragmentManager(), barcodeFieldList);
+                        BarcodeFragmentDirections.BarcodeToPartAdd action =
+                                BarcodeFragmentDirections.barcodeToPartAdd();
+                        action.setBarcode(barcode.getRawValue());
+                        Navigation.findNavController(getView()).navigate(action);
                     }
                 });
+
+
     }
 
     private class PreviewSurfaceProvider implements Preview.SurfaceProvider {
@@ -307,12 +325,14 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
             //}
 
             // Provide the surface and wait for the result to clean up the surface.
-            request.provideSurface(surface, mainThreadExecutor, (result) -> {
-                // In all cases (even errors), we can clean up the state. As an
-                // optimization, we could also optionally check for REQUEST_CANCELLED
-                // since we may be able to reuse the surface on subsequent surface requests.
-                //TODO("Not yet implemented")
-            });
+            if (surface != null) {
+                request.provideSurface(surface, mainThreadExecutor, (result) -> {
+                    // In all cases (even errors), we can clean up the state. As an
+                    // optimization, we could also optionally check for REQUEST_CANCELLED
+                    // since we may be able to reuse the surface on subsequent surface requests.
+                    //TODO("Not yet implemented")
+                });
+            }
         }
     }
 
@@ -325,7 +345,7 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
         }
     }
 
-
+/*
     @Override
     public void onDisplayAdded(int displayId) {
 
@@ -341,5 +361,5 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
         if (displayId == this.displayID){
             imageAnalysis.setTargetRotation(((WindowManager) this.getContext().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay().getRotation());
         }
-    }
+    }*/
 }

@@ -96,22 +96,11 @@ public class CameraSourcePreview extends RelativeLayout {
 
     private void setCameraPreviewSize(int width, int height){
 
+        if (cameraPreviewSize != null) return;
         DisplayMetrics displayMetrics = new DisplayMetrics();
         ((Activity)this.getContext()).getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 
-        try {
-            CameraManager cameraManager = (CameraManager) this.getContext().getSystemService(Context.CAMERA_SERVICE);
-            for (String cameraId : cameraManager.getCameraIdList()) {
-                CameraCharacteristics cameraCharacteristics = cameraManager.getCameraCharacteristics(cameraId);
-                if (cameraCharacteristics.get(CameraCharacteristics.LENS_FACING) ==
-                        CameraCharacteristics.LENS_FACING_FRONT) {
-                    continue;
-                }
-                orientation = cameraCharacteristics.get(CameraCharacteristics.SENSOR_ORIENTATION);
-            }
-        } catch (CameraAccessException e) {
-            e.printStackTrace();
-        }
+        orientation = getCameraOrientation();
 
         int displayRotation = ((Activity)context).getWindowManager().getDefaultDisplay().getRotation();
         boolean swappedDimensions = false;
@@ -140,17 +129,25 @@ public class CameraSourcePreview extends RelativeLayout {
             rotatedPreviewHeight = width;
             maxPreviewWidth = displayMetrics.heightPixels;
             maxPreviewHeight = displayMetrics.widthPixels;
+            if (maxPreviewHeight > MAX_CAMERA_PREVIEW_WIDTH) {
+                maxPreviewHeight = MAX_CAMERA_PREVIEW_WIDTH;
+            }
+
+            if (maxPreviewWidth > MAX_CAMERA_PREVIEW_HEIGHT) {
+                maxPreviewWidth = MAX_CAMERA_PREVIEW_HEIGHT;
+            }
+
+        } else {
+            if (maxPreviewWidth > MAX_CAMERA_PREVIEW_WIDTH) {
+                maxPreviewWidth = MAX_CAMERA_PREVIEW_WIDTH;
+            }
+
+            if (maxPreviewHeight > MAX_CAMERA_PREVIEW_HEIGHT) {
+                maxPreviewHeight = MAX_CAMERA_PREVIEW_HEIGHT;
+            }
         }
 
-        if (maxPreviewWidth > MAX_CAMERA_PREVIEW_WIDTH) {
-            maxPreviewWidth = MAX_CAMERA_PREVIEW_WIDTH;
-        }
-
-        if (maxPreviewHeight > MAX_CAMERA_PREVIEW_HEIGHT) {
-            maxPreviewHeight = MAX_CAMERA_PREVIEW_HEIGHT;
-        }
-
-        StreamConfigurationMap map = setupCamera(displayMetrics.widthPixels, displayMetrics.heightPixels);
+        StreamConfigurationMap map = setupCameraStream();
         List<Size> previewSizeList = Arrays.asList(map.getOutputSizes(ImageFormat.YUV_420_888));
         Size largest = Collections.max(previewSizeList, new CompareSizesByArea());
 
@@ -214,7 +211,7 @@ public class CameraSourcePreview extends RelativeLayout {
         }
     }
 
-    private StreamConfigurationMap setupCamera(int width, int height) {
+    private StreamConfigurationMap setupCameraStream() {
         CameraManager cameraManager = (CameraManager) this.getContext().getSystemService(Context.CAMERA_SERVICE);
         try {
             for(String cameraId : cameraManager.getCameraIdList()) {
@@ -230,6 +227,24 @@ public class CameraSourcePreview extends RelativeLayout {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private int getCameraOrientation() {
+        CameraManager cameraManager = (CameraManager) this.getContext().getSystemService(Context.CAMERA_SERVICE);
+        try {
+            for(String cameraId : cameraManager.getCameraIdList()) {
+                CameraCharacteristics cameraCharacteristics = cameraManager.getCameraCharacteristics(cameraId);
+                if(cameraCharacteristics.get(CameraCharacteristics.LENS_FACING) ==
+                        CameraCharacteristics.LENS_FACING_FRONT){
+                    continue;
+                }
+                orientation = cameraCharacteristics.get(CameraCharacteristics.SENSOR_ORIENTATION);
+                return orientation;
+            }
+        } catch (CameraAccessException e) {
+            e.printStackTrace();
+        }
+        return -1;
     }
 
     @Override
@@ -310,6 +325,7 @@ public class CameraSourcePreview extends RelativeLayout {
 
         @Override
         public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
+            if (cameraPreviewSize != null) return;
             setCameraPreviewSize(width, height);
         }
 

@@ -3,6 +3,7 @@ package ITM.maint.fiix_custom_mobile.firebase;
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Point;
 import android.graphics.RectF;
 import android.util.Log;
 import android.util.SparseIntArray;
@@ -87,6 +88,7 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
     @Override
     @UseExperimental(markerClass = androidx.camera.core.ExperimentalGetImage.class)
     public void analyze(@NonNull ImageProxy image) {
+
         if (image == null || image.getImage() == null) {
             return;
         }
@@ -97,7 +99,8 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                         .build();
         barcodeDetector = FirebaseVision.getInstance().getVisionBarcodeDetector(options);
 
-        FirebaseVisionImage visionImage = FirebaseVisionImage.fromMediaImage(image.getImage(), getFirebaseRotation(context) );
+        int rotation = getFirebaseRotation(context);
+        FirebaseVisionImage visionImage = FirebaseVisionImage.fromMediaImage(image.getImage(), rotation);
 
         //Log.d(TAG, String.format("Width = %d", visionImage.getBitmap().getWidth()));
         //Log.d(TAG, String.format("Height = %d", visionImage.getBitmap().getHeight()));
@@ -106,48 +109,74 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
         task = barcodeDetector.detectInImage(visionImage);
         task.addOnSuccessListener(executor, barcodes -> {
                     if (!barcodes.isEmpty()) {
+                        int x, y, left, right, top, bottom;
+                        Point[] corners = null;
                         FirebaseVisionBarcode barcodeInCenter = null;
                         for (FirebaseVisionBarcode barcode : barcodes) {
-                            float width = graphicOverlay.getWidth()/2;
-                            float height = graphicOverlay.getHeight()/2;
-
+                            RectF centerBox = PreferenceUtils.getBarcodeReticleBox(graphicOverlay);
                             RectF box = graphicOverlay.translateRect(Objects.requireNonNull(barcode.getBoundingBox()));
-                            if (box.contains(width , height)) {
-                                barcodeInCenter = barcode;
-                                break;
-                            }
+                            corners = barcode.getCornerPoints();
+                            for (Point point : corners) {
 
-                            graphicOverlay.clear();
-                            if (barcodeInCenter == null) {
-                                cameraReticleAnimator.start();
-                                //graphicOverlay.add(new BarcodeBoundGraphic(graphicOverlay, box));
-                                graphicOverlay.add(new BarcodeReticleGraphic(graphicOverlay, cameraReticleAnimator));
-                                workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTING);
-                            } else {
-                                cameraReticleAnimator.cancel();
-                                float sizeProgress =
-                                        PreferenceUtils.getProgressToMeetBarcodeSizeRequirement(graphicOverlay, barcodeInCenter);
-                                if (sizeProgress < 1) {
-                                    // Barcode in the camera view is too small, so prompt user to move camera closer.
-                                    graphicOverlay.add(new BarcodeBoundGraphic(graphicOverlay, box));
-                                    graphicOverlay.add(new BarcodeConfirmingGraphic(graphicOverlay, barcodeInCenter));
-                                    workflowModel.setWorkflowState(WorkflowModel.WorkflowState.CONFIRMING);
+                                if (rotation == 0 || rotation == 180){
+                                    x = point.y;
+                                    y = point.x;
                                 } else {
-                                    // Barcode size in the camera view is sufficient.
-                                    if (PreferenceUtils.shouldDelayLoadingBarcodeResult(graphicOverlay.getContext())) {
+                                    x = point.x;
+                                    y = point.y;
+                                }
+
+                                left = (int)centerBox.left;
+                                right = (int)centerBox.right;
+                                top = (int)centerBox.top;
+                                bottom = (int)centerBox.bottom;
+                                if ((x <= right && x >= left) &&  (y <= bottom && y >= top)){
+                                    barcodeInCenter = barcode;
+                                } else {
+                                    barcodeInCenter = null;
+                                    Log.d(TAG, "Not in center");
+                                    break;
+                                }
+                            }
+                            if (barcodeInCenter != null) break;
+                        }
+
+                        graphicOverlay.clear();
+                        if (barcodeInCenter == null) {
+                            cameraReticleAnimator.start();
+                            //graphicOverlay.add(new BarcodeBoundGraphic(graphicOverlay, box));
+                            graphicOverlay.add(new BarcodeReticleGraphic(graphicOverlay, cameraReticleAnimator, corners));
+                            workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTING);
+                            Log.d(TAG, "Detecting");
+                        } else {
+                            cameraReticleAnimator.cancel();
+                            float sizeProgress =
+                                    PreferenceUtils.getProgressToMeetBarcodeSizeRequirement(graphicOverlay, barcodeInCenter);
+                            if (sizeProgress < 1) {
+                                // Barcode in the camera view is too small, so prompt user to move camera closer.
+                                //graphicOverlay.add(new BarcodeBoundGraphic(graphicOverlay, box));
+                                graphicOverlay.add(new BarcodeConfirmingGraphic(graphicOverlay, barcodeInCenter));
+                                workflowModel.setWorkflowState(WorkflowModel.WorkflowState.CONFIRMING);
+                                Log.d(TAG, "Too small");
+                            } else {
+                                // Barcode size in the camera view is sufficient.
+                                if (PreferenceUtils.shouldDelayLoadingBarcodeResult(graphicOverlay.getContext())) {
+                                    if (workflowModel.getWorkFlowState() != WorkflowState.SEARCHING
+                                        ||  workflowModel.getWorkFlowState() != WorkflowState.DETECTED) {
                                         ValueAnimator loadingAnimator = createLoadingAnimator(graphicOverlay, barcodeInCenter);
                                         loadingAnimator.start();
                                         graphicOverlay.add(new BarcodeLoadingGraphic(graphicOverlay, loadingAnimator));
                                         workflowModel.setWorkflowState(WorkflowModel.WorkflowState.SEARCHING);
-                                    } else {
-                                        workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTED);
-                                        workflowModel.detectedBarcode.setValue(barcodeInCenter);
+                                        Log.d(TAG, "Searching");
                                     }
+                                } else {
+                                    workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTED);
+                                    workflowModel.detectedBarcode.setValue(barcodeInCenter);
+                                    Log.d(TAG, "Detected");
                                 }
                             }
-                            graphicOverlay.invalidate();
-
                         }
+                        graphicOverlay.invalidate();
                     } /*else {
                         graphicOverlay.clear();
                         cameraReticleAnimator.start();
@@ -170,6 +199,8 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                         graphicOverlay.clear();
                         workflowModel.setWorkflowState(WorkflowState.SEARCHED);
                         workflowModel.detectedBarcode.setValue(barcode);
+                        Log.d(TAG, "Animation detected");
+
                     } else {
                         graphicOverlay.invalidate();
                     }
