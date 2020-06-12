@@ -2,6 +2,7 @@ package ITM.maint.fiix_custom_mobile.ui.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -35,12 +36,22 @@ public class PartAddFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_part_add, container, false);
+
         return root;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                NavController navController = Navigation.findNavController(view);
+                navController.popBackStack();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);
 
         PartAddFragmentArgs args = PartAddFragmentArgs.fromBundle(getArguments());
         barcode = args.getBarcode();
@@ -53,6 +64,8 @@ public class PartAddFragment extends Fragment {
     public void onPause() {
         super.onPause();
     }
+
+
 
 
 }

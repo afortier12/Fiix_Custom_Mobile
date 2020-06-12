@@ -2,12 +2,14 @@ package ITM.maint.fiix_custom_mobile.firebase;
 
 import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
 import android.graphics.RectF;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.Surface;
+import android.view.View;
 import android.view.WindowManager;
 
 import androidx.annotation.NonNull;
@@ -15,6 +17,8 @@ import androidx.annotation.experimental.UseExperimental;
 import androidx.camera.core.ImageAnalysis;
 import androidx.camera.core.ImageProxy;
 import androidx.camera.lifecycle.ProcessCameraProvider;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.ml.vision.FirebaseVision;
@@ -28,11 +32,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.Executor;
 
+import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeBoundGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeConfirmingGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeLoadingGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.barcode.BarcodeReticleGraphic;
 import ITM.maint.fiix_custom_mobile.ui.graphics.camera.CameraReticleAnimator;
+import ITM.maint.fiix_custom_mobile.ui.view.BarcodeFragmentDirections;
 import ITM.maint.fiix_custom_mobile.ui.view.GraphicOverlay;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel.WorkflowState;
@@ -171,7 +177,7 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                                     }
                                 } else {
                                     workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTED);
-                                    workflowModel.detectedBarcode.setValue(barcodeInCenter);
+                                    //workflowModel.detectedBarcode.setValue(barcodeInCenter);
                                     Log.d(TAG, "Detected");
                                 }
                             }
@@ -198,8 +204,17 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                     if (Float.compare((float) loadingAnimator.getAnimatedValue(), endProgress) >= 0) {
                         graphicOverlay.clear();
                         workflowModel.setWorkflowState(WorkflowState.SEARCHED);
-                        workflowModel.detectedBarcode.setValue(barcode);
-                        Log.d(TAG, "Animation detected");
+
+                        View rootView = ((Activity) context).getWindow().getDecorView().findViewById(android.R.id.content);
+                        View v = rootView.findViewById(R.id.barcode_fragment);
+                        if (v != null) {
+                            BarcodeFragmentDirections.BarcodeToPartAdd action =
+                                    BarcodeFragmentDirections.barcodeToPartAdd();
+                            action.setBarcode(barcode.getRawValue());
+                            Navigation.findNavController(v).navigate(action);
+
+                            Log.d(TAG, "Animation detected");
+                        }
 
                     } else {
                         graphicOverlay.invalidate();

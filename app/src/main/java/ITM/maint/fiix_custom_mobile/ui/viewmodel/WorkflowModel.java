@@ -48,7 +48,7 @@ public class WorkflowModel extends AndroidViewModel {
 
     public final MutableLiveData<WorkflowState> workflowState = new MutableLiveData<>();
 
-    public final MutableLiveData<FirebaseVisionBarcode> detectedBarcode = new MutableLiveData<>();
+    //public final MutableLiveData<FirebaseVisionBarcode> detectedBarcode = new MutableLiveData<>();
 
     private final Set<Integer> objectIdsToSearch = new HashSet<>();
 
@@ -67,13 +67,13 @@ public class WorkflowModel extends AndroidViewModel {
         this.workflowState.setValue(workflowState);
     }
 
-    public MutableLiveData<FirebaseVisionBarcode> getBarcode(){
-        return detectedBarcode;
-    }
+    //public MutableLiveData<FirebaseVisionBarcode> getBarcode(){
+    //    return detectedBarcode;
+    //}
 
-    public String getBarcodeValue(){
-        return detectedBarcode.getValue().getRawValue();
-    }
+    //public String getBarcodeValue(){
+    //    return detectedBarcode.getValue().getRawValue();
+    //}
 
     public void markCameraLive() {
         isCameraLive = true;

@@ -294,7 +294,7 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
                     }
                 });
 
-        workflowModel.detectedBarcode.observe(
+        /*workflowModel.detectedBarcode.observe(
                 getViewLifecycleOwner(),
                 barcode -> {
                     if (barcode != null) {
@@ -303,7 +303,7 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
                         action.setBarcode(barcode.getRawValue());
                         Navigation.findNavController(getView()).navigate(action);
                     }
-                });
+                });*/
 
 
     }
@@ -325,7 +325,7 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
             //}
 
             // Provide the surface and wait for the result to clean up the surface.
-            if (surface != null) {
+            if (surface != null && mainThreadExecutor !=null) {
                 request.provideSurface(surface, mainThreadExecutor, (result) -> {
                     // In all cases (even errors), we can clean up the state. As an
                     // optimization, we could also optionally check for REQUEST_CANCELLED
