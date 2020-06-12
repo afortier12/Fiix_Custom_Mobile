@@ -1,4 +1,4 @@
-package ITM.maint.barcodescan.di;
+package ITM.maint.fiix_custom_mobile.di;
 
 import android.app.Application;
 import android.content.Context;
@@ -39,7 +39,7 @@ public class AppModule {
         return new AppExecutor(
                 Executors.newSingleThreadExecutor(),
                 Executors.newSingleThreadExecutor(),
-                new AppExecutor.AnimationThreadExecutor(),
+                new AppExecutor.PreviewThreadExecutor(),
                 new AppExecutor.MainThreadExecutor());
     }
 

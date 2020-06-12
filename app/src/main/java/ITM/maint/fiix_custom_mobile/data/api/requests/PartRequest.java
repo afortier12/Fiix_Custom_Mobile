@@ -1,5 +1,7 @@
 package ITM.maint.fiix_custom_mobile.data.api.requests;
 
+import androidx.room.Ignore;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -9,7 +11,7 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.model.Storage;
 
-public class PartAddRequest extends FiixRequest {
+public class PartRequest extends FiixRequest {
 
     private List<String> fieldNames = new ArrayList<>(Arrays.asList(
             "id",
@@ -27,14 +29,17 @@ public class PartAddRequest extends FiixRequest {
 
     @SerializedName("className")
     @Expose
+    @Ignore
     private String className;
 
     @SerializedName("fields")
     @Expose
+    @Ignore
     private String fields = fieldNames.toString();
 
     @SerializedName("object")
     @Expose
+    @Ignore
     private RequestObject requestObject;
 
 
@@ -64,18 +69,6 @@ public class PartAddRequest extends FiixRequest {
         @Expose
         private String partNumber;
 
-        @SerializedName("strAisle")
-        @Expose
-        private String tray;
-
-        @SerializedName("strRow")
-        @Expose
-        private String row;
-
-        @SerializedName("strBin")
-        @Expose
-        private String bin;
-
         @SerializedName("strBarcode")
         @Expose
         private String barcode;
@@ -84,9 +77,6 @@ public class PartAddRequest extends FiixRequest {
         @Expose
         private int categoryID;
 
-        @SerializedName("intSiteID")
-        @Expose
-        private int siteID;
 
     }
 }

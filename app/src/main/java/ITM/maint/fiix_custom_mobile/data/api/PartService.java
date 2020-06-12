@@ -1,24 +1,21 @@
 package ITM.maint.fiix_custom_mobile.data.api;
 
-import java.util.Map;
-
-import ITM.maint.fiix_custom_mobile.data.api.requests.PartAddRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
-import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 
 public interface PartService {
 
     @POST("/api/")
-    Call<PartAddRequest> addPart(@Body PartAddRequest partAddRequest);
+    Call<ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest> addPart(@Body ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest partAddRequest);
 
     @FormUrlEncoded
     @POST("/api/")
-    Call<PartAddRequest> addPart(
+    Call<ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest> addPart(
             @Field("id") int id,
             @Field("strName") String name,
             @Field("strDescription") String description,
@@ -33,9 +30,13 @@ public interface PartService {
             @Field("intSiteID") int siteID
     );
 
-    @FormUrlEncoded
+
     @POST("/api/")
-    Call<PartAddRequest> addPart(@FieldMap Map<String, String> fields);
+    Call<PartRequest> findParts(
+            @Query("id") int id,
+            @Query("strName") String name,
+            @Query("strMake") String make
+    );
 
 
 }

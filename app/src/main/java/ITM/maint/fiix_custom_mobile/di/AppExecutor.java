@@ -15,23 +15,23 @@ public class AppExecutor  {
 
     public static final String TAG = AppExecutor.class.getSimpleName();
     private final Executor analyzerThread;
-    private final Executor detectorThread;
-    private final Executor animationThread;
+    private final Executor databaseThread;
+    private final Executor previewThread;
     private final Executor mainThread;
 
     public AppExecutor(Executor analyzerThread,
-                       Executor detectorThread,
-                       Executor animationThread,
+                       Executor databaseThread,
+                       Executor previewThread,
                        Executor mainThread) {
         this.analyzerThread = analyzerThread;
-        this.detectorThread = detectorThread;
-        this.animationThread = animationThread;
+        this.databaseThread = databaseThread;
+        this.previewThread = previewThread;
         this.mainThread = mainThread;
     }
 
     @Inject
     public AppExecutor() {
-        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(3), new AnimationThreadExecutor(),
+        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(3), new PreviewThreadExecutor(),
                 new MainThreadExecutor());
     }
 
@@ -41,11 +41,11 @@ public class AppExecutor  {
         return analyzerThread;
     }
 
-    public Executor detectorThread() {
-        return detectorThread;
+    public Executor databaseThread() {
+        return databaseThread;
     }
 
-    public Executor animationThread() { return animationThread; }
+    public Executor previewThread() { return previewThread; }
 
     public Executor mainThread() {
         return mainThread;
@@ -60,12 +60,12 @@ public class AppExecutor  {
         }
     }
 
-    public static class AnimationThreadExecutor implements Executor {
-        private Handler animationThreadHandler = new Handler(Looper.getMainLooper());
+    public static class PreviewThreadExecutor implements Executor {
+        private Handler previewThread = new Handler(Looper.getMainLooper());
 
         @Override
         public void execute(@NonNull Runnable command) {
-            animationThreadHandler.post(command);
+            previewThread.post(command);
         }
     }
 }

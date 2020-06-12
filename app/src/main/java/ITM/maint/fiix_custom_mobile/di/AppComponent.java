@@ -20,7 +20,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
 @Component(
         modules = {
                 AndroidSupportInjectionModule.class,
-                ITM.maint.barcodescan.di.AppModule.class,
+                ITM.maint.fiix_custom_mobile.di.AppModule.class,
                 ActivityModule.class,
                 FragmentModule.class
         }
