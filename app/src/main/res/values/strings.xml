@@ -59,4 +59,8 @@
     <string name="prompt_move_camera_closer">Move closer to search</string>
     <string name="prompt_searching">Searching&#8230;</string>
     <string name="part_item">Part Image</string>
+    <string name="part_search">Part Search</string>
+    <string name="hint_part_type">SENS</string>
+    <string name="hint_make">eg) Siemens</string>
+    <string name="search">Search</string>
 </resources>

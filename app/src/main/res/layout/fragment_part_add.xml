@@ -4,10 +4,16 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp">
 
+    <ProgressBar
+        android:id="@+id/part_add_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Part Search"
+        android:text="@string/part_search"
         android:textSize="24sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -17,7 +23,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Keyword"
+            android:hint="@string/hint_part_type"
             android:id="@+id/fragment_partsearch_type" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -29,7 +35,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Author"
+            android:hint="@string/hint_make"
             android:id="@+id/fragment_partearch_make" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -37,7 +43,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search"
+        android:text="@string/search"
         android:id="@+id/fragment_partsearch_search" />
 
     <androidx.recyclerview.widget.RecyclerView

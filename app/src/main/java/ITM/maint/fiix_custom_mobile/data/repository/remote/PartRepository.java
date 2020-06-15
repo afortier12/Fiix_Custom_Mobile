@@ -1,6 +1,7 @@
 package ITM.maint.fiix_custom_mobile.data.repository.remote;
 
 
+import android.util.Base64;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -13,13 +14,11 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
-import java.util.logging.Logger;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-import ITM.maint.fiix_custom_mobile.constants.Asset;
 import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
 import ITM.maint.fiix_custom_mobile.data.api.PartService;
 import ITM.maint.fiix_custom_mobile.data.api.responses.PartResponse;
@@ -36,17 +35,23 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PartRepository {
 
+    private static final String TAG ="PartRepository";
     private PartService partService;
     private static final String FIIX_URL = "https://integritytool.macmms.com";
     private static final String API_key = "macmmsackp3848fbda83ce8bfff2fe692e700e40d392049fcc1c6928619403d94";
     private static final String Access_key = "macmmsaakp3844fa3e6d75a198199ec20f727518bad4dc4f798531d5427225c";
     private static final String API_secret = "macmmsaskp38410245f872c82bf62de179360f648957ac37ea162a95cecebbe91e94f8ec45084";
 
+    private String requestUrl = FIIX_URL +"/api/?action=FindResponse&appKey="+API_key+"&accessKey="+Access_key+"&signatureMethod=HmacSHA256&signatureVersion=1";
     private MutableLiveData<PartResponse> partResponseMutableLiveData;
+    private MutableLiveData<Integer> httpHeaderStatus;
+    private MutableLiveData<Integer> httpQueryStatus;
 
     public PartRepository() {
 
         partResponseMutableLiveData = new MutableLiveData<>();
+        httpHeaderStatus = new MutableLiveData<Integer>();
+        httpQueryStatus = new MutableLiveData<Integer>();
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -60,7 +65,7 @@ public class PartRepository {
                         HttpUrl originalHttpUrl = original.url();
 
                         HttpUrl url = originalHttpUrl.newBuilder()
-                                .addQueryParameter("action","FindRequest")
+                                .addQueryParameter("action","FindResponse")
                                 .addQueryParameter("appKey", API_key)
                                 .addQueryParameter("accessKey",Access_key)
                                 .addQueryParameter("signatureMethod", "HmacSHA256")
@@ -70,6 +75,7 @@ public class PartRepository {
                         Request.Builder requestBuilder = original. newBuilder()
                                 .url(url);
                         Request request = requestBuilder.build();
+                        //httpQueryStatus.postValue(1);
                         return chain.proceed(request);
                     }
                 })
@@ -83,6 +89,7 @@ public class PartRepository {
                                 .header("Authorization", authString())
                                 .addHeader("Content-Type","text/plain");
                         Request request = requestBuilder.build();
+                        //httpHeaderStatus.postValue(1);
                         return chain.proceed(request);
                     }
                 })
@@ -111,6 +118,14 @@ public class PartRepository {
                     @Override
                     public void onFailure(Call<PartResponse> call, Throwable t) {
                         partResponseMutableLiveData.postValue(null);
+
+                        if (t instanceof IOException) {
+                            Log.d(TAG, "this is an actual network failure: " + t.getMessage());
+                            // logging probably not necessary
+                        }
+                        else {
+                            Log.d(TAG, "conversion issue! big problems: " + t.getMessage());
+                        }
                     }
                 });
     }
@@ -119,6 +134,13 @@ public class PartRepository {
         return partResponseMutableLiveData;
     }
 
+    public MutableLiveData<Integer> getHttpHeaderStatus() {
+        return httpHeaderStatus;
+    }
+
+    public MutableLiveData<Integer> getHttpQueryStatus() {
+        return httpQueryStatus;
+    }
 
     private String authString(){
 
@@ -126,13 +148,13 @@ public class PartRepository {
         String hmacString = null;
 
         //Trim off protocol
-        if (FIIX_URL.indexOf("http://") == 0)
+        if (requestUrl.indexOf("http://") == 0)
         {
-            message = FIIX_URL.substring("http://".length());
+            message = requestUrl.substring("http://".length());
         }
-        else if (FIIX_URL.indexOf("https://") == 0)
+        else if (requestUrl.indexOf("https://") == 0)
         {
-            message = FIIX_URL.substring("https://".length());
+            message = requestUrl.substring("https://".length());
         }
         try {
             //Get Message bytes as UTF-8
@@ -161,5 +183,7 @@ public class PartRepository {
     public PartService getPartService() {
         return partService;
     }
+
+
 
 }

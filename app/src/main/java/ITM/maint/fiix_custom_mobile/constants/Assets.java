@@ -57,13 +57,13 @@ public enum Assets {
     customAddressAssetId("cf_intAddressAssetID"),
     customAddressString("cf_assetAddressString");
 
-    private String field;
+    private final String field;
 
-    Assets(String field) {
+    private Assets(String field) {
         this.field = field;
     }
 
-    String getField(){
+    public String getField(){
         return field;
     }
 }
