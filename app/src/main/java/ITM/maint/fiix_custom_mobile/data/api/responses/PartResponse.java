@@ -1,10 +1,6 @@
-package ITM.maint.fiix_custom_mobile.data.api;
+package ITM.maint.fiix_custom_mobile.data.api.responses;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
 import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -13,24 +9,26 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 
-
-@Entity(tableName = "part_table")
-public class PartRequest {
-
+public class PartResponse {
     @SerializedName("_maCn")
     @Expose
+    @Ignore
     private String maCn;
     @SerializedName("serverVersion")
     @Expose
+    @Ignore
     private ServerVersion serverVersion;
     @SerializedName("sync")
     @Expose
+    @Ignore
     private Sync sync;
     @SerializedName("objects")
     @Expose
+    @Ignore
     private List<Part> parts = null;
     @SerializedName("totalObjects")
     @Expose
+    @Ignore
     private Integer totalObjects;
 
     public String getMaCn() {
@@ -165,5 +163,6 @@ public class PartRequest {
         }
 
     }
-
 }
+
+

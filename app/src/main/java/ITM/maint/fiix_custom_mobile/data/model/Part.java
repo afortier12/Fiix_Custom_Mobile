@@ -1,7 +1,5 @@
 package ITM.maint.fiix_custom_mobile.data.model;
 
-import android.icu.text.SearchIterator;
-
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Ignore;
@@ -9,8 +7,6 @@ import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import ITM.maint.fiix_custom_mobile.data.api.PartRequest;
 
 
 public class Part {

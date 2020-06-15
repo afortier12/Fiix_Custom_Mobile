@@ -1,6 +1,8 @@
 package ITM.maint.fiix_custom_mobile.data.repository.remote;
 
 
+import android.util.Log;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.google.android.gms.common.util.Hex;
@@ -11,13 +13,16 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.logging.Logger;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
-import ITM.maint.fiix_custom_mobile.data.api.PartRequest;
+import ITM.maint.fiix_custom_mobile.constants.Asset;
+import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
 import ITM.maint.fiix_custom_mobile.data.api.PartService;
+import ITM.maint.fiix_custom_mobile.data.api.responses.PartResponse;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -37,11 +42,11 @@ public class PartRepository {
     private static final String Access_key = "macmmsaakp3844fa3e6d75a198199ec20f727518bad4dc4f798531d5427225c";
     private static final String API_secret = "macmmsaskp38410245f872c82bf62de179360f648957ac37ea162a95cecebbe91e94f8ec45084";
 
-    private MutableLiveData<PartRequest> partAPIMutableLiveData;
+    private MutableLiveData<PartResponse> partResponseMutableLiveData;
 
     public PartRepository() {
 
-        partAPIMutableLiveData = new MutableLiveData<>();
+        partResponseMutableLiveData = new MutableLiveData<>();
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -55,7 +60,7 @@ public class PartRepository {
                         HttpUrl originalHttpUrl = original.url();
 
                         HttpUrl url = originalHttpUrl.newBuilder()
-                                .addQueryParameter("action","AddRequest")
+                                .addQueryParameter("action","FindRequest")
                                 .addQueryParameter("appKey", API_key)
                                 .addQueryParameter("accessKey",Access_key)
                                 .addQueryParameter("signatureMethod", "HmacSHA256")
@@ -91,28 +96,27 @@ public class PartRepository {
                 .create(PartService.class);
     }
 
-    public void findParts(int id, String name, String make){
+    public void findParts(PartRequest partRequest){
 
-        partService.findParts(id,name,make)
-                .enqueue(new Callback<PartRequest>() {
+        partService.findParts(partRequest)
+                .enqueue(new Callback<PartResponse>() {
 
                     @Override
-                    public void onResponse(Call<PartRequest> call, retrofit2.Response<PartRequest> response) {
+                    public void onResponse(Call<PartResponse> call, retrofit2.Response<PartResponse> response) {
                         if (response.body() != null){
-                            partAPIMutableLiveData.postValue(response.body());
+                            partResponseMutableLiveData.postValue(response.body());
                         }
-
                     }
 
                     @Override
-                    public void onFailure(Call<PartRequest> call, Throwable t) {
-                        partAPIMutableLiveData.postValue(null);
+                    public void onFailure(Call<PartResponse> call, Throwable t) {
+                        partResponseMutableLiveData.postValue(null);
                     }
                 });
     }
 
-    public MutableLiveData<PartRequest> getPartAPIMutableLiveData() {
-        return partAPIMutableLiveData;
+    public MutableLiveData<PartResponse> getPartResponseMutableLiveData() {
+        return partResponseMutableLiveData;
     }
 
 

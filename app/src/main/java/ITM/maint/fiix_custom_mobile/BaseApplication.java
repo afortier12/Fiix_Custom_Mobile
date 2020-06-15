@@ -1,5 +1,6 @@
 package ITM.maint.fiix_custom_mobile;
 
+import ITM.maint.fiix_custom_mobile.di.DaggerAppComponent;
 import dagger.android.AndroidInjector;
 import dagger.android.support.DaggerApplication;
 

@@ -8,18 +8,19 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import ITM.maint.fiix_custom_mobile.data.api.PartRequest;
+import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 
 @Dao
 public interface PartDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(PartRequest part);
+    void insert(Part part);
 
-    @Query("SELECT * from PartRequest ORDER BY id ASC")
-    LiveData<List<PartRequest>> getParts();
+    @Query("SELECT * from part_table ORDER BY id ASC")
+    LiveData<List<Part>> getParts();
 
-    @Query("DELETE FROM PartRequest")
+    @Query("DELETE FROM part_table")
     void deleteAll();
 
 }

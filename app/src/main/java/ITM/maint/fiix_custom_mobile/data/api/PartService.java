@@ -1,5 +1,8 @@
 package ITM.maint.fiix_custom_mobile.data.api;
 
+import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
+import ITM.maint.fiix_custom_mobile.data.api.responses.PartResponse;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.Field;
@@ -10,8 +13,9 @@ import retrofit2.http.Query;
 
 public interface PartService {
 
+    //FindRequest, Assets (Parts and Supplies)
     @POST("/api/")
-    Call<ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest> addPart(@Body ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest partAddRequest);
+    Call<PartResponse> findParts(@Body PartRequest partRequest);
 
     @FormUrlEncoded
     @POST("/api/")
@@ -29,14 +33,5 @@ public interface PartService {
             @Field("intCategoryID") int categoryID,
             @Field("intSiteID") int siteID
     );
-
-
-    @POST("/api/")
-    Call<PartRequest> findParts(
-            @Query("id") int id,
-            @Query("strName") String name,
-            @Query("strMake") String make
-    );
-
 
 }

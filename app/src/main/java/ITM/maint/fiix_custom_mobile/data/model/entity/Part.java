@@ -44,6 +44,28 @@ public class Part {
     @ColumnInfo(name="site_id")
     private int site_id;
 
+    @ColumnInfo(name="cf_intDefaultImageFileThumbnailID")
+    private int thumbnail;
+
+    @ColumnInfo(name="unspcCode")
+    private String unspcCode;
+
+    public String getUnspcCode() {
+        return unspcCode;
+    }
+
+    public void setUnspcCode(String unspcCode) {
+        this.unspcCode = unspcCode;
+    }
+
+    public int getThumbnail() {
+        return thumbnail;
+    }
+
+    public void setThumbnail(int thumbnail) {
+        this.thumbnail = thumbnail;
+    }
+
     public int getId() {
         return id;
     }
