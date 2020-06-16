@@ -19,7 +19,7 @@ public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResults
 
     private ArrayList<Object> parts;
 
-    public PartFindResultsAdapter(ArrayList<Object> parts) {
+    public PartFindResultsAdapter(ArrayList<Part> parts) {
         this.parts = parts;
     }
 
@@ -36,10 +36,15 @@ public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResults
     public void onBindViewHolder(@NonNull PartFindResultsHolder holder, int position) {
         Part part = (Part) parts.get(position);
 
-        holder.nameText.setText(String.valueOf(part.getName()));
-        holder.modelText.setText(String.valueOf(part.getModel()));
-        holder.makeText.setText(String.valueOf(part.getMake()));
-        holder.makeText.setText(String.valueOf(part.getUnspcCode()));
+        String name = part.getName();
+        String model = part.getModel();
+        String make = part.getMake();
+        String partNumber = part.getUnspcCode();
+
+        holder.nameText.setText(name);
+        holder.modelText.setText(model);
+        holder.manufacturerText.setText(make);
+        holder.partnumberText.setText(partNumber);
 
         if (part.getThumbnail() != 0) {
             //String imageUrl = volume.getVolumeInfo().getImageLinks().getSmallThumbnail()
@@ -64,8 +69,8 @@ public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResults
     class PartFindResultsHolder extends RecyclerView.ViewHolder{
         private TextView nameText;
         private TextView modelText;
-        private TextView makeText;
-        private TextView unspcText;
+        private TextView manufacturerText;
+        private TextView partnumberText;
         private ImageView image;
 
 
@@ -74,8 +79,8 @@ public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResults
 
             nameText = itemView.findViewById(R.id.part_item_name);
             modelText = itemView.findViewById(R.id.part_item_model);
-            makeText = itemView.findViewById(R.id.part_item_make);
-            unspcText = itemView.findViewById(R.id.part_item_unspc);
+            manufacturerText = itemView.findViewById(R.id.part_item_manufacturer);
+            partnumberText = itemView.findViewById(R.id.part_item_partnumber);
             image = itemView.findViewById(R.id.part_item_smallThumbnail);
         }
     }

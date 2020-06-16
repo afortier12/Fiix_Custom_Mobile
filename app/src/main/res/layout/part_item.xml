@@ -35,17 +35,17 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/part_item_make"
+                android:id="@+id/part_item_model"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <TextView
-            android:id="@+id/part_item_model"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                android:id="@+id/part_item_manufacturer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
 
             <TextView
-                android:id="@+id/part_item_unspc"
+                android:id="@+id/part_item_partnumber"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

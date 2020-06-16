@@ -63,4 +63,8 @@
     <string name="hint_part_type">SENS</string>
     <string name="hint_make">eg) Siemens</string>
     <string name="search">Search</string>
+    <string name="part_add_manufacturer">Manufacturer</string>
+    <string name="part_add_model">Model</string>
+    <string name="part_add_part_number">Part Number</string>
+    <string name="submit">Submit</string>
 </resources>

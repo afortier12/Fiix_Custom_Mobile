@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,13 +19,13 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.repository.remote.PartRepository;
 
-public class PartAddViewModel extends AndroidViewModel {
+public class PartSearchViewModel extends AndroidViewModel {
 
     private PartRepository partRepository;
     private PartService partService;
     private LiveData<List<Part>> partResponseLiveData;
 
-    public PartAddViewModel(@NonNull Application application) {
+    public PartSearchViewModel(@NonNull Application application) {
         super(application);
     }
 
@@ -37,7 +36,7 @@ public class PartAddViewModel extends AndroidViewModel {
 
     }
 
-    public void findParts() {
+    public void findParts(PartRequest.Filter filter) {
 
         PartRequest.ClientVersion clientVersion = new PartRequest.ClientVersion(
                 2, 8, 1);
@@ -55,13 +54,13 @@ public class PartAddViewModel extends AndroidViewModel {
 
        List list = Stream.of(13455594).collect(Collectors.toList());
 
-        PartRequest.Filter filter = new PartRequest.Filter(
+        PartRequest.Filter filterP = new PartRequest.Filter(
                 "id = ?",
                 list
         );
 
         List<PartRequest.Filter> filters = new ArrayList<>();
-        filters.add(filter);
+        filters.add(filterP);
 
         partRepository.findParts(new PartRequest("FindRequest", clientVersion, "Asset", fields, filters));
     }

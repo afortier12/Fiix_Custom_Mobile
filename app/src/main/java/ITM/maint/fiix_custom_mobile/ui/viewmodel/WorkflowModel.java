@@ -23,12 +23,10 @@ import androidx.annotation.MainThread;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.firebase.ml.vision.barcode.FirebaseVisionBarcode;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import ITM.maint.fiix_custom_mobile.utils.SingleLiveEvent;
 
 /** View model for handling application workflow based on camera preview. */
 public class WorkflowModel extends AndroidViewModel {

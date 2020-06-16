@@ -5,41 +5,61 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+import ITM.maint.fiix_custom_mobile.constants.Assets;
+
 @Entity(tableName = "part_table")
 public class Part {
 
+    @SerializedName("id")
+    @Expose
     @PrimaryKey
     @NonNull
     @ColumnInfo(name="id")
     private int id;
 
-    public Part(int id){
-        this.id = id;
-    }
-
+    @SerializedName("strName")
+    @Expose
     @ColumnInfo(name="name")
     private String name;
 
+    @SerializedName("strDescription")
+    @Expose
     @ColumnInfo(name="description")
     private String description;
 
+    @SerializedName("strMake")
+    @Expose
     @ColumnInfo(name="make")
     private String make;
 
+    @SerializedName("strModel")
+    @Expose
     @ColumnInfo(name="model")
     private String model;
 
+    @SerializedName("strAisle")
+    @Expose
     @ColumnInfo(name="storage_id")
     private int storage_id;
 
+    @SerializedName("strBarcode")
+    @Expose
     @ColumnInfo(name="barcode")
     private String barcode;
 
+    @SerializedName("qtyStockCount")
+    @Expose
     @ColumnInfo(name="count")
     private int count;
 
+    @SerializedName("dv_intCategoryID")
+    @Expose
     @ColumnInfo(name="category_id")
-    private int category_id;
+    private String category_id;
+
 
     @ColumnInfo(name="site_id")
     private int site_id;
@@ -47,8 +67,14 @@ public class Part {
     @ColumnInfo(name="cf_intDefaultImageFileThumbnailID")
     private int thumbnail;
 
+    @SerializedName("strUnspcCode")
+    @Expose
     @ColumnInfo(name="unspcCode")
     private String unspcCode;
+
+    public Part(int id){
+        this.id = id;
+    }
 
     public String getUnspcCode() {
         return unspcCode;
@@ -130,11 +156,11 @@ public class Part {
         this.count = count;
     }
 
-    public int getCategory_id() {
+    public String getCategory_id() {
         return category_id;
     }
 
-    public void setCategory_id(int category_id) {
+    public void setCategory_id(String category_id) {
         this.category_id = category_id;
     }
 

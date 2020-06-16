@@ -1,17 +1,8 @@
 package ITM.maint.fiix_custom_mobile.data.api.requests;
 
-import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
-
-import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
-
-import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 
 
 public class PartRequest {
@@ -24,12 +15,15 @@ public class PartRequest {
     private String className;
     @SerializedName("fields")
     private String fields;
+    @SerializedName("filters")
+    private List<Filter> filter;
 
-    public PartRequest(String maCn, ClientVersion clientVersion, String className, String fields) {
+    public PartRequest(String maCn, ClientVersion clientVersion, String className, String fields, List<Filter> filter) {
         this.maCn = maCn;
         this.clientVersion = clientVersion;
         this.className = className;
         this.fields = fields;
+        this.filter = filter;
     }
 
     public static class ClientVersion {
@@ -46,6 +40,20 @@ public class PartRequest {
             this.minor = minor;
             this.patch = patch;
         }
+    }
+
+    public static class Filter {
+
+        @SerializedName("ql")
+        private String ql;
+        @SerializedName("parameters")
+        private List parameters;
+
+        public Filter(String ql, List parameters) {
+            this.ql = ql;
+            this.parameters = parameters;
+        }
+
     }
 
 }

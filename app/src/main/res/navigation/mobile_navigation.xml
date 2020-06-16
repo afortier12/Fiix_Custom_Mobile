@@ -38,7 +38,7 @@
         android:id="@+id/navigation_partAdd"
         android:name="ITM.maint.fiix_custom_mobile.ui.view.PartAddFragment"
         android:label="PartAddFragment"
-        tools:layout="@layout/fragment_part_add">
+        tools:layout="@layout/fragment_part_search">
         <argument
             android:name="barcode"
             app:argType="string"

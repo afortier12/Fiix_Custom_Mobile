@@ -2,7 +2,6 @@ package ITM.maint.fiix_custom_mobile.ui.view;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
-
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -12,7 +11,6 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.DefaultItemAnimator;
@@ -27,16 +25,17 @@ import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.ui.adapter.PartFindResultsAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.PartAddViewModel;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.PartSearchViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
 
-public class PartAddFragment extends Fragment {
+public class PartSearchFragment extends Fragment {
 
     private WorkflowModel workflowModel;
     private String barcode;
     private ProgressBarDialog progressBarDialog;
     private RecyclerView recyclerView;
 
-    private PartAddViewModel viewModel;
+    private PartSearchViewModel viewModel;
     private PartFindResultsAdapter adapter;
     private ArrayList<Part> partList;
 
@@ -47,7 +46,7 @@ public class PartAddFragment extends Fragment {
 
         progressBarDialog = new ProgressBarDialog(getContext());
 
-        viewModel = new ViewModelProvider(this).get(PartAddViewModel.class);
+        viewModel = new ViewModelProvider(this).get(PartSearchViewModel.class);
         viewModel.init();
 
         View root = inflater.inflate(R.layout.fragment_part_search, container, false);
@@ -90,13 +89,6 @@ public class PartAddFragment extends Fragment {
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);
-
-        PartAddFragmentArgs args = PartAddFragmentArgs.fromBundle(getArguments());
-        barcode = args.getBarcode();
-        //final TextView textView = getView().findViewById(R.id.text_barcode);
-        //textView.setText(barcode);
-
-        viewModel.findParts();
 
     }
 

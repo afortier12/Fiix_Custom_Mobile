@@ -7,41 +7,53 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/part_search"
+        android:text="Add New Part"
         android:textSize="24sp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="@string/part_add_manufacturer">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_part_type"
-            android:id="@+id/fragment_partsearch_type" />
+            android:id="@+id/fragment_partadd_make" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:hint="@string/part_add_model">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/hint_make"
-            android:id="@+id/fragment_partearch_make" />
+            android:id="@+id/fragment_partadd_model" />
 
     </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/part_add_part_number">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/hint_make"
+            android:id="@+id/fragment_partadd_pn" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/search"
-        android:id="@+id/fragment_partsearch_search" />
+        android:text="@string/submit"
+        android:id="@+id/fragment_partadd_submit" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/fragment_partsearch_searchResultsRecyclerView" />
 </LinearLayout>
