@@ -12,63 +12,35 @@ import com.google.gson.annotations.SerializedName;
 public class Part {
 
     @SerializedName("className")
-    @Ignore
+    @Expose
     private String className;
     @SerializedName("extraFields")
     @Expose
     private ExtraFields extraFields;
-
-    @PrimaryKey
-    @NonNull
-    @ColumnInfo(name = "id")
-    @SerializedName("id")
-    @Expose
-    private Integer id;
     @SerializedName("dblWeightedPrice")
-    @Ignore
-    private Double dblWeightedPrice;
-    @ColumnInfo(name = "strCode")
-    @SerializedName("strCode")
     @Expose
-    private String strCode;
-    @ColumnInfo(name = "strMake")
+    private Double dblWeightedPrice;
     @SerializedName("strMake")
     @Expose
     private String strMake;
-    @ColumnInfo(name = "strName")
+    @SerializedName("strModel")
+    @Expose
+    private String strModel;
     @SerializedName("strName")
     @Expose
     private String strName;
-
     @SerializedName("strAddressParsed")
-    @Ignore
+    @Expose
     private String strAddressParsed;
     @SerializedName("new")
-    @Ignore
+    @Expose
     private Boolean _new;
     @SerializedName("dirty")
-    @Ignore
+    @Expose
     private Boolean dirty;
     @SerializedName("uideleted")
-    @Ignore
+    @Expose
     private Boolean uideleted;
-
-    private class ExtraFields {
-
-        @ColumnInfo(name = "dv_intCategoryID")
-        @SerializedName("dv_intCategoryID")
-        @Expose
-        private String dvIntCategoryID;
-
-        public String getDvIntCategoryID() {
-            return dvIntCategoryID;
-        }
-
-        public void setDvIntCategoryID(String dvIntCategoryID) {
-            this.dvIntCategoryID = dvIntCategoryID;
-        }
-
-    }
 
     public String getClassName() {
         return className;
@@ -86,14 +58,6 @@ public class Part {
         this.extraFields = extraFields;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public Double getDblWeightedPrice() {
         return dblWeightedPrice;
     }
@@ -102,20 +66,20 @@ public class Part {
         this.dblWeightedPrice = dblWeightedPrice;
     }
 
-    public String getStrCode() {
-        return strCode;
-    }
-
-    public void setStrCode(String strCode) {
-        this.strCode = strCode;
-    }
-
     public String getStrMake() {
         return strMake;
     }
 
     public void setStrMake(String strMake) {
         this.strMake = strMake;
+    }
+
+    public String getStrModel() {
+        return strModel;
+    }
+
+    public void setStrModel(String strModel) {
+        this.strModel = strModel;
     }
 
     public String getStrName() {
@@ -157,4 +121,21 @@ public class Part {
     public void setUideleted(Boolean uideleted) {
         this.uideleted = uideleted;
     }
+
+    public class ExtraFields {
+
+        @SerializedName("dv_intCategoryID")
+        @Expose
+        private String dvIntCategoryID;
+
+        public String getDvIntCategoryID() {
+            return dvIntCategoryID;
+        }
+
+        public void setDvIntCategoryID(String dvIntCategoryID) {
+            this.dvIntCategoryID = dvIntCategoryID;
+        }
+
+    }
+
 }

@@ -5,6 +5,7 @@ import androidx.room.Ignore;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
@@ -12,23 +13,18 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 public class PartResponse {
     @SerializedName("_maCn")
     @Expose
-    @Ignore
     private String maCn;
     @SerializedName("serverVersion")
     @Expose
-    @Ignore
     private ServerVersion serverVersion;
     @SerializedName("sync")
     @Expose
-    @Ignore
     private Sync sync;
     @SerializedName("objects")
     @Expose
-    @Ignore
-    private List<Part> parts = null;
+    private List<Part> objects = null;
     @SerializedName("totalObjects")
     @Expose
-    @Ignore
     private Integer totalObjects;
 
     public String getMaCn() {
@@ -55,12 +51,12 @@ public class PartResponse {
         this.sync = sync;
     }
 
-    public List<Part> getParts() {
-        return parts;
+    public List<Part> getObjects() {
+        return objects;
     }
 
-    public void setParts(List<Part> parts) {
-        this.parts = parts;
+    public void setObjects(List<Part> objects) {
+        this.objects = objects;
     }
 
     public Integer getTotalObjects() {
@@ -71,22 +67,19 @@ public class PartResponse {
         this.totalObjects = totalObjects;
     }
 
-    private class ServerVersion {
+    public class ServerVersion {
 
         @SerializedName("major")
         @Expose
-        @Ignore
         private Integer major;
         @SerializedName("minor")
         @Expose
-        @Ignore
         private Integer minor;
         @SerializedName("patch")
         @Expose
-        @Ignore
         private Integer patch;
         @SerializedName("preRelease")
-        @Ignore
+        @Expose
         private String preRelease;
 
         public Integer getMajor() {
@@ -123,20 +116,17 @@ public class PartResponse {
 
     }
 
-    private class Sync {
+    public class Sync {
 
         @SerializedName("revision")
         @Expose
-        @Ignore
         private Integer revision;
         @SerializedName("needToSync")
         @Expose
-        @Ignore
         private Boolean needToSync;
         @SerializedName("dateLastUpdated")
         @Expose
-        @Ignore
-        private Integer dateLastUpdated;
+        private Long dateLastUpdated;
 
         public Integer getRevision() {
             return revision;
@@ -154,11 +144,11 @@ public class PartResponse {
             this.needToSync = needToSync;
         }
 
-        public Integer getDateLastUpdated() {
+        public Long getDateLastUpdated() {
             return dateLastUpdated;
         }
 
-        public void setDateLastUpdated(Integer dateLastUpdated) {
+        public void setDateLastUpdated(Long dateLastUpdated) {
             this.dateLastUpdated = dateLastUpdated;
         }
 

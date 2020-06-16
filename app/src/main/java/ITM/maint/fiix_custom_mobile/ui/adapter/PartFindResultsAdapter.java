@@ -17,7 +17,11 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 
 public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResultsAdapter.PartFindResultsHolder> {
 
-    private List<Part> parts =  new ArrayList<>();
+    private ArrayList<Object> parts;
+
+    public PartFindResultsAdapter(ArrayList<Object> parts) {
+        this.parts = parts;
+    }
 
     @NonNull
     @Override
@@ -30,12 +34,12 @@ public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResults
 
     @Override
     public void onBindViewHolder(@NonNull PartFindResultsHolder holder, int position) {
-        Part part = parts.get(position);
+        Part part = (Part) parts.get(position);
 
-        holder.nameText.setText(part.getName());
-        holder.modelText.setText(part.getModel());
-        holder.makeText.setText(part.getMake());
-        holder.makeText.setText(part.getUnspcCode());
+        holder.nameText.setText(String.valueOf(part.getName()));
+        holder.modelText.setText(String.valueOf(part.getModel()));
+        holder.makeText.setText(String.valueOf(part.getMake()));
+        holder.makeText.setText(String.valueOf(part.getUnspcCode()));
 
         if (part.getThumbnail() != 0) {
             //String imageUrl = volume.getVolumeInfo().getImageLinks().getSmallThumbnail()
@@ -49,11 +53,11 @@ public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResults
 
     @Override
     public int getItemCount() {
-        return 0;
+        return parts.size();
     }
 
     public void setResults(List<Part> results) {
-        this.parts = results;
+        this.parts.addAll(results);
         notifyDataSetChanged();
     }
 

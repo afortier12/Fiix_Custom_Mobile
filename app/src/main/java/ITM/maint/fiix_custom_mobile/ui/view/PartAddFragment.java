@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -16,11 +15,16 @@ import androidx.lifecycle.ViewModelProvider;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.textfield.TextInputEditText;
+import java.util.ArrayList;
+import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
-import ITM.maint.fiix_custom_mobile.data.api.responses.PartResponse;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.ui.adapter.PartFindResultsAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.PartAddViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
@@ -30,51 +34,46 @@ public class PartAddFragment extends Fragment {
     private WorkflowModel workflowModel;
     private String barcode;
     private ProgressBarDialog progressBarDialog;
+    private RecyclerView recyclerView;
 
     private PartAddViewModel viewModel;
     private PartFindResultsAdapter adapter;
-    private int headerStatus = 0;
-    private int queryStatus = 0;
+    private ArrayList<Object> partList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        partList =  new ArrayList<Object>();
+
         progressBarDialog = new ProgressBarDialog(getContext());
 
-        adapter = new PartFindResultsAdapter();
         viewModel = new ViewModelProvider(this).get(PartAddViewModel.class);
         viewModel.init();
 
-        /*viewModel.getHttpHeaderStatus().observe(getViewLifecycleOwner(), new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                headerStatus = integer;
-                if (headerStatus == 1 && queryStatus == 1){
-                    viewModel.findParts();
-                }
-            }
-        });
+        View root = inflater.inflate(R.layout.fragment_part_add, container, false);
 
-        viewModel.getHttpQueryStatus().observe(getViewLifecycleOwner(), new Observer<Integer>() {
-            @Override
-            public void onChanged(Integer integer) {
-                queryStatus = integer;
-                if (headerStatus == 1 && queryStatus == 1){
-                    viewModel.findParts();
-                }
-            }
-        });*/
+        partList.clear();
+        adapter = new PartFindResultsAdapter(partList);
 
-        viewModel.getPartResponseLiveData().observe(getViewLifecycleOwner(), new Observer<PartResponse>() {
+        recyclerView = root.findViewById(R.id.fragment_partsearch_searchResultsRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(adapter);
+        if (savedInstanceState != null)
+            adapter.notifyDataSetChanged();
+
+        viewModel.getPartResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<Part>>() {
             @Override
-            public void onChanged(PartResponse partResponse) {
-                if (partResponse != null)
-                    adapter.setResults(partResponse.getParts());
+            public void onChanged(List<Part> objects) {
+                if (objects != null) {
+                    partList.clear();
+                    partList.addAll(objects);
+                    adapter.notifyDataSetChanged();
+                }
                 progressBarDialog.dismiss();
             }
-
         });
-        View root = inflater.inflate(R.layout.fragment_part_add, container, false);
 
         return root;
     }

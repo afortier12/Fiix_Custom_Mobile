@@ -1,7 +1,6 @@
 package ITM.maint.fiix_custom_mobile.data.repository.remote;
 
 
-import android.util.Base64;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -14,6 +13,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import javax.crypto.Mac;
 import javax.crypto.SecretKey;
@@ -22,6 +22,7 @@ import javax.crypto.spec.SecretKeySpec;
 import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
 import ITM.maint.fiix_custom_mobile.data.api.PartService;
 import ITM.maint.fiix_custom_mobile.data.api.responses.PartResponse;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -43,15 +44,12 @@ public class PartRepository {
     private static final String API_secret = "macmmsaskp38410245f872c82bf62de179360f648957ac37ea162a95cecebbe91e94f8ec45084";
 
     private String requestUrl = FIIX_URL +"/api/?action=FindResponse&appKey="+API_key+"&accessKey="+Access_key+"&signatureMethod=HmacSHA256&signatureVersion=1";
-    private MutableLiveData<PartResponse> partResponseMutableLiveData;
-    private MutableLiveData<Integer> httpHeaderStatus;
-    private MutableLiveData<Integer> httpQueryStatus;
+    private MutableLiveData<List<Part>> partResponseMutableLiveData;
+
 
     public PartRepository() {
 
-        partResponseMutableLiveData = new MutableLiveData<>();
-        httpHeaderStatus = new MutableLiveData<Integer>();
-        httpQueryStatus = new MutableLiveData<Integer>();
+        partResponseMutableLiveData = new MutableLiveData<List<Part>>();
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
@@ -111,7 +109,7 @@ public class PartRepository {
                     @Override
                     public void onResponse(Call<PartResponse> call, retrofit2.Response<PartResponse> response) {
                         if (response.body() != null){
-                            partResponseMutableLiveData.postValue(response.body());
+                            partResponseMutableLiveData.postValue(response.body().getObjects());
                         }
                     }
 
@@ -130,17 +128,10 @@ public class PartRepository {
                 });
     }
 
-    public MutableLiveData<PartResponse> getPartResponseMutableLiveData() {
+    public MutableLiveData<List<Part>> getPartResponseMutableLiveData() {
         return partResponseMutableLiveData;
     }
 
-    public MutableLiveData<Integer> getHttpHeaderStatus() {
-        return httpHeaderStatus;
-    }
-
-    public MutableLiveData<Integer> getHttpQueryStatus() {
-        return httpQueryStatus;
-    }
 
     private String authString(){
 

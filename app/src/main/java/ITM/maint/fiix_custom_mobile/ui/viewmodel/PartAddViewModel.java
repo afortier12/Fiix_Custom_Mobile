@@ -16,13 +16,14 @@ import ITM.maint.fiix_custom_mobile.constants.Assets;
 import ITM.maint.fiix_custom_mobile.data.api.PartService;
 import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
 import ITM.maint.fiix_custom_mobile.data.api.responses.PartResponse;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.repository.remote.PartRepository;
 
 public class PartAddViewModel extends AndroidViewModel {
 
     private PartRepository partRepository;
     private PartService partService;
-    private LiveData<PartResponse> partResponseLiveData;
+    private LiveData<List<Part>> partResponseLiveData;
     private MutableLiveData<Integer> httpHeaderStatus;
     private MutableLiveData<Integer> httpQueryStatus;
     private static List<String> assetFields;
@@ -57,7 +58,7 @@ public class PartAddViewModel extends AndroidViewModel {
         partRepository.findParts(new PartRequest("FindRequest", clientVersion, "Asset", fields));
     }
 
-    public LiveData<PartResponse> getPartResponseLiveData() {
+    public LiveData<List<Part>> getPartResponseLiveData() {
         return partResponseLiveData;
     }
 
