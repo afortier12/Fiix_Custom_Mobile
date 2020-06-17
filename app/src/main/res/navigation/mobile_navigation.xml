@@ -11,11 +11,11 @@
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/homeToNotification"
-            app:destination="@id/navigation_notifications" />
-        <action
             android:id="@+id/homeToBarcode"
             app:destination="@id/navigation_barcode" />
+        <action
+            android:id="@+id/homeToPartSearch"
+            app:destination="@id/navigation_partSearch" />
     </fragment>
 
     <fragment
@@ -30,18 +30,18 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="ITM.maint.fiix_custom_mobile.ui.view.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-    <fragment
         android:id="@+id/navigation_partAdd"
         android:name="ITM.maint.fiix_custom_mobile.ui.view.PartAddFragment"
         android:label="PartAddFragment"
-        tools:layout="@layout/fragment_part_search">
+        tools:layout="@layout/fragment_part_add">
         <argument
             android:name="barcode"
             app:argType="string"
             android:defaultValue="NONE" />
     </fragment>
+    <fragment
+        android:id="@+id/navigation_partSearch"
+        android:name="ITM.maint.fiix_custom_mobile.ui.view.PartSearchFragment"
+        android:label="@string/title_part_search"
+        tools:layout="@layout/fragment_part_search"/>
 </navigation>

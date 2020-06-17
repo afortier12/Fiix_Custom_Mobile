@@ -17,7 +17,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 
 public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResultsAdapter.PartFindResultsHolder> {
 
-    private ArrayList<Object> parts;
+    private ArrayList<Part> parts;
 
     public PartFindResultsAdapter(ArrayList<Part> parts) {
         this.parts = parts;

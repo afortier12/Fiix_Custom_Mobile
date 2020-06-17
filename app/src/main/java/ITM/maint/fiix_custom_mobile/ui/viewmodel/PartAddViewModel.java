@@ -18,9 +18,10 @@ import ITM.maint.fiix_custom_mobile.constants.Assets;
 import ITM.maint.fiix_custom_mobile.data.api.PartService;
 import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Storage;
 import ITM.maint.fiix_custom_mobile.data.repository.remote.PartRepository;
 
-public class PartAddViewModel extends AndroidViewModel {
+public class PartAddViewModel extends AndroidViewModel implements IPartAdd {
 
     private PartRepository partRepository;
     private PartService partService;
@@ -37,8 +38,13 @@ public class PartAddViewModel extends AndroidViewModel {
 
     }
 
-    public void findParts() {
 
+    public LiveData<List<Part>> getPartResponseLiveData() {
+        return partResponseLiveData;
+    }
+
+    @Override
+    public void findPart(String barcode) {
         PartRequest.ClientVersion clientVersion = new PartRequest.ClientVersion(
                 2, 8, 1);
 
@@ -53,10 +59,10 @@ public class PartAddViewModel extends AndroidViewModel {
         ));
         String fields = TextUtils.join(",",assetFields);
 
-       List list = Stream.of(13455594).collect(Collectors.toList());
+        List list = Stream.of(barcode).collect(Collectors.toList());
 
         PartRequest.Filter filter = new PartRequest.Filter(
-                "id = ?",
+                "strBarcode = ?",
                 list
         );
 
@@ -66,8 +72,18 @@ public class PartAddViewModel extends AndroidViewModel {
         partRepository.findParts(new PartRequest("FindRequest", clientVersion, "Asset", fields, filters));
     }
 
-    public LiveData<List<Part>> getPartResponseLiveData() {
-        return partResponseLiveData;
+    @Override
+    public void findLocation(int partId) {
+
     }
 
+    @Override
+    public void addToStorage(int partId, int qty, Storage storage) {
+
+    }
+
+    @Override
+    public void checkStorage(int partId, Storage storage) {
+
+    }
 }

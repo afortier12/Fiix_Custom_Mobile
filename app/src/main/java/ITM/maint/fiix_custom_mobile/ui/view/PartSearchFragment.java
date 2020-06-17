@@ -44,7 +44,7 @@ public class PartSearchFragment extends Fragment {
 
         partList =  new ArrayList<Part>();
 
-        progressBarDialog = new ProgressBarDialog(getContext());
+        //progressBarDialog = new ProgressBarDialog(getContext());
 
         viewModel = new ViewModelProvider(this).get(PartSearchViewModel.class);
         viewModel.init();

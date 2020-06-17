@@ -10,7 +10,10 @@ public interface IPartRepository {
         public void findParts(PartRequest partRequest);
         //add part to Fiix
         public void addPart(PartRequest partRequest);
-
+        //change part in Fiix
+        public void changePart(PartRequest partRequest);
+        //remove part from Fiix
+        public void removePart(PartRequest partRequest);
     }
 
 }

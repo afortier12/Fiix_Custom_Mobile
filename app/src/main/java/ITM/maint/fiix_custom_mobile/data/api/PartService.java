@@ -19,19 +19,14 @@ public interface PartService {
 
     @FormUrlEncoded
     @POST("/api/")
-    Call<ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest> addPart(
-            @Field("id") int id,
-            @Field("strName") String name,
-            @Field("strDescription") String description,
-            @Field("strMake") String make,
-            @Field("strModel") String model,
-            @Field("strCode") String partNumber,
-            @Field("strAisle") String tray,
-            @Field("strRow") String row,
-            @Field("strBin") String bin,
-            @Field("strBarcode") String barcode,
-            @Field("intCategoryID") int categoryID,
-            @Field("intSiteID") int siteID
-    );
+    Call<PartResponse> addPart(@Body PartRequest partRequest);
+
+    @FormUrlEncoded
+    @POST("/api/")
+    Call<PartResponse> changePart(@Body PartRequest partRequest);
+
+    @FormUrlEncoded
+    @POST("/api/")
+    Call<PartResponse> removePart(@Body PartRequest partRequest);
 
 }

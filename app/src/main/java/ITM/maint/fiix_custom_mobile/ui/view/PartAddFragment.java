@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -15,62 +17,52 @@ import androidx.lifecycle.ViewModelProvider;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
+import com.google.android.material.textfield.TextInputEditText;
+
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
-import ITM.maint.fiix_custom_mobile.ui.adapter.PartFindResultsAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.PartAddViewModel;
-import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
 
 public class PartAddFragment extends Fragment {
 
-    private WorkflowModel workflowModel;
     private String barcode;
     private ProgressBarDialog progressBarDialog;
-    private RecyclerView recyclerView;
+    private TextView lblBarcode;
+    private TextInputEditText fldMake;
+    private TextInputEditText fldModel;
+    private TextInputEditText fldPartNumber;
+    private Button btnSubmit;
 
     private PartAddViewModel viewModel;
-    private PartFindResultsAdapter adapter;
-    private ArrayList<Part> partList;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-
-        partList =  new ArrayList<Part>();
 
         progressBarDialog = new ProgressBarDialog(getContext());
 
         viewModel = new ViewModelProvider(this).get(PartAddViewModel.class);
         viewModel.init();
 
-        View root = inflater.inflate(R.layout.fragment_part_search, container, false);
-
-        partList.clear();
-        adapter = new PartFindResultsAdapter(partList);
-
-        recyclerView = root.findViewById(R.id.fragment_partsearch_searchResultsRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-        recyclerView.setAdapter(adapter);
+        View root = inflater.inflate(R.layout.fragment_part_add, container, false);
 
         viewModel.getPartResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<Part>>() {
             @Override
-            public void onChanged(List<Part> objects) {
-                if (objects != null) {
-                    partList.clear();
-                    partList.addAll(objects);
-                    adapter.notifyDataSetChanged();
+            public void onChanged(List<Part> parts) {
+                if (parts != null) {
+                    Part part = parts.get(0);
+                    if (part != null) {
+                        fldMake.setText(part.getMake());
+                        fldModel.setText(part.getModel());
+                        fldPartNumber.setText(part.getUnspcCode());
+                    }
                 }
                 progressBarDialog.dismiss();
             }
+
         });
 
         return root;
@@ -81,6 +73,12 @@ public class PartAddFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         progressBarDialog.show();
+
+        lblBarcode = getView().findViewById(R.id.label_barcode);
+        fldMake = getView().findViewById(R.id.fragment_partadd_make);
+        fldModel = getView().findViewById(R.id.fragment_partadd_model);
+        fldPartNumber = getView().findViewById(R.id.fragment_partadd_pn);
+        btnSubmit = getView().findViewById(R.id.fragment_partadd_submit);
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
@@ -93,10 +91,9 @@ public class PartAddFragment extends Fragment {
 
         PartAddFragmentArgs args = PartAddFragmentArgs.fromBundle(getArguments());
         barcode = args.getBarcode();
-        //final TextView textView = getView().findViewById(R.id.text_barcode);
-        //textView.setText(barcode);
+        lblBarcode.setText("Barcode: " + barcode);
 
-        viewModel.findParts();
+        viewModel.findPart(barcode);
 
     }
 

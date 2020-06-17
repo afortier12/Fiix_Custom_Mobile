@@ -67,4 +67,9 @@
     <string name="part_add_model">Model</string>
     <string name="part_add_part_number">Part Number</string>
     <string name="submit">Submit</string>
+    <string name="add_new_part">Add New Part</string>
+    <string name="title_parts">Parts</string>
+    <string name="title_work_orders">Work Orders</string>
+    <string name="title_part_search">PartSearchFragment</string>
+    <string name="barcode">Barcode</string>
 </resources>
