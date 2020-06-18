@@ -53,14 +53,14 @@ public class PartAddFragment extends Fragment {
             @Override
             public void onChanged(List<Part> parts) {
                 if (parts != null) {
-                    Part part = parts.get(0);
-                    if (part != null) {
-                        fldMake.setText(part.getMake());
-                        fldModel.setText(part.getModel());
-                        fldPartNumber.setText(part.getUnspcCode());
+                    if (!parts.isEmpty()) {
+                        fldMake.setText(parts.get(0).getMake());
+                        fldModel.setText(parts.get(0).getModel());
+                        fldPartNumber.setText(parts.get(0).getUnspcCode());
                     }
                 }
                 progressBarDialog.dismiss();
+                fldModel.setText("hello");
             }
 
         });

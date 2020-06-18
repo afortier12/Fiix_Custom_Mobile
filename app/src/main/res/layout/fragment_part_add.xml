@@ -1,4 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:style="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -20,24 +22,27 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/part_add_manufacturer">
+        android:hint="@string/part_add_manufacturer"
+        style="@style/TextInputLayout" >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fragment_partadd_make"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="match_parent"
+            android:gravity="top|start" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/part_add_model">
+        android:hint="@string/part_add_model"
+        style="@style/TextInputLayout" >
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_make"
+            android:gravity="top|start"
             android:id="@+id/fragment_partadd_model" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -45,13 +50,14 @@
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/part_add_part_number">
+        android:hint="@string/part_add_part_number"
+        style="@style/TextInputLayout" >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_partadd_pn"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_make"
-            android:id="@+id/fragment_partadd_pn" />
+            android:layout_height="match_parent"
+            android:gravity="top|start" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
