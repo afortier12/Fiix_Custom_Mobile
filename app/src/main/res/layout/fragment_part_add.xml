@@ -4,60 +4,93 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="8dp">
+    android:layout_margin="8dp"
+    android:id="@+id/linearLayout">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/add_new_part"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        style:layout_conversion_absoluteHeight="32dp"
+        style:layout_editor_absoluteY="0dp"
+        style:layout_editor_absoluteX="0dp"
+        style:layout_conversion_absoluteWidth="395dp" />
 
     <TextView
         android:id="@+id/label_barcode"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/barcode"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        style:layout_conversion_absoluteHeight="24dp"
+        style:layout_editor_absoluteY="32dp"
+        style:layout_editor_absoluteX="0dp"
+        style:layout_conversion_absoluteWidth="395dp" />
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/part_add_manufacturer"
-        style="@style/TextInputLayout" >
+        style:layout_conversion_absoluteHeight="68dp"
+        style:layout_conversion_absoluteWidth="395dp"
+        style:layout_editor_absoluteX="0dp"
+        style:layout_editor_absoluteY="56dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fragment_partadd_make"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top|start" />
+            android:layout_height="wrap_content"
+            android:gravity="top|start"
+            style:layout_conversion_absoluteHeight="54dp"
+            style:layout_conversion_absoluteWidth="395dp"
+            style:layout_editor_absoluteX="0dp"
+            style:layout_editor_absoluteY="63dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/part_add_model"
-        style="@style/TextInputLayout" >
+        style:layout_conversion_absoluteHeight="68dp"
+        style:layout_conversion_absoluteWidth="395dp"
+        style:layout_editor_absoluteX="0dp"
+        style:layout_editor_absoluteY="125dp">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_partadd_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="top|start"
-            android:id="@+id/fragment_partadd_model" />
+            style:layout_conversion_absoluteHeight="54dp"
+            style:layout_conversion_absoluteWidth="395dp"
+            style:layout_editor_absoluteX="0dp"
+            style:layout_editor_absoluteY="131dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
+        style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/part_add_part_number"
-        style="@style/TextInputLayout" >
+        style:layout_conversion_absoluteHeight="68dp"
+        style:layout_conversion_absoluteWidth="395dp"
+        style:layout_editor_absoluteX="0dp"
+        style:layout_editor_absoluteY="193dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/fragment_partadd_pn"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top|start" />
+            android:layout_height="wrap_content"
+            android:gravity="top|start"
+            style:layout_conversion_absoluteHeight="54dp"
+            style:layout_conversion_absoluteWidth="395dp"
+            style:layout_editor_absoluteX="0dp"
+            style:layout_editor_absoluteY="199dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,6 +99,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/submit"
-        android:id="@+id/fragment_partadd_submit" />
+        android:id="@+id/fragment_partadd_submit"
+        style:layout_conversion_absoluteHeight="48dp"
+        style:layout_editor_absoluteY="261dp"
+        style:layout_editor_absoluteX="0dp"
+        style:layout_conversion_absoluteWidth="89dp" />
 
 </LinearLayout>

@@ -60,7 +60,6 @@ public class PartAddFragment extends Fragment {
                     }
                 }
                 progressBarDialog.dismiss();
-                fldModel.setText("hello");
             }
 
         });

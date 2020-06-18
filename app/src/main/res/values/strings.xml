@@ -72,4 +72,9 @@
     <string name="title_work_orders">Work Orders</string>
     <string name="title_part_search">PartSearchFragment</string>
     <string name="barcode">Barcode</string>
+    <string name="title_itm_maintenance">ITM Maintenance</string>
+    <string name="todo">TODO</string>
+    <string name="login">Login</string>
+    <string name="user_name">User Name</string>
+    <string name="password">Password</string>
 </resources>

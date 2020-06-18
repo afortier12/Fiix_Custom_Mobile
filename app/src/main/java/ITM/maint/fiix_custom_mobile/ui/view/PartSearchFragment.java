@@ -44,7 +44,7 @@ public class PartSearchFragment extends Fragment {
 
         partList =  new ArrayList<Part>();
 
-        //progressBarDialog = new ProgressBarDialog(getContext());
+        progressBarDialog = new ProgressBarDialog(getContext());
 
         viewModel = new ViewModelProvider(this).get(PartSearchViewModel.class);
         viewModel.init();
@@ -79,7 +79,7 @@ public class PartSearchFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        progressBarDialog.show();
+        //progressBarDialog.show();
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override

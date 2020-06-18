@@ -9,6 +9,11 @@
        <!-- <item name="windowNoTitle">true</item> -->
     </style>
 
+    <style name="LoginTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">#3498db</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 
     <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextAppearance">@style/HintText</item>

@@ -12,10 +12,13 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/homeToBarcode"
-            app:destination="@id/navigation_barcode" />
+            app:destination="@id/navigation_barcode"
+            app:popUpTo="@id/navigation_partSearch" />
         <action
             android:id="@+id/homeToPartSearch"
-            app:destination="@id/navigation_partSearch" />
+            app:destination="@id/navigation_partSearch"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="false" />
     </fragment>
 
     <fragment

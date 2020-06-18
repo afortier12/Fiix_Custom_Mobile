@@ -23,6 +23,7 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
 import ITM.maint.fiix_custom_mobile.data.api.PartService;
 import ITM.maint.fiix_custom_mobile.data.api.responses.PartResponse;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
+import ITM.maint.fiix_custom_mobile.utils.ServiceGenerator;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -51,7 +52,7 @@ public class PartRepository {
 
         partResponseMutableLiveData = new MutableLiveData<List<Part>>();
 
-        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        /*HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient client = new OkHttpClient.Builder()
                 .addInterceptor(interceptor)
@@ -97,8 +98,9 @@ public class PartRepository {
                 .baseUrl(FIIX_URL)
                 .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
-                .build()
-                .create(PartService.class);
+                .build()*/
+                //.create(PartService.class);
+        partService = ServiceGenerator.createService(PartService.class);
     }
 
     public void findParts(PartRequest partRequest){
@@ -132,8 +134,12 @@ public class PartRepository {
         return partResponseMutableLiveData;
     }
 
+    public PartService getPartService() {
+        return partService;
+    }
 
-    private String authString(){
+
+    /*private String authString(){
 
         String message = null;
         String hmacString = null;
@@ -169,11 +175,9 @@ public class PartRepository {
         }
 
         return hmacString;
-    }
+    }*/
 
-    public PartService getPartService() {
-        return partService;
-    }
+
 
 
 
