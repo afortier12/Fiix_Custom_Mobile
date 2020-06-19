@@ -19,54 +19,42 @@ public class Part {
     @NonNull
     @ColumnInfo(name="id")
     private int id;
-
     @SerializedName("strName")
     @Expose
     @ColumnInfo(name="name")
     private String name;
-
     @SerializedName("strDescription")
     @Expose
     @ColumnInfo(name="description")
     private String description;
-
     @SerializedName("strMake")
     @Expose
     @ColumnInfo(name="make")
     private String make;
-
     @SerializedName("strModel")
     @Expose
     @ColumnInfo(name="model")
     private String model;
-
     @SerializedName("strAisle")
     @Expose
     @ColumnInfo(name="storage_id")
     private int storage_id;
-
     @SerializedName("strBarcode")
     @Expose
     @ColumnInfo(name="barcode")
     private String barcode;
-
     @SerializedName("qtyStockCount")
     @Expose
     @ColumnInfo(name="count")
     private int count;
-
     @SerializedName("dv_intCategoryID")
     @Expose
     @ColumnInfo(name="category_id")
     private String category_id;
-
-
     @ColumnInfo(name="site_id")
     private int site_id;
-
     @ColumnInfo(name="cf_intDefaultImageFileThumbnailID")
     private int thumbnail;
-
     @SerializedName("strUnspcCode")
     @Expose
     @ColumnInfo(name="unspcCode")

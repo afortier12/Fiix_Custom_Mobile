@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 
-public class PartRequest {
+public class FindRequest {
 
     @SerializedName("_maCn")
     private String maCn;
@@ -18,7 +18,8 @@ public class PartRequest {
     @SerializedName("filters")
     private List<Filter> filter;
 
-    public PartRequest(String maCn, ClientVersion clientVersion, String className, String fields, List<Filter> filter) {
+
+    public FindRequest(String maCn, ClientVersion clientVersion, String className, String fields, List<Filter> filter) {
         this.maCn = maCn;
         this.clientVersion = clientVersion;
         this.className = className;
@@ -52,6 +53,21 @@ public class PartRequest {
         public Filter(String ql, List parameters) {
             this.ql = ql;
             this.parameters = parameters;
+        }
+
+    }
+
+    public static class FullText_Filter extends Filter{
+
+        @SerializedName("fields")
+        private String fields;
+        @SerializedName("fullText")
+        private String parameter;
+
+        public FullText_Filter(String fields, String parameter) {
+            super(null, null);
+            this.fields = fields;
+            this.parameter = parameter;
         }
 
     }

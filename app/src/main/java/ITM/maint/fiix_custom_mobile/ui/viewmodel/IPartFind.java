@@ -1,8 +1,8 @@
 package ITM.maint.fiix_custom_mobile.ui.viewmodel;
 
-import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
+import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 
 public interface IPartFind {
 
-    public void findParts(PartRequest.Filter filter);
+    public void findParts(FindRequest.Filter filter);
 }

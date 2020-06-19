@@ -1,7 +1,5 @@
 package ITM.maint.fiix_custom_mobile.utils;
 
-import android.text.TextUtils;
-
 import com.google.android.gms.common.util.Hex;
 
 import org.jetbrains.annotations.NotNull;
@@ -16,8 +14,6 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 import ITM.maint.fiix_custom_mobile.constants.Fiix;
-import ITM.maint.fiix_custom_mobile.data.api.PartService;
-import okhttp3.Credentials;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;

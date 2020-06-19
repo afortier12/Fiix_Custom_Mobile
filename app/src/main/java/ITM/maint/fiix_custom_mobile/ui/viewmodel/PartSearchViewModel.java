@@ -14,15 +14,15 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import ITM.maint.fiix_custom_mobile.constants.Assets;
-import ITM.maint.fiix_custom_mobile.data.api.PartService;
-import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
+import ITM.maint.fiix_custom_mobile.data.api.IPartService;
+import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.repository.remote.PartRepository;
 
 public class PartSearchViewModel extends AndroidViewModel {
 
     private PartRepository partRepository;
-    private PartService partService;
+    private IPartService partService;
     private LiveData<List<Part>> partResponseLiveData;
 
     public PartSearchViewModel(@NonNull Application application) {
@@ -36,9 +36,9 @@ public class PartSearchViewModel extends AndroidViewModel {
 
     }
 
-    public void findParts(PartRequest.Filter filter) {
+    public void findParts(FindRequest.Filter filter) {
 
-        PartRequest.ClientVersion clientVersion = new PartRequest.ClientVersion(
+        FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
                 2, 8, 1);
 
         List<String> assetFields = new ArrayList<>(Arrays.asList(
@@ -54,15 +54,15 @@ public class PartSearchViewModel extends AndroidViewModel {
 
        List list = Stream.of(13455594).collect(Collectors.toList());
 
-        PartRequest.Filter filterP = new PartRequest.Filter(
+        FindRequest.Filter filterP = new FindRequest.Filter(
                 "id = ?",
                 list
         );
 
-        List<PartRequest.Filter> filters = new ArrayList<>();
+        List<FindRequest.Filter> filters = new ArrayList<>();
         filters.add(filterP);
 
-        partRepository.findParts(new PartRequest("FindRequest", clientVersion, "Asset", fields, filters));
+        partRepository.findParts(new FindRequest("FindRequest", clientVersion, "Asset", fields, filters));
     }
 
     public LiveData<List<Part>> getPartResponseLiveData() {

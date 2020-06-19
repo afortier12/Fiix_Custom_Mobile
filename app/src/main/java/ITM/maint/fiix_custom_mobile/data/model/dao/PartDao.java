@@ -8,7 +8,6 @@ import androidx.room.Query;
 
 import java.util.List;
 
-import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 
 @Dao

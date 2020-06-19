@@ -5,40 +5,21 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
-import com.google.android.gms.common.util.Hex;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
-import javax.crypto.Mac;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.SecretKeySpec;
-
-import ITM.maint.fiix_custom_mobile.data.api.requests.PartRequest;
-import ITM.maint.fiix_custom_mobile.data.api.PartService;
-import ITM.maint.fiix_custom_mobile.data.api.responses.PartResponse;
+import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
+import ITM.maint.fiix_custom_mobile.data.api.IPartService;
+import ITM.maint.fiix_custom_mobile.data.api.responses.PartFindResponse;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.utils.ServiceGenerator;
-import okhttp3.HttpUrl;
-import okhttp3.Interceptor;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
 
 public class PartRepository {
 
     private static final String TAG ="PartRepository";
-    private PartService partService;
+    private IPartService partService;
     private static final String FIIX_URL = "https://integritytool.macmms.com";
     private static final String API_key = "macmmsackp3848fbda83ce8bfff2fe692e700e40d392049fcc1c6928619403d94";
     private static final String Access_key = "macmmsaakp3844fa3e6d75a198199ec20f727518bad4dc4f798531d5427225c";
@@ -100,23 +81,23 @@ public class PartRepository {
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()*/
                 //.create(PartService.class);
-        partService = ServiceGenerator.createService(PartService.class);
+        partService = ServiceGenerator.createService(IPartService.class);
     }
 
-    public void findParts(PartRequest partRequest){
+    public void findParts(FindRequest partRequest){
 
         partService.findParts(partRequest)
-                .enqueue(new Callback<PartResponse>() {
+                .enqueue(new Callback<PartFindResponse>() {
 
                     @Override
-                    public void onResponse(Call<PartResponse> call, retrofit2.Response<PartResponse> response) {
+                    public void onResponse(Call<PartFindResponse> call, retrofit2.Response<PartFindResponse> response) {
                         if (response.body() != null){
                             partResponseMutableLiveData.postValue(response.body().getObjects());
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<PartResponse> call, Throwable t) {
+                    public void onFailure(Call<PartFindResponse> call, Throwable t) {
                         partResponseMutableLiveData.postValue(null);
 
                         if (t instanceof IOException) {
@@ -134,7 +115,7 @@ public class PartRepository {
         return partResponseMutableLiveData;
     }
 
-    public PartService getPartService() {
+    public IPartService getPartService() {
         return partService;
     }
 

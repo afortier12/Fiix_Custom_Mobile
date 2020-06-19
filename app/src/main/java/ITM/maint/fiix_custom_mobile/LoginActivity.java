@@ -16,9 +16,17 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.List;
+
+import ITM.maint.fiix_custom_mobile.data.model.entity.User;
+import ITM.maint.fiix_custom_mobile.ui.view.ProgressBarDialog;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.LoginViewModel;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -33,6 +41,10 @@ public class LoginActivity extends AppCompatActivity {
     private String password;
     private Boolean defaultExists = false;
 
+    private ProgressBarDialog progressBarDialog;
+    private LoginViewModel viewmodel;
+    private User user;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +55,45 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         setContentView(R.layout.activity_login);
+
+        viewmodel = new ViewModelProvider(this).get(LoginViewModel.class);
+        viewmodel.init();
+
+        viewmodel.getUserResponseLiveData().observe(this, new Observer<List<User>>() {
+                @Override
+                public void onChanged(List<User> users) {
+                    Boolean updateSharedPrefs = false;
+                    if (users != null){
+                        if (users.isEmpty()){
+                            //TODO
+                        } else {
+
+                            int result = verifyCredentials(users.get(0));
+
+                            if (result == 0){
+                                String updatedUsername = txtUserName.getText().toString();
+                                String updatedPassword = txtPassword.getText().toString();
+                                if (username == null || password == null) {
+                                    updateSharedPrefs = true;
+                                } else if (!username.equalsIgnoreCase(updatedUsername)){
+                                    updateSharedPrefs = true;
+                                }
+
+                                if (updateSharedPrefs) {
+                                    SharedPreferences.Editor editor = sharedPreferences.edit();
+                                    editor.putString("DefaultUser", updatedUsername);
+                                    editor.putString("DefaultPass", updatedPassword);
+                                    editor.commit();
+                                }
+
+                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+                    }
+                }
+            });
+        progressBarDialog = new ProgressBarDialog(this);
 
         layoutUserName = (TextInputLayout) findViewById(R.id.usernameInputLayout);
         layoutPassword = (TextInputLayout) findViewById(R.id.passwordInputLayout);
@@ -70,32 +121,11 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Boolean updateSharedPrefs = false;
                 hideKeyboard();
                 if (validateUserName()) {
                     if (validatePassword()) {
                         String updatedUsername = txtUserName.getText().toString();
-                        String updatedPassword = txtPassword.getText().toString();
-                        if (username == null || password == null) {
-                            updateSharedPrefs = true;
-                        } else if (!username.equalsIgnoreCase(updatedUsername)){
-                            updateSharedPrefs = true;
-                        }
-
-                        if (updateSharedPrefs) {
-                            SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString("DefaultUser", updatedUsername);
-                            editor.putString("DefaultPass", updatedPassword);
-                            editor.commit();
-                        }
-
-                        int result = verifyCredentials(updatedUsername, updatedUsername);
-
-                        if (result == 0){
-                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                            startActivity(intent);
-                        }
-
+                        viewmodel.findUser(updatedUsername);
                     }
                 }
                 return;
@@ -104,9 +134,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private int verifyCredentials(String username, String password){
+    private int verifyCredentials(User user){
 
-        return 0;
+        if (user.getUsername().equalsIgnoreCase(username) && user.getIsGroup() == 0 ) {
+            return 0;
+        }
+        return -1;
     }
 
     private void hideKeyboard() {
