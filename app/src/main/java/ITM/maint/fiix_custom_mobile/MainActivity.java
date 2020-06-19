@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.ma.cmms.api.client.FiixCmmsClient;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +20,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import javax.inject.Inject;
 
+import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import dagger.android.support.DaggerAppCompatActivity;
 
@@ -32,6 +34,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);

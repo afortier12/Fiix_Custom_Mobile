@@ -41,21 +41,18 @@ public class ServiceGenerator {
 
     public static <S> S createService(Class<S> serviceClass) {
 
+        httpClient.interceptors().clear();
+
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.level(HttpLoggingInterceptor.Level.BODY);
 
         HeaderInterceptor headerInterceptor = new HeaderInterceptor();
         QueryInterceptor queryInterceptor = new QueryInterceptor();
 
-        if(! httpClient.interceptors().contains(interceptor)) {
-            httpClient.addInterceptor(interceptor);
-        }
-        if(! httpClient.interceptors().contains(headerInterceptor)) {
-            httpClient.addInterceptor(headerInterceptor);
-        }
-        if(! httpClient.interceptors().contains(queryInterceptor)) {
-            httpClient.addInterceptor(queryInterceptor);
-        }
+        httpClient.addInterceptor(interceptor);
+        httpClient.addInterceptor(headerInterceptor);
+        httpClient.addInterceptor(queryInterceptor);
+
         builder.client(httpClient.build());
         retrofit = builder.build();
         return retrofit.create(serviceClass);
