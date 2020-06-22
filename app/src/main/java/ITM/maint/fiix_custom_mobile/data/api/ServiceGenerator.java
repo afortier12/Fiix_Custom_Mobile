@@ -1,4 +1,4 @@
-package ITM.maint.fiix_custom_mobile.utils;
+package ITM.maint.fiix_custom_mobile.data.api;
 
 import com.google.android.gms.common.util.Hex;
 

@@ -2,7 +2,6 @@ package ITM.maint.fiix_custom_mobile.data.repository;
 
 
 import android.app.Application;
-import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -24,11 +23,8 @@ import ITM.maint.fiix_custom_mobile.data.api.responses.PartFindResponse;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
-import ITM.maint.fiix_custom_mobile.data.model.entity.User;
-import ITM.maint.fiix_custom_mobile.di.AppExecutor;
-import ITM.maint.fiix_custom_mobile.utils.ServiceGenerator;
+import ITM.maint.fiix_custom_mobile.data.api.ServiceGenerator;
 import io.reactivex.Completable;
-import io.reactivex.CompletableObserver;
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
@@ -66,7 +62,7 @@ public class PartRepository extends BaseRepository{
 
     public void addPart(Part part){
         Completable completable = fiixDatabase.partDao().insert(part);
-        Scheduler scheduler = Schedulers.from(getAppExecutor().databaseThread());
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         completable.subscribeOn(scheduler)
                 .subscribe(disposableCompletableObserver);
         compositeDisposable.add(new DisposableCompletableObserver() {
@@ -84,7 +80,7 @@ public class PartRepository extends BaseRepository{
 
     public void findPartFromDB(String barcode){
         Single<Part> single = fiixDatabase.partDao().hasPart(barcode, new Date());
-        Scheduler scheduler = Schedulers.from(getAppExecutor().databaseThread());
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
 
         single.subscribeOn(scheduler);
         single.subscribe(new SingleObserver<Part>() {
@@ -110,7 +106,7 @@ public class PartRepository extends BaseRepository{
 
     public void findPartsFromDB(String category, String type, String Make){
         Single<List<Part>> single = fiixDatabase.partDao().getParts();
-        Scheduler scheduler = Schedulers.from(getAppExecutor().databaseThread());
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         single.subscribeOn(scheduler)
                 .subscribe(new SingleObserver<List<Part>>() {
                     @Override
@@ -202,7 +198,8 @@ public class PartRepository extends BaseRepository{
     }
 
     public void dispose(){
-        compositeDisposable.dispose();
+        if (compositeDisposable != null)
+            compositeDisposable.dispose();
     }
 
     public MutableLiveData<Part> getPartDBMutableLiveData() {

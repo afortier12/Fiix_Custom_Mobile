@@ -15,23 +15,20 @@ public class AppExecutor  {
 
     public static final String TAG = AppExecutor.class.getSimpleName();
     private final Executor analyzerThread;
-    private final Executor databaseThread;
     private final Executor previewThread;
     private final Executor mainThread;
 
     public AppExecutor(Executor analyzerThread,
-                       Executor databaseThread,
                        Executor previewThread,
                        Executor mainThread) {
         this.analyzerThread = analyzerThread;
-        this.databaseThread = databaseThread;
         this.previewThread = previewThread;
         this.mainThread = mainThread;
     }
 
     @Inject
     public AppExecutor() {
-        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(10), new PreviewThreadExecutor(),
+        this(Executors.newSingleThreadExecutor(),  new PreviewThreadExecutor(),
                 new MainThreadExecutor());
     }
 
@@ -39,10 +36,6 @@ public class AppExecutor  {
 
     public Executor analyzerThread() {
         return analyzerThread;
-    }
-
-    public Executor databaseThread() {
-        return databaseThread;
     }
 
     public Executor previewThread() { return previewThread; }

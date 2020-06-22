@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="ITM.maint.fiix_custom_mobile.ui.view.HomeFragment"
+        android:name="ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_work_order" >
         <action
             android:id="@+id/homeToBarcode"
             app:destination="@id/navigation_barcode"

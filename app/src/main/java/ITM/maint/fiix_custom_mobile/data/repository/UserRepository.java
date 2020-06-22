@@ -12,21 +12,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import ITM.maint.fiix_custom_mobile.constants.Fiix;
 import ITM.maint.fiix_custom_mobile.constants.Users;
 import ITM.maint.fiix_custom_mobile.data.api.IUserService;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
-import ITM.maint.fiix_custom_mobile.data.api.responses.PartFindResponse;
 import ITM.maint.fiix_custom_mobile.data.api.responses.UserFindResponse;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
-import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IUserDao;
-import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.model.entity.User;
-import ITM.maint.fiix_custom_mobile.utils.ServiceGenerator;
+import ITM.maint.fiix_custom_mobile.data.api.ServiceGenerator;
 import io.reactivex.Completable;
 import io.reactivex.Scheduler;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
@@ -52,10 +47,8 @@ public class UserRepository extends BaseRepository{
 
     public void addUser(User user){
         Completable completable = fiixDatabase.userDao().insert(user);
-        Scheduler scheduler = Schedulers.from(getAppExecutor().databaseThread());
-        completable.subscribeOn(scheduler)
-                .subscribe(disposableCompletableObserver);
-        compositeDisposable.add(new DisposableCompletableObserver() {
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        disposableCompletableObserver = (new DisposableCompletableObserver() {
             @Override
             public void onComplete() {
                 Log.d(TAG, "User added to DB");
@@ -64,8 +57,13 @@ public class UserRepository extends BaseRepository{
             @Override
             public void onError(Throwable e) {
                 Log.d(TAG, "Error adding user to DB");
+
             }
         });
+        completable.subscribeOn(scheduler)
+                .subscribe(disposableCompletableObserver);
+        compositeDisposable.add(disposableCompletableObserver);
+
     }
 
     public void findUser(String username){
@@ -122,7 +120,8 @@ public class UserRepository extends BaseRepository{
     }
 
     public void dispose(){
-        compositeDisposable.dispose();
+        if (compositeDisposable != null)
+            compositeDisposable.dispose();
     }
 
     public IUserService getPartService() {

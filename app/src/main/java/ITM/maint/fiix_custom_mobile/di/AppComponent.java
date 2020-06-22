@@ -25,7 +25,6 @@ import dagger.android.support.AndroidSupportInjectionModule;
                 ITM.maint.fiix_custom_mobile.di.AppModule.class,
                 ActivityModule.class,
                 FragmentModule.class,
-                RepositoryModule.class
         }
 )
 public interface AppComponent extends AndroidInjector<BaseApplication> {
@@ -33,7 +32,6 @@ public interface AppComponent extends AndroidInjector<BaseApplication> {
     void inject(MainActivity mainActivity);
     void inject(CodeAnalyzer codeAnalyzer);
     void inject(BarcodeFragment barcodeFragment);
-    void inject(BaseRepository baseRepository);
 
 
     @Component.Builder

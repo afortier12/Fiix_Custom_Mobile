@@ -3,6 +3,7 @@ package ITM.maint.fiix_custom_mobile.ui.view;
 import android.Manifest;
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.app.Activity;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
@@ -72,16 +73,11 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+
         barcodeViewModel =
                 new ViewModelProvider(requireActivity()).get(BarcodeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_barcode, container, false);
-
-        /*View decorView = ((Activity) this.getContext()).getWindow().getDecorView();
-        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                | View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
-        decorView.setSystemUiVisibility(uiOptions);
-
-         */
 
         cameraProviderFuture = ProcessCameraProvider.getInstance(this.getContext());
         mainThreadExecutor = new MainThreadExecutor();

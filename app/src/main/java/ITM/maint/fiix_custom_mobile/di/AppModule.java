@@ -46,7 +46,6 @@ public class AppModule {
     public static AppExecutor provideAppExecutor() {
         return new AppExecutor(
                 Executors.newSingleThreadExecutor(),
-                Executors.newFixedThreadPool(10),
                 new AppExecutor.PreviewThreadExecutor(),
                 new AppExecutor.MainThreadExecutor());
     }
