@@ -17,7 +17,7 @@ import ITM.maint.fiix_custom_mobile.constants.Assets;
 import ITM.maint.fiix_custom_mobile.data.api.IPartService;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
-import ITM.maint.fiix_custom_mobile.data.repository.remote.PartRepository;
+import ITM.maint.fiix_custom_mobile.data.repository.PartRepository;
 
 public class PartSearchViewModel extends AndroidViewModel {
 
@@ -30,39 +30,15 @@ public class PartSearchViewModel extends AndroidViewModel {
     }
 
     public void init() {
-        partRepository = new PartRepository();
+        partRepository = new PartRepository(this.getApplication());
         partService = partRepository.getPartService();
         partResponseLiveData = partRepository.getPartResponseMutableLiveData();
 
     }
 
-    public void findParts(FindRequest.Filter filter) {
+    public void findParts(String category, String type, String make) {
 
-        FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
-                2, 8, 1);
-
-        List<String> assetFields = new ArrayList<>(Arrays.asList(
-                Assets.id.getField(),
-                Assets.name.getField(),
-                Assets.description.getField(),
-                Assets.make.getField(),
-                Assets.model.getField(),
-                Assets.barcode.getField(),
-                Assets.partNumber.getField()
-        ));
-        String fields = TextUtils.join(",",assetFields);
-
-       List list = Stream.of(13455594).collect(Collectors.toList());
-
-        FindRequest.Filter filterP = new FindRequest.Filter(
-                "id = ?",
-                list
-        );
-
-        List<FindRequest.Filter> filters = new ArrayList<>();
-        filters.add(filterP);
-
-        partRepository.findParts(new FindRequest("FindRequest", clientVersion, "Asset", fields, filters));
+        partRepository.findPartsFromDB(category, type, make);
     }
 
     public LiveData<List<Part>> getPartResponseLiveData() {

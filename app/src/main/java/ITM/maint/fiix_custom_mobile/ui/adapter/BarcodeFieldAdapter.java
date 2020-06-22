@@ -28,7 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
-import ITM.maint.fiix_custom_mobile.data.model.BarcodeField;
+import ITM.maint.fiix_custom_mobile.data.model.entity.BarcodeField;
 
 /** Presents a list of field info in the detected barcode. */
 public class BarcodeFieldAdapter extends RecyclerView.Adapter<BarcodeFieldAdapter.BarcodeFieldViewHolder> {

@@ -31,7 +31,7 @@ public class AppExecutor  {
 
     @Inject
     public AppExecutor() {
-        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(3), new PreviewThreadExecutor(),
+        this(Executors.newSingleThreadExecutor(), Executors.newFixedThreadPool(10), new PreviewThreadExecutor(),
                 new MainThreadExecutor());
     }
 
@@ -68,4 +68,6 @@ public class AppExecutor  {
             previewThread.post(command);
         }
     }
+
+
 }

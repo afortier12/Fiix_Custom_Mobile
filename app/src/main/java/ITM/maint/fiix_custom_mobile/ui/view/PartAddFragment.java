@@ -49,6 +49,20 @@ public class PartAddFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_part_add, container, false);
 
+        viewModel.getPartDBLiveData().observe(getViewLifecycleOwner(), new Observer<Part>() {
+            @Override
+            public void onChanged(Part part) {
+                if (part != null){
+                    fldMake.setText(part.getMake());
+                    fldModel.setText(part.getModel());
+                    fldPartNumber.setText(part.getUnspcCode());
+                    progressBarDialog.dismiss();
+                } else {
+                    viewModel.findPart(barcode, 0);
+                }
+            }
+        });
+
         viewModel.getPartResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<Part>>() {
             @Override
             public void onChanged(List<Part> parts) {
@@ -92,7 +106,7 @@ public class PartAddFragment extends Fragment {
         barcode = args.getBarcode();
         lblBarcode.setText("Barcode: " + barcode);
 
-        viewModel.findPart(barcode);
+        viewModel.findPart(barcode, 1);
 
     }
 
@@ -102,7 +116,11 @@ public class PartAddFragment extends Fragment {
         super.onPause();
     }
 
-
+    @Override
+    public void onDestroy(){
+        viewModel.dispose();
+        super.onDestroy();
+    }
 
 
 }

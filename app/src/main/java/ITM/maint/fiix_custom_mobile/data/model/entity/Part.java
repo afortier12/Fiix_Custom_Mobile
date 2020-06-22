@@ -8,7 +8,8 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import ITM.maint.fiix_custom_mobile.constants.Assets;
+import java.util.Date;
+
 
 @Entity(tableName = "part_table")
 public class Part {
@@ -59,6 +60,8 @@ public class Part {
     @Expose
     @ColumnInfo(name="unspcCode")
     private String unspcCode;
+    @ColumnInfo(name="lastRefresh")
+    private Date lastRefresh;
 
     public Part(int id){
         this.id = id;
@@ -158,5 +161,13 @@ public class Part {
 
     public void setSite_id(int site_id) {
         this.site_id = site_id;
+    }
+
+    public Date getLastRefresh() {
+        return lastRefresh;
+    }
+
+    public void setLastRefresh(Date lastRefresh) {
+        this.lastRefresh = lastRefresh;
     }
 }

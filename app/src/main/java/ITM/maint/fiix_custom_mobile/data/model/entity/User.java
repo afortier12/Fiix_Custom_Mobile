@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-@Entity(tableName = "part_table")
+@Entity(tableName = "user_table")
 public class User {
 
     @SerializedName("id")

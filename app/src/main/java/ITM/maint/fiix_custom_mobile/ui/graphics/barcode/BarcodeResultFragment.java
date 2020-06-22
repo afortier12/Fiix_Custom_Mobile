@@ -35,7 +35,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import java.util.ArrayList;
 
 import ITM.maint.fiix_custom_mobile.R;
-import ITM.maint.fiix_custom_mobile.data.model.BarcodeField;
+import ITM.maint.fiix_custom_mobile.data.model.entity.BarcodeField;
 import ITM.maint.fiix_custom_mobile.ui.adapter.BarcodeFieldAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
 

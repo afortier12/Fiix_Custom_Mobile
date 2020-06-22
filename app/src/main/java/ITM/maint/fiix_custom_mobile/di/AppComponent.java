@@ -5,6 +5,8 @@ import android.app.Application;
 import javax.inject.Singleton;
 
 import ITM.maint.fiix_custom_mobile.BaseApplication;
+import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
+import ITM.maint.fiix_custom_mobile.data.repository.BaseRepository;
 import ITM.maint.fiix_custom_mobile.firebase.CodeAnalyzer;
 import ITM.maint.fiix_custom_mobile.MainActivity;
 import ITM.maint.fiix_custom_mobile.ui.view.BarcodeFragment;
@@ -22,7 +24,8 @@ import dagger.android.support.AndroidSupportInjectionModule;
                 AndroidSupportInjectionModule.class,
                 ITM.maint.fiix_custom_mobile.di.AppModule.class,
                 ActivityModule.class,
-                FragmentModule.class
+                FragmentModule.class,
+                RepositoryModule.class
         }
 )
 public interface AppComponent extends AndroidInjector<BaseApplication> {
@@ -30,6 +33,7 @@ public interface AppComponent extends AndroidInjector<BaseApplication> {
     void inject(MainActivity mainActivity);
     void inject(CodeAnalyzer codeAnalyzer);
     void inject(BarcodeFragment barcodeFragment);
+    void inject(BaseRepository baseRepository);
 
 
     @Component.Builder

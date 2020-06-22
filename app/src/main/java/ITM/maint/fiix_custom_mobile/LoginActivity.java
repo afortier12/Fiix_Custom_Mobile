@@ -63,9 +63,10 @@ public class LoginActivity extends AppCompatActivity {
                 @Override
                 public void onChanged(List<User> users) {
                     Boolean updateSharedPrefs = false;
+                    progressBarDialog.dismiss();
                     if (users != null){
                         if (users.isEmpty()){
-                            //TODO
+                            layoutUserName.setError("User not found");
                         } else {
 
                             int result = verifyCredentials(users.get(0));
@@ -86,10 +87,17 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.commit();
                                 }
 
+                                viewmodel.addUser(users.get(0));
+
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);
+                            } else {
+                                layoutUserName.setError("User not found");
+
                             }
                         }
+                    } else {
+                        layoutUserName.setError("User not found");
                     }
                 }
             });
@@ -125,6 +133,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (validateUserName()) {
                     if (validatePassword()) {
                         String updatedUsername = txtUserName.getText().toString();
+                        if (username == null) username = updatedUsername;
+                        progressBarDialog.show();
                         viewmodel.findUser(updatedUsername);
                     }
                 }
@@ -132,6 +142,18 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onPause() {
+        progressBarDialog.dismiss();
+        super.onPause();
+    }
+
+    @Override
+    protected void onDestroy() {
+        viewmodel.dispose();
+        super.onDestroy();
     }
 
     private int verifyCredentials(User user){
@@ -216,4 +238,5 @@ public class LoginActivity extends AppCompatActivity {
             Log.d(TAG, "In afterTextChanged = " + s.toString());
         }
     }
+
 }

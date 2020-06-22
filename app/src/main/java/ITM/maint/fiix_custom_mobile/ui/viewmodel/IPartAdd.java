@@ -4,7 +4,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.Storage;
 
 public interface IPartAdd {
 
-    public void findPart(String barcode);
+    public void findPart(String barcode, int fromDB);
 
     public void findLocation(int partId);
 

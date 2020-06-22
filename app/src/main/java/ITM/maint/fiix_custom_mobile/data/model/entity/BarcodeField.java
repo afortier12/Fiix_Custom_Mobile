@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package ITM.maint.fiix_custom_mobile.data.model;
+package ITM.maint.fiix_custom_mobile.data.model.entity;
 
 import android.os.Parcel;
 import android.os.Parcelable;
