@@ -35,7 +35,7 @@ import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 
-public class PartRepository extends BaseRepository{
+public class PartRepository extends BaseRepository implements IPartRepository{
 
     private static int FRESH_TIMEOUT_IN_MINUTES = 3;
 
@@ -60,7 +60,8 @@ public class PartRepository extends BaseRepository{
 
     }
 
-    public void addPart(Part part){
+    @Override
+    public void addPart(Part part) {
         Completable completable = fiixDatabase.partDao().insert(part);
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         completable.subscribeOn(scheduler)
@@ -211,4 +212,20 @@ public class PartRepository extends BaseRepository{
     }
 
 
+    @Override
+    public void findParts(FindRequest partRequest) {
+
+    }
+
+
+
+    @Override
+    public void changePart(FindRequest partRequest) {
+
+    }
+
+    @Override
+    public void removePart(FindRequest partRequest) {
+
+    }
 }
