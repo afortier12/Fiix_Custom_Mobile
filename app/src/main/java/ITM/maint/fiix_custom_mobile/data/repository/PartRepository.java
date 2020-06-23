@@ -19,9 +19,11 @@ import java.util.stream.Stream;
 import ITM.maint.fiix_custom_mobile.constants.Assets;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.api.IPartService;
+import ITM.maint.fiix_custom_mobile.data.api.responses.FindResponse;
 import ITM.maint.fiix_custom_mobile.data.api.responses.PartFindResponse;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.api.ServiceGenerator;
 import io.reactivex.Completable;
@@ -41,7 +43,7 @@ public class PartRepository extends BaseRepository implements IPartRepository{
 
     private static final String TAG ="PartRepository";
     private IPartService partService;
-    private MutableLiveData<List<Part>> partResponseMutableLiveData;
+    private MutableLiveData<List<FiixObject>> partResponseMutableLiveData;
 
     private IPartDao IPartDao;
     private FiixDatabase fiixDatabase;
@@ -52,7 +54,7 @@ public class PartRepository extends BaseRepository implements IPartRepository{
     public PartRepository(Application application) {
         super(application);
         partDBMutableLiveData = new MutableLiveData<Part>();
-        partResponseMutableLiveData = new MutableLiveData<List<Part>>();
+        partResponseMutableLiveData = new MutableLiveData<List<FiixObject>>();
         partService = ServiceGenerator.createService(IPartService.class);
 
         fiixDatabase = FiixDatabase.getDatabase(application);
@@ -77,6 +79,22 @@ public class PartRepository extends BaseRepository implements IPartRepository{
                 Log.d(TAG, "Error adding part to DB");
             }
         });
+    }
+
+    @Override
+    public void findParts(FindRequest partRequest) {
+
+    }
+
+
+    @Override
+    public void changePart(FindRequest partRequest) {
+
+    }
+
+    @Override
+    public void removePart(FindRequest partRequest) {
+
     }
 
     public void findPartFromDB(String barcode){
@@ -161,17 +179,17 @@ public class PartRepository extends BaseRepository implements IPartRepository{
 
     private void requestPartsFromFiix(FindRequest partRequest){
         partService.findParts(partRequest)
-                .enqueue(new Callback<PartFindResponse>() {
+                .enqueue(new Callback<FindResponse>() {
 
                     @Override
-                    public void onResponse(Call<PartFindResponse> call, retrofit2.Response<PartFindResponse> response) {
+                    public void onResponse(Call<FindResponse> call, retrofit2.Response<FindResponse> response) {
                         if (response.body() != null){
                             partResponseMutableLiveData.postValue(response.body().getObjects());
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<PartFindResponse> call, Throwable t) {
+                    public void onFailure(Call<FindResponse> call, Throwable t) {
                         partResponseMutableLiveData.postValue(null);
 
                         if (t instanceof IOException) {
@@ -194,7 +212,7 @@ public class PartRepository extends BaseRepository implements IPartRepository{
         return cal.getTime();
     }
 
-    public MutableLiveData<List<Part>> getPartResponseMutableLiveData() {
+    public MutableLiveData<List<FiixObject>> getPartResponseMutableLiveData() {
         return partResponseMutableLiveData;
     }
 
@@ -212,20 +230,5 @@ public class PartRepository extends BaseRepository implements IPartRepository{
     }
 
 
-    @Override
-    public void findParts(FindRequest partRequest) {
 
-    }
-
-
-
-    @Override
-    public void changePart(FindRequest partRequest) {
-
-    }
-
-    @Override
-    public void removePart(FindRequest partRequest) {
-
-    }
 }

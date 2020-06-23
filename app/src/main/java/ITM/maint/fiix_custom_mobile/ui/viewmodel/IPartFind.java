@@ -4,5 +4,5 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 
 public interface IPartFind {
 
-    public void findParts(FindRequest.Filter filter);
+    public void findParts(String category, String type, String model);
 }

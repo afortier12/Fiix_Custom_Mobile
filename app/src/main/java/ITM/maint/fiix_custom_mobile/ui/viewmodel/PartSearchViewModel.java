@@ -19,7 +19,7 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.repository.PartRepository;
 
-public class PartSearchViewModel extends AndroidViewModel {
+public class PartSearchViewModel extends AndroidViewModel implements IPartFind{
 
     private PartRepository partRepository;
     private IPartService partService;
@@ -36,6 +36,7 @@ public class PartSearchViewModel extends AndroidViewModel {
 
     }
 
+    @Override
     public void findParts(String category, String type, String make) {
 
         partRepository.findPartsFromDB(category, type, make);

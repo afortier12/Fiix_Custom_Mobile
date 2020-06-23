@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -22,21 +23,24 @@ import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderViewModel;
 
 public class WorkOrderFragment extends Fragment {
 
-    private WorkOrderViewModel homeViewModel;
+    private WorkOrderViewModel viewModel;
+    private ProgressBarDialog progressBarDialog;
+    private TextView lblCode;
+    private TextView lblPriority;
+    private TextView lblAsset;
+    private TextView lblDescription;
+    private TextView lblType;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        homeViewModel =
+        progressBarDialog = new ProgressBarDialog(getContext());
+
+        viewModel =
                new ViewModelProvider(this).get(WorkOrderViewModel.class);
         View root = inflater.inflate(R.layout.fragment_work_order, container, false);
-        final TextView textView = root.findViewById(R.id.text_home);
-        homeViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
+
+
         return root;
     }
 
@@ -47,10 +51,38 @@ public class WorkOrderFragment extends Fragment {
         NavController navController = Navigation.findNavController(view);
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).build();
-        Toolbar toolbar = view.findViewById(R.id.home_toolbar);
+        Toolbar toolbar = view.findViewById(R.id.work_order_toolbar);
 
         NavigationUI.setupWithNavController(
                 toolbar, navController, appBarConfiguration);
+
+        lblAsset = getView().findViewById(R.id.work_order_asset);
+        lblCode = getView().findViewById(R.id.work_order_code);
+        lblDescription = getView().findViewById(R.id.work_order_description);
+        lblPriority = getView().findViewById(R.id.work_order_priority);
+        lblType = getView().findViewById(R.id.work_order_type);
+
+        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+            @Override
+            public void handleOnBackPressed() {
+                NavController navController = Navigation.findNavController(view);
+                navController.popBackStack();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);
+
+    }
+
+    @Override
+    public void onPause() {
+        progressBarDialog.dismiss();
+        super.onPause();
+    }
+
+    @Override
+    public void onDestroy(){
+        viewModel.dispose();
+        super.onDestroy();
     }
 
 

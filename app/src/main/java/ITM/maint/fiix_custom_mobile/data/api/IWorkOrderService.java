@@ -8,7 +8,7 @@ import retrofit2.http.POST;
 
 public interface IWorkOrderService {
 
-    //FindRequest, Assets (Parts and Supplies)
+    //Find assigned work orders
     @POST("/api/")
     Call<WorkOrderFindResponse> findUser(@Body FindRequest WorkOrderRequest);
 }

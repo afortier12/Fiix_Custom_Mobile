@@ -9,7 +9,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Entity(tableName = "user_table")
-public class User {
+public class User extends FiixObject{
 
     @SerializedName("id")
     @Expose
