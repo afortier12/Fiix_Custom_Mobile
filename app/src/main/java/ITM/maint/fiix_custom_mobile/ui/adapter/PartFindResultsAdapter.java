@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 
 public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResultsAdapter.PartFindResultsHolder> {
@@ -79,8 +80,8 @@ public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResults
 
             nameText = itemView.findViewById(R.id.part_item_name);
             modelText = itemView.findViewById(R.id.part_item_model);
-            manufacturerText = itemView.findViewById(R.id.part_item_manufacturer);
-            partnumberText = itemView.findViewById(R.id.part_item_partnumber);
+            manufacturerText = itemView.findViewById(R.id.part_item_make);
+            partnumberText = itemView.findViewById(R.id.part_item_unspc);
             image = itemView.findViewById(R.id.part_item_smallThumbnail);
         }
     }

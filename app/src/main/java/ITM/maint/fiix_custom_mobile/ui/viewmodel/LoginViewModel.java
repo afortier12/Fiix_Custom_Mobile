@@ -1,19 +1,16 @@
 package ITM.maint.fiix_custom_mobile.ui.viewmodel;
 
 import android.app.Application;
-import android.text.TextUtils;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
-import ITM.maint.fiix_custom_mobile.constants.Users;
 import ITM.maint.fiix_custom_mobile.data.api.IUserService;
-import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.User;
 import ITM.maint.fiix_custom_mobile.data.repository.UserRepository;
 
@@ -21,7 +18,7 @@ public class LoginViewModel extends AndroidViewModel {
 
     private UserRepository userRepository;
     private IUserService userService;
-    private LiveData<List<User>> userResponseLiveData;
+    private MutableLiveData<List<FiixObject>> userResponseLiveData;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
@@ -46,7 +43,7 @@ public class LoginViewModel extends AndroidViewModel {
         userRepository.dispose();
     }
 
-    public LiveData<List<User>> getUserResponseLiveData() {
+    public LiveData<List<FiixObject>> getUserResponseLiveData() {
         return userResponseLiveData;
     }
 

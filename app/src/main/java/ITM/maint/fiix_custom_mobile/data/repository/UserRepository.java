@@ -15,9 +15,10 @@ import java.util.List;
 import ITM.maint.fiix_custom_mobile.constants.Users;
 import ITM.maint.fiix_custom_mobile.data.api.IUserService;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
-import ITM.maint.fiix_custom_mobile.data.api.responses.UserFindResponse;
+import ITM.maint.fiix_custom_mobile.data.api.responses.FindResponse;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IUserDao;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.User;
 import ITM.maint.fiix_custom_mobile.data.api.ServiceGenerator;
 import io.reactivex.Completable;
@@ -32,13 +33,13 @@ public class UserRepository extends BaseRepository{
     private static final String TAG ="UserRepository";
     private IUserService userService;
 
-   private MutableLiveData<List<User>> userResponseMutableLiveData;
+   private MutableLiveData<List<FiixObject>> userResponseMutableLiveData;
 
     private ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao IPartDao;
 
     public UserRepository(Application application) {
         super(application);
-        userResponseMutableLiveData = new MutableLiveData<List<User>>();
+        userResponseMutableLiveData = new MutableLiveData<List<FiixObject>>();
         userService = ServiceGenerator.createService(IUserService.class);
 
         fiixDatabase = FiixDatabase.getDatabase(application);
@@ -91,17 +92,17 @@ public class UserRepository extends BaseRepository{
 
     private void requestUserFromFiix(FindRequest userRequest){
         userService.findUser(userRequest)
-                .enqueue(new Callback<UserFindResponse>() {
+                .enqueue(new Callback<FindResponse>() {
 
                     @Override
-                    public void onResponse(Call<UserFindResponse> call, retrofit2.Response<UserFindResponse> response) {
+                    public void onResponse(Call<FindResponse> call, retrofit2.Response<FindResponse> response) {
                         if (response.body() != null){
-                            userResponseMutableLiveData.postValue(response.body().getObjects());
+                            userResponseMutableLiveData.postValue((List<FiixObject>) response.body().getObjects());
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<UserFindResponse> call, Throwable t) {
+                    public void onFailure(Call<FindResponse> call, Throwable t) {
                         userResponseMutableLiveData.postValue(null);
 
                         if (t instanceof IOException) {
@@ -115,7 +116,7 @@ public class UserRepository extends BaseRepository{
                 });
     }
 
-    public MutableLiveData<List<User>> getPartResponseMutableLiveData() {
+    public MutableLiveData<List<FiixObject>> getPartResponseMutableLiveData() {
         return userResponseMutableLiveData;
     }
 

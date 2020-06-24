@@ -26,6 +26,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.PartAddViewModel;
 
@@ -66,14 +67,15 @@ public class PartAddFragment extends Fragment {
             }
         });
 
-        viewModel.getPartResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<Part>>() {
+        viewModel.getPartResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<?>>() {
             @Override
-            public void onChanged(List<Part> parts) {
+            public void onChanged(List<?> parts) {
                 if (parts != null) {
                     if (!parts.isEmpty()) {
-                        fldMake.setText(parts.get(0).getMake());
-                        fldModel.setText(parts.get(0).getModel());
-                        fldPartNumber.setText(parts.get(0).getUnspcCode());
+                        Part part = (Part) parts.get(0);
+                        fldMake.setText(part.getMake());
+                        fldModel.setText(part.getModel());
+                        fldPartNumber.setText(part.getUnspcCode());
                     }
                 }
                 progressBarDialog.dismiss();

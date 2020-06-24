@@ -20,7 +20,6 @@ import ITM.maint.fiix_custom_mobile.constants.Assets;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.api.IPartService;
 import ITM.maint.fiix_custom_mobile.data.api.responses.FindResponse;
-import ITM.maint.fiix_custom_mobile.data.api.responses.PartFindResponse;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
@@ -43,7 +42,7 @@ public class PartRepository extends BaseRepository implements IPartRepository{
 
     private static final String TAG ="PartRepository";
     private IPartService partService;
-    private MutableLiveData<List<FiixObject>> partResponseMutableLiveData;
+    private MutableLiveData<List<?>> partResponseMutableLiveData;
 
     private IPartDao IPartDao;
     private FiixDatabase fiixDatabase;
@@ -54,7 +53,7 @@ public class PartRepository extends BaseRepository implements IPartRepository{
     public PartRepository(Application application) {
         super(application);
         partDBMutableLiveData = new MutableLiveData<Part>();
-        partResponseMutableLiveData = new MutableLiveData<List<FiixObject>>();
+        partResponseMutableLiveData = new MutableLiveData<List<?>>();
         partService = ServiceGenerator.createService(IPartService.class);
 
         fiixDatabase = FiixDatabase.getDatabase(application);
@@ -212,7 +211,7 @@ public class PartRepository extends BaseRepository implements IPartRepository{
         return cal.getTime();
     }
 
-    public MutableLiveData<List<FiixObject>> getPartResponseMutableLiveData() {
+    public MutableLiveData<List<?>> getPartResponseMutableLiveData() {
         return partResponseMutableLiveData;
     }
 

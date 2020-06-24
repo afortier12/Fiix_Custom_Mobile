@@ -38,6 +38,8 @@ public class WorkOrderFragment extends Fragment {
 
         viewModel =
                new ViewModelProvider(this).get(WorkOrderViewModel.class);
+        viewModel.init();
+
         View root = inflater.inflate(R.layout.fragment_work_order, container, false);
 
 

@@ -22,8 +22,10 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.Collections;
 import java.util.List;
 
+import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.User;
 import ITM.maint.fiix_custom_mobile.ui.view.ProgressBarDialog;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.LoginViewModel;
@@ -59,17 +61,17 @@ public class LoginActivity extends AppCompatActivity {
         viewmodel = new ViewModelProvider(this).get(LoginViewModel.class);
         viewmodel.init();
 
-        viewmodel.getUserResponseLiveData().observe(this, new Observer<List<User>>() {
+        viewmodel.getUserResponseLiveData().observe(this,  new Observer<List<FiixObject>>() {
                 @Override
-                public void onChanged(List<User> users) {
+                public void onChanged(List<FiixObject> users) {
                     Boolean updateSharedPrefs = false;
                     progressBarDialog.dismiss();
                     if (users != null){
                         if (users.isEmpty()){
                             layoutUserName.setError("User not found");
                         } else {
-
-                            int result = verifyCredentials(users.get(0));
+                            User user = (User) Collections.unmodifiableList(users).get(0);
+                            int result = verifyCredentials((User) user);
 
                             if (result == 0){
                                 String updatedUsername = txtUserName.getText().toString();
@@ -87,7 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                                     editor.commit();
                                 }
 
-                                viewmodel.addUser(users.get(0));
+                                viewmodel.addUser(user);
 
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                 startActivity(intent);

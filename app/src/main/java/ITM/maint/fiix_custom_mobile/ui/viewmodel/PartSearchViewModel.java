@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,6 +17,7 @@ import java.util.stream.Stream;
 import ITM.maint.fiix_custom_mobile.constants.Assets;
 import ITM.maint.fiix_custom_mobile.data.api.IPartService;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.repository.PartRepository;
 
@@ -23,7 +25,7 @@ public class PartSearchViewModel extends AndroidViewModel implements IPartFind{
 
     private PartRepository partRepository;
     private IPartService partService;
-    private LiveData<List<Part>> partResponseLiveData;
+    private MutableLiveData<List<?>> partResponseLiveData;
 
     public PartSearchViewModel(@NonNull Application application) {
         super(application);
@@ -42,7 +44,7 @@ public class PartSearchViewModel extends AndroidViewModel implements IPartFind{
         partRepository.findPartsFromDB(category, type, make);
     }
 
-    public LiveData<List<Part>> getPartResponseLiveData() {
+    public LiveData<List<?>> getPartResponseLiveData() {
         return partResponseLiveData;
     }
 

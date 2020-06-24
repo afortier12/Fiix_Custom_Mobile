@@ -5,10 +5,12 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.api.IPartService;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Storage;
 import ITM.maint.fiix_custom_mobile.data.repository.PartRepository;
@@ -17,7 +19,7 @@ public class PartAddViewModel extends AndroidViewModel implements IPartAdd {
 
     private PartRepository partRepository;
     private IPartService partService;
-    private LiveData<List<Part>> partResponseLiveData;
+    private MutableLiveData<List<?>> partResponseLiveData;
     private LiveData<Part> partDBLiveData;
 
     public PartAddViewModel(@NonNull Application application) {
@@ -60,7 +62,7 @@ public class PartAddViewModel extends AndroidViewModel implements IPartAdd {
     }
 
 
-    public LiveData<List<Part>> getPartResponseLiveData() {
+    public LiveData<List<?>> getPartResponseLiveData() {
         return partResponseLiveData;
     }
 

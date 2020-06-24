@@ -22,12 +22,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.ui.adapter.PartFindResultsAdapter;
-import ITM.maint.fiix_custom_mobile.ui.viewmodel.PartAddViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.PartSearchViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
 
@@ -63,12 +64,12 @@ public class PartSearchFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
 
-        viewModel.getPartResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<Part>>() {
+        viewModel.getPartResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<?>>() {
             @Override
-            public void onChanged(List<Part> objects) {
+            public void onChanged(List<?> objects) {
                 if (objects != null) {
                     partList.clear();
-                    partList.addAll(objects);
+                    partList.addAll((Collection<? extends Part>) objects);
                     adapter.notifyDataSetChanged();
                 }
                 progressBarDialog.dismiss();
