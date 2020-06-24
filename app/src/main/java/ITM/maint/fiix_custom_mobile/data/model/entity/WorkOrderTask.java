@@ -121,4 +121,220 @@ public class WorkOrderTask {
     @Expose
     @ColumnInfo(name="isCompletable")
     private String isCompletable;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getWorkOrderId() {
+        return workOrderId;
+    }
+
+    public void setWorkOrderId(int workOrderId) {
+        this.workOrderId = workOrderId;
+    }
+
+    public int getTaskType() {
+        return taskType;
+    }
+
+    public void setTaskType(int taskType) {
+        this.taskType = taskType;
+    }
+
+    public String getResult() {
+        return result;
+    }
+
+    public void setResult(String result) {
+        this.result = result;
+    }
+
+    public int getAssetID() {
+        return assetID;
+    }
+
+    public void setAssetID(int assetID) {
+        this.assetID = assetID;
+    }
+
+    public int getOrder() {
+        return order;
+    }
+
+    public void setOrder(int order) {
+        this.order = order;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getCompletedDate() {
+        return completedDate;
+    }
+
+    public void setCompletedDate(String completedDate) {
+        this.completedDate = completedDate;
+    }
+
+    public int getCompletedById() {
+        return completedById;
+    }
+
+    public void setCompletedById(int completedById) {
+        this.completedById = completedById;
+    }
+
+    public int getAssignedToId() {
+        return assignedToId;
+    }
+
+    public void setAssignedToId(int assignedToId) {
+        this.assignedToId = assignedToId;
+    }
+
+    public double getEstimatedHours() {
+        return estimatedHours;
+    }
+
+    public void setEstimatedHours(double estimatedHours) {
+        this.estimatedHours = estimatedHours;
+    }
+
+    public double getTimeSpentHours() {
+        return timeSpentHours;
+    }
+
+    public void setTimeSpentHours(double timeSpentHours) {
+        this.timeSpentHours = timeSpentHours;
+    }
+
+    public double getMeterReadingId() {
+        return meterReadingId;
+    }
+
+    public void setMeterReadingId(double meterReadingId) {
+        this.meterReadingId = meterReadingId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getCompletionNotes() {
+        return completionNotes;
+    }
+
+    public void setCompletionNotes(String completionNotes) {
+        this.completionNotes = completionNotes;
+    }
+
+    public int getTaskGroupId() {
+        return taskGroupId;
+    }
+
+    public void setTaskGroupId(int taskGroupId) {
+        this.taskGroupId = taskGroupId;
+    }
+
+    public int getParentWorkOrderTaskId() {
+        return parentWorkOrderTaskId;
+    }
+
+    public void setParentWorkOrderTaskId(int parentWorkOrderTaskId) {
+        this.parentWorkOrderTaskId = parentWorkOrderTaskId;
+    }
+
+    public int getIsUpdated() {
+        return isUpdated;
+    }
+
+    public void setIsUpdated(int isUpdated) {
+        this.isUpdated = isUpdated;
+    }
+
+    public String getAssignedTo() {
+        return assignedTo;
+    }
+
+    public void setAssignedTo(String assignedTo) {
+        this.assignedTo = assignedTo;
+    }
+
+    public String getCompletedBy() {
+        return completedBy;
+    }
+
+    public void setCompletedBy(String completedBy) {
+        this.completedBy = completedBy;
+    }
+
+    public String getWorkOrderCode() {
+        return workOrderCode;
+    }
+
+    public void setWorkOrderCode(String workOrderCode) {
+        this.workOrderCode = workOrderCode;
+    }
+
+    public String getMeterReadingUnits() {
+        return meterReadingUnits;
+    }
+
+    public void setMeterReadingUnits(String meterReadingUnits) {
+        this.meterReadingUnits = meterReadingUnits;
+    }
+
+    public String getAssetName() {
+        return assetName;
+    }
+
+    public void setAssetName(String assetName) {
+        this.assetName = assetName;
+    }
+
+    public String getWorkOrderTaskId() {
+        return workOrderTaskId;
+    }
+
+    public void setWorkOrderTaskId(String workOrderTaskId) {
+        this.workOrderTaskId = workOrderTaskId;
+    }
+
+    public String getTaskGroupName() {
+        return taskGroupName;
+    }
+
+    public void setTaskGroupName(String taskGroupName) {
+        this.taskGroupName = taskGroupName;
+    }
+
+    public String getTaskResultId() {
+        return taskResultId;
+    }
+
+    public void setTaskResultId(String taskResultId) {
+        this.taskResultId = taskResultId;
+    }
+
+    public String getIsCompletable() {
+        return isCompletable;
+    }
+
+    public void setIsCompletable(String isCompletable) {
+        this.isCompletable = isCompletable;
+    }
 }

@@ -47,7 +47,7 @@ public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
 
     @Override
     public void findWorkOrders(List<Integer> ids) {
-
+        workOrderRepository.getWorkOrders();
     }
 
     @Override
@@ -65,8 +65,13 @@ public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
 
     }
 
+
     public LiveData<List<WorkOrder>> getWorkOrderResponseLiveData() {
         return workOrderResponseLiveData;
+    }
+
+    public LiveData<List<WorkOrderTask>> getWorkOrderTaskResponseLiveData() {
+        return workOrderTaskResponseLiveData;
     }
 
     public LiveData<WorkOrder> getWorkOrderDBLiveData() {

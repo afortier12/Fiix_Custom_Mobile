@@ -15,6 +15,7 @@ import java.util.stream.Stream;
 
 import ITM.maint.fiix_custom_mobile.constants.Assets;
 import ITM.maint.fiix_custom_mobile.constants.WorkOrderTasks;
+import ITM.maint.fiix_custom_mobile.constants.WorkOrders;
 import ITM.maint.fiix_custom_mobile.data.api.IPartService;
 import ITM.maint.fiix_custom_mobile.data.api.IUserService;
 import ITM.maint.fiix_custom_mobile.data.api.IWorkOrderService;
@@ -55,7 +56,39 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     }
 
     @Override
-    public void getWorkOrders(FindRequest workOrderRequest) {
+    public void getWorkOrders(List<Integer> workOrders) {
+        FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
+                2, 8, 1);
+
+        List<String> workOrderFields = new ArrayList<>(Arrays.asList(
+                WorkOrders.code.getField(),
+                WorkOrders.priority.getField(),
+                WorkOrders.maintenanceType.getField(),
+                WorkOrders.assets.getField(),
+                WorkOrders.description.getField(),
+                WorkOrders.problem.getField()
+        ));
+
+        String fields = TextUtils.join(",",workOrderFields);
+        List<String> placeHolders = new ArrayList<>();
+        for (Integer id: workOrders){
+            placeHolders.add("?");
+        }
+        String placeHolderList = TextUtils.join(",", placeHolders);
+
+        List list = Stream.of(workOrders).collect(Collectors.toList());
+
+        FindRequest.Filter filter = new FindRequest.Filter(
+                "id in (" + placeHolderList + ")",
+                list
+        );
+
+        List<FindRequest.Filter> filters = new ArrayList<>();
+        filters.add(filter);
+
+        FindRequest workOrderRequest = new FindRequest("FindRequest", clientVersion, "Asset", fields, filters);
+        requestWorkOrdersFromFiix(workOrderRequest);
+
 
     }
 

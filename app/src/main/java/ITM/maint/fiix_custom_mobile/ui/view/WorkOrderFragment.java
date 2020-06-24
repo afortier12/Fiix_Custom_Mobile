@@ -17,14 +17,28 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.checkerframework.checker.units.qual.A;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
+import ITM.maint.fiix_custom_mobile.data.repository.IWorkOrderRepository;
+import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderViewModel;
 
 public class WorkOrderFragment extends Fragment {
 
     private WorkOrderViewModel viewModel;
     private ProgressBarDialog progressBarDialog;
+    private RecyclerView recyclerView;
+    private WorkOrderAdapter adapter;
+    private ArrayList<Integer> workOrderIdList;
+
     private TextView lblCode;
     private TextView lblPriority;
     private TextView lblAsset;
@@ -36,13 +50,27 @@ public class WorkOrderFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        workOrderIdList = new ArrayList<>();
+
         progressBarDialog = new ProgressBarDialog(getContext());
 
-        viewModel =
-               new ViewModelProvider(this).get(WorkOrderViewModel.class);
+        viewModel = new ViewModelProvider(this).get(WorkOrderViewModel.class);
         viewModel.init();
 
         View root = inflater.inflate(R.layout.fragment_work_order, container, false);
+
+        workOrderIdList.clear();
+        viewModel.getWorkOrderTaskResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrderTask>>() {
+            @Override
+            public void onChanged(List<WorkOrderTask> workOrderTasks) {
+                if (workOrderTasks != null){
+                    for (WorkOrderTask workOrderTask : workOrderTasks){
+                        workOrderIdList.add(workOrderTask.getWorkOrderId());
+                    }
+                    viewModel.findWorkOrders(workOrderIdList);
+                }
+            }
+        });
 
         username = getArguments().getString("User");
         id = getArguments().getInt("id");
@@ -77,7 +105,7 @@ public class WorkOrderFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);
 
-        viewModel.findWorkOrderTasks(username, 0);
+        viewModel.findWorkOrderTasks(username, 0, 0);
     }
 
     @Override
