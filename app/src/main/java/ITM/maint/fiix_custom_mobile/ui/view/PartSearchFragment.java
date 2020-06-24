@@ -26,7 +26,6 @@ import java.util.Collection;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.ui.adapter.PartFindResultsAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.PartSearchViewModel;

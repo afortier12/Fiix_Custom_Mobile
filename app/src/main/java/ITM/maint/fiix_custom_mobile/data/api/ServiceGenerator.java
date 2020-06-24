@@ -31,6 +31,7 @@ public class ServiceGenerator {
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(Fiix.FIIX_URL.getField())
+                    .addConverterFactory(new ResponseConverterFactory())
                     .addConverterFactory(GsonConverterFactory.create());
 
     private static String requestUrl = Fiix.FIIX_URL.getField() +"/api/?action=FindResponse&appKey="+Fiix.API_key.getField()+"&accessKey="+Fiix.Access_key.getField()+"&signatureMethod=HmacSHA256&signatureVersion=1";
@@ -89,7 +90,6 @@ public class ServiceGenerator {
                     .header("Authorization", authString())
                     .addHeader("Content-Type","text/plain");
             Request request = requestBuilder.build();
-            //httpHeaderStatus.postValue(1);
             return chain.proceed(request);
         }
 

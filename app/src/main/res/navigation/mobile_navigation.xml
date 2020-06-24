@@ -19,6 +19,13 @@
             app:destination="@id/navigation_partSearch"
             app:popUpTo="@id/navigation_home"
             app:popUpToInclusive="false" />
+        <argument
+            android:name="User"
+            app:argType="string"
+            android:defaultValue="username" />
+        <argument
+            android:name="id"
+            app:argType="integer" />
     </fragment>
 
     <fragment

@@ -30,6 +30,8 @@ public class WorkOrderFragment extends Fragment {
     private TextView lblAsset;
     private TextView lblDescription;
     private TextView lblType;
+    private String username;
+    private int id;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +44,8 @@ public class WorkOrderFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_work_order, container, false);
 
+        username = getArguments().getString("User");
+        id = getArguments().getInt("id");
 
         return root;
     }
@@ -73,6 +77,7 @@ public class WorkOrderFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);
 
+        viewModel.findWorkOrderTasks(username, 0);
     }
 
     @Override

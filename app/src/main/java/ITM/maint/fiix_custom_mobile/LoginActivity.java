@@ -22,10 +22,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.Collections;
+
 import java.util.List;
 
-import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.User;
 import ITM.maint.fiix_custom_mobile.ui.view.ProgressBarDialog;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.LoginViewModel;
@@ -61,16 +60,16 @@ public class LoginActivity extends AppCompatActivity {
         viewmodel = new ViewModelProvider(this).get(LoginViewModel.class);
         viewmodel.init();
 
-        viewmodel.getUserResponseLiveData().observe(this,  new Observer<List<FiixObject>>() {
+        viewmodel.getUserResponseLiveData().observe(this,  new Observer<List<User>>() {
                 @Override
-                public void onChanged(List<FiixObject> users) {
+                public void onChanged(List<User> users) {
                     Boolean updateSharedPrefs = false;
                     progressBarDialog.dismiss();
                     if (users != null){
                         if (users.isEmpty()){
                             layoutUserName.setError("User not found");
                         } else {
-                            User user = (User) Collections.unmodifiableList(users).get(0);
+                            User user = users.get(0);
                             int result = verifyCredentials((User) user);
 
                             if (result == 0){
@@ -92,6 +91,8 @@ public class LoginActivity extends AppCompatActivity {
                                 viewmodel.addUser(user);
 
                                 Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                intent.putExtra("User", username);
+                                intent.putExtra("id", user.getId());
                                 startActivity(intent);
                             } else {
                                 layoutUserName.setError("User not found");

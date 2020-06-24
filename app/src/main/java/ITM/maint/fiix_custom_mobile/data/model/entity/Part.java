@@ -12,7 +12,7 @@ import java.util.Date;
 
 
 @Entity(tableName = "part_table")
-public class Part extends FiixObject{
+public class Part {
 
     @SerializedName("id")
     @Expose

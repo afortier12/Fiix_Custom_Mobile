@@ -1,6 +1,7 @@
 package ITM.maint.fiix_custom_mobile;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Window;
@@ -14,11 +15,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
+import androidx.navigation.NavGraph;
+import androidx.navigation.NavInflater;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+
+import java.util.zip.Inflater;
 
 import javax.inject.Inject;
 
@@ -30,6 +37,10 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
 
     private static final int REQUEST_CAMERA_PERMISSION = 1;
     private static final String TAG = "MainActivity";
+    private String username;
+    private int id;
+    private NavArgument idArg;
+    private NavArgument usernameArg;
 
     @Inject
     AppExecutor appExecutor;
@@ -38,6 +49,10 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+
+        Intent intent = getIntent();
+        username = intent.getStringExtra("User");
+        id = intent.getIntExtra("id", 0);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         //Remove notification bar
@@ -54,9 +69,15 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         */
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
-
-        //NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);*
+        usernameArg = new NavArgument.Builder().setDefaultValue(username).build();
+        idArg = new NavArgument.Builder().setDefaultValue(id).build();
+        NavInflater navInflator = navController.getNavInflater();
+        NavGraph navGraph = navInflator.inflate(R.navigation.mobile_navigation);
+        navGraph.addArgument("User",usernameArg);
+        navGraph.addArgument("id", idArg);
+        navController.setGraph(navGraph);
         NavigationUI.setupWithNavController(navView, navController);
+
 
         checkCameraPermissions();
     }

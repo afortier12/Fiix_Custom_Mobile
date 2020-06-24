@@ -3,13 +3,8 @@ package ITM.maint.fiix_custom_mobile.data.api.responses;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Collections;
-import java.util.List;
 
-import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
-import ITM.maint.fiix_custom_mobile.data.model.entity.User;
-
-public class FindResponse {
+public class FindResponse<T> {
 
     @SerializedName("_maCn")
     @Expose
@@ -22,7 +17,7 @@ public class FindResponse {
     private Sync sync;
     @SerializedName("objects")
     @Expose
-    private List<?> objects = null;
+    private T objects = null;
     @SerializedName("totalObjects")
     @Expose
     private Integer totalObjects;
@@ -51,11 +46,11 @@ public class FindResponse {
         this.sync = sync;
     }
 
-    public List<?> getObjects() {
+    public T getObjects() {
         return  objects;
     }
 
-    public void setObjects(List<?> objects) {
+    public void setObjects(T objects) {
         this.objects = objects;
     }
 

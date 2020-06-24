@@ -16,6 +16,7 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.ChangeRequest;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.data.repository.PartRepository;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 
@@ -24,6 +25,7 @@ public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
     private WorkOrderRepository workOrderRepository;
     private IWorkOrderService workOrderService;
     private LiveData<List<WorkOrder>> workOrderResponseLiveData;
+    private LiveData<List<WorkOrderTask>> workOrderTaskResponseLiveData;
     private LiveData<WorkOrder> workOrderDBLiveData;
 
     public WorkOrderViewModel(@NonNull Application application) {
@@ -34,11 +36,22 @@ public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
         workOrderRepository = new WorkOrderRepository(this.getApplication());
         workOrderService = workOrderRepository.getWorkOrderService();
         workOrderResponseLiveData = workOrderRepository.getWorkOrderResponseMutableLiveData();
+        workOrderTaskResponseLiveData = workOrderRepository.getWorkOrderTaskResponseMutableLiveDate();
         workOrderDBLiveData = workOrderRepository.getWorkOrderDBMutableLiveData();
     }
 
     @Override
-    public void findWorkOrders(FindRequest.Filter filter) {
+    public void findWorkOrderTasks(String username, int userId, int workOrderId) {
+        workOrderRepository.getWorkOrderTasks(username, userId, workOrderId);
+    }
+
+    @Override
+    public void findWorkOrders(List<Integer> ids) {
+
+    }
+
+    @Override
+    public void getWorkOrderDetails(FindRequest.Filter filter) {
 
     }
 

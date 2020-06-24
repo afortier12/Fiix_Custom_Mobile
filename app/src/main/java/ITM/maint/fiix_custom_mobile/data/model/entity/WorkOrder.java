@@ -9,7 +9,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 @Entity(tableName = "work_order_table")
-public class WorkOrder extends FiixObject{
+public class WorkOrder {
 
     @SerializedName("id")
     @Expose

@@ -22,7 +22,6 @@ import ITM.maint.fiix_custom_mobile.data.api.IPartService;
 import ITM.maint.fiix_custom_mobile.data.api.responses.FindResponse;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.api.ServiceGenerator;
 import io.reactivex.Completable;
@@ -147,7 +146,8 @@ public class PartRepository extends BaseRepository implements IPartRepository{
 
     }
 
-    public void findPartFromFiix(String barcode){
+    public void findPartFromFiix(String barcode) {
+
         FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
                 2, 8, 1);
 
@@ -160,7 +160,7 @@ public class PartRepository extends BaseRepository implements IPartRepository{
                 Assets.barcode.getField(),
                 Assets.partNumber.getField()
         ));
-        String fields = TextUtils.join(",",assetFields);
+        String fields = TextUtils.join(",", assetFields);
 
         List list = Stream.of(barcode).collect(Collectors.toList());
 
@@ -178,17 +178,17 @@ public class PartRepository extends BaseRepository implements IPartRepository{
 
     private void requestPartsFromFiix(FindRequest partRequest){
         partService.findParts(partRequest)
-                .enqueue(new Callback<FindResponse>() {
+                .enqueue(new Callback<List<Part>>() {
 
                     @Override
-                    public void onResponse(Call<FindResponse> call, retrofit2.Response<FindResponse> response) {
+                    public void onResponse(Call<List<Part>> call, retrofit2.Response<List<Part>> response) {
                         if (response.body() != null){
-                            partResponseMutableLiveData.postValue(response.body().getObjects());
+                            partResponseMutableLiveData.postValue(response.body());
                         }
                     }
 
                     @Override
-                    public void onFailure(Call<FindResponse> call, Throwable t) {
+                    public void onFailure(Call<List<Part>> call, Throwable t) {
                         partResponseMutableLiveData.postValue(null);
 
                         if (t instanceof IOException) {

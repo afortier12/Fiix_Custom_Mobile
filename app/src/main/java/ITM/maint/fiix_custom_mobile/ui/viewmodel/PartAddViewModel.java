@@ -10,7 +10,6 @@ import androidx.lifecycle.MutableLiveData;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.api.IPartService;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Storage;
 import ITM.maint.fiix_custom_mobile.data.repository.PartRepository;

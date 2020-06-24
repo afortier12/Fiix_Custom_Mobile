@@ -13,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FiixObject;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 
 public class PartFindResultsAdapter extends RecyclerView.Adapter<PartFindResultsAdapter.PartFindResultsHolder> {
