@@ -5,19 +5,14 @@ import android.app.Application;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 
-import ITM.maint.fiix_custom_mobile.data.api.IPartService;
 import ITM.maint.fiix_custom_mobile.data.api.IWorkOrderService;
 import ITM.maint.fiix_custom_mobile.data.api.requests.ChangeRequest;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
-import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
-import ITM.maint.fiix_custom_mobile.data.repository.PartRepository;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 
 public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
@@ -36,7 +31,7 @@ public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
         workOrderRepository = new WorkOrderRepository(this.getApplication());
         workOrderService = workOrderRepository.getWorkOrderService();
         workOrderResponseLiveData = workOrderRepository.getWorkOrderResponseMutableLiveData();
-        workOrderTaskResponseLiveData = workOrderRepository.getWorkOrderTaskResponseMutableLiveDate();
+        workOrderTaskResponseLiveData = workOrderRepository.getWorkOrderTaskResponseMutableLiveData();
         workOrderDBLiveData = workOrderRepository.getWorkOrderDBMutableLiveData();
     }
 
@@ -47,7 +42,7 @@ public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
 
     @Override
     public void findWorkOrders(List<Integer> ids) {
-        workOrderRepository.getWorkOrders();
+        workOrderRepository.getWorkOrders(ids);
     }
 
     @Override

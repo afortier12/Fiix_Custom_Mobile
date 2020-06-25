@@ -1,5 +1,7 @@
 package ITM.maint.fiix_custom_mobile.data.api;
 
+import android.util.Log;
+
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.annotation.Annotation;
@@ -16,6 +18,7 @@ import retrofit2.Retrofit;
 
 public class ResponseConverterFactory extends Converter.Factory {
 
+    private static final String TAG = "ResponseConverterFactory";
     @Nullable
     @Override
     public Converter<ResponseBody, ?> responseBodyConverter(Type type, Annotation[] annotations, Retrofit retrofit) {
@@ -26,6 +29,7 @@ public class ResponseConverterFactory extends Converter.Factory {
                     this, responseType, annotations);
             return (Converter<ResponseBody, ?>) body -> {
                 FindResponse<?> response = converter.convert(body);
+                Log.d(TAG, responseType.getTypeName());
                 return response.getObjects();
             };
         } catch (Exception e) {
