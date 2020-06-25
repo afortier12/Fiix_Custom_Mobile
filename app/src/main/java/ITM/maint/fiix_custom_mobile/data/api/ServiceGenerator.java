@@ -1,8 +1,14 @@
 package ITM.maint.fiix_custom_mobile.data.api;
 
+import android.util.Log;
+
 import com.google.android.gms.common.util.Hex;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -16,23 +22,29 @@ import javax.crypto.spec.SecretKeySpec;
 import ITM.maint.fiix_custom_mobile.constants.Fiix;
 import okhttp3.HttpUrl;
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+
 public class ServiceGenerator {
+
+    private static final String TAG = "ServiceGenerator";
 
     protected static Retrofit retrofit;
     private static OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
+    private static final Gson gson = new GsonBuilder()
+            .create();
 
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(Fiix.FIIX_URL.getField())
-                    .addConverterFactory(new ResponseConverterFactory())
-                    .addConverterFactory(GsonConverterFactory.create());
+                    .addConverterFactory(GsonConverterFactory.create(gson));
 
     private static String requestUrl = Fiix.FIIX_URL.getField() +"/api/?action=FindResponse&appKey="+Fiix.API_key.getField()+"&accessKey="+Fiix.Access_key.getField()+"&signatureMethod=HmacSHA256&signatureVersion=1";
 
@@ -45,14 +57,57 @@ public class ServiceGenerator {
 
         HeaderInterceptor headerInterceptor = new HeaderInterceptor();
         QueryInterceptor queryInterceptor = new QueryInterceptor();
+        ResponseInterceptor responseInterceptor = new ResponseInterceptor();
 
         httpClient.addInterceptor(interceptor);
         httpClient.addInterceptor(headerInterceptor);
         httpClient.addInterceptor(queryInterceptor);
+        httpClient.addInterceptor(responseInterceptor);
 
         builder.client(httpClient.build());
         retrofit = builder.build();
         return retrofit.create(serviceClass);
+    }
+
+    private static class ResponseInterceptor implements Interceptor{
+
+        @NotNull
+        @Override
+        public Response intercept(@NotNull Chain chain) throws IOException {
+            Response response = chain.proceed(chain.request());
+            ResponseBody body = response.body();
+            if (body.contentType().equals(MediaType.parse("text/plain;charset=utf-8"))) {
+                String jsonString = body.string();
+                Log.d(TAG, jsonString);
+                Log.d(TAG, response.headers().toString());
+                Log.d(TAG, response.message());
+                Log.d(TAG, String.valueOf(response.code()));
+
+                JSONObject jsonObject = null;
+                try {
+                    jsonObject = new JSONObject(jsonString);
+                    ResponseBody newBody = ResponseBody.create(jsonObject.toString(), body.contentType());
+
+                    Response response1 = response.newBuilder()
+                            .headers(response.headers())
+                            .message(response.message())
+                            .code(response.code())
+                            .body(body)
+                            .build();
+
+                    //Log.d(TAG, response1.body().string());
+                    //Log.d(TAG, response1.headers().toString());
+                    //Log.d(TAG, response1.message());
+                    //Log.d(TAG, String.valueOf(response1.code()));
+                    return  response1;
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return null;
+                }
+
+            }
+            return response;
+        }
     }
 
 

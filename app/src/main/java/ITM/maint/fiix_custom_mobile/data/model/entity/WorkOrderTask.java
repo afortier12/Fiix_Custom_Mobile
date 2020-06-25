@@ -8,6 +8,8 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
+
 @Entity(tableName = "work_order_table")
 public class WorkOrderTask {
 
@@ -121,6 +123,10 @@ public class WorkOrderTask {
     @Expose
     @ColumnInfo(name="isCompletable")
     private String isCompletable;
+    /*error response*/
+    @SerializedName("error")
+    @Expose
+    private APIError error;
 
     public int getId() {
         return id;

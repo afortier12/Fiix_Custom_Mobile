@@ -112,7 +112,7 @@ dependencies {
     annotationProcessor 'com.google.dagger:dagger-android-processor:2.27'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.27'
 
-    //Rxjave
+    //Rxjava
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
 
