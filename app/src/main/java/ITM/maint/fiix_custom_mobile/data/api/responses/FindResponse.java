@@ -15,7 +15,7 @@ public class FindResponse<T> {
     @SerializedName("sync")
     @Expose
     private Sync sync;
-    @SerializedName(value = "objects", alternate="error")
+    @SerializedName("objects")
     @Expose
     private T objects = null;
     @SerializedName("totalObjects")

@@ -5,12 +5,16 @@ import android.util.Log;
 import com.google.android.gms.common.util.Hex;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -44,6 +48,7 @@ public class ServiceGenerator {
     private static Retrofit.Builder builder =
             new Retrofit.Builder()
                     .baseUrl(Fiix.FIIX_URL.getField())
+                    .addConverterFactory(new ResponseConverterFactory())
                     .addConverterFactory(GsonConverterFactory.create(gson));
 
     private static String requestUrl = Fiix.FIIX_URL.getField() +"/api/?action=FindResponse&appKey="+Fiix.API_key.getField()+"&accessKey="+Fiix.Access_key.getField()+"&signatureMethod=HmacSHA256&signatureVersion=1";
@@ -75,35 +80,26 @@ public class ServiceGenerator {
         @Override
         public Response intercept(@NotNull Chain chain) throws IOException {
             Response response = chain.proceed(chain.request());
-            ResponseBody body = response.body();
-            if (body.contentType().equals(MediaType.parse("text/plain;charset=utf-8"))) {
-                String jsonString = body.string();
+            if (response.body().contentType().equals(MediaType.parse("text/plain;charset=utf-8"))) {
+                String jsonString = response.body().string();
                 Log.d(TAG, jsonString);
                 Log.d(TAG, response.headers().toString());
                 Log.d(TAG, response.message());
                 Log.d(TAG, String.valueOf(response.code()));
 
                 JSONObject jsonObject = null;
-                try {
-                    jsonObject = new JSONObject(jsonString);
-                    ResponseBody newBody = ResponseBody.create(jsonObject.toString(), body.contentType());
+                InputStream is = new ByteArrayInputStream(jsonString.getBytes());
+                JsonReader jsonReader = new JsonReader(new InputStreamReader(is));
+                jsonReader.beginObject();
+                while( jsonReader.hasNext() ){
 
-                    Response response1 = response.newBuilder()
-                            .headers(response.headers())
-                            .message(response.message())
-                            .code(response.code())
-                            .body(body)
-                            .build();
-
-                    //Log.d(TAG, response1.body().string());
-                    //Log.d(TAG, response1.headers().toString());
-                    //Log.d(TAG, response1.message());
-                    //Log.d(TAG, String.valueOf(response1.code()));
-                    return  response1;
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    return null;
                 }
+
+                ResponseBody body = ResponseBody.create(jsonString, response.body().contentType());
+
+                return response.newBuilder()
+                        .body(body)
+                        .build();
 
             }
             return response;
