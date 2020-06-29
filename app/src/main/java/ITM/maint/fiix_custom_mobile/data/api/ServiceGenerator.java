@@ -5,9 +5,12 @@ import android.util.Log;
 import com.google.android.gms.common.util.Hex;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonParser;
 import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonToken;
 
 import org.jetbrains.annotations.NotNull;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,6 +18,7 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
@@ -80,27 +84,103 @@ public class ServiceGenerator {
         @Override
         public Response intercept(@NotNull Chain chain) throws IOException {
             Response response = chain.proceed(chain.request());
-            if (response.body().contentType().equals(MediaType.parse("text/plain;charset=utf-8"))) {
-                String jsonString = response.body().string();
-                Log.d(TAG, jsonString);
-                Log.d(TAG, response.headers().toString());
-                Log.d(TAG, response.message());
-                Log.d(TAG, String.valueOf(response.code()));
+            if (response.body().contentType() != null){
+                if (response.body().contentType().equals(MediaType.parse("text/plain;charset=utf-8"))) {
+                    String jsonString = response.body().string();
 
-                JSONObject jsonObject = null;
-                InputStream is = new ByteArrayInputStream(jsonString.getBytes());
-                JsonReader jsonReader = new JsonReader(new InputStreamReader(is));
-                jsonReader.beginObject();
-                while( jsonReader.hasNext() ){
+                    JSONObject jsonObject;
+                    try {
+                        jsonObject = new JSONObject(jsonString);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        return response;
+                    }
 
+                    StringReader stringReader = new StringReader(jsonString);
+                    JsonReader jsonReader = new JsonReader(stringReader);
+
+                    JsonToken jsonToken;
+                    JSONArray jsonArray = new JSONArray();
+                    try {
+                        while ((jsonToken = jsonReader.peek()) != JsonToken.END_DOCUMENT) {
+                            switch (jsonToken) {
+                                case BEGIN_OBJECT:
+                                    jsonReader.beginObject();
+                                    continue;
+                                case END_OBJECT:
+                                    jsonReader.endObject();
+                                    continue;
+                                case BEGIN_ARRAY:
+                                    jsonReader.beginArray();
+                                    continue;
+                                case END_ARRAY:
+                                    jsonReader.endArray();
+                                    continue;
+                                case NAME:
+                                    String name = jsonReader.nextName();
+                                    if (name.equalsIgnoreCase("error")) {
+                                        JSONObject errObj = jsonObject.getJSONObject("error");
+                                        String leg = errObj.getString("leg");
+                                        String code = errObj.getString("code");
+                                        String msg = errObj.getString("message");
+                                        String stack = errObj.getString("stackTrace");
+                                        errObj = new JSONObject();
+                                        errObj.put("leg", leg);
+                                        errObj.put("code", code);
+                                        errObj.put("message", msg);
+                                        errObj.put("stackTrace", stack);
+                                        jsonArray.put(errObj);
+
+                                    } else if (name.equalsIgnoreCase("objects")) {
+                                        break;
+                                    }
+                                    System.out.println("Token Value >>>> " + name);
+                                    continue;
+                                case STRING:
+                                    String value = jsonReader.nextString();
+                                    System.out.println("Token Value >>>> " + value);
+                                    continue;
+                                case NUMBER:
+                                    long lValue = jsonReader.nextLong();
+                                    System.out.println("Token Value >>>> " + lValue);
+                                    continue;
+                                case NULL:
+                                    jsonReader.nextNull();
+                                    System.out.println("Token Value >>>> null");
+                                    continue;
+                                case BOOLEAN:
+                                    Boolean bool = jsonReader.nextBoolean();
+                                    System.out.println("Token Value >>>> " + bool);
+                                    continue;
+                                default:
+                                    throw new AssertionError("default");
+                            }
+                            break;
+                        }
+
+                    } catch (IOException | AssertionError | JSONException e) {
+                        e.printStackTrace();
+                    } finally {
+                        jsonReader.close();
+                    }
+
+                    Response.Builder builder = response.newBuilder();
+                    if (jsonArray.length() > 0) {
+                        jsonObject.remove("error");
+                        try {
+                            jsonObject.put("error", jsonArray);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            return response;
+                        }
+                        builder.code(400);
+                    } else {
+                        builder.code(response.code());
+                    }
+                    ResponseBody body = ResponseBody.create(jsonObject.toString(), response.body().contentType());
+                    return builder.body(body)
+                            .build();
                 }
-
-                ResponseBody body = ResponseBody.create(jsonString, response.body().contentType());
-
-                return response.newBuilder()
-                        .body(body)
-                        .build();
-
             }
             return response;
         }
@@ -171,11 +251,7 @@ public class ServiceGenerator {
                 //get the signature
                 byte[] hmac = mac.doFinal(messageBytes);
                 hmacString = new String(Hex.bytesToStringLowercase(hmac));
-            } catch (UnsupportedEncodingException e) {
-                e.printStackTrace();
-            } catch (NoSuchAlgorithmException e) {
-                e.printStackTrace();
-            } catch (InvalidKeyException e) {
+            } catch (UnsupportedEncodingException | NoSuchAlgorithmException | InvalidKeyException e) {
                 e.printStackTrace();
             }
 

@@ -199,8 +199,7 @@ public class WorkOrder {
     @Expose
     @ColumnInfo(name="signedByUser")*/
     private String signedByUser;
-    /*error response*/
-    private APIError error = new APIError();
+
 
     public int getId() {
         return id;

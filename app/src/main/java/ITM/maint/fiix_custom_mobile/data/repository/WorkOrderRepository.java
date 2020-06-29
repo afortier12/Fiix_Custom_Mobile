@@ -3,6 +3,7 @@ package ITM.maint.fiix_custom_mobile.data.repository;
 import android.app.Application;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -36,10 +37,12 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     private IWorkOrderService workOrderService;
     private MutableLiveData<List<WorkOrder>> workOrderResponseMutableLiveData;
     private MutableLiveData<List<WorkOrderTask>> workOrderTaskResponseMutableLiveData;
+    private MutableLiveData<String> status;
 
     private ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao IWorkOrderDao;
     private FiixDatabase fiixDatabase;
     private MutableLiveData<WorkOrder> workOrderDBMutableLiveData;
+    private ArrayList<Integer> workOrderIdList;
 
 
     public WorkOrderRepository(Application application) {
@@ -47,7 +50,10 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
         workOrderResponseMutableLiveData = new MutableLiveData<List<WorkOrder>>();
         workOrderTaskResponseMutableLiveData = new MutableLiveData<List<WorkOrderTask>>();
+        status = new MutableLiveData<String>();
         workOrderService = ServiceGenerator.createService(IWorkOrderService.class);
+
+        workOrderIdList = new ArrayList<>();
 
         //fiixDatabase = FiixDatabase.getDatabase(application);
         //IWorkOrderDao workOrderDao= fiixDatabase
@@ -125,7 +131,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         List<FindRequest.Filter> filters = new ArrayList<>();
         filters.add(filter);
 
-        FindRequest workOrderRequest = new FindRequest("FindRequest", clientVersion, "Asset", fields, filters);
+        FindRequest workOrderRequest = new FindRequest("FindRequest", clientVersion, "WorkOrderTask", fields, filters);
         requestTasksFromFiix(workOrderRequest);
     }
 
@@ -137,13 +143,27 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                     public void onResponse(Call<List<WorkOrderTask>> call, Response<List<WorkOrderTask>> response) {
                         if (response.isSuccessful()) {
                             if (response.body() != null) {
-                                workOrderTaskResponseMutableLiveData.postValue(response.body());
+                                if (response.body().isEmpty()){
+                                    workOrderResponseMutableLiveData.postValue(null);
+
+                                } else {
+                                    workOrderIdList.clear();
+                                    for (WorkOrderTask workOrderTask : response.body()) {
+                                        workOrderIdList.add(workOrderTask.getWorkOrderId());
+                                    }
+                                    getWorkOrders(workOrderIdList);
+                                }
                             } else {
-                            Log.d(TAG, "response is empty");
+                                workOrderResponseMutableLiveData.postValue(null);
+                                Log.d(TAG, "response is empty");
                             }
                         } else {
                             APIError error = ErrorUtils.parseError(response);
-                            Log.d(TAG, error.getMessage());
+                            for (String msg : error.getMessages()) {
+                                status.postValue(msg);
+                                Log.d(TAG, String.valueOf(msg));
+                                break;
+                            }
                         }
                     }
 
@@ -176,7 +196,8 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                             }
                         } else {
                             APIError error = ErrorUtils.parseError(response);
-                            Log.d(TAG, error.getMessage());
+                            for (String msg : error.getMessages())
+                                Log.d(TAG, String.valueOf(msg));
                         }
                     }
 
@@ -216,5 +237,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         return workOrderDBMutableLiveData;
     }
 
-
+    public MutableLiveData<String> getStatus() {
+        return status;
+    }
 }

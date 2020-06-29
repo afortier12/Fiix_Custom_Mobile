@@ -20,8 +20,8 @@ public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
     private WorkOrderRepository workOrderRepository;
     private IWorkOrderService workOrderService;
     private LiveData<List<WorkOrder>> workOrderResponseLiveData;
-    private LiveData<List<WorkOrderTask>> workOrderTaskResponseLiveData;
     private LiveData<WorkOrder> workOrderDBLiveData;
+    private LiveData<String> responseStatus;
 
     public WorkOrderViewModel(@NonNull Application application) {
         super(application);
@@ -30,9 +30,9 @@ public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
     public void init() {
         workOrderRepository = new WorkOrderRepository(this.getApplication());
         workOrderService = workOrderRepository.getWorkOrderService();
-        workOrderResponseLiveData = workOrderRepository.getWorkOrderResponseMutableLiveData();
-        workOrderTaskResponseLiveData = workOrderRepository.getWorkOrderTaskResponseMutableLiveData();
+        workOrderResponseLiveData = workOrderRepository.getWorkOrderResponseMutableLiveData();;
         workOrderDBLiveData = workOrderRepository.getWorkOrderDBMutableLiveData();
+        responseStatus = workOrderRepository.getStatus();
     }
 
     @Override
@@ -65,12 +65,13 @@ public class WorkOrderViewModel extends AndroidViewModel implements IWorkOrder{
         return workOrderResponseLiveData;
     }
 
-    public LiveData<List<WorkOrderTask>> getWorkOrderTaskResponseLiveData() {
-        return workOrderTaskResponseLiveData;
-    }
 
     public LiveData<WorkOrder> getWorkOrderDBLiveData() {
         return workOrderDBLiveData;
+    }
+
+    public LiveData<String> getResponseStatus() {
+        return responseStatus;
     }
 
     public void dispose(){

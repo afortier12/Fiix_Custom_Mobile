@@ -161,7 +161,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private int verifyCredentials(User user){
 
-        if (user.getUsername().equalsIgnoreCase(username) && user.getIsGroup() == 0 ) {
+        if (user.getIsGroup() == 0 ) {
             return 0;
         }
         return -1;

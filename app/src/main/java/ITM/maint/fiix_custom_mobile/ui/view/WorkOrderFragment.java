@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
@@ -17,10 +18,19 @@ import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.checkerframework.checker.units.qual.A;
+import com.google.gson.stream.JsonToken;
 
+import org.checkerframework.checker.units.qual.A;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,20 +47,16 @@ public class WorkOrderFragment extends Fragment {
     private ProgressBarDialog progressBarDialog;
     private RecyclerView recyclerView;
     private WorkOrderAdapter adapter;
-    private ArrayList<Integer> workOrderIdList;
 
-    private TextView lblCode;
-    private TextView lblPriority;
-    private TextView lblAsset;
-    private TextView lblDescription;
-    private TextView lblType;
+
     private String username;
     private int id;
+    private ArrayList<WorkOrder> workOrderList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        workOrderIdList = new ArrayList<>();
+        workOrderList = new ArrayList<WorkOrder>();
 
         progressBarDialog = new ProgressBarDialog(getContext());
 
@@ -59,16 +65,32 @@ public class WorkOrderFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_work_order, container, false);
 
-        workOrderIdList.clear();
-        viewModel.getWorkOrderTaskResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrderTask>>() {
+        workOrderList.clear();
+        adapter = new WorkOrderAdapter(workOrderList);
+
+        recyclerView = root.findViewById(R.id.fragment_work_order_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(adapter);
+
+        viewModel.getWorkOrderResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrder>>() {
             @Override
-            public void onChanged(List<WorkOrderTask> workOrderTasks) {
-                if (workOrderTasks != null){
-                    for (WorkOrderTask workOrderTask : workOrderTasks){
-                        workOrderIdList.add(workOrderTask.getWorkOrderId());
-                    }
-                    viewModel.findWorkOrders(workOrderIdList);
+            public void onChanged(List<WorkOrder> workOrders) {
+                if (workOrders != null){
+                    workOrderList.clear();
+                    workOrderList.addAll(workOrders);
+                    adapter.notifyDataSetChanged();
                 }
+                progressBarDialog.dismiss();
+            }
+        });
+
+        viewModel.getResponseStatus().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+                progressBarDialog.dismiss();
             }
         });
 
@@ -82,6 +104,8 @@ public class WorkOrderFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        progressBarDialog.show();
+
         NavController navController = Navigation.findNavController(view);
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).build();
@@ -89,12 +113,6 @@ public class WorkOrderFragment extends Fragment {
 
         NavigationUI.setupWithNavController(
                 toolbar, navController, appBarConfiguration);
-
-        lblAsset = getView().findViewById(R.id.work_order_asset);
-        lblCode = getView().findViewById(R.id.work_order_code);
-        lblDescription = getView().findViewById(R.id.work_order_description);
-        lblPriority = getView().findViewById(R.id.work_order_priority);
-        lblType = getView().findViewById(R.id.work_order_type);
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
@@ -105,7 +123,7 @@ public class WorkOrderFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);
 
-        viewModel.findWorkOrderTasks(username, 0, 0);
+        viewModel.findWorkOrderTasks(username, id, 0);
     }
 
     @Override
