@@ -9,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.ma.cmms.api.client.FiixCmmsClient;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;

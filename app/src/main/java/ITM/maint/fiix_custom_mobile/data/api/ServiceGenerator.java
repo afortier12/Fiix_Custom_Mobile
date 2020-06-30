@@ -84,8 +84,8 @@ public class ServiceGenerator {
         @Override
         public Response intercept(@NotNull Chain chain) throws IOException {
             Response response = chain.proceed(chain.request());
-            if (response.body().contentType() != null){
-                if (response.body().contentType().equals(MediaType.parse("text/plain;charset=utf-8"))) {
+            //if (response.body().contentType() != null){
+                //if (response.body().contentType().equals(MediaType.parse("text/plain;charset=utf-8"))) {
                     String jsonString = response.body().string();
 
                     JSONObject jsonObject;
@@ -180,9 +180,9 @@ public class ServiceGenerator {
                     ResponseBody body = ResponseBody.create(jsonObject.toString(), response.body().contentType());
                     return builder.body(body)
                             .build();
-                }
-            }
-            return response;
+                //}
+            //}
+            //return response;
         }
     }
 

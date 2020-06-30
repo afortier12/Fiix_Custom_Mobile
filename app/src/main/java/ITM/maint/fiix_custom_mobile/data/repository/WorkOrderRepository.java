@@ -10,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -83,22 +84,23 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
         String fields = TextUtils.join(",",workOrderFields);
         List<String> placeHolders = new ArrayList<>();
+        List<Integer> parameters = new ArrayList<>();
         for (Integer id: workOrders){
+            parameters.add(id);
             placeHolders.add("?");
         }
         String placeHolderList = TextUtils.join(",", placeHolders);
-
-        List list = Stream.of(workOrders).collect(Collectors.toList());
+        String parameterList = TextUtils.join(",",parameters);
 
         FindRequest.Filter filter = new FindRequest.Filter(
-                "id in (" + placeHolderList + ")",
-                list
+                "dtmDateCompleted is null and id in (" + placeHolderList + ")",
+                Collections.singletonList(parameterList)
         );
 
         List<FindRequest.Filter> filters = new ArrayList<>();
         filters.add(filter);
 
-        FindRequest workOrderRequest = new FindRequest("FindRequest", clientVersion, "Asset", fields, filters);
+        FindRequest workOrderRequest = new FindRequest("FindRequest", clientVersion, "WorkOrder", fields, filters);
         requestWorkOrdersFromFiix(workOrderRequest);
 
 
@@ -124,7 +126,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         List list = Stream.of(userId).collect(Collectors.toList());
 
         FindRequest.Filter filter = new FindRequest.Filter(
-                "intAssignedToUserID = ?",
+                "dtmDateCompleted is null and intAssignedToUserID = ?",
                 list
         );
 
@@ -158,6 +160,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                                 Log.d(TAG, "response is empty");
                             }
                         } else {
+                            workOrderResponseMutableLiveData.postValue(null);
                             APIError error = ErrorUtils.parseError(response);
                             for (String msg : error.getMessages()) {
                                 status.postValue(msg);
@@ -192,13 +195,16 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                             if (response.body() != null) {
                                 workOrderResponseMutableLiveData.postValue(response.body());
                             } else {
+                                workOrderResponseMutableLiveData.postValue(null);
                                 Log.d(TAG, "response is empty");
                             }
                         } else {
+                            workOrderResponseMutableLiveData.postValue(null);
                             APIError error = ErrorUtils.parseError(response);
                             for (String msg : error.getMessages())
                                 Log.d(TAG, String.valueOf(msg));
                         }
+
                     }
 
                     @Override
