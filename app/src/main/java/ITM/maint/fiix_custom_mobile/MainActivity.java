@@ -1,9 +1,12 @@
 package ITM.maint.fiix_custom_mobile;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;

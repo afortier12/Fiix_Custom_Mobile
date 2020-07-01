@@ -13,13 +13,16 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.ui.view.ProgressBarDialog;
 
 public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.WorkOrderResultsHolder> {
 
     private ArrayList<WorkOrder> workOrders;
+    private ProgressBarDialog progressBarDialog;
 
-    public WorkOrderAdapter(ArrayList<WorkOrder> workOrders) {
+    public WorkOrderAdapter(ArrayList<WorkOrder> workOrders, ProgressBarDialog progressBarDialog) {
         this.workOrders = workOrders;
+        this.progressBarDialog = progressBarDialog;
     }
 
     @NonNull
@@ -49,6 +52,7 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
         holder.descriptionText.setText(description);
         holder.problemCodeText.setText(problemCode);
 
+        if (position >= workOrders.size()) progressBarDialog.dismiss();
     }
 
     @Override

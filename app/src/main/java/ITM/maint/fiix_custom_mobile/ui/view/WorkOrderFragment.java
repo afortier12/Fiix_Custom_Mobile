@@ -1,9 +1,14 @@
 package ITM.maint.fiix_custom_mobile.ui.view;
 
+import android.app.Activity;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -65,8 +70,10 @@ public class WorkOrderFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_work_order, container, false);
 
+        setMargin(root);
+
         workOrderList.clear();
-        adapter = new WorkOrderAdapter(workOrderList);
+        adapter = new WorkOrderAdapter(workOrderList, progressBarDialog);
 
         recyclerView = root.findViewById(R.id.fragment_work_order_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -81,8 +88,10 @@ public class WorkOrderFragment extends Fragment {
                     workOrderList.clear();
                     workOrderList.addAll(workOrders);
                     adapter.notifyDataSetChanged();
+                } else {
+                    progressBarDialog.dismiss();
                 }
-                progressBarDialog.dismiss();
+
             }
         });
 
@@ -125,6 +134,31 @@ public class WorkOrderFragment extends Fragment {
 
         viewModel.findWorkOrderTasks(username, id, 0);
     }
+
+
+    public static int getBottomMargin(Activity activity) {
+        // getRealMetrics is only available with API 17 and +
+        DisplayMetrics metrics = new DisplayMetrics();
+        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        int usableHeight = metrics.heightPixels;
+        activity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
+        int realHeight = metrics.heightPixels;
+        if (realHeight > usableHeight)
+            return realHeight - usableHeight;
+        else
+            return 0;
+    }
+
+    private void setMargin(View view){
+        ViewGroup.LayoutParams p = view.getLayoutParams();
+        if (p instanceof FrameLayout.LayoutParams) {
+            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams)p;
+            lp.setMargins(lp.leftMargin, lp.topMargin, lp.rightMargin , getBottomMargin(getActivity()));
+            view.setLayoutParams(lp);
+        }
+
+    }
+
 
     @Override
     public void onPause() {

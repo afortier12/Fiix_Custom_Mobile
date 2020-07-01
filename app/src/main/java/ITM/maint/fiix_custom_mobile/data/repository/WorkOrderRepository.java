@@ -90,11 +90,10 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
             placeHolders.add("?");
         }
         String placeHolderList = TextUtils.join(",", placeHolders);
-        String parameterList = TextUtils.join(",",parameters);
 
         FindRequest.Filter filter = new FindRequest.Filter(
                 "dtmDateCompleted is null and id in (" + placeHolderList + ")",
-                Collections.singletonList(parameterList)
+                parameters
         );
 
         List<FindRequest.Filter> filters = new ArrayList<>();

@@ -118,7 +118,7 @@ dependencies {
 
 
     //Fiix
-    implementation "com.ma.cmms:fiix-cmms-client-java:2.12.0"
+    //implementation "com.ma.cmms:fiix-cmms-client-java:2.12.0"
 
     apply plugin: "androidx.navigation.safeargs"
     api 'com.google.guava:guava:28.2-jre'
