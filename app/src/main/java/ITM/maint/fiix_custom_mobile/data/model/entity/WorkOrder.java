@@ -2,16 +2,49 @@ package ITM.maint.fiix_custom_mobile.data.model.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
+import androidx.room.Embedded;
 import androidx.room.Entity;
+import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+import androidx.room.Relation;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
+
+import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "work_order_table")
 public class WorkOrder {
+
+    public static class WorkOrderJoinPriority {
+        @Embedded
+        private Priority priority;
+        @Relation(
+                parentColumn = "id",
+                entityColumn = "priorityId"
+        )
+        private List<WorkOrder> workOrderList;
+
+        public Priority getPriority() {
+            return priority;
+        }
+
+        public void setPriority(Priority priority) {
+            this.priority = priority;
+        }
+
+        public List<WorkOrder> getWorkOrderList() {
+            return workOrderList;
+        }
+
+        public void setWorkOrderList(List<WorkOrder> workOrderList) {
+            this.workOrderList = workOrderList;
+        }
+    }
 
     @SerializedName("id")
     @Expose
@@ -19,6 +52,8 @@ public class WorkOrder {
     @NonNull
     @ColumnInfo(name="id")
     private int id;
+    @ColumnInfo(name="username")
+    private String username;
     @SerializedName("strAssignedUserIds")
     @Expose
     @ColumnInfo(name="assignedUserIds")
@@ -26,7 +61,7 @@ public class WorkOrder {
     @SerializedName("intPriorityID")
     @Expose
     @ColumnInfo(name="priorityId")
-    private String priorityId;
+    private int priorityId;
     @SerializedName("intWorkOrderStatusID")
     @Expose
     @ColumnInfo(name="statusId")
@@ -155,51 +190,144 @@ public class WorkOrder {
     @Expose
     @ColumnInfo(name="scheduledMaintenanceId")
     private int scheduledMaintenanceId;
-    @SerializedName("dv_intPriorityID")
-    @Expose
-    @ColumnInfo(name="priority")
-    private String priority;
-    @SerializedName("dv_intRequestedByUserID")
-    @Expose
-    @ColumnInfo(name="requestedByUser")
-    private String requestedByUser;
-    @SerializedName("dv_intSiteID")
-    @Expose
-    @ColumnInfo(name="site")
-    private String site;
-    @SerializedName("dv_intCompletedByUserID")
-    @Expose
-    @ColumnInfo(name="completedByUser")
-    private String completedByUser;
-    @SerializedName("dv_intWorkOrderStatusID")
-    @Expose
-    @ColumnInfo(name="workOrderStatus")
-    private String workOrderStatus;
-    @SerializedName("dv_intMaintenanceTypeID")
-    @Expose
-    @ColumnInfo(name="maintenanceType")
-    private String maintenanceType;
-    @SerializedName("dv_intRCAActionID")
-    @Expose
-    @ColumnInfo(name="action")
-    private String action;
-    @SerializedName("dv_intRCACauseID")
-    @Expose
-    @ColumnInfo(name="cause")
-    private String cause;
-    @SerializedName("dv_intRCAProblemID")
-    @Expose
-    @ColumnInfo(name="problem")
-    private String problem;
-    @SerializedName("dv_intScheduledMaintenanceID")
-    @Expose
-    @ColumnInfo(name="scheduledMaintenance")
-    private String scheduledMaintenance;
-    /*@SerializedName("dv_intSignedByUserID")
-    @Expose
-    @ColumnInfo(name="signedByUser")*/
-    private String signedByUser;
+    @Embedded
+    private ExtraFields extraFields;
 
+
+    public static class ExtraFields {
+        @SerializedName("dv_intPriorityID")
+        @Expose
+        @ColumnInfo(name = "priorityName")
+        private String priorityName;
+        @SerializedName("dv_intRequestedByUserID")
+        @Expose
+        @ColumnInfo(name = "requestedByUser")
+        private String requestedByUser;
+        @SerializedName("dv_intSiteID")
+        @Expose
+        @ColumnInfo(name = "site")
+        private String site;
+        @SerializedName("dv_intCompletedByUserID")
+        @Expose
+        @ColumnInfo(name = "completedByUser")
+        private String completedByUser;
+        @SerializedName("dv_intWorkOrderStatusID")
+        @Expose
+        @ColumnInfo(name = "workOrderStatus")
+        private String workOrderStatus;
+        @SerializedName("dv_intMaintenanceTypeID")
+        @Expose
+        @ColumnInfo(name = "maintenanceType")
+        private String maintenanceType;
+        @SerializedName("dv_intRCAActionID")
+        @Expose
+        @ColumnInfo(name = "action")
+        private String action;
+        @SerializedName("dv_intRCACauseID")
+        @Expose
+        @ColumnInfo(name = "cause")
+        private String cause;
+        @SerializedName("dv_intRCAProblemID")
+        @Expose
+        @ColumnInfo(name = "problem")
+        private String problem;
+        @SerializedName("dv_intScheduledMaintenanceID")
+        @Expose
+        @ColumnInfo(name = "scheduledMaintenance")
+        private String scheduledMaintenance;
+        /*@SerializedName("dv_intSignedByUserID")
+        @Expose
+        @ColumnInfo(name="signedByUser")*/
+        private String signedByUser;
+
+        public String getPriorityName() {
+            return priorityName;
+        }
+
+        public void setPriorityName(String priorityName) {
+            this.priorityName = priorityName;
+        }
+
+        public String getRequestedByUser() {
+            return requestedByUser;
+        }
+
+        public void setRequestedByUser(String requestedByUser) {
+            this.requestedByUser = requestedByUser;
+        }
+
+        public String getSite() {
+            return site;
+        }
+
+        public void setSite(String site) {
+            this.site = site;
+        }
+
+        public String getCompletedByUser() {
+            return completedByUser;
+        }
+
+        public void setCompletedByUser(String completedByUser) {
+            this.completedByUser = completedByUser;
+        }
+
+        public String getWorkOrderStatus() {
+            return workOrderStatus;
+        }
+
+        public void setWorkOrderStatus(String workOrderStatus) {
+            this.workOrderStatus = workOrderStatus;
+        }
+
+        public String getMaintenanceType() {
+            return maintenanceType;
+        }
+
+        public void setMaintenanceType(String maintenanceType) {
+            this.maintenanceType = maintenanceType;
+        }
+
+        public String getAction() {
+            return action;
+        }
+
+        public void setAction(String action) {
+            this.action = action;
+        }
+
+        public String getCause() {
+            return cause;
+        }
+
+        public void setCause(String cause) {
+            this.cause = cause;
+        }
+
+        public String getProblem() {
+            return problem;
+        }
+
+        public void setProblem(String problem) {
+            this.problem = problem;
+        }
+
+        public String getScheduledMaintenance() {
+            return scheduledMaintenance;
+        }
+
+        public void setScheduledMaintenance(String scheduledMaintenance) {
+            this.scheduledMaintenance = scheduledMaintenance;
+        }
+
+        public String getSignedByUser() {
+            return signedByUser;
+        }
+
+        public void setSignedByUser(String signedByUser) {
+            this.signedByUser = signedByUser;
+        }
+    }
 
     public int getId() {
         return id;
@@ -217,11 +345,11 @@ public class WorkOrder {
         this.assignedUserIds = assignedUserIds;
     }
 
-    public String getPriorityId() {
+    public int getPriorityId() {
         return priorityId;
     }
 
-    public void setPriorityId(String priorityId) {
+    public void setPriorityId(int priorityId) {
         this.priorityId = priorityId;
     }
 
@@ -481,91 +609,20 @@ public class WorkOrder {
         this.scheduledMaintenanceId = scheduledMaintenanceId;
     }
 
-    public String getPriority() {
-        return priority;
+    public String getUsername() {
+        return username;
     }
 
-    public void setPriority(String priority) {
-        this.priority = priority;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getRequestedByUser() {
-        return requestedByUser;
+    public ExtraFields getExtraFields() {
+        return extraFields;
     }
 
-    public void setRequestedByUser(String requestedByUser) {
-        this.requestedByUser = requestedByUser;
+    public void setExtraFields(ExtraFields extraFields) {
+        this.extraFields = extraFields;
     }
 
-    public String getSite() {
-        return site;
-    }
-
-    public void setSite(String site) {
-        this.site = site;
-    }
-
-    public String getCompletedByUser() {
-        return completedByUser;
-    }
-
-    public void setCompletedByUser(String completedByUser) {
-        this.completedByUser = completedByUser;
-    }
-
-    public String getWorkOrderStatus() {
-        return workOrderStatus;
-    }
-
-    public void setWorkOrderStatus(String workOrderStatus) {
-        this.workOrderStatus = workOrderStatus;
-    }
-
-    public String getMaintenanceType() {
-        return maintenanceType;
-    }
-
-    public void setMaintenanceType(String maintenanceType) {
-        this.maintenanceType = maintenanceType;
-    }
-
-    public String getAction() {
-        return action;
-    }
-
-    public void setAction(String action) {
-        this.action = action;
-    }
-
-    public String getCause() {
-        return cause;
-    }
-
-    public void setCause(String cause) {
-        this.cause = cause;
-    }
-
-    public String getProblem() {
-        return problem;
-    }
-
-    public void setProblem(String problem) {
-        this.problem = problem;
-    }
-
-    public String getScheduledMaintenance() {
-        return scheduledMaintenance;
-    }
-
-    public void setScheduledMaintenance(String scheduledMaintenance) {
-        this.scheduledMaintenance = scheduledMaintenance;
-    }
-
-    public String getSignedByUser() {
-        return signedByUser;
-    }
-
-    public void setSignedByUser(String signedByUser) {
-        this.signedByUser = signedByUser;
-    }
 }

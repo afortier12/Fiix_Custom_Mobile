@@ -47,7 +47,6 @@ public class PartRepository extends BaseRepository implements IPartRepository{
     private FiixDatabase fiixDatabase;
     private MutableLiveData<Part> partDBMutableLiveData;
     private CompositeDisposable compositeDisposable;
-    private DisposableCompletableObserver disposableCompletableObserver;
 
     public PartRepository(Application application) {
         super(application);
@@ -57,16 +56,14 @@ public class PartRepository extends BaseRepository implements IPartRepository{
 
         fiixDatabase = FiixDatabase.getDatabase(application);
         IPartDao = fiixDatabase.partDao();
-
+        compositeDisposable = new CompositeDisposable();
     }
 
     @Override
     public void addPart(Part part) {
         Completable completable = fiixDatabase.partDao().insert(part);
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
-        completable.subscribeOn(scheduler)
-                .subscribe(disposableCompletableObserver);
-        compositeDisposable.add(new DisposableCompletableObserver() {
+        disposableCompletableObserver = new DisposableCompletableObserver() {
             @Override
             public void onComplete() {
                 Log.d(TAG, "Part added to DB");
@@ -76,7 +73,10 @@ public class PartRepository extends BaseRepository implements IPartRepository{
             public void onError(Throwable e) {
                 Log.d(TAG, "Error adding part to DB");
             }
-        });
+        };
+        completable.subscribeOn(scheduler)
+            .subscribe(disposableCompletableObserver);
+        compositeDisposable.add(disposableCompletableObserver);
     }
 
     @Override
@@ -99,8 +99,7 @@ public class PartRepository extends BaseRepository implements IPartRepository{
         Single<Part> single = fiixDatabase.partDao().hasPart(barcode, new Date());
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
 
-        single.subscribeOn(scheduler);
-        single.subscribe(new SingleObserver<Part>() {
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<Part>() {
             @Override
             public void onSubscribe(Disposable d) {
                 // add it to a CompositeDisposable

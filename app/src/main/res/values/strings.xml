@@ -77,4 +77,9 @@
     <string name="login">Login</string>
     <string name="user_name">User Name</string>
     <string name="password">Password</string>
+
+    <!-- work order status messages -->
+    <string name="work_orders_added">"Work orders added to database</string>
+    <string name="work_order_add_error">"Error adding work order to database</string>
+    <string name="hello">hello</string>
 </resources>

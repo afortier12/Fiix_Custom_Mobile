@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.stream.JsonToken;
 
 import org.checkerframework.checker.units.qual.A;
@@ -41,13 +43,13 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
-import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
-import ITM.maint.fiix_custom_mobile.data.repository.IWorkOrderRepository;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderViewModel;
 
 public class WorkOrderFragment extends Fragment {
 
+    private static final String TAG = "WorkOrderFragment";
     private WorkOrderViewModel viewModel;
     private ProgressBarDialog progressBarDialog;
     private RecyclerView recyclerView;
@@ -56,12 +58,12 @@ public class WorkOrderFragment extends Fragment {
 
     private String username;
     private int id;
-    private ArrayList<WorkOrder> workOrderList;
+    private ArrayList<WorkOrderJoinPriority> workOrderList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        workOrderList = new ArrayList<WorkOrder>();
+        workOrderList = new ArrayList<WorkOrderJoinPriority>();
 
         progressBarDialog = new ProgressBarDialog(getContext());
 
@@ -73,7 +75,7 @@ public class WorkOrderFragment extends Fragment {
         setMargin(root);
 
         workOrderList.clear();
-        adapter = new WorkOrderAdapter(workOrderList, progressBarDialog);
+        adapter = new WorkOrderAdapter(workOrderList);
 
         recyclerView = root.findViewById(R.id.fragment_work_order_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -81,28 +83,39 @@ public class WorkOrderFragment extends Fragment {
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
         recyclerView.setAdapter(adapter);
 
+        viewModel.getWorkOrderDBLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrderJoinPriority>>() {
+            @Override
+            public void onChanged(List<WorkOrderJoinPriority> workOrderJoinPriorities) {
+                if (workOrderJoinPriorities != null) {
+                    workOrderList.clear();
+                    workOrderList.addAll(workOrderJoinPriorities);
+                    adapter.notifyDataSetChanged();
+                }
+                progressBarDialog.dismiss();
+                }
+        });
+
         viewModel.getWorkOrderResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrder>>() {
             @Override
             public void onChanged(List<WorkOrder> workOrders) {
                 if (workOrders != null){
-                    workOrderList.clear();
-                    workOrderList.addAll(workOrders);
-                    adapter.notifyDataSetChanged();
+                    //viewModel.insertWorkOrders(workOrders, username);
+                    Log.d(TAG, "work orders response live data ");
                 } else {
-                    progressBarDialog.dismiss();
+                    Log.d(TAG, "no work orders to populate in fragment ");
                 }
-
             }
         });
 
         viewModel.getResponseStatus().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(String s) {
-                Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
+                Snackbar.make(getView(), s, Snackbar.LENGTH_LONG).show();
                 progressBarDialog.dismiss();
             }
         });
 
+        assert getArguments() != null;
         username = getArguments().getString("User");
         id = getArguments().getInt("id");
 
@@ -132,7 +145,7 @@ public class WorkOrderFragment extends Fragment {
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);
 
-        viewModel.findWorkOrderTasks(username, id, 0);
+        viewModel.getWorkOrders(username, id);
     }
 
 

@@ -6,6 +6,7 @@ import java.util.List;
 
 
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import retrofit2.Call;
@@ -21,6 +22,10 @@ public interface IWorkOrderService {
     // Get work order list by ids
     @POST("/api/")
     Call<List<WorkOrder>> getWorkOrderList(@Body FindRequest workOrderListRequest);
+
+    // Get priority list
+    @POST("/api/")
+    Call<List<Priority>> getPriorityList(@Body FindRequest priorityRequest);
 
     // Get work order details by id
     @POST("/api/")

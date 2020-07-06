@@ -5,7 +5,6 @@ import android.app.Application;
 import javax.inject.Inject;
 
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
-import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.di.DaggerRepositoryModule_RepositoryComponent;
 import ITM.maint.fiix_custom_mobile.di.RepositoryExecutor;
 import ITM.maint.fiix_custom_mobile.di.RepositoryModule;

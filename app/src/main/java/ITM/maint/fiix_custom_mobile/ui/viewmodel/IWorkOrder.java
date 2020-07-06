@@ -4,8 +4,11 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.api.requests.ChangeRequest;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 
 public interface IWorkOrder {
+
+    public void getWorkOrders(String username, int userId);
 
     public void findWorkOrderTasks(String username, int userId, int workOrderId);
 

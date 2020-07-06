@@ -11,6 +11,8 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -18,18 +20,26 @@ import java.util.concurrent.Executors;
 import javax.inject.Inject;
 
 import ITM.maint.fiix_custom_mobile.constants.Fiix;
+import ITM.maint.fiix_custom_mobile.data.model.dao.ILookupTablesDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IUserDao;
+import ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.User;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 
-@Database(entities = {Part.class, User.class},version = 1)
+@Database(entities = {Part.class, User.class, WorkOrder.class, WorkOrderTask.class,
+        Priority.class},version = 1)
 @TypeConverters({Converters.class})
 public abstract class FiixDatabase extends RoomDatabase {
 
     public abstract IPartDao partDao();
     public abstract IUserDao userDao();
+    public abstract IWorkOrderDao workOrderDao();
+    public abstract ILookupTablesDao lookupTablesDao();
 
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile FiixDatabase INSTANCE;
@@ -71,13 +81,18 @@ public abstract class FiixDatabase extends RoomDatabase {
             databaseOpenExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
-                /*WordDao dao = INSTANCE.wordDao();
-                dao.deleteAll();
+                /*ILookupTablesDao lookupTablesDao= INSTANCE.lookupTablesDao();
+                lookupTablesDao.deleteAll();
 
-                Word word = new Word("Hello");
-                dao.insert(word);
-                word = new Word("World");
-                dao.insert(word);*/
+                List<Priority> priorities = new ArrayList<>();
+                priorities.add(new Priority(2665,"High", 1));
+                priorities.add(new Priority(2666,"High", 2));
+                priorities.add(new Priority(2667,"Medium", 3));
+                priorities.add(new Priority(2668,"Low", 4));
+                priorities.add(new Priority(2669,"Low",5 ));
+
+                lookupTablesDao.insert(priorities);*/
+
             });
         }
     };

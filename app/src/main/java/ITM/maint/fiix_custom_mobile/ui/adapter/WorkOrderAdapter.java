@@ -1,11 +1,17 @@
 package ITM.maint.fiix_custom_mobile.ui.adapter;
 
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -13,22 +19,22 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
-import ITM.maint.fiix_custom_mobile.ui.view.ProgressBarDialog;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
+import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 
 public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.WorkOrderResultsHolder> {
 
-    private ArrayList<WorkOrder> workOrders;
-    private ProgressBarDialog progressBarDialog;
+    private ArrayList<WorkOrderJoinPriority> workOrderPriorityList;
+    private View itemView;
 
-    public WorkOrderAdapter(ArrayList<WorkOrder> workOrders, ProgressBarDialog progressBarDialog) {
-        this.workOrders = workOrders;
-        this.progressBarDialog = progressBarDialog;
+    public WorkOrderAdapter(ArrayList<WorkOrderJoinPriority> workOrderPriorityList) {
+        this.workOrderPriorityList = workOrderPriorityList;
     }
 
     @NonNull
     @Override
     public WorkOrderAdapter.WorkOrderResultsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
+        itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.work_order_item, parent, false);
 
         return new WorkOrderAdapter.WorkOrderResultsHolder(itemView);
@@ -36,33 +42,53 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
 
     @Override
     public void onBindViewHolder(@NonNull WorkOrderAdapter.WorkOrderResultsHolder holder, int position) {
-        WorkOrder workOrder = (WorkOrder) workOrders.get(position);
+        WorkOrderJoinPriority workOrderPriority = (WorkOrderJoinPriority) workOrderPriorityList.get(position);
 
-        String priority = workOrder.getPriority();
-        String code = workOrder.getCode();
-        String type = workOrder.getMaintenanceType();
-        String asset = workOrder.getAssets();
-        String description = workOrder.getDescription();
-        String problemCode = workOrder.getProblem();
+        int order = workOrderPriority.getPriority().getOrder();
+        List<WorkOrder> workOrderList = workOrderPriority.getWorkOrderList();
 
-        holder.priorityText.setText(priority);
-        holder.codeText.setText(code);
-        holder.typeText.setText(type);
-        holder.assetText.setText(asset);
-        holder.descriptionText.setText(description);
-        holder.problemCodeText.setText(problemCode);
+        for (WorkOrder workOrder: workOrderList) {
+            String priority = String.valueOf(order);
+            String code = workOrder.getCode();
+            String type = workOrder.getExtraFields().getMaintenanceType();
+            String asset = workOrder.getAssets();
+            String description = workOrder.getDescription();
+            String problemCode = workOrder.getExtraFields().getProblem();
 
-        if (position >= workOrders.size()) progressBarDialog.dismiss();
+            if (order < 3){
+                setTextViewDrawableColor(holder.priorityText, Color.RED);
+            } else if (order < 5) {
+                setTextViewDrawableColor(holder.priorityText, Color.YELLOW);
+            } else {
+                setTextViewDrawableColor(holder.priorityText, Color.BLUE);
+            }
+
+            holder.priorityText.setText(priority);
+            holder.codeText.setText(code);
+            holder.typeText.setText(type);
+            holder.assetText.setText(asset);
+            holder.descriptionText.setText(description);
+            holder.problemCodeText.setText(problemCode);
+        }
+
     }
 
     @Override
     public int getItemCount() {
-        return workOrders.size();
+        return workOrderPriorityList.size();
     }
 
-    public void setResults(List<WorkOrder> results) {
-        this.workOrders.addAll(results);
+    public void setResults(List<WorkOrderJoinPriority> results) {
+        this.workOrderPriorityList.addAll(results);
         notifyDataSetChanged();
+    }
+
+    private void setTextViewDrawableColor(TextView textView, int color) {
+        for (Drawable drawable : textView.getCompoundDrawables()) {
+            if (drawable != null) {
+                drawable.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
+            }
+        }
     }
 
     class WorkOrderResultsHolder extends RecyclerView.ViewHolder{
@@ -82,6 +108,7 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
             assetText = itemView.findViewById(R.id.work_order_asset);
             descriptionText = itemView.findViewById(R.id.work_order_description);
             problemCodeText = itemView.findViewById(R.id.work_order_problem_code);
+
         }
     }
 }

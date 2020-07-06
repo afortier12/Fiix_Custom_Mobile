@@ -10,7 +10,7 @@ import com.google.gson.annotations.SerializedName;
 
 import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
 
-@Entity(tableName = "work_order_table")
+@Entity(tableName = "work_order_task_table")
 public class WorkOrderTask {
 
     @SerializedName("id")
@@ -123,10 +123,6 @@ public class WorkOrderTask {
     @Expose
     @ColumnInfo(name="isCompletable")
     private String isCompletable;
-    /*error response*/
-    @SerializedName("error")
-    @Expose
-    private APIError error;
 
     public int getId() {
         return id;
