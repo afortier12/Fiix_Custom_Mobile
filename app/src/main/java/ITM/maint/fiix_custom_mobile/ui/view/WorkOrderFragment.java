@@ -19,8 +19,10 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -29,7 +31,9 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.gson.Gson;
 import com.google.gson.stream.JsonToken;
 
 import org.checkerframework.checker.units.qual.A;
@@ -45,9 +49,10 @@ import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderAdapter;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderViewModel;
 
-public class WorkOrderFragment extends Fragment {
+public class WorkOrderFragment extends Fragment  {
 
     private static final String TAG = "WorkOrderFragment";
     private WorkOrderViewModel viewModel;
@@ -58,12 +63,12 @@ public class WorkOrderFragment extends Fragment {
 
     private String username;
     private int id;
-    private ArrayList<WorkOrderJoinPriority> workOrderList;
+    private ArrayList<WorkOrder> workOrderList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-        workOrderList = new ArrayList<WorkOrderJoinPriority>();
+        workOrderList = new ArrayList<WorkOrder>();
 
         progressBarDialog = new ProgressBarDialog(getContext());
 
@@ -88,7 +93,15 @@ public class WorkOrderFragment extends Fragment {
             public void onChanged(List<WorkOrderJoinPriority> workOrderJoinPriorities) {
                 if (workOrderJoinPriorities != null) {
                     workOrderList.clear();
-                    workOrderList.addAll(workOrderJoinPriorities);
+                    Gson gson = new Gson();
+                    for (WorkOrderJoinPriority workOrderJoinPriority : workOrderJoinPriorities){
+                        for (WorkOrder workOrder : workOrderJoinPriority.getWorkOrderList()) {
+                            String jsonString = gson.toJson(workOrder);
+                            WorkOrder joinedWorkOrder = gson.fromJson(jsonString, WorkOrder.class);
+                            joinedWorkOrder.setPriorityOrder(workOrderJoinPriority.getPriority().getOrder());
+                            workOrderList.add(joinedWorkOrder);
+                        }
+                    }
                     adapter.notifyDataSetChanged();
                 }
                 progressBarDialog.dismiss();
@@ -115,9 +128,22 @@ public class WorkOrderFragment extends Fragment {
             }
         });
 
-        assert getArguments() != null;
-        username = getArguments().getString("User");
-        id = getArguments().getInt("id");
+        SavedStateViewModelFactory factory = new SavedStateViewModelFactory(getActivity().getApplication(), this);
+        SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity(), factory).get(SharedViewModel.class);
+
+        String usernameArg = getArguments().getString("User");
+        if (usernameArg != null) {
+            sharedViewModel.setUsername(usernameArg);
+            sharedViewModel.setUserId(getArguments().getInt("id"));
+        } else if (savedInstanceState != null){
+            sharedViewModel.setUsername(savedInstanceState.getString("USERNAME_KEY"));
+            sharedViewModel.setUserId(savedInstanceState.getInt("USERID_KEY"));
+        }
+
+        username = sharedViewModel.getUsername().getValue();
+        id = sharedViewModel.getUserId().getValue();
+
+
 
         return root;
     }
@@ -128,13 +154,14 @@ public class WorkOrderFragment extends Fragment {
 
         progressBarDialog.show();
 
-        NavController navController = Navigation.findNavController(view);
+        /*NavController navController = Navigation.findNavController(view);
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).build();
-        Toolbar toolbar = view.findViewById(R.id.work_order_toolbar);
 
-        NavigationUI.setupWithNavController(
-                toolbar, navController, appBarConfiguration);
+        Toolbar toolbar = view.findViewById(R.id.part_search_toolbar);
+        NavigationUI.setupWithNavController(null, navController, appBarConfiguration);*/
+
+
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
@@ -183,6 +210,13 @@ public class WorkOrderFragment extends Fragment {
     public void onDestroy(){
         viewModel.dispose();
         super.onDestroy();
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("USERNAME_KEY", username);
+        outState.putInt("USERID_KEY", id);
     }
 
 

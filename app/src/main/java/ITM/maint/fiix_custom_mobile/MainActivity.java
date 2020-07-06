@@ -17,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -33,6 +35,7 @@ import javax.inject.Inject;
 
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 import dagger.android.support.DaggerAppCompatActivity;
 
 public class MainActivity extends DaggerAppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
@@ -63,12 +66,6 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
 
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        /*AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_barcode, R.id.navigation_partSearch)
-                .build();
-        */
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         usernameArg = new NavArgument.Builder().setDefaultValue(username).build();
@@ -79,7 +76,6 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         navGraph.addArgument("id", idArg);
         navController.setGraph(navGraph);
         NavigationUI.setupWithNavController(navView, navController);
-
 
         checkCameraPermissions();
     }

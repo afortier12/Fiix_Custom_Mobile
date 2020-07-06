@@ -10,8 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
-import androidx.core.graphics.drawable.DrawableCompat;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -20,15 +19,14 @@ import java.util.List;
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
-import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 
 public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.WorkOrderResultsHolder> {
 
-    private ArrayList<WorkOrderJoinPriority> workOrderPriorityList;
+    private ArrayList<WorkOrder> workOrderList;
     private View itemView;
 
-    public WorkOrderAdapter(ArrayList<WorkOrderJoinPriority> workOrderPriorityList) {
-        this.workOrderPriorityList = workOrderPriorityList;
+    public WorkOrderAdapter(ArrayList<WorkOrder> workOrderList) {
+        this.workOrderList = workOrderList;
     }
 
     @NonNull
@@ -42,54 +40,48 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
 
     @Override
     public void onBindViewHolder(@NonNull WorkOrderAdapter.WorkOrderResultsHolder holder, int position) {
-        WorkOrderJoinPriority workOrderPriority = (WorkOrderJoinPriority) workOrderPriorityList.get(position);
+        WorkOrder workOrder = (WorkOrder) workOrderList.get(position);
 
-        int order = workOrderPriority.getPriority().getOrder();
-        List<WorkOrder> workOrderList = workOrderPriority.getWorkOrderList();
+        int order = workOrder.getPriorityOrder();
+        String priority = workOrder.getExtraFields().getPriorityName();
+        String code = workOrder.getCode();
+        String type = workOrder.getExtraFields().getMaintenanceType();
+        String asset = workOrder.getAssets();
+        String description = workOrder.getDescription();
+        String problemCode = workOrder.getExtraFields().getProblem();
 
-        for (WorkOrder workOrder: workOrderList) {
-            String priority = String.valueOf(order);
-            String code = workOrder.getCode();
-            String type = workOrder.getExtraFields().getMaintenanceType();
-            String asset = workOrder.getAssets();
-            String description = workOrder.getDescription();
-            String problemCode = workOrder.getExtraFields().getProblem();
-
-            if (order < 3){
-                setTextViewDrawableColor(holder.priorityText, Color.RED);
-            } else if (order < 5) {
-                setTextViewDrawableColor(holder.priorityText, Color.YELLOW);
-            } else {
-                setTextViewDrawableColor(holder.priorityText, Color.BLUE);
-            }
-
-            holder.priorityText.setText(priority);
-            holder.codeText.setText(code);
-            holder.typeText.setText(type);
-            holder.assetText.setText(asset);
-            holder.descriptionText.setText(description);
-            holder.problemCodeText.setText(problemCode);
+        Drawable img;
+        if (order < 3){
+            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_error_24px, null);
+            holder.priorityText.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+        } else if (order < 5) {
+            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_warning_24px, null);
+            holder.priorityText.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+        } else {
+            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_schedule_24px, null);
+            holder.priorityText.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
         }
+
+        holder.priorityText.setText(priority);
+        holder.codeText.setText(code);
+        holder.typeText.setText(type);
+        holder.assetText.setText(asset);
+        holder.descriptionText.setText(description);
+        holder.problemCodeText.setText(problemCode);
+
 
     }
 
     @Override
     public int getItemCount() {
-        return workOrderPriorityList.size();
+        return workOrderList.size();
     }
 
-    public void setResults(List<WorkOrderJoinPriority> results) {
-        this.workOrderPriorityList.addAll(results);
+    public void setResults(List<WorkOrder> results) {
+        this.workOrderList.addAll(results);
         notifyDataSetChanged();
     }
 
-    private void setTextViewDrawableColor(TextView textView, int color) {
-        for (Drawable drawable : textView.getCompoundDrawables()) {
-            if (drawable != null) {
-                drawable.setColorFilter(new PorterDuffColorFilter(color, PorterDuff.Mode.SRC_IN));
-            }
-        }
-    }
 
     class WorkOrderResultsHolder extends RecyclerView.ViewHolder{
         private TextView priorityText;

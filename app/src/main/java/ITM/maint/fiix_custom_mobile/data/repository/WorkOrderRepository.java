@@ -93,6 +93,12 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         this.username = username;
         this.userId = userId;
 
+        getPrioritiesFromDB();
+
+
+    }
+
+    private void getWorkOrdersFromDB(){
         //get from database if available
         Single<List<WorkOrder>> single = fiixDatabase.workOrderDao().getWorkOrdersforUser(username);
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
@@ -107,9 +113,9 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
             public void onSuccess(List<WorkOrder> workOrderList) {
                 if (workOrderList.isEmpty()){
                     //no work orders in database -> request from Fiix
-                    getTasksFromFiix(username, userId, 0);
+                    ; getTasksFromFiix(username, userId, 0);
                 } else {
-                    getPrioritiesFromDB();
+                    getWorkOrdersWithPriorities();
                     //getPrioritiesFromFiix();
                     //workOrderResponseMutableLiveData.postValue(workOrderList);
                 }
@@ -297,7 +303,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                // String msg = Resources.getSystem().getString(R.string.work_orders_added);
                 //status.postValue(msg);
                // Log.d(TAG, msg);
-                getPrioritiesFromDB();
+                getWorkOrdersWithPriorities();
                 Log.d(TAG, "work order added to DB");
             }
 
@@ -329,7 +335,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                     //no work orders in database -> request from Fiix
                     getPrioritiesFromFiix();
                 } else {
-                    getWorkOrdersWithPriorities();
+                    getWorkOrdersFromDB();
                     //workOrderResponseMutableLiveData.postValue(workOrderList);
                 }
             }
@@ -415,7 +421,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                 // String msg = Resources.getSystem().getString(R.string.work_orders_added);
                 //status.postValue(msg);
                 // Log.d(TAG, msg);
-                getWorkOrdersWithPriorities();
+                getWorkOrdersFromDB();
                 Log.d(TAG, "priorities added to DB");
             }
 

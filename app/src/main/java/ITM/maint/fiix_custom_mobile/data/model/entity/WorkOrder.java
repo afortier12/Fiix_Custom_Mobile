@@ -5,6 +5,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
+import androidx.room.Index;
 import androidx.room.PrimaryKey;
 import androidx.room.Relation;
 
@@ -17,7 +18,13 @@ import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
 
 import static androidx.room.ForeignKey.CASCADE;
 
-@Entity(tableName = "work_order_table")
+@Entity(tableName = "work_order_table",
+        indices = {@Index(value = {"id"}, unique = true),
+        @Index(value = {"priorityId"})},
+    foreignKeys = @ForeignKey(entity = Priority.class,
+    parentColumns = "id",
+    childColumns = "priorityId",
+    onDelete = CASCADE))
 public class WorkOrder {
 
     public static class WorkOrderJoinPriority {
@@ -25,7 +32,8 @@ public class WorkOrder {
         private Priority priority;
         @Relation(
                 parentColumn = "id",
-                entityColumn = "priorityId"
+                entityColumn = "priorityId",
+                entity = WorkOrder.class
         )
         private List<WorkOrder> workOrderList;
 
@@ -192,6 +200,8 @@ public class WorkOrder {
     private int scheduledMaintenanceId;
     @Embedded
     private ExtraFields extraFields;
+    @ColumnInfo(name="priorityOrder")
+    private int priorityOrder;
 
 
     public static class ExtraFields {
@@ -625,4 +635,11 @@ public class WorkOrder {
         this.extraFields = extraFields;
     }
 
+    public int getPriorityOrder() {
+        return priorityOrder;
+    }
+
+    public void setPriorityOrder(int priorityOrder) {
+        this.priorityOrder = priorityOrder;
+    }
 }

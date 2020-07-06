@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -29,6 +31,7 @@ import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.ui.adapter.PartFindResultsAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.PartSearchViewModel;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkflowModel;
 
 public class PartSearchFragment extends Fragment {
@@ -41,6 +44,9 @@ public class PartSearchFragment extends Fragment {
     private PartSearchViewModel viewModel;
     private PartFindResultsAdapter adapter;
     private ArrayList<Part> partList;
+
+    private String username;
+    private int userId;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -84,13 +90,28 @@ public class PartSearchFragment extends Fragment {
 
         //progressBarDialog.show();
 
-        NavController navController = Navigation.findNavController(view);
+        /*NavController navController = Navigation.findNavController(view);
         AppBarConfiguration appBarConfiguration =
                 new AppBarConfiguration.Builder(navController.getGraph()).build();
-        Toolbar toolbar = view.findViewById(R.id.part_search_toolbar);
+        BottomNavigationView navView = view.findViewById(R.id.nav_view);
 
         NavigationUI.setupWithNavController(
-                toolbar, navController, appBarConfiguration);
+                navView, navController, appBarConfiguration);*/
+
+        SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity()).get(SharedViewModel.class);
+        sharedViewModel.getUsername().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                username = s;
+            }
+        });
+
+        sharedViewModel.getUserId().observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer i) {
+                userId = i;
+            }
+        });
 
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override

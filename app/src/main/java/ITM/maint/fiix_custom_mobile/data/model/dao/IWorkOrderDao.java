@@ -1,5 +1,7 @@
 package ITM.maint.fiix_custom_mobile.data.model.dao;
 
+import android.text.TextUtils;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
@@ -7,6 +9,8 @@ import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.constants.WorkOrders;
@@ -46,10 +50,13 @@ public interface IWorkOrderDao {
     @Query("SELECT * FROM work_order_table where assignedUsers LIKE :username")
     Single<List<WorkOrder>> getAssignedWorkOrder(String username);
 
+
+
     @Transaction
     @Query("SELECT * FROM work_order_table inner join priority_table " +
             "on priorityId = priority_table.id " +
-            "where username = :userName and dateCompleted is null")
+            "where username = :userName and dateCompleted is null " +
+            "GROUP BY priorityId")
     Single<List<WorkOrderJoinPriority>> getWorkOrdersforUserWithPriorities(String userName);
 
     @Query("SELECT * FROM priority_table")

@@ -21,8 +21,7 @@
             app:popUpToInclusive="false" />
         <argument
             android:name="User"
-            app:argType="string"
-            android:defaultValue="username" />
+            app:argType="string" />
         <argument
             android:name="id"
             app:argType="integer" />
