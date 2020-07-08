@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,14 +53,14 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
 
         Drawable img;
         if (order < 3){
-            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_error_24px, null);
-            holder.priorityText.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_high_priority, null);
+            holder.priorityIcon.setImageDrawable(img);
         } else if (order < 5) {
-            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_warning_24px, null);
-            holder.priorityText.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_medium_priority, null);
+            holder.priorityIcon.setImageDrawable(img);
         } else {
-            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_schedule_24px, null);
-            holder.priorityText.setCompoundDrawablesWithIntrinsicBounds(img, null, null, null);
+            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_calendar, null);
+            holder.priorityIcon.setImageDrawable(img);
         }
 
         holder.priorityText.setText(priority);
@@ -90,6 +91,7 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
         private TextView assetText;
         private TextView descriptionText;
         private TextView problemCodeText;
+        private ImageView priorityIcon;
 
         public WorkOrderResultsHolder(@NonNull View itemView) {
             super(itemView);
@@ -100,6 +102,7 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
             assetText = itemView.findViewById(R.id.work_order_asset);
             descriptionText = itemView.findViewById(R.id.work_order_description);
             problemCodeText = itemView.findViewById(R.id.work_order_problem_code);
+            priorityIcon = itemView.findViewById(R.id.work_order_priority_icon);
 
         }
     }

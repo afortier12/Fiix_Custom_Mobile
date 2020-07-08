@@ -43,6 +43,8 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
@@ -102,6 +104,12 @@ public class WorkOrderFragment extends Fragment  {
                             workOrderList.add(joinedWorkOrder);
                         }
                     }
+                    Collections.sort(workOrderList, new Comparator<WorkOrder>() {
+                        @Override
+                        public int compare(WorkOrder o1, WorkOrder o2) {
+                            return Integer.compare(o1.getPriorityOrder(), o2.getPriorityOrder());
+                        }
+                    });
                     adapter.notifyDataSetChanged();
                 }
                 progressBarDialog.dismiss();

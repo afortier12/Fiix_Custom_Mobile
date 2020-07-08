@@ -14,6 +14,7 @@ import com.google.android.material.snackbar.Snackbar;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -52,6 +53,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class WorkOrderRepository extends BaseRepository implements IWorkOrderRepository{
+
+    private static int FRESH_TIMEOUT_IN_MINUTES = 3;
 
     private static final String TAG ="WorkOrderRepository";
     private IWorkOrderService workOrderService;
@@ -113,7 +116,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
             public void onSuccess(List<WorkOrder> workOrderList) {
                 if (workOrderList.isEmpty()){
                     //no work orders in database -> request from Fiix
-                    ; getTasksFromFiix(username, userId, 0);
+                    getTasksFromFiix(username, userId, 0);
                 } else {
                     getWorkOrdersWithPriorities();
                     //getPrioritiesFromFiix();
@@ -479,6 +482,13 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     }
 
+
+    private Date getMaxRefreshTime(Date currentDate){
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(currentDate);
+        cal.add(Calendar.MINUTE, -FRESH_TIMEOUT_IN_MINUTES);
+        return cal.getTime();
+    }
 
     public void dispose(){
         if (compositeDisposable != null)

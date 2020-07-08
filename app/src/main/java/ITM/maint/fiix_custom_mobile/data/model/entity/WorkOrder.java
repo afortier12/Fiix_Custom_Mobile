@@ -12,6 +12,7 @@ import androidx.room.Relation;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
@@ -202,6 +203,8 @@ public class WorkOrder {
     private ExtraFields extraFields;
     @ColumnInfo(name="priorityOrder")
     private int priorityOrder;
+    @ColumnInfo(name="lastRefresh")
+    private Date lastRefresh;
 
 
     public static class ExtraFields {
@@ -641,5 +644,13 @@ public class WorkOrder {
 
     public void setPriorityOrder(int priorityOrder) {
         this.priorityOrder = priorityOrder;
+    }
+
+    public Date getLastRefresh() {
+        return lastRefresh;
+    }
+
+    public void setLastRefresh(Date lastRefresh) {
+        this.lastRefresh = lastRefresh;
     }
 }
