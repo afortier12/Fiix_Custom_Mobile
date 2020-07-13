@@ -12,13 +12,13 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:id="@+id/part_item_LeftLayout"
+            android:id="@+id/frag_work_order_leftLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@id/work_order_description"
-            app:layout_constraintEnd_toStartOf="@+id/part_item_rightLayout"
+            app:layout_constraintBottom_toTopOf="@id/frag_work_order_problem_code"
+            app:layout_constraintEnd_toStartOf="@+id/frag_work_order_rightLayout"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="1"
@@ -28,12 +28,12 @@
             <!-- android:drawableStart="@drawable/ic_error_24px"/> -->
 
             <TextView
-                android:id="@+id/work_order_code"
+                android:id="@+id/frag_work_order_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <ImageView
-                android:id="@+id/work_order_priority_icon"
+                android:id="@+id/frag_work_order_priority_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:srcCompat="@drawable/ic_calendar" />
@@ -42,64 +42,78 @@
         </LinearLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/part_item_rightLayout"
+            android:id="@+id/frag_work_order_rightLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="4dp"
             android:orientation="vertical"
-            app:layout_constraintBottom_toTopOf="@id/work_order_description"
+            app:layout_constraintBottom_toTopOf="@id/frag_work_order_problem_code"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_weight="4"
-            app:layout_constraintStart_toEndOf="@+id/part_item_LeftLayout"
+            app:layout_constraintStart_toEndOf="@+id/frag_work_order_leftLayout"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/work_order_priority"
+                android:id="@+id/frag_work_order_asset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/work_order_asset"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/frag_work_order_type"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <TextView
-                android:id="@+id/work_order_asset"
+                android:id="@+id/frag_work_order_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/work_order_type"
+                app:layout_constraintBottom_toTopOf="@+id/frag_work_order_requestedBy"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/work_order_priority" />
+                app:layout_constraintTop_toBottomOf="@id/frag_work_order_asset" />
 
             <TextView
-                android:id="@+id/work_order_type"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/work_order_problem_code"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/work_order_asset" />
-
-            <TextView
-                android:id="@+id/work_order_problem_code"
+                android:id="@+id/frag_work_order_requestedBy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/work_order_type" />
+                app:layout_constraintTop_toBottomOf="@id/frag_work_order_type" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/work_order_description"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id ="@+id/frag_work_order_problem_code"
+            style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:hint="@string/problem_hint_text"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/frag_work_order_rightLayout"
+            app:layout_constraintBottom_toBottomOf="@id/frag_work_order_description" >
+
+            <AutoCompleteTextView
+                android:id="@+id/filled_exposed_dropdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+        <TextView
+            android:id="@+id/frag_work_order_description"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:scrollbarStyle="insideOverlay"
+            android:scrollbars="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/part_item_rightLayout"/>
+            app:layout_constraintTop_toBottomOf="@id/frag_work_order_problem_code" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

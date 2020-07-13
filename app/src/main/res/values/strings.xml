@@ -82,4 +82,9 @@
     <string name="work_orders_added">"Work orders added to database</string>
     <string name="work_order_add_error">"Error adding work order to database</string>
     <string name="hello">hello</string>
+    <string name="problem_hint_text">PROBLEM CODE</string>
+    <string name="task_complete">DONE</string>
+    <string name="estimated_time">Estimated Time</string>
+    <string name="actual_time">Actual Time</string>
+    <string name="hrs">HRS</string>
 </resources>

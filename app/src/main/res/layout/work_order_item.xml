@@ -20,7 +20,7 @@
             android:layout_margin="4dp"
             android:orientation="vertical"
             app:layout_constraintBottom_toTopOf="@id/work_order_description"
-            app:layout_constraintEnd_toStartOf="@+id/part_item_rightLayout"
+            app:layout_constraintEnd_toStartOf="@+id/work_order_rightLayout"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="1"
@@ -53,13 +53,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_weight="4"
-            app:layout_constraintStart_toEndOf="@+id/part_item_LeftLayout"
+            app:layout_constraintStart_toEndOf="@+id/work_order_leftLayout"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/work_order_priority"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/work_order_asset"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +71,8 @@
                 android:id="@+id/work_order_asset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="4dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/work_order_type"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -78,19 +82,12 @@
                 android:id="@+id/work_order_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toTopOf="@+id/work_order_problem_code"
+                android:padding="4dp"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/work_order_asset" />
-
-            <TextView
-                android:id="@+id/work_order_problem_code"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/work_order_type" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -98,6 +95,8 @@
         android:id="@+id/work_order_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
