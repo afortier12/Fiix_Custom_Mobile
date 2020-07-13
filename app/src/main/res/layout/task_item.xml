@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:textSize="14dp"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@id/task_time_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -40,7 +40,7 @@
                 android:id="@+id/task_time_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottompOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/task_description">
@@ -67,7 +67,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="top|start"
                         android:imeOptions="actionUnspecified"
-                        android:inputType="none" />
+                        android:inputType="none|time" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +92,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="top|start"
                         android:imeOptions="actionNext"
-                        android:inputType="numberDecimal" />
+                        android:inputType="numberDecimal|time" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

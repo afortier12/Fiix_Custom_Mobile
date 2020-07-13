@@ -1,0 +1,48 @@
+@startuml
+
+left to right direction
+skinparam packagestyle rectangle
+
+actor user
+actor Fiix
+actor <<barcode>> as barcode
+
+rectangle Add {
+    usecase "add part" as part_add
+    usecase "enter part data" as part_enter
+    usecase "update quantity" as part_qty
+    usecase "part_exist" as part_exist
+    usecase "enter quantity" as quantity
+
+
+    user --> part_add
+    barcode --> part_exist
+}
+
+
+
+rectangle Storage {
+    usecase "part in storage check" as storage_exist
+    usecase "update storage" as storage_update
+    usecase "pick storage" as storage_pick
+    usecase "storage_available check" as storage_empty
+
+    storage_update .>storage_exist
+}
+
+part_add -up..>storage_exist :include
+Fiix <..storage_exist : extends (if not in local table)
+Fiix ..>storage_update : extends
+part_exist -up..>storage_exist :include
+Fiix <..storage_exist : extends (if not in local table)
+storage_exist .>storage_pick: extends (if not found)
+part_exist.>part_enter  :extends (if not found)
+user -left->storage_pick
+user ->part_enter
+part_enter -left.>storage_empty
+storage_empty -left..>part_enter :extends
+part_qty<.quantity : include
+user->quantity
+part_qty -up..>storage_update : include
+
+@enduml

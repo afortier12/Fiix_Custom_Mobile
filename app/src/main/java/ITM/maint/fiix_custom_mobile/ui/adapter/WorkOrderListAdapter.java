@@ -1,8 +1,5 @@
 package ITM.maint.fiix_custom_mobile.ui.adapter;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,28 +16,29 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
-import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
 
-public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.WorkOrderResultsHolder> {
+public class WorkOrderListAdapter extends RecyclerView.Adapter<WorkOrderListAdapter.WorkOrderResultsHolder> {
 
     private ArrayList<WorkOrder> workOrderList;
     private View itemView;
+    private OnItemClickListener listener;
 
-    public WorkOrderAdapter(ArrayList<WorkOrder> workOrderList) {
+    public WorkOrderListAdapter(ArrayList<WorkOrder> workOrderList, OnItemClickListener listener) {
         this.workOrderList = workOrderList;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
-    public WorkOrderAdapter.WorkOrderResultsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public WorkOrderListAdapter.WorkOrderResultsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.work_order_item, parent, false);
 
-        return new WorkOrderAdapter.WorkOrderResultsHolder(itemView);
+        return new WorkOrderListAdapter.WorkOrderResultsHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull WorkOrderAdapter.WorkOrderResultsHolder holder, int position) {
+    public void onBindViewHolder(@NonNull WorkOrderListAdapter.WorkOrderResultsHolder holder, int position) {
         WorkOrder workOrder = (WorkOrder) workOrderList.get(position);
 
         int order = workOrder.getPriorityOrder();
@@ -49,7 +47,7 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
         String type = workOrder.getExtraFields().getMaintenanceType();
         String asset = workOrder.getAssets();
         String description = workOrder.getDescription();
-        String problemCode = workOrder.getExtraFields().getProblem();
+        //String problemCode = workOrder.getExtraFields().getProblem();
 
         Drawable img;
         if (order < 3){
@@ -68,8 +66,9 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
         holder.typeText.setText(type);
         holder.assetText.setText(asset);
         holder.descriptionText.setText(description);
-        holder.problemCodeText.setText(problemCode);
+        //holder.problemCodeText.setText(problemCode);
 
+        holder.bind(workOrder, listener);
 
     }
 
@@ -83,6 +82,10 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
         notifyDataSetChanged();
     }
 
+    public interface OnItemClickListener {
+        void onItemClick(WorkOrder workOrder);
+    }
+
 
     class WorkOrderResultsHolder extends RecyclerView.ViewHolder{
         private TextView priorityText;
@@ -90,7 +93,7 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
         private TextView typeText;
         private TextView assetText;
         private TextView descriptionText;
-        private TextView problemCodeText;
+        //private TextView problemCodeText;
         private ImageView priorityIcon;
 
         public WorkOrderResultsHolder(@NonNull View itemView) {
@@ -101,9 +104,18 @@ public class WorkOrderAdapter extends RecyclerView.Adapter<WorkOrderAdapter.Work
             typeText = itemView.findViewById(R.id.work_order_type);
             assetText = itemView.findViewById(R.id.work_order_asset);
             descriptionText = itemView.findViewById(R.id.work_order_description);
-            problemCodeText = itemView.findViewById(R.id.work_order_problem_code);
+            //problemCodeText = itemView.findViewById(R.id.work_order_problem_code);
             priorityIcon = itemView.findViewById(R.id.work_order_priority_icon);
 
+        }
+
+        public void bind(WorkOrder workOrder, OnItemClickListener listener){
+            itemView.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    listener.onItemClick(workOrder);
+                }
+            });
         }
     }
 }

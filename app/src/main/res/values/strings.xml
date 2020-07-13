@@ -87,4 +87,7 @@
     <string name="estimated_time">Estimated Time</string>
     <string name="actual_time">Actual Time</string>
     <string name="hrs">HRS</string>
+    <string name="detail">DETAIL</string>
+    <string name="tasks">TASKS</string>
+    <string name="title_work_order">WORK ORDER</string>
 </resources>

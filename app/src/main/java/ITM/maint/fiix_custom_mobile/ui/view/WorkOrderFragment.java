@@ -1,140 +1,42 @@
 package ITM.maint.fiix_custom_mobile.ui.view;
 
-import android.app.Activity;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavController;
-import androidx.navigation.NavDestination;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.gson.Gson;
-import com.google.gson.stream.JsonToken;
-
-import org.checkerframework.checker.units.qual.A;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import com.google.android.material.tabs.TabLayout;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import ITM.maint.fiix_custom_mobile.R;
-import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
-import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
-import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderAdapter;
+import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderTabAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
-import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderViewModel;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderDetailViewModel;
 
-public class WorkOrderFragment extends Fragment  {
+public class WorkOrderFragment extends Fragment {
 
     private static final String TAG = "WorkOrderFragment";
-    private WorkOrderViewModel viewModel;
-    private ProgressBarDialog progressBarDialog;
-    private RecyclerView recyclerView;
-    private WorkOrderAdapter adapter;
-
+    private WorkOrderTabAdapter adapter;
+    private TabLayout tabLayout;
+    private ViewPager2 viewPager;
 
     private String username;
-    private int id;
-    private ArrayList<WorkOrder> workOrderList;
+    private int userId;
+    private int workOrderId;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
 
-        workOrderList = new ArrayList<WorkOrder>();
-
-        progressBarDialog = new ProgressBarDialog(getContext());
-
-        viewModel = new ViewModelProvider(this).get(WorkOrderViewModel.class);
-        viewModel.init();
+    @Nullable
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_work_order, container, false);
-
-        setMargin(root);
-
-        workOrderList.clear();
-        adapter = new WorkOrderAdapter(workOrderList);
-
-        recyclerView = root.findViewById(R.id.fragment_work_order_list);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-        recyclerView.setAdapter(adapter);
-
-        viewModel.getWorkOrderDBLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrderJoinPriority>>() {
-            @Override
-            public void onChanged(List<WorkOrderJoinPriority> workOrderJoinPriorities) {
-                if (workOrderJoinPriorities != null) {
-                    workOrderList.clear();
-                    Gson gson = new Gson();
-                    for (WorkOrderJoinPriority workOrderJoinPriority : workOrderJoinPriorities){
-                        for (WorkOrder workOrder : workOrderJoinPriority.getWorkOrderList()) {
-                            String jsonString = gson.toJson(workOrder);
-                            WorkOrder joinedWorkOrder = gson.fromJson(jsonString, WorkOrder.class);
-                            joinedWorkOrder.setPriorityOrder(workOrderJoinPriority.getPriority().getOrder());
-                            workOrderList.add(joinedWorkOrder);
-                        }
-                    }
-                    Collections.sort(workOrderList, new Comparator<WorkOrder>() {
-                        @Override
-                        public int compare(WorkOrder o1, WorkOrder o2) {
-                            return Integer.compare(o1.getPriorityOrder(), o2.getPriorityOrder());
-                        }
-                    });
-                    adapter.notifyDataSetChanged();
-                }
-                progressBarDialog.dismiss();
-                }
-        });
-
-        viewModel.getWorkOrderResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrder>>() {
-            @Override
-            public void onChanged(List<WorkOrder> workOrders) {
-                if (workOrders != null){
-                    //viewModel.insertWorkOrders(workOrders, username);
-                    Log.d(TAG, "work orders response live data ");
-                } else {
-                    Log.d(TAG, "no work orders to populate in fragment ");
-                }
-            }
-        });
-
-        viewModel.getResponseStatus().observe(getViewLifecycleOwner(), new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Snackbar.make(getView(), s, Snackbar.LENGTH_LONG).show();
-                progressBarDialog.dismiss();
-            }
-        });
 
         SavedStateViewModelFactory factory = new SavedStateViewModelFactory(getActivity().getApplication(), this);
         SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity(), factory).get(SharedViewModel.class);
@@ -149,9 +51,7 @@ public class WorkOrderFragment extends Fragment  {
         }
 
         username = sharedViewModel.getUsername().getValue();
-        id = sharedViewModel.getUserId().getValue();
-
-
+        userId = sharedViewModel.getUserId().getValue();
 
         return root;
     }
@@ -160,71 +60,34 @@ public class WorkOrderFragment extends Fragment  {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        progressBarDialog.show();
+        WorkOrderFragmentArgs args = WorkOrderFragmentArgs.fromBundle(getArguments());
+        workOrderId = args.getWorkOrderId();
 
-        /*NavController navController = Navigation.findNavController(view);
-        AppBarConfiguration appBarConfiguration =
-                new AppBarConfiguration.Builder(navController.getGraph()).build();
+        adapter = new WorkOrderTabAdapter(this.getParentFragmentManager(), this.getLifecycle(), username, userId, workOrderId);
 
-        Toolbar toolbar = view.findViewById(R.id.part_search_toolbar);
-        NavigationUI.setupWithNavController(null, navController, appBarConfiguration);*/
+        viewPager = (ViewPager2) view.findViewById(R.id.fragment_work_order_viewpager);
+        viewPager.setAdapter(adapter);
 
+        viewPager
 
-
-        OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
+        tabLayout = (TabLayout) view.findViewById(R.id.fragment_work_order_tab_layout);
+        new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
-            public void handleOnBackPressed() {
-                NavController navController = Navigation.findNavController(view);
-                navController.popBackStack();
+            public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
+
             }
-        };
-        requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);
-
-        viewModel.getWorkOrders(username, id);
-    }
-
-
-    public static int getBottomMargin(Activity activity) {
-        // getRealMetrics is only available with API 17 and +
-        DisplayMetrics metrics = new DisplayMetrics();
-        activity.getWindowManager().getDefaultDisplay().getMetrics(metrics);
-        int usableHeight = metrics.heightPixels;
-        activity.getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
-        int realHeight = metrics.heightPixels;
-        if (realHeight > usableHeight)
-            return realHeight - usableHeight;
-        else
-            return 0;
-    }
-
-    private void setMargin(View view){
-        ViewGroup.LayoutParams p = view.getLayoutParams();
-        if (p instanceof FrameLayout.LayoutParams) {
-            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams)p;
-            lp.setMargins(lp.leftMargin, lp.topMargin, lp.rightMargin , getBottomMargin(getActivity()));
-            view.setLayoutParams(lp);
-        }
+        }).attach();
 
     }
-
 
     @Override
     public void onPause() {
-        progressBarDialog.dismiss();
         super.onPause();
     }
 
     @Override
-    public void onDestroy(){
-        viewModel.dispose();
+    public void onDestroy() {
         super.onDestroy();
-    }
-
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putString("USERNAME_KEY", username);
-        outState.putInt("USERID_KEY", id);
     }
 
 

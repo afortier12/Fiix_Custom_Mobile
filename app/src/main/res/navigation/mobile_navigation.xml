@@ -7,9 +7,9 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragment"
+        android:name="ITM.maint.fiix_custom_mobile.ui.view.WorkOrderListFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_work_order" >
+        tools:layout="@layout/fragment_work_order_list" >
         <action
             android:id="@+id/homeToBarcode"
             app:destination="@id/navigation_barcode"
@@ -25,6 +25,9 @@
         <argument
             android:name="id"
             app:argType="integer" />
+        <action
+            android:id="@+id/home_To_WorkOrder"
+            app:destination="@id/navigation_workOrder" />
     </fragment>
 
     <fragment
@@ -53,4 +56,13 @@
         android:name="ITM.maint.fiix_custom_mobile.ui.view.PartSearchFragment"
         android:label="@string/title_part_search"
         tools:layout="@layout/fragment_part_search"/>
+    <fragment
+        android:id="@+id/navigation_workOrder"
+        android:name="ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragment"
+        android:label="@string/title_work_order" >
+        <argument
+            android:name="workOrderId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

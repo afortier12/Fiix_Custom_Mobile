@@ -4,20 +4,35 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.api.requests.ChangeRequest;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
-import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 
 public interface IWorkOrder {
 
-    public void getWorkOrders(String username, int userId);
+    public interface IWorkOrderList {
 
-    public void findWorkOrderTasks(String username, int userId, int workOrderId);
+        public void getWorkOrders(String username, int userId);
 
-    public void findWorkOrders(List<Integer> ids);
+        public void findWorkOrderTasks(String username, int userId, int workOrderId);
 
-    public void getWorkOrderDetails(FindRequest.Filter filter);
+        public void findWorkOrders(List<Integer> ids);
 
-    public void changeWorkOrderStatus(ChangeRequest changeRequest);
+        public void getWorkOrderDetails(FindRequest.Filter filter);
 
-    public void updateTask(ChangeRequest changeRequest);
+        public void changeWorkOrderStatus(ChangeRequest changeRequest);
+
+        public void updateTask(ChangeRequest changeRequest);
+
+    }
+
+    public interface IWorkOrderDetail {
+
+        public void findWorkOrderDetails(String username, int userId, int workOrderId);
+
+    }
+
+    public interface IWorkOrderTasks {
+
+        public void findWorkOrderDetails(String username, int userId, int workOrderId);
+
+    }
 
 }

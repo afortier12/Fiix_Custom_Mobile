@@ -2,7 +2,7 @@ package ITM.maint.fiix_custom_mobile.di;
 
 import ITM.maint.fiix_custom_mobile.firebase.CodeAnalyzer;
 import ITM.maint.fiix_custom_mobile.ui.view.BarcodeFragment;
-import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragment;
+import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderListFragment;
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
 
@@ -16,5 +16,5 @@ public abstract class FragmentModule {
     public abstract CodeAnalyzer codeAnalyzer();
 
     @ContributesAndroidInjector
-    public abstract WorkOrderFragment workOrderFragment();
+    public abstract WorkOrderListFragment workOrderFragment();
 }

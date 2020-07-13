@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "1dfecc273746ca1c14acebb191551bcc",
+    "identityHash": "f79e4f9499acfa2bcd14959bddabb99d",
     "entities": [
       {
         "tableName": "part_table",
@@ -187,12 +187,569 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "work_order_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `username` TEXT, `assignedUserIds` TEXT, `priorityId` INTEGER NOT NULL, `statusId` INTEGER NOT NULL, `assets` TEXT, `siteId` INTEGER NOT NULL, `assignedUsers` TEXT, `requestedByUserId` INTEGER NOT NULL, `guestEmail` TEXT, `dateCreated` TEXT, `assetIds` TEXT, `dateCompleted` TEXT, `completedByUserId` INTEGER NOT NULL, `description` TEXT, `guestName` TEXT, `estCompletionDate` TEXT, `guestPhone` TEXT, `code` TEXT, `completionNotes` TEXT, `maintenanceTypeId` TEXT, `dateModified` TEXT, `requiresSignature` TEXT, `dateSigned` TEXT, `signedByUserId` TEXT, `statusGroup` TEXT, `adminNotes` TEXT, `actionID` INTEGER NOT NULL, `causeID` INTEGER NOT NULL, `problemID` INTEGER NOT NULL, `completedByUserIds` TEXT, `completedByUsers` TEXT, `customerIds` TEXT, `vendorIds` TEXT, `updated` INTEGER NOT NULL, `scheduledMaintenanceId` INTEGER NOT NULL, `priorityOrder` INTEGER NOT NULL, `lastRefresh` INTEGER, `priorityName` TEXT, `requestedByUser` TEXT, `site` TEXT, `completedByUser` TEXT, `workOrderStatus` TEXT, `maintenanceType` TEXT, `action` TEXT, `cause` TEXT, `problem` TEXT, `scheduledMaintenance` TEXT, `signedByUser` TEXT, PRIMARY KEY(`id`), FOREIGN KEY(`priorityId`) REFERENCES `priority_table`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "username",
+            "columnName": "username",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assignedUserIds",
+            "columnName": "assignedUserIds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "priorityId",
+            "columnName": "priorityId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "statusId",
+            "columnName": "statusId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assets",
+            "columnName": "assets",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "siteId",
+            "columnName": "siteId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assignedUsers",
+            "columnName": "assignedUsers",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "requestedByUserId",
+            "columnName": "requestedByUserId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "guestEmail",
+            "columnName": "guestEmail",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dateCreated",
+            "columnName": "dateCreated",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetIds",
+            "columnName": "assetIds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dateCompleted",
+            "columnName": "dateCompleted",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "completedByUserId",
+            "columnName": "completedByUserId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "guestName",
+            "columnName": "guestName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "estCompletionDate",
+            "columnName": "estCompletionDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "guestPhone",
+            "columnName": "guestPhone",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "completionNotes",
+            "columnName": "completionNotes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "maintenanceTypeId",
+            "columnName": "maintenanceTypeId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "StringdateModified",
+            "columnName": "dateModified",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "requiresSignature",
+            "columnName": "requiresSignature",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "dateSigned",
+            "columnName": "dateSigned",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "signedByUserId",
+            "columnName": "signedByUserId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "statusGroup",
+            "columnName": "statusGroup",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "adminNotes",
+            "columnName": "adminNotes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "actionID",
+            "columnName": "actionID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "causeID",
+            "columnName": "causeID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "problemID",
+            "columnName": "problemID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "completedByUserIds",
+            "columnName": "completedByUserIds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "completedByUsers",
+            "columnName": "completedByUsers",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "customerIds",
+            "columnName": "customerIds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "vendorIds",
+            "columnName": "vendorIds",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "updated",
+            "columnName": "updated",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "scheduledMaintenanceId",
+            "columnName": "scheduledMaintenanceId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "priorityOrder",
+            "columnName": "priorityOrder",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "lastRefresh",
+            "columnName": "lastRefresh",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.priorityName",
+            "columnName": "priorityName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.requestedByUser",
+            "columnName": "requestedByUser",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.site",
+            "columnName": "site",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.completedByUser",
+            "columnName": "completedByUser",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.workOrderStatus",
+            "columnName": "workOrderStatus",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.maintenanceType",
+            "columnName": "maintenanceType",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.action",
+            "columnName": "action",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.cause",
+            "columnName": "cause",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.problem",
+            "columnName": "problem",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.scheduledMaintenance",
+            "columnName": "scheduledMaintenance",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "extraFields.signedByUser",
+            "columnName": "signedByUser",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_work_order_table_id",
+            "unique": true,
+            "columnNames": [
+              "id"
+            ],
+            "createSql": "CREATE UNIQUE INDEX IF NOT EXISTS `index_work_order_table_id` ON `${TABLE_NAME}` (`id`)"
+          },
+          {
+            "name": "index_work_order_table_priorityId",
+            "unique": false,
+            "columnNames": [
+              "priorityId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_work_order_table_priorityId` ON `${TABLE_NAME}` (`priorityId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "priority_table",
+            "onDelete": "CASCADE",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "priorityId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "work_order_task_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `workOrderId` INTEGER NOT NULL, `taskType` INTEGER NOT NULL, `result` TEXT, `assetID` INTEGER NOT NULL, `order` INTEGER NOT NULL, `startDate` TEXT, `completedDate` TEXT, `completedById` INTEGER NOT NULL, `assignedToId` INTEGER NOT NULL, `estimatedHours` REAL NOT NULL, `timeSpentHours` REAL NOT NULL, `meterReadingId` REAL NOT NULL, `description` TEXT, `completionNotes` TEXT, `taskGroupId` INTEGER NOT NULL, `parentWorkOrderTaskId` INTEGER NOT NULL, `isUpdated` INTEGER NOT NULL, `assignedTo` TEXT, `completedBy` TEXT, `workOrderCode` TEXT, `meterReadingUnits` TEXT, `assetName` TEXT, `workOrderTaskId` TEXT, `taskGroupName` TEXT, `taskResultId` TEXT, `isCompletable` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "workOrderId",
+            "columnName": "workOrderId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taskType",
+            "columnName": "taskType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "result",
+            "columnName": "result",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetID",
+            "columnName": "assetID",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "order",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "startDate",
+            "columnName": "startDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "completedDate",
+            "columnName": "completedDate",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "completedById",
+            "columnName": "completedById",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assignedToId",
+            "columnName": "assignedToId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "estimatedHours",
+            "columnName": "estimatedHours",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "timeSpentHours",
+            "columnName": "timeSpentHours",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "meterReadingId",
+            "columnName": "meterReadingId",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "completionNotes",
+            "columnName": "completionNotes",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "taskGroupId",
+            "columnName": "taskGroupId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "parentWorkOrderTaskId",
+            "columnName": "parentWorkOrderTaskId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isUpdated",
+            "columnName": "isUpdated",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "assignedTo",
+            "columnName": "assignedTo",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "completedBy",
+            "columnName": "completedBy",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "workOrderCode",
+            "columnName": "workOrderCode",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "meterReadingUnits",
+            "columnName": "meterReadingUnits",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "assetName",
+            "columnName": "assetName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "workOrderTaskId",
+            "columnName": "workOrderTaskId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "taskGroupName",
+            "columnName": "taskGroupName",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "taskResultId",
+            "columnName": "taskResultId",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "isCompletable",
+            "columnName": "isCompletable",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "priority_table",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT, `order` INTEGER NOT NULL, `sysCode` INTEGER NOT NULL, `updated` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "order",
+            "columnName": "order",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sysCode",
+            "columnName": "sysCode",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updated",
+            "columnName": "updated",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '1dfecc273746ca1c14acebb191551bcc')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f79e4f9499acfa2bcd14959bddabb99d')"
     ]
   }
 }
