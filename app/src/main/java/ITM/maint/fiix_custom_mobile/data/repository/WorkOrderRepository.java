@@ -71,6 +71,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     private String username;
     private int userId;
+    private int taskWorkOrderId;
 
 
     public WorkOrderRepository(Application application) {
@@ -138,6 +139,49 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         });
     }
 
+    @Override
+    public void getWorkOrderTasks(String username, int userId, int workOrderId) {
+        this.username = username;
+        this.userId = userId;
+        this.taskWorkOrderId = workOrderId;
+
+        getWorkOrderTasksfromDB(userId, workOrderId);
+    }
+
+    private void getWorkOrderTasksfromDB(int userId, int workOrderId) {
+        //get from database if available
+        Single<List<WorkOrderTask>> single = fiixDatabase.workOrderDao().getWorkOrderTasks(userId, workOrderId);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<WorkOrderTask>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                // add it to a CompositeDisposable
+                compositeDisposable.add(d);
+            }
+
+            @Override
+            public void onSuccess(List<WorkOrderTask> taskList) {
+                if (taskList.isEmpty()) {
+                    //no tasks in database -> request from Fiix
+                    getTasksForOrderFromFiix(userId, taskWorkOrderId);
+                } else {
+                   workOrderTaskResponseMutableLiveData.postValue(taskList);
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // show an error message
+                Log.d(TAG, "Error finding work order task from DB");
+            }
+
+            //@Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
     public void getTasksFromFiix(String username, int userId, int workOrderId) {
         FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
                 2, 8, 1);
@@ -161,10 +205,10 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         filters.add(filter);
 
         FindRequest workOrderRequest = new FindRequest("FindRequest", clientVersion, "WorkOrderTask", fields, filters);
-        requestTasksFromFiix(workOrderRequest);
+        requestAllTasksFromFiix(workOrderRequest);
     }
 
-    private void requestTasksFromFiix(FindRequest workOrderRequest) {
+    private void requestAllTasksFromFiix(FindRequest workOrderRequest) {
         workOrderService.getWorkOrderTasks(workOrderRequest)
                 .enqueue(new Callback<List<WorkOrderTask>>() {
 
@@ -210,6 +254,108 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                     }
                 });
 
+    }
+
+    public void getTasksForOrderFromFiix(int userId, int workOrderId) {
+        FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
+                2, 8, 1);
+
+        List<String> workOrderTaskFields = new ArrayList<>(Arrays.asList(
+                WorkOrderTasks.id.getField(),
+                WorkOrderTasks.description.getField(),
+                WorkOrderTasks.estimatedHours.getField(),
+                WorkOrderTasks.timeSpentHours.getField(),
+                WorkOrderTasks.completedDate.getField(),
+                WorkOrderTasks.workOrderId.getField(),
+                WorkOrderTasks.assignedToId.getField()
+        ));
+
+        String fields = TextUtils.join(",", workOrderTaskFields);
+
+        List<Integer> list = Stream.of(userId).collect(Collectors.toList());
+        list.add(workOrderId);
+
+        FindRequest.Filter filter = new FindRequest.Filter(
+                    "intAssignedToUserID = ? and intWorkOrderID = ?",
+                    list
+            );
+
+        List<FindRequest.Filter> filters = new ArrayList<>();
+        filters.add(filter);
+
+        FindRequest workOrderRequest = new FindRequest("FindRequest", clientVersion, "WorkOrderTask", fields, filters);
+        requestTasksForWorkOrderFromFiix(workOrderRequest);
+    }
+
+    private void requestTasksForWorkOrderFromFiix(FindRequest workOrderRequest) {
+        workOrderService.getWorkOrderTasks(workOrderRequest)
+                .enqueue(new Callback<List<WorkOrderTask>>() {
+
+                    @Override
+                    public void onResponse(Call<List<WorkOrderTask>> call, Response<List<WorkOrderTask>> response) {
+                        if (response.isSuccessful()) {
+                            if (response.body() != null) {
+                                if (response.body().isEmpty()) {
+                                    workOrderTaskResponseMutableLiveData.postValue(null);
+
+                                } else {
+                                    addWorkOrderTasks(response.body());
+                                    workOrderTaskResponseMutableLiveData.postValue(response.body());
+                                }
+                            } else {
+                                workOrderTaskResponseMutableLiveData.postValue(null);
+                                Log.d(TAG, "response is empty");
+                            }
+                        } else {
+                            workOrderTaskResponseMutableLiveData.postValue(null);
+                            APIError error = ErrorUtils.parseError(response);
+                            for (String msg : error.getMessages()) {
+                                status.postValue(msg);
+                                Log.d(TAG, String.valueOf(msg));
+                                break;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<WorkOrderTask>> call, Throwable t) {
+                        workOrderTaskResponseMutableLiveData.postValue(null);
+
+                        if (t instanceof IOException) {
+                            Log.d(TAG, "this is an actual network failure: " + t.getMessage());
+                            // logging probably not necessary
+                        } else {
+                            Log.d(TAG, "conversion issue! big problems: " + t.getMessage());
+                        }
+                    }
+                });
+
+    }
+
+    @Override
+    public void addWorkOrderTasks(List<WorkOrderTask> taskList) {
+
+        Completable completable = fiixDatabase.workOrderDao().insertTasks(taskList);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        disposableCompletableObserver = new DisposableCompletableObserver() {
+            @Override
+            public void onComplete() {
+                // String msg = Resources.getSystem().getString(R.string.work_orders_added);
+                //status.postValue(msg);
+                // Log.d(TAG, msg);
+
+                Log.d(TAG, "work order added to DB");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                String msg = Resources.getSystem().getString(R.string.work_order_add_error);
+                Log.d(TAG, "Error adding work order to DB");
+            }
+        };
+        completable.subscribeOn(scheduler)
+                .subscribe(disposableCompletableObserver);
+        compositeDisposable.add(disposableCompletableObserver);
     }
 
     @Override
@@ -470,12 +616,6 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     @Override
     public void deleteWorkOrder(int workOrderId) {
-
-    }
-
-
-    @Override
-    public void getWorkOrderTasks(String username, int userId, int workOrderId) {
 
     }
 

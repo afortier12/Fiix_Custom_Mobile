@@ -4,10 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:layout_marginBottom="4dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp">
+    android:layout_margin = "4dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,7 +14,6 @@
             android:id="@+id/task_leftLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_margin="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/task_rightLayout"
             app:layout_constraintHorizontal_bias="0.5"
@@ -50,24 +46,23 @@
                     style="@style/TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
                     android:hint="@string/estimated_time"
-                    app:boxStrokeColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/task_actual"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:suffixText="@string/hrs">
+                    app:layout_constraintTop_toTopOf="parent" >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/task_estimate_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="top|start"
+                        android:layout_margin="1dp"
+                        android:gravity="center_horizontal|center_vertical"
                         android:imeOptions="actionUnspecified"
-                        android:inputType="none|time" />
+                        android:inputType="none"
+                        android:maxLines="1" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -76,23 +71,23 @@
                     style="@style/TextInputLayout"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
                     android:hint="@string/actual_time"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintHorizontal_weight="1"
                     app:layout_constraintStart_toEndOf="@+id/task_estimate"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:suffixText="@string/hrs">
+                    app:layout_constraintTop_toTopOf="parent" >
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/task_actual_time"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="top|start"
+                        android:layout_margin="1dp"
+                        android:gravity="center_horizontal|center_vertical"
                         android:imeOptions="actionNext"
-                        android:inputType="numberDecimal|time" />
+                        android:inputType="number"
+                        android:maxLines="1" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -112,6 +107,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/task_complete"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:checked="false"

@@ -4,6 +4,7 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
 public interface IWorkOrderRepository {
 
@@ -30,6 +31,9 @@ public interface IWorkOrderRepository {
         public interface WorkOrderDetail {
             //get list of work order tasks from Fiix
             void getWorkOrderTasks(String username, int userId, int workOrderId);
+
+            //add work order tasks to Fiix
+            void addWorkOrderTasks(List<WorkOrderTask> taskList);
 
             //get work order details from Fiix
             void getWorkOrderDetails(FindRequest partRequest);

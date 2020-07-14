@@ -34,13 +34,16 @@ public interface IWorkOrderDao {
     Completable insertTask(WorkOrderTask workOrderTask);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
+    Completable insertTasks(List<WorkOrderTask> workOrderTasks);
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertWorkOrder(WorkOrder workOrder);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertWorkOrders(List<WorkOrder> workOrder);
+    Completable insertWorkOrders(List<WorkOrder> workOrders);
 
     @Query("SELECT * FROM work_order_task_table where assignedToId = :userId " +
-            "and workOrderId = :workOrderId and completedDate is null")
+            "and workOrderId = :workOrderId")
     Single<List<WorkOrderTask>> getWorkOrderTasks(int userId, int workOrderId);
 
     @Query("SELECT * FROM work_order_table where " +

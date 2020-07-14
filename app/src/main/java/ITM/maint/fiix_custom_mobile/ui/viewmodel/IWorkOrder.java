@@ -31,7 +31,7 @@ public interface IWorkOrder {
 
     public interface IWorkOrderTasks {
 
-        public void findWorkOrderDetails(String username, int userId, int workOrderId);
+        public void getWorkOrderTasks(String username, int userId, int workOrderId);
 
     }
 
