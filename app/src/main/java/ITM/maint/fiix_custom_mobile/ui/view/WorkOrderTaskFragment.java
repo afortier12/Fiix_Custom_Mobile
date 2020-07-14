@@ -9,14 +9,23 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderListAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderDetailViewModel;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderListViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderTaskViewModel;
 
 public class WorkOrderTaskFragment extends Fragment {
 
     public static final String TAG = "WorkOrderTaskFragment";
+
+    private RecyclerView recyclerView;
+    private WorkOrderListAdapter adapter;
 
     private WorkOrderTaskViewModel viewModel;
     private String username;
@@ -37,6 +46,15 @@ public class WorkOrderTaskFragment extends Fragment {
         viewModel.init();
 
         View root = inflater.inflate(R.layout.fragment_work_order_task, container, false);
+
+        workOrderList.clear();
+        adapter = new WorkOrderListAdapter(workOrderList, new WorkOrderListFragment.OnWorkOrderSelectedListener(root));
+
+        recyclerView = root.findViewById(R.id.fragment_work_order_list);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setItemAnimator(new DefaultItemAnimator());
+        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
+        recyclerView.setAdapter(adapter);
 
 
         return root;

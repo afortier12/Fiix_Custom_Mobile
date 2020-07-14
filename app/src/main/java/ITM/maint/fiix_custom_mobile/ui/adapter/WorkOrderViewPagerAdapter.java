@@ -9,42 +9,36 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.Lifecycle;
 import androidx.viewpager2.adapter.FragmentStateAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderDetailFragment;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderTaskFragment;
 
-public class WorkOrderTabAdapter extends FragmentStateAdapter {
+public class WorkOrderViewPagerAdapter extends FragmentStateAdapter {
 
     private static final int totalTabs = 2;
+
+    private List<Fragment> fragmentList  = new ArrayList<>();
 
     private String username;
     private int userId;
     private int workOrderId;
 
-
-
-
-    /*public WorkOrderTabAdapter(@NonNull FragmentManager fragmentManager, String username, int userId, int workOrderId) {
-        super(fragmentManager);
+    public WorkOrderViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String username, int userId, int workOrderId) {
+        super(fragmentManager, lifecycle);
          this.username = username;
          this.userId = userId;
          this.workOrderId = workOrderId;
 
-    }*/
-
+         fragmentList.add(new WorkOrderDetailFragment(username, userId, workOrderId));
+         fragmentList.add(new WorkOrderTaskFragment(username, userId, workOrderId));
+    }
 
     @NonNull
     @Override
     public Fragment createFragment(int position) {
-        switch (position){
-            case 0:
-                WorkOrderDetailFragment workOrderDetailFragment = new WorkOrderDetailFragment(username, userId, workOrderId);
-                return workOrderDetailFragment;
-            case 1:
-                WorkOrderTaskFragment workOrderTaskFragment = new WorkOrderTaskFragment(username, userId, workOrderId);
-                return workOrderTaskFragment;
-            default:
-                return null;
-        }
+       return fragmentList.get(position);
     }
 
     @Override

@@ -16,14 +16,13 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import ITM.maint.fiix_custom_mobile.R;
-import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderTabAdapter;
+import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderViewPagerAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
-import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderDetailViewModel;
 
 public class WorkOrderFragment extends Fragment {
 
     private static final String TAG = "WorkOrderFragment";
-    private WorkOrderTabAdapter adapter;
+    private WorkOrderViewPagerAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
 
@@ -63,20 +62,42 @@ public class WorkOrderFragment extends Fragment {
         WorkOrderFragmentArgs args = WorkOrderFragmentArgs.fromBundle(getArguments());
         workOrderId = args.getWorkOrderId();
 
-        adapter = new WorkOrderTabAdapter(this.getParentFragmentManager(), this.getLifecycle(), username, userId, workOrderId);
+        adapter = new WorkOrderViewPagerAdapter(getChildFragmentManager(), getLifecycle(), username, userId, workOrderId);
 
         viewPager = (ViewPager2) view.findViewById(R.id.fragment_work_order_viewpager);
         viewPager.setAdapter(adapter);
-
-        viewPager
 
         tabLayout = (TabLayout) view.findViewById(R.id.fragment_work_order_tab_layout);
         new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-
+                tab.setText("Hello"+String.valueOf(position));
             }
         }).attach();
+
+        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
+        viewPager.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                tabLayout.selectTab(tabLayout.getTabAt(position));
+            }
+        });
 
     }
 
