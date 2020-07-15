@@ -82,7 +82,7 @@
     <string name="work_orders_added">"Work orders added to database</string>
     <string name="work_order_add_error">"Error adding work order to database</string>
     <string name="hello">hello</string>
-    <string name="problem_hint_text">PROBLEM CODE</string>
+    <string name="problem_hint_text">Problem Code</string>
     <string name="task_complete">DONE</string>
     <string name="estimated_time">Estimated Time</string>
     <string name="actual_time">Actual Time</string>
@@ -90,4 +90,11 @@
     <string name="detail">DETAIL</string>
     <string name="tasks">TASKS</string>
     <string name="title_work_order">WORK ORDER</string>
+    <string name="cause_hint_text">Cause Code</string>
+    <string name="action_hint_text">Action Code</string>
+    <string name="work_order_description">Work Order Description</string>
+    <string name="asset">Asset</string>
+    <string name="status">Status</string>
+    <string name="maintenance_type">Maintenance Type</string>
+    <string name="requestedBy">Requested By</string>
 </resources>

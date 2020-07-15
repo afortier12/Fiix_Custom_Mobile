@@ -50,10 +50,10 @@ public class WorkOrderListAdapter extends RecyclerView.Adapter<WorkOrderListAdap
         //String problemCode = workOrder.getExtraFields().getProblem();
 
         Drawable img;
-        if (order < 3){
+        if (order < 7){
             img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_high_priority, null);
             holder.priorityIcon.setImageDrawable(img);
-        } else if (order < 5) {
+        } else if (order < 9) {
             img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_medium_priority, null);
             holder.priorityIcon.setImageDrawable(img);
         } else {

@@ -71,7 +71,10 @@ public class WorkOrderFragment extends Fragment {
         new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                tab.setText("Hello"+String.valueOf(position));
+                if (position == 0)
+                    tab.setText(R.string.detail);
+                else
+                    tab.setText(R.string.tasks);
             }
         }).attach();
 
@@ -98,6 +101,8 @@ public class WorkOrderFragment extends Fragment {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
+
+
 
     }
 

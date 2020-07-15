@@ -162,7 +162,7 @@ public class WorkOrderTaskAdapter extends RecyclerView.Adapter<WorkOrderTaskAdap
         private class ValidationTextWatcher implements TextWatcher {
 
             private View view;
-            private boolean backspaceFlag;
+            private String before;
             private TasksHolder tasksHolder;
 
             private ValidationTextWatcher(View view, TasksHolder tasksHolder) {
@@ -172,14 +172,11 @@ public class WorkOrderTaskAdapter extends RecyclerView.Adapter<WorkOrderTaskAdap
 
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
+                before = s.toString();
             }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (before == 1 && count == 0)
-                    tasksHolder.txtActualTime.setText(""); //backspace pressed
-
 
             }
 
@@ -191,10 +188,11 @@ public class WorkOrderTaskAdapter extends RecyclerView.Adapter<WorkOrderTaskAdap
                 else
                     s.setFilters(new InputFilter[]{});
 
-               if(s.length() == 2)
-                {
+               if(s.length() == 2  && !(s.toString().contains(":")) && !(before.contains(":")))
                     tasksHolder.txtActualTime.setText(s + ":");
-                }
+               else if (s.length() > 2 && !(s.toString().contains(":")))
+                   s.insert(2,":");
+
 
                 switch (view.getId()) {
                     case R.id.task_actual_time:
@@ -221,8 +219,10 @@ public class WorkOrderTaskAdapter extends RecyclerView.Adapter<WorkOrderTaskAdap
                 @Override
                 public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
 
-                    if ((dend - dstart) > 0)
+                    if (dstart==0 && dest.length()==5)
                             return null;
+                    if (source.length()==0 && dend == 3)
+                            return "";
 
                     if (source.toString().equalsIgnoreCase(" ")||
                             source.toString().equalsIgnoreCase(",")||
@@ -241,7 +241,7 @@ public class WorkOrderTaskAdapter extends RecyclerView.Adapter<WorkOrderTaskAdap
                         } else if (newText.length() == 3) {
                                 if (source.toString().equalsIgnoreCase(":")) {
                                     return null;
-                                } else {
+                                } else if (dend == 3){
                                     return ":";
                                 }
                         } else if(newText.length() < 6){
@@ -250,7 +250,7 @@ public class WorkOrderTaskAdapter extends RecyclerView.Adapter<WorkOrderTaskAdap
                                 if (isInRange(Integer.parseInt(time[1]), maxMinute))
                                     return null;
                         } else {
-                            return "";
+                           return "";
                         }
                     }catch(NumberFormatException nfe){
                         return "";
@@ -263,6 +263,8 @@ public class WorkOrderTaskAdapter extends RecyclerView.Adapter<WorkOrderTaskAdap
                         return true;
                     else {
                         Log.d(TAG, "Number entered " + String.valueOf(number) + "is out of range");
+                        layoutActual.setError("Invalid entry");
+                        requestFocus(layoutActual);
                         return false;
                     }
                 }

@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_home"
+    tools:ignore="UnusedNavigation">
 
     <fragment
         android:id="@+id/navigation_home"
@@ -27,7 +28,8 @@
             app:argType="integer" />
         <action
             android:id="@+id/home_To_WorkOrder"
-            app:destination="@id/navigation_workOrder" />
+            app:destination="@id/navigation_workOrder"
+            app:popUpTo="@id/navigation_home" />
     </fragment>
 
     <fragment
@@ -59,10 +61,15 @@
     <fragment
         android:id="@+id/navigation_workOrder"
         android:name="ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragment"
-        android:label="@string/title_work_order" >
+        android:label="@string/title_work_order"
+        tools:layout="@layout/fragment_work_order">
         <argument
             android:name="workOrderId"
             app:argType="integer"
             android:defaultValue="0" />
+        <argument
+            android:name="code"
+            app:argType="string"
+            android:defaultValue='""' />
     </fragment>
 </navigation>

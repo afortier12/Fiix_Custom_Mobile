@@ -14,10 +14,12 @@ import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.camera.core.Camera;
 import androidx.camera.core.CameraInfo;
 import androidx.camera.core.CameraSelector;
@@ -74,6 +76,8 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().hide();
 
         barcodeViewModel =
                 new ViewModelProvider(requireActivity()).get(BarcodeViewModel.class);
@@ -215,7 +219,7 @@ public class BarcodeFragment extends DaggerFragment implements  View.OnClickList
                 try {
                     ProcessCameraProvider cameraProvider = cameraProviderFuture.get();
                     bindPreview(cameraProvider);
-                } catch (ExecutionException | InterruptedException e) {
+                } catch (ExecutionException | InterruptedException | IllegalArgumentException | IllegalStateException e) {
                     // No errors need to be handled for this Future
                     // This should never be reached
                     e.printStackTrace();

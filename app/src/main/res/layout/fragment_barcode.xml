@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:keepScreenOn="true">
+    android:keepScreenOn="true"
+    style="@style/BarcodeTheme">
 
     <ITM.maint.fiix_custom_mobile.ui.view.CameraSourcePreview
         android:id="@+id/camera_preview"

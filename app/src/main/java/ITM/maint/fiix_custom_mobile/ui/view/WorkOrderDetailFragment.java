@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,6 +37,15 @@ public class WorkOrderDetailFragment extends Fragment {
         viewModel.init();
 
         View root = inflater.inflate(R.layout.fragment_work_order_detail, container, false);
+
+        LinearLayout assetLayout = root.findViewById(R.id.detail_asset_layout);
+        assetLayout.bringToFront();
+        LinearLayout typeLayout = root.findViewById(R.id.detail_type_layout);
+        typeLayout.bringToFront();
+        LinearLayout statusLayout = root.findViewById(R.id.detail_status_layout);
+        statusLayout.bringToFront();
+        LinearLayout descriptionLayout = root.findViewById(R.id.detail_description__layout);
+        descriptionLayout.bringToFront();
 
 
         return root;

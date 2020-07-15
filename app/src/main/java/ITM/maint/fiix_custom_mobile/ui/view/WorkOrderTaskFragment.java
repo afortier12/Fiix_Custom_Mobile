@@ -65,7 +65,7 @@ public class WorkOrderTaskFragment extends Fragment {
         workOrderTaskList.clear();
         adapter = new WorkOrderTaskAdapter(workOrderTaskList, getActivity());
 
-        recyclerView = root.findViewById(R.id.fragment_work_order_task);
+        recyclerView = root.findViewById(R.id.work_order_task_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));

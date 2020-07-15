@@ -32,12 +32,14 @@
             <TextView
                 android:id="@+id/work_order_code"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:padding="4dp" />
 
             <ImageView
                 android:id="@+id/work_order_priority_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="4dp"
                 app:srcCompat="@drawable/ic_calendar" />
 
 

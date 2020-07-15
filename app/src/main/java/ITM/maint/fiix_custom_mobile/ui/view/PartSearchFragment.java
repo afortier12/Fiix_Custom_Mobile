@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -50,6 +52,9 @@ public class PartSearchFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
 
         partList =  new ArrayList<Part>();
 
@@ -116,8 +121,10 @@ public class PartSearchFragment extends Fragment {
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
-                NavController navController = Navigation.findNavController(view);
-                navController.popBackStack();
+                if (getView() != null) {
+                    NavController navController = Navigation.findNavController(getView());
+                    navController.popBackStack();
+                }
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);

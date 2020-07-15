@@ -7,11 +7,13 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 
 import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.SavedStateViewModelFactory;
@@ -54,6 +56,9 @@ public class WorkOrderListFragment extends Fragment  {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+        getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        ((AppCompatActivity)getActivity()).getSupportActionBar().show();
+
         workOrderList = new ArrayList<WorkOrder>();
 
         progressBarDialog = new ProgressBarDialog(getContext());
@@ -68,7 +73,7 @@ public class WorkOrderListFragment extends Fragment  {
         workOrderList.clear();
         adapter = new WorkOrderListAdapter(workOrderList, new OnWorkOrderSelectedListener(root));
 
-        recyclerView = root.findViewById(R.id.fragment_work_order_list);
+        recyclerView = root.findViewById(R.id.work_order_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
@@ -158,8 +163,10 @@ public class WorkOrderListFragment extends Fragment  {
         OnBackPressedCallback callback = new OnBackPressedCallback(true /* enabled by default */) {
             @Override
             public void handleOnBackPressed() {
-                NavController navController = Navigation.findNavController(view);
-                navController.popBackStack();
+                if (getView() != null) {
+                    NavController navController = Navigation.findNavController(getView());
+                    navController.popBackStack();
+                }
             }
         };
         requireActivity().getOnBackPressedDispatcher().addCallback(requireActivity(), callback);
@@ -223,6 +230,7 @@ public class WorkOrderListFragment extends Fragment  {
             WorkOrderListFragmentDirections.HomeToWorkOrder action =
                     WorkOrderListFragmentDirections.homeToWorkOrder();
             action.setWorkOrderId(workOrder.getId());
+            action.setCode(workOrder.getCode());
             Navigation.findNavController(view).navigate(action);
         }
     }
