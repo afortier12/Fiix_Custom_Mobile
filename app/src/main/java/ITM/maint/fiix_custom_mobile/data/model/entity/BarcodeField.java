@@ -35,16 +35,8 @@ public class BarcodeField implements Parcelable {
         }
       };
 
-    public String getLabel() {
-        return label;
-    }
-
-    public String getValue() {
-        return value;
-    }
-
     protected final String label;
-  protected final String value;
+    protected final String value;
 
   public BarcodeField(String label, String value) {
     this.label = label;
@@ -56,7 +48,15 @@ public class BarcodeField implements Parcelable {
     value = in.readString();
   }
 
-  @Override
+  public String getLabel() {
+        return label;
+    }
+
+  public String getValue() {
+        return value;
+    }
+
+    @Override
   public int describeContents() {
     return 0;
   }

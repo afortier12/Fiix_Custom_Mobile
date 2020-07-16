@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.Observable;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderTaskAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderTaskViewModel;
@@ -41,14 +42,14 @@ public class WorkOrderTaskFragment extends Fragment {
 
     private String username;
     private int userId;
-    private int workOrderId;
+    private WorkOrder workOrder;
 
     private ArrayList<WorkOrderTask> workOrderTaskList;
 
-    public WorkOrderTaskFragment(String username, int userId, int workOrderId) {
+    public WorkOrderTaskFragment(String username, int userId, WorkOrder workOrder) {
         this.username = username;
         this.userId = userId;
-        this.workOrderId = workOrderId;
+        this.workOrder = workOrder;
     }
 
     @Nullable
@@ -88,7 +89,8 @@ public class WorkOrderTaskFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        viewModel.getWorkOrderTasks(username, userId, workOrderId);
+        viewModel.getWorkOrderTasks(username, userId, workOrder.getId());
+
 
     }
 

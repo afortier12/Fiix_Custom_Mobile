@@ -54,6 +54,8 @@ public interface IWorkOrderDao {
     Single<List<WorkOrder>> getAssignedWorkOrder(String username);
 
 
+    @Query("SELECT sum(estimatedHours) FROM work_order_task_table where id = :workOrderId")
+    Single<Double> getWorkOrderEstimatedTime(int workOrderId);
 
     @Transaction
     @Query("SELECT * FROM work_order_table inner join priority_table " +

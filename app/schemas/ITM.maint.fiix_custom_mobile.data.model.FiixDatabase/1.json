@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "f79e4f9499acfa2bcd14959bddabb99d",
+    "identityHash": "08c5cccefb8797e66d824fe5c574d950",
     "entities": [
       {
         "tableName": "part_table",
@@ -190,7 +190,7 @@
       },
       {
         "tableName": "work_order_table",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `username` TEXT, `assignedUserIds` TEXT, `priorityId` INTEGER NOT NULL, `statusId` INTEGER NOT NULL, `assets` TEXT, `siteId` INTEGER NOT NULL, `assignedUsers` TEXT, `requestedByUserId` INTEGER NOT NULL, `guestEmail` TEXT, `dateCreated` TEXT, `assetIds` TEXT, `dateCompleted` TEXT, `completedByUserId` INTEGER NOT NULL, `description` TEXT, `guestName` TEXT, `estCompletionDate` TEXT, `guestPhone` TEXT, `code` TEXT, `completionNotes` TEXT, `maintenanceTypeId` TEXT, `dateModified` TEXT, `requiresSignature` TEXT, `dateSigned` TEXT, `signedByUserId` TEXT, `statusGroup` TEXT, `adminNotes` TEXT, `actionID` INTEGER NOT NULL, `causeID` INTEGER NOT NULL, `problemID` INTEGER NOT NULL, `completedByUserIds` TEXT, `completedByUsers` TEXT, `customerIds` TEXT, `vendorIds` TEXT, `updated` INTEGER NOT NULL, `scheduledMaintenanceId` INTEGER NOT NULL, `priorityOrder` INTEGER NOT NULL, `lastRefresh` INTEGER, `priorityName` TEXT, `requestedByUser` TEXT, `site` TEXT, `completedByUser` TEXT, `workOrderStatus` TEXT, `maintenanceType` TEXT, `action` TEXT, `cause` TEXT, `problem` TEXT, `scheduledMaintenance` TEXT, `signedByUser` TEXT, PRIMARY KEY(`id`), FOREIGN KEY(`priorityId`) REFERENCES `priority_table`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `username` TEXT, `assignedUserIds` TEXT, `priorityId` INTEGER NOT NULL, `statusId` INTEGER NOT NULL, `assets` TEXT, `siteId` INTEGER NOT NULL, `assignedUsers` TEXT, `requestedByUserId` INTEGER NOT NULL, `guestEmail` TEXT, `dateCreated` TEXT, `assetIds` TEXT, `dateCompleted` TEXT, `completedByUserId` INTEGER NOT NULL, `description` TEXT, `guestName` TEXT, `estCompletionDate` TEXT, `estTime` TEXT, `guestPhone` TEXT, `code` TEXT, `completionNotes` TEXT, `maintenanceTypeId` TEXT, `dateModified` TEXT, `requiresSignature` TEXT, `dateSigned` TEXT, `signedByUserId` TEXT, `statusGroup` TEXT, `adminNotes` TEXT, `actionID` INTEGER NOT NULL, `causeID` INTEGER NOT NULL, `problemID` INTEGER NOT NULL, `completedByUserIds` TEXT, `completedByUsers` TEXT, `customerIds` TEXT, `vendorIds` TEXT, `updated` INTEGER NOT NULL, `scheduledMaintenanceId` INTEGER NOT NULL, `priorityOrder` INTEGER NOT NULL, `lastRefresh` INTEGER, `priorityName` TEXT, `requestedByUser` TEXT, `site` TEXT, `completedByUser` TEXT, `workOrderStatus` TEXT, `maintenanceType` TEXT, `action` TEXT, `cause` TEXT, `problem` TEXT, `scheduledMaintenance` TEXT, `signedByUser` TEXT, PRIMARY KEY(`id`), FOREIGN KEY(`priorityId`) REFERENCES `priority_table`(`id`) ON UPDATE NO ACTION ON DELETE CASCADE )",
         "fields": [
           {
             "fieldPath": "id",
@@ -295,6 +295,12 @@
             "notNull": false
           },
           {
+            "fieldPath": "estTime",
+            "columnName": "estTime",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
             "fieldPath": "guestPhone",
             "columnName": "guestPhone",
             "affinity": "TEXT",
@@ -319,7 +325,7 @@
             "notNull": false
           },
           {
-            "fieldPath": "StringdateModified",
+            "fieldPath": "dateModified",
             "columnName": "dateModified",
             "affinity": "TEXT",
             "notNull": false
@@ -749,7 +755,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'f79e4f9499acfa2bcd14959bddabb99d')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '08c5cccefb8797e66d824fe5c574d950')"
     ]
   }
 }

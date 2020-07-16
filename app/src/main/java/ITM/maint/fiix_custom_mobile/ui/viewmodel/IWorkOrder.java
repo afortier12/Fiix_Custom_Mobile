@@ -23,11 +23,6 @@ public interface IWorkOrder {
 
     }
 
-    public interface IWorkOrderDetail {
-
-        public void findWorkOrderDetails(String username, int userId, int workOrderId);
-
-    }
 
     public interface IWorkOrderTasks {
 

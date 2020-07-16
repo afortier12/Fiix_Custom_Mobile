@@ -1,21 +1,16 @@
 package ITM.maint.fiix_custom_mobile.data.repository;
 
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -39,8 +34,6 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPri
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
 import io.reactivex.Completable;
-import io.reactivex.Maybe;
-import io.reactivex.MaybeObserver;
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
 import io.reactivex.SingleObserver;
@@ -60,6 +53,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     private IWorkOrderService workOrderService;
     private MutableLiveData<List<WorkOrder>> workOrderResponseMutableLiveData;
     private MutableLiveData<List<WorkOrderTask>> workOrderTaskResponseMutableLiveData;
+    private MutableLiveData<Double> estimatedTimeResponseMutableLiveData;
     private MutableLiveData<String> status;
 
     private IWorkOrderDao workOrderDao;
@@ -79,6 +73,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
         workOrderResponseMutableLiveData = new MutableLiveData<List<WorkOrder>>();
         workOrderTaskResponseMutableLiveData = new MutableLiveData<List<WorkOrderTask>>();
+        estimatedTimeResponseMutableLiveData = new MutableLiveData<Double>();
         status = new MutableLiveData<String>();
         workOrderService = ServiceGenerator.createService(IWorkOrderService.class);
 
@@ -91,6 +86,46 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         workOrderDBMutableLiveData = new MutableLiveData<List<WorkOrderJoinPriority>>();
     }
 
+
+
+
+    private void getEstTimefromDB(int workOrderId){
+        //get from database if available
+        Single<Double> single = fiixDatabase.workOrderDao().getWorkOrderEstimatedTime(workOrderId);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<Double>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                // add it to a CompositeDisposable
+                compositeDisposable.add(d);
+            }
+
+            @Override
+            public void onSuccess(Double estTime) {
+                if (estTime == null) {
+                    //no tasks in database -> request from Fiix
+                    getTasksForOrderFromFiix(userId, taskWorkOrderId);
+                } else {
+                    estimatedTimeResponseMutableLiveData.postValue(estTime);
+                }
+            }
+
+
+
+            @Override
+            public void onError(Throwable e) {
+                // show an error message
+                Log.d(TAG, "Error finding work order task from DB");
+            }
+
+            //@Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+
     @Override
     public void getWorkOrdersForUser(String username, int userId) {
 
@@ -98,7 +133,6 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         this.userId = userId;
 
         getPrioritiesFromDB();
-
 
     }
 
@@ -138,6 +172,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
             }
         });
     }
+
 
     @Override
     public void getWorkOrderTasks(String username, int userId, int workOrderId) {
@@ -358,6 +393,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         compositeDisposable.add(disposableCompletableObserver);
     }
 
+
     @Override
     public void getWorkOrders(List<Integer> workOrders) {
         FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
@@ -368,10 +404,15 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                 WorkOrders.code.getField(),
                 WorkOrders.priorityId.getField(),
                 WorkOrders.priority.getField(),
-                WorkOrders.maintenanceType.getField(),
                 WorkOrders.assets.getField(),
                 WorkOrders.description.getField(),
-                WorkOrders.problem.getField()
+                WorkOrders.statusId.getField(),
+                WorkOrders.workOrderStatus.getField(),
+                WorkOrders.maintenanceTypeId.getField(),
+                WorkOrders.maintenanceType.getField(),
+                WorkOrders.requestedByUser.getField(),
+                WorkOrders.estCompletionDate.getField(),
+                WorkOrders.adminNotes.getField()
         ));
 
         String fields = TextUtils.join(",", workOrderFields);
@@ -407,11 +448,11 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                                 addWorkOrders(response.body());
                                 //workOrderResponseMutableLiveData.postValue(response.body());
                             } else {
-                                workOrderResponseMutableLiveData.postValue(null);
+                                estimatedTimeResponseMutableLiveData.postValue(null);
                                 Log.d(TAG, "response is empty");
                             }
                         } else {
-                            workOrderResponseMutableLiveData.postValue(null);
+                            estimatedTimeResponseMutableLiveData.postValue(null);
                             APIError error = ErrorUtils.parseError(response);
                             for (String msg : error.getMessages())
                                 Log.d(TAG, String.valueOf(msg));
@@ -615,14 +656,15 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     }
 
     @Override
-    public void deleteWorkOrder(int workOrderId) {
+    public void updateWorkOrder(WorkOrder workOrder) {
 
     }
 
     @Override
-    public void getWorkOrderDetails(FindRequest partRequest) {
+    public void deleteWorkOrder(int workOrderId) {
 
     }
+
 
     private Date getMaxRefreshTime(Date currentDate) {
         Calendar cal = Calendar.getInstance();
@@ -650,6 +692,10 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     public MutableLiveData<List<WorkOrderJoinPriority>> getWorkOrderDBMutableLiveData() {
         return workOrderDBMutableLiveData;
+    }
+
+    public MutableLiveData<Double> getEstimatedTimeResponseMutableLiveData() {
+        return estimatedTimeResponseMutableLiveData;
     }
 
     public MutableLiveData<String> getStatus() {

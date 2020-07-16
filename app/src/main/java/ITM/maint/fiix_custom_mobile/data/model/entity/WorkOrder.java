@@ -1,5 +1,8 @@
 package ITM.maint.fiix_custom_mobile.data.model.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Embedded;
@@ -15,8 +18,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 import java.util.List;
 
-import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
-
 import static androidx.room.ForeignKey.CASCADE;
 
 @Entity(tableName = "work_order_table",
@@ -26,7 +27,20 @@ import static androidx.room.ForeignKey.CASCADE;
     parentColumns = "id",
     childColumns = "priorityId",
     onDelete = CASCADE))
-public class WorkOrder {
+public class WorkOrder implements Parcelable {
+
+    public static final Creator<WorkOrder> CREATOR =
+        new Creator<WorkOrder>() {
+            @Override
+            public WorkOrder createFromParcel(Parcel in) {
+                return new WorkOrder(in);
+            }
+
+            @Override
+            public WorkOrder[] newArray(int size) {
+                return new WorkOrder[size];
+            }
+        };
 
     public static class WorkOrderJoinPriority {
         @Embedded
@@ -123,9 +137,11 @@ public class WorkOrder {
     @Expose
     @ColumnInfo(name="estCompletionDate")
     private String estCompletionDate;
-    /*@SerializedName("strPhoneUserGuest")
+    @ColumnInfo(name="estTime")
+    private String estTime;
+    @SerializedName("strPhoneUserGuest")
     @Expose
-    @ColumnInfo(name="guestPhone")*/
+    @ColumnInfo(name="guestPhone")
     private String guestPhone;
     @SerializedName("strCode")
     @Expose
@@ -142,7 +158,7 @@ public class WorkOrder {
     @SerializedName("dtmDateLastModified")
     @Expose
     @ColumnInfo(name="dateModified")
-    private String StringdateModified;
+    private String dateModified;
     /*@SerializedName("bolRequiresSignature")
     @Expose
     @ColumnInfo(name="requiresSignature")*/
@@ -205,6 +221,89 @@ public class WorkOrder {
     private int priorityOrder;
     @ColumnInfo(name="lastRefresh")
     private Date lastRefresh;
+
+    public WorkOrder() {
+    }
+
+    //parcelling part
+    public WorkOrder(Parcel in){
+        this.id = in.readInt();
+        this.username = in.readString();
+        this.assignedUserIds = in.readString();
+        this.priorityId = in.readInt();
+        this.statusId = in.readInt();
+        this.assets = in.readString();
+        this.siteId = in.readInt();
+        this.assignedUsers = in.readString();
+        this.requestedByUserId = in.readInt();
+        this.guestEmail = in.readString();
+        this.dateCreated = in.readString();
+        this.assetIds = in.readString();
+        this.dateCompleted = in.readString();
+        this.completedByUserId = in.readInt();
+        this.description = in.readString();
+        this.guestName = in.readString();
+        this.estCompletionDate = in.readString();
+        this.estTime = in.readString();
+        this.guestPhone = in.readString();
+        this.code = in.readString();
+        this.completionNotes = in.readString();
+        this.maintenanceTypeId = in.readString();
+        this.dateModified = in.readString();
+        this.adminNotes = in.readString();
+        this.actionID = in.readInt();
+        this.causeID = in.readInt();
+        this.problemID = in.readInt();
+        this.completedByUserIds = in.readString();
+        this.completedByUsers = in.readString();
+        this.customerIds = in.readString();
+        this.vendorIds = in.readString();
+        this.updated = in.readInt();
+        this.scheduledMaintenanceId = in.readInt();
+        this.priorityOrder = in.readInt();
+    }
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeString(this.username);
+        dest.writeString(this.assignedUserIds);
+        dest.writeInt(this.priorityId);
+        dest.writeInt(this.statusId);
+        dest.writeString(this.assets);
+        dest.writeInt(this.siteId);
+        dest.writeString(this.assignedUsers);
+        dest.writeInt(this.requestedByUserId);
+        dest.writeString(this.guestEmail);
+        dest.writeString(this.dateCreated);
+        dest.writeString(this.assetIds);
+        dest.writeString(this.dateCompleted);
+        dest.writeInt(this.completedByUserId);
+        dest.writeString(this.description);
+        dest.writeString(this.guestName);
+        dest.writeString(this.estCompletionDate);
+        dest.writeString(this.estTime);
+        dest.writeString(this.guestPhone);
+        dest.writeString(this.code);
+        dest.writeString(this.completionNotes);
+        dest.writeString(this.maintenanceTypeId);
+        dest.writeString(this.dateModified);
+        dest.writeString(this.adminNotes);
+        dest.writeInt(this.actionID);
+        dest.writeInt(this.causeID);
+        dest.writeInt(this.problemID);
+        dest.writeString(this.completedByUserIds);
+        dest.writeString(this.completedByUsers);
+        dest.writeString(this.customerIds);
+        dest.writeString(this.vendorIds);
+        dest.writeInt(this.updated);
+        dest.writeInt(this.scheduledMaintenanceId);
+        dest.writeInt(this.priorityOrder);
+    }
 
 
     public static class ExtraFields {
@@ -502,12 +601,12 @@ public class WorkOrder {
         this.maintenanceTypeId = maintenanceTypeId;
     }
 
-    public String getStringdateModified() {
-        return StringdateModified;
+    public String getDateModified() {
+        return dateModified;
     }
 
-    public void setStringdateModified(String stringdateModified) {
-        StringdateModified = stringdateModified;
+    public void setDateModified(String dateModified) {
+        this.dateModified = dateModified;
     }
 
     public String getRequiresSignature() {
@@ -652,5 +751,13 @@ public class WorkOrder {
 
     public void setLastRefresh(Date lastRefresh) {
         this.lastRefresh = lastRefresh;
+    }
+
+    public String getEstTime() {
+        return estTime;
+    }
+
+    public void setEstTime(String estTime) {
+        this.estTime = estTime;
     }
 }

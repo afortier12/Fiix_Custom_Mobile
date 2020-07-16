@@ -1,9 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/detail_problem_source_layout"
+        style="@style/TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/problem_source_hint_text"
+        android:labelFor="@id/detail_problem_source_dropdown"
+        app:layout_constraintVertical_bias="0.01"
+        app:layout_constraintBottom_toTopOf="@id/detail_problem_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <AutoCompleteTextView
+            android:id="@+id/detail_problem_source_dropdown"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10sp"
+            android:padding="10sp"
+            android:textSize="16sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/detail_problem_layout"
@@ -11,17 +35,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/problem_hint_text"
-        app:layout_constraintTop_toTopOf="parent"
+        android:labelFor="@id/detail_problem_dropdown"
         app:layout_constraintBottom_toTopOf="@id/detail_cause_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_problem_source_layout">
 
         <AutoCompleteTextView
             android:id="@+id/detail_problem_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="1dp"
-            android:textSize="20sp" />
+            android:layout_margin="10sp"
+            android:padding="10sp"
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -31,17 +57,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/cause_hint_text"
-        app:layout_constraintTop_toBottomOf="@id/detail_problem_layout"
+        android:labelFor="@id/detail_cause_dropdown"
         app:layout_constraintBottom_toTopOf="@id/detail_action_layout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_problem_layout">
 
         <AutoCompleteTextView
             android:id="@+id/detail_cause_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="1dp"
-            android:textSize="20sp" />
+            android:layout_margin="10sp"
+            android:padding="10sp"
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -51,30 +79,34 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/action_hint_text"
-        app:layout_constraintTop_toBottomOf="@id/detail_cause_layout"
-        app:layout_constraintBottom_toTopOf="@id/work_order_note_button"
+        android:labelFor="@id/detail_action_dropdown"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_cause_layout">
 
         <AutoCompleteTextView
             android:id="@+id/detail_action_dropdown"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="1dp"
-            android:textSize="20sp" />
+            android:layout_margin="10sp"
+            android:padding="10sp"
+            android:textSize="16sp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/work_order_note_button"
+        style="?attr/materialButtonOutlinedStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/black"
-        android:text="@string/login"
+        android:text="@string/submit"
+        app:icon="@drawable/ic_add"
+        app:iconGravity="start"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:strokeColor="@color/black">
 
     </com.google.android.material.button.MaterialButton>
 

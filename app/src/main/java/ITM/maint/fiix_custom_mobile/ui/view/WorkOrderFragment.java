@@ -16,6 +16,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderViewPagerAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 
@@ -28,7 +29,7 @@ public class WorkOrderFragment extends Fragment {
 
     private String username;
     private int userId;
-    private int workOrderId;
+    private WorkOrder workOrder;
 
 
     @Nullable
@@ -60,9 +61,9 @@ public class WorkOrderFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         WorkOrderFragmentArgs args = WorkOrderFragmentArgs.fromBundle(getArguments());
-        workOrderId = args.getWorkOrderId();
+        workOrder = args.getWorkOrder();
 
-        adapter = new WorkOrderViewPagerAdapter(getChildFragmentManager(), getLifecycle(), username, userId, workOrderId);
+        adapter = new WorkOrderViewPagerAdapter(getChildFragmentManager(), getLifecycle(), username, userId, workOrder);
 
         viewPager = (ViewPager2) view.findViewById(R.id.fragment_work_order_viewpager);
         viewPager.setAdapter(adapter);

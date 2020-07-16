@@ -229,8 +229,7 @@ public class WorkOrderListFragment extends Fragment  {
         public void onItemClick(WorkOrder workOrder) {
             WorkOrderListFragmentDirections.HomeToWorkOrder action =
                     WorkOrderListFragmentDirections.homeToWorkOrder();
-            action.setWorkOrderId(workOrder.getId());
-            action.setCode(workOrder.getCode());
+            action.setWorkOrder(workOrder);
             Navigation.findNavController(view).navigate(action);
         }
     }

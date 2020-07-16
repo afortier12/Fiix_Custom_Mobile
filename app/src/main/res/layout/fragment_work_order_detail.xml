@@ -4,9 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:scrollIndicators="end"
+    android:scrollbarSize="8dp"
+    android:scrollbars="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/priority_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -17,11 +21,11 @@
             android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/work_order_detail_priority_text"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
 
             app:layout_constraintVertical_bias="0.499"
             app:srcCompat="@drawable/ic_calendar" />
@@ -31,40 +35,44 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintHorizontal_weight="4"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@id/work_order_detail_priority_icon"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <RelativeLayout
+        android:id="@+id/asset_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp">
+
         <LinearLayout
             android:id="@+id/detail_asset_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="start|top" >
+            android:gravity="start|top"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
-                android:text="@string/asset"
-                android:background="@color/white"
                 android:layout_marginStart="10sp"
+                android:background="@color/white"
+                android:text="@string/asset"
                 android:textSize="14sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
             android:layout_marginTop="10sp"
+            android:background="@drawable/border"
             android:orientation="vertical">
 
             <TextView
@@ -74,12 +82,13 @@
                 android:layout_margin="10sp"
                 android:padding="4sp"
                 android:text="@string/hello"
-                android:textSize="16sp"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/status_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp">
@@ -105,68 +114,73 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
             android:layout_marginTop="10sp"
+            android:background="@drawable/border"
             android:orientation="vertical">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/detail_status"
+                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:textAppearance="@style/AppTheme.Chip"
                 android:padding="4sp"
-                android:text="@string/hello"/>
+                android:text="@string/hello"
+                android:textAppearance="@style/AppTheme.Chip" />
         </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/type_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp">
+
         <LinearLayout
             android:id="@+id/detail_type_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="start|top" >
+            android:gravity="start|top"
+            android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
+                android:layout_marginStart="10sp"
                 android:background="@color/white"
                 android:text="@string/maintenance_type"
-                android:layout_marginStart="10sp"
                 android:textSize="14sp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/border"
             android:layout_marginTop="10sp"
+            android:background="@drawable/border"
             android:orientation="vertical">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/detail_type"
                 style="@style/Widget.MaterialComponents.Chip.Choice"
-                android:textAppearance="@style/AppTheme.Chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10sp"
-                android:text="@string/hello"/>
+                android:text="@string/hello"
+                android:textAppearance="@style/AppTheme.Chip" />
 
         </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/description_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp">
 
         <LinearLayout
-            android:id="@+id/detail_description__layout"
+            android:id="@+id/detail_description_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="start|top"
@@ -194,20 +208,21 @@
                 android:id="@+id/detail_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:layout_marginTop="10sp"
-                android:textSize="20sp" />
+                android:layout_margin="10sp"
+                android:padding="4sp"
+                android:textSize="16sp" />
 
         </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/requestedBy_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="4dp">
 
         <LinearLayout
-            android:id="@+id/detail_requestedBy__layout"
+            android:id="@+id/detail_requestedBy_layout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="start|top"
@@ -238,6 +253,7 @@
                 android:layout_margin="4dp"
                 android:layout_marginTop="10sp"
                 android:textSize="16sp" />
+
             <TextView
                 android:id="@+id/detail_requestedBy_email"
                 android:layout_width="match_parent"
@@ -250,6 +266,7 @@
     </RelativeLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/schedule_est_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -260,6 +277,9 @@
             android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/estimated_time_container"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -276,7 +296,7 @@
                     android:layout_gravity="top"
                     android:layout_marginStart="10sp"
                     android:background="@color/white"
-                    android:text="@string/requestedBy"
+                    android:text="@string/scheduled_date"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -292,8 +312,8 @@
                     android:id="@+id/detail_scheduled_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_marginTop="10sp"
+                    android:layout_margin="10sp"
+                    android:padding="4sp"
                     android:textSize="16sp" />
 
             </LinearLayout>
@@ -305,11 +325,15 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@id/scheduled_date_container"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/scheduled_date_container"
             app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/detail_estimated__layout"
+                android:id="@+id/detail_estimated_layout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="start|top"
@@ -321,7 +345,7 @@
                     android:layout_gravity="top"
                     android:layout_marginStart="10sp"
                     android:background="@color/white"
-                    android:text="@string/requestedBy"
+                    android:text="@string/estimated_time"
                     android:textSize="14sp" />
 
             </LinearLayout>
@@ -337,16 +361,99 @@
                     android:id="@+id/detail_estimated_time"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:layout_marginTop="10sp"
+                    android:layout_margin="10sp"
+                    android:padding="4sp"
                     android:textSize="16sp" />
 
             </LinearLayout>
         </RelativeLayout>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <RelativeLayout
+        android:id="@+id/notes_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp">
+
+        <LinearLayout
+            android:id="@+id/detail_note_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginStart="10sp"
+                android:background="@color/white"
+                android:text="@string/detail_notes"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:background="@drawable/border"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/detail_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
+                android:padding="4sp"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/work_order_notes"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center"
+        android:text="@string/notes"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/notes_container"
+        app:icon="@drawable/ic_add"
+        app:iconGravity="start"
+        app:strokeColor="@color/black">
+
+    </com.google.android.material.button.MaterialButton>
+
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:ignore="UselessLeaf">
+    </FrameLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/work_order_update"
+        style="?attr/materialButtonOutlinedStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|bottom"
+        android:gravity="center"
+        android:text="@string/update_fiix"
+        android:textColor="@color/black"
+        app:icon="@drawable/ic_arrow_circle_up_24px"
+        app:iconGravity="start"
+        app:strokeColor="@color/black">
+
+    </com.google.android.material.button.MaterialButton>
 
 </LinearLayout>
 

@@ -78,7 +78,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                         setTitle("Assigned Work Orders");
                         break;
                     case R.id.navigation_workOrder:
-                        String code = WorkOrderFragmentArgs.fromBundle(arguments).getCode();
+                        String code = WorkOrderFragmentArgs.fromBundle(arguments).getWorkOrder().getCode();
                         setTitle("Work Order: " + code);
                         break;
                     case R.id.navigation_partAdd:

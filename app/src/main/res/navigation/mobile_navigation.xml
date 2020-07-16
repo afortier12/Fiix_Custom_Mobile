@@ -64,12 +64,9 @@
         android:label="@string/title_work_order"
         tools:layout="@layout/fragment_work_order">
         <argument
-            android:name="workOrderId"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <argument
-            android:name="code"
-            app:argType="string"
-            android:defaultValue='""' />
+            android:name="workOrder"
+            app:argType="ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder"
+            app:nullable="true"
+            android:defaultValue="@null" />
     </fragment>
 </navigation>

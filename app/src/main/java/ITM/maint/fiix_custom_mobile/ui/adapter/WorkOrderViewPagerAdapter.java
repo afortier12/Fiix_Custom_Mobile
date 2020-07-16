@@ -12,6 +12,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderDetailFragment;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderTaskFragment;
 
@@ -23,16 +24,16 @@ public class WorkOrderViewPagerAdapter extends FragmentStateAdapter {
 
     private String username;
     private int userId;
-    private int workOrderId;
+    private WorkOrder workOrder;
 
-    public WorkOrderViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String username, int userId, int workOrderId) {
+    public WorkOrderViewPagerAdapter(@NonNull FragmentManager fragmentManager, @NonNull Lifecycle lifecycle, String username, int userId, WorkOrder workOrder) {
         super(fragmentManager, lifecycle);
          this.username = username;
          this.userId = userId;
-         this.workOrderId = workOrderId;
+         this.workOrder = workOrder;
 
-         fragmentList.add(new WorkOrderDetailFragment(username, userId, workOrderId));
-         fragmentList.add(new WorkOrderTaskFragment(username, userId, workOrderId));
+         fragmentList.add(new WorkOrderDetailFragment(username, userId, workOrder));
+         fragmentList.add(new WorkOrderTaskFragment(username, userId, workOrder));
     }
 
     @NonNull

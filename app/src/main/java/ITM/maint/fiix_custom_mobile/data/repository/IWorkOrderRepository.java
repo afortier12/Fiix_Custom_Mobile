@@ -35,8 +35,8 @@ public interface IWorkOrderRepository {
             //add work order tasks to Fiix
             void addWorkOrderTasks(List<WorkOrderTask> taskList);
 
-            //get work order details from Fiix
-            void getWorkOrderDetails(FindRequest partRequest);
+            //update work order in Fiix
+            void updateWorkOrder(WorkOrder workOrder);
         }
 
 }
