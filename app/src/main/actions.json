@@ -1,0 +1,62 @@
+[
+ {
+   "id": "13,496",
+   "code": "FOUND-OK",
+   "description": "Found Ok"
+ },
+ {
+   "id": "13,497",
+   "code": "OVRHL-REBLD",
+   "description": "Overhauled/Rebuilt"
+ },
+ {
+   "id": "13,498",
+   "code": "MODIFIED",
+   "description": "Modified"
+ },
+ {
+   "id": "13,499",
+   "code": "RECAL-ADJ",
+   "description": "Re-Calibrated/Adjusted"
+ },
+ {
+   "id": "13,500",
+   "code": "REPL-EQPT",
+   "description": "Replaced Equipment"
+ },
+ {
+   "id": "13,501",
+   "code": "REPLN-RCHG",
+   "description": "Replenished/Recharged"
+ },
+ {
+   "id": "13,502",
+   "code": "CLEAN-SRVC",
+   "description": "Cleaned/Serviced"
+ },
+ {
+   "id": "13,503",
+   "code": "INSPECT",
+   "description": "Inspect"
+ },
+ {
+   "id": "13,504",
+   "code": "TRAINNG",
+   "description": "Training"
+ },
+ {
+   "id": "13,505",
+   "code": "RE-HOMED",
+   "description": "Re-homed"
+ },
+ {
+   "id": "13,506",
+   "code": "REMOV-OBSTR",
+   "description": "Removed obstruction"
+ },
+ {
+   "id": "13,507",
+   "code": "SENS-ADJ",
+   "description": "Sensor adjustment"
+ }
+]
