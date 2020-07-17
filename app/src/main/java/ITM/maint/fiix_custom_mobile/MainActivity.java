@@ -59,8 +59,6 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
-
-
         usernameArg = new NavArgument.Builder().setDefaultValue(username).build();
         idArg = new NavArgument.Builder().setDefaultValue(id).build();
         NavInflater navInflator = navController.getNavInflater();
@@ -137,4 +135,6 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         else
             navController.navigate(navController.getGraph().getStartDestination());
     }
+
+    private void update
 }

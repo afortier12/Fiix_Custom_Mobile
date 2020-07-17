@@ -84,105 +84,102 @@ public class ServiceGenerator {
         @Override
         public Response intercept(@NotNull Chain chain) throws IOException {
             Response response = chain.proceed(chain.request());
-            //if (response.body().contentType() != null){
-                //if (response.body().contentType().equals(MediaType.parse("text/plain;charset=utf-8"))) {
-                    String jsonString = response.body().string();
 
-                    JSONObject jsonObject;
-                    try {
-                        jsonObject = new JSONObject(jsonString);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        return response;
-                    }
+            String jsonString = response.body().string();
 
-                    StringReader stringReader = new StringReader(jsonString);
-                    JsonReader jsonReader = new JsonReader(stringReader);
+            JSONObject jsonObject;
+            try {
+                jsonObject = new JSONObject(jsonString);
+            } catch (JSONException e) {
+                e.printStackTrace();
+                return response;
+            }
 
-                    JsonToken jsonToken;
-                    JSONArray jsonArray = new JSONArray();
-                    try {
-                        while ((jsonToken = jsonReader.peek()) != JsonToken.END_DOCUMENT) {
-                            switch (jsonToken) {
-                                case BEGIN_OBJECT:
-                                    jsonReader.beginObject();
-                                    continue;
-                                case END_OBJECT:
-                                    jsonReader.endObject();
-                                    continue;
-                                case BEGIN_ARRAY:
-                                    jsonReader.beginArray();
-                                    continue;
-                                case END_ARRAY:
-                                    jsonReader.endArray();
-                                    continue;
-                                case NAME:
-                                    String name = jsonReader.nextName();
-                                    if (name.equalsIgnoreCase("error")) {
-                                        JSONObject errObj = jsonObject.getJSONObject("error");
-                                        String leg = errObj.getString("leg");
-                                        String code = errObj.getString("code");
-                                        String msg = errObj.getString("message");
-                                        String stack = errObj.getString("stackTrace");
-                                        errObj = new JSONObject();
-                                        errObj.put("leg", leg);
-                                        errObj.put("code", code);
-                                        errObj.put("message", msg);
-                                        errObj.put("stackTrace", stack);
-                                        jsonArray.put(errObj);
+            StringReader stringReader = new StringReader(jsonString);
+            JsonReader jsonReader = new JsonReader(stringReader);
 
-                                    } else if (name.equalsIgnoreCase("objects")) {
-                                        break;
-                                    }
-                                    System.out.println("Token Value >>>> " + name);
-                                    continue;
-                                case STRING:
-                                    String value = jsonReader.nextString();
-                                    System.out.println("Token Value >>>> " + value);
-                                    continue;
-                                case NUMBER:
-                                    long lValue = jsonReader.nextLong();
-                                    System.out.println("Token Value >>>> " + lValue);
-                                    continue;
-                                case NULL:
-                                    jsonReader.nextNull();
-                                    System.out.println("Token Value >>>> null");
-                                    continue;
-                                case BOOLEAN:
-                                    Boolean bool = jsonReader.nextBoolean();
-                                    System.out.println("Token Value >>>> " + bool);
-                                    continue;
-                                default:
-                                    throw new AssertionError("default");
+            JsonToken jsonToken;
+            JSONArray jsonArray = new JSONArray();
+            try {
+                while ((jsonToken = jsonReader.peek()) != JsonToken.END_DOCUMENT) {
+                    switch (jsonToken) {
+                        case BEGIN_OBJECT:
+                            jsonReader.beginObject();
+                            continue;
+                        case END_OBJECT:
+                            jsonReader.endObject();
+                            continue;
+                        case BEGIN_ARRAY:
+                            jsonReader.beginArray();
+                            continue;
+                        case END_ARRAY:
+                            jsonReader.endArray();
+                            continue;
+                        case NAME:
+                            String name = jsonReader.nextName();
+                            if (name.equalsIgnoreCase("error")) {
+                                JSONObject errObj = jsonObject.getJSONObject("error");
+                                String leg = errObj.getString("leg");
+                                String code = errObj.getString("code");
+                                String msg = errObj.getString("message");
+                                String stack = errObj.getString("stackTrace");
+                                errObj = new JSONObject();
+                                errObj.put("leg", leg);
+                                errObj.put("code", code);
+                                errObj.put("message", msg);
+                                errObj.put("stackTrace", stack);
+                                jsonArray.put(errObj);
+
+                            } else if (name.equalsIgnoreCase("objects")) {
+                                break;
                             }
-                            break;
-                        }
-
-                    } catch (IOException | AssertionError | JSONException e) {
-                        e.printStackTrace();
-                    } finally {
-                        jsonReader.close();
+                            System.out.println("Token Value >>>> " + name);
+                            continue;
+                        case STRING:
+                            String value = jsonReader.nextString();
+                            System.out.println("Token Value >>>> " + value);
+                            continue;
+                        case NUMBER:
+                            long lValue = jsonReader.nextLong();
+                            System.out.println("Token Value >>>> " + lValue);
+                            continue;
+                        case NULL:
+                            jsonReader.nextNull();
+                            System.out.println("Token Value >>>> null");
+                            continue;
+                        case BOOLEAN:
+                            Boolean bool = jsonReader.nextBoolean();
+                            System.out.println("Token Value >>>> " + bool);
+                            continue;
+                        default:
+                            throw new AssertionError("default");
                     }
+                    break;
+                }
 
-                    Response.Builder builder = response.newBuilder();
-                    if (jsonArray.length() > 0) {
-                        jsonObject.remove("error");
-                        try {
-                            jsonObject.put("error", jsonArray);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            return response;
-                        }
-                        builder.code(400);
-                    } else {
-                        builder.code(response.code());
-                    }
-                    ResponseBody body = ResponseBody.create(jsonObject.toString(), response.body().contentType());
-                    return builder.body(body)
-                            .build();
-                //}
-            //}
-            //return response;
+            } catch (IOException | AssertionError | JSONException e) {
+                e.printStackTrace();
+            } finally {
+                jsonReader.close();
+            }
+
+            Response.Builder builder = response.newBuilder();
+            if (jsonArray.length() > 0) {
+                jsonObject.remove("error");
+                try {
+                    jsonObject.put("error", jsonArray);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    return response;
+                }
+                builder.code(400);
+            } else {
+                builder.code(response.code());
+            }
+            ResponseBody body = ResponseBody.create(jsonObject.toString(), response.body().contentType());
+            return builder.body(body)
+                    .build();
+
         }
     }
 

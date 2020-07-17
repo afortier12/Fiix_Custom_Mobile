@@ -34,7 +34,6 @@ public class UserRepository extends BaseRepository{
 
    private MutableLiveData<List<User>> userResponseMutableLiveData;
 
-    private ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao IPartDao;
 
     public UserRepository(Application application) {
         super(application);

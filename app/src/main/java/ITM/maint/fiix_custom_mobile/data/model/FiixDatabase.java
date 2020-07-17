@@ -22,6 +22,7 @@ import javax.inject.Inject;
 import ITM.maint.fiix_custom_mobile.constants.Fiix;
 import ITM.maint.fiix_custom_mobile.data.model.dao.ILookupTablesDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
+import ITM.maint.fiix_custom_mobile.data.model.dao.IRCADao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IUserDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
@@ -40,6 +41,7 @@ public abstract class FiixDatabase extends RoomDatabase {
     public abstract IUserDao userDao();
     public abstract IWorkOrderDao workOrderDao();
     public abstract ILookupTablesDao lookupTablesDao();
+    public abstract IRCADao rcaDao();
 
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile FiixDatabase INSTANCE;
