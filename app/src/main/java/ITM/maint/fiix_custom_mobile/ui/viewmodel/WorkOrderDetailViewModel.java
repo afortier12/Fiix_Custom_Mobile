@@ -13,13 +13,14 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 
-public class WorkOrderDetailViewModel extends AndroidViewModel {
+public class WorkOrderDetailViewModel extends AndroidViewModel implements IWorkOrder.IWorkOrderDetails {
 
     private WorkOrderRepository workOrderRepository;
     private IWorkOrderService workOrderService;
     private LiveData<List<WorkOrderTask>> workOrderTaskResponseLiveData;
     private LiveData<Double> estTimeResponseLiveData;
     private LiveData<String> responseStatus;
+
 
     public WorkOrderDetailViewModel(@NonNull Application application) {
         super(application);
@@ -34,6 +35,8 @@ public class WorkOrderDetailViewModel extends AndroidViewModel {
 
     }
 
+
+
     public LiveData<List<WorkOrderTask>> getWorkOrderTaskResponseLiveData() {
         return workOrderTaskResponseLiveData;
     }
@@ -44,5 +47,10 @@ public class WorkOrderDetailViewModel extends AndroidViewModel {
 
     public LiveData<String> getResponseStatus() {
         return responseStatus;
+    }
+
+    @Override
+    public void getWorkOrderEstTime(int workOrderId, int userId) {
+        workOrderRepository.getEstTimefromDB(workOrderId, userId);
     }
 }

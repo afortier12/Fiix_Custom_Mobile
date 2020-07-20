@@ -2,6 +2,7 @@ package ITM.maint.fiix_custom_mobile.data.model.entity;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
+import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.Expose;
@@ -9,6 +10,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+@Entity(tableName = "nesting_table")
 public class FailureCodeNesting {
 
     @SerializedName("id")
@@ -19,7 +21,7 @@ public class FailureCodeNesting {
     @SerializedName("category")
     @Expose
     private String category;
-    @SerializedName("source")
+    /*@SerializedName("source")
     @Expose
     private List<Source> source = null;
 
@@ -118,7 +120,7 @@ public class FailureCodeNesting {
             this.code = code;
         }
 
-    }
+    }*/
 
     public Integer getId() {
         return id;
@@ -136,12 +138,12 @@ public class FailureCodeNesting {
         this.category = category;
     }
 
-    public List<Source> getSource() {
+    /*public List<Source> getSource() {
         return source;
     }
 
     public void setSource(List<Source> source) {
         this.source = source;
-    }
+    }*/
 
 }

@@ -14,6 +14,7 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
+import ITM.maint.fiix_custom_mobile.utils.Status;
 
 public class WorkOrderListViewModel extends AndroidViewModel implements IWorkOrder.IWorkOrderList {
 
@@ -21,7 +22,7 @@ public class WorkOrderListViewModel extends AndroidViewModel implements IWorkOrd
     private IWorkOrderService workOrderService;
     private LiveData<List<WorkOrder>> workOrderResponseLiveData;
     private LiveData<List<WorkOrderJoinPriority>> workOrderDBLiveData;
-    private LiveData<String> responseStatus;
+    private LiveData<Status> responseStatus;
 
     public WorkOrderListViewModel(@NonNull Application application) {
         super(application);
@@ -75,7 +76,7 @@ public class WorkOrderListViewModel extends AndroidViewModel implements IWorkOrd
         return workOrderDBLiveData;
     }
 
-    public LiveData<String> getResponseStatus() {
+    public LiveData<Status> getResponseStatus() {
         return responseStatus;
     }
 

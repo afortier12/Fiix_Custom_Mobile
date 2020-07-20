@@ -102,4 +102,5 @@
     <string name="problem_source_hint_text">Problem Source</string>
     <string name="notes">NOTES</string>
     <string name="detail_notes">Notes</string>
+    <string name="work_order_task_added">Work order tasks added</string>
 </resources>

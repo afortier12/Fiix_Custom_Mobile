@@ -18,6 +18,7 @@ import java.util.stream.Stream;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.constants.Priorities;
+import ITM.maint.fiix_custom_mobile.constants.StatusCodes;
 import ITM.maint.fiix_custom_mobile.constants.WorkOrderTasks;
 import ITM.maint.fiix_custom_mobile.constants.WorkOrders;
 import ITM.maint.fiix_custom_mobile.data.api.ErrorUtils;
@@ -33,6 +34,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
+import ITM.maint.fiix_custom_mobile.utils.Status;
 import io.reactivex.Completable;
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
@@ -54,7 +56,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     private MutableLiveData<List<WorkOrder>> workOrderResponseMutableLiveData;
     private MutableLiveData<List<WorkOrderTask>> workOrderTaskResponseMutableLiveData;
     private MutableLiveData<Double> estimatedTimeResponseMutableLiveData;
-    private MutableLiveData<String> status;
+    private MutableLiveData<Status> status;
 
     private IWorkOrderDao workOrderDao;
     private ILookupTablesDao lookupTablesDao;
@@ -67,14 +69,13 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     private int userId;
     private int taskWorkOrderId;
 
-
     public WorkOrderRepository(Application application) {
         super(application);
 
         workOrderResponseMutableLiveData = new MutableLiveData<List<WorkOrder>>();
         workOrderTaskResponseMutableLiveData = new MutableLiveData<List<WorkOrderTask>>();
         estimatedTimeResponseMutableLiveData = new MutableLiveData<Double>();
-        status = new MutableLiveData<String>();
+        status = new MutableLiveData<Status>();
         workOrderService = ServiceGenerator.createService(IWorkOrderService.class);
 
         workOrderIdList = new ArrayList<>();
@@ -89,8 +90,12 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
 
 
-    private void getEstTimefromDB(int workOrderId){
+    public void getEstTimefromDB(int workOrderId, int userId){
         //get from database if available
+
+        taskWorkOrderId = workOrderId;
+        this.userId = userId;
+
         Single<Double> single = fiixDatabase.workOrderDao().getWorkOrderEstimatedTime(workOrderId);
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         single.subscribeOn(scheduler).subscribe(new SingleObserver<Double>() {
@@ -104,7 +109,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
             public void onSuccess(Double estTime) {
                 if (estTime == null) {
                     //no tasks in database -> request from Fiix
-                    getTasksForOrderFromFiix(userId, taskWorkOrderId);
+                    getTasksForOrderFromFiix(userId, taskWorkOrderId, true);
                 } else {
                     estimatedTimeResponseMutableLiveData.postValue(estTime);
                 }
@@ -115,6 +120,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
             @Override
             public void onError(Throwable e) {
                 // show an error message
+                getTasksForOrderFromFiix(userId, taskWorkOrderId, true);
                 Log.d(TAG, "Error finding work order task from DB");
             }
 
@@ -198,7 +204,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
             public void onSuccess(List<WorkOrderTask> taskList) {
                 if (taskList.isEmpty()) {
                     //no tasks in database -> request from Fiix
-                    getTasksForOrderFromFiix(userId, taskWorkOrderId);
+                    getTasksForOrderFromFiix(userId, taskWorkOrderId, false);
                 } else {
                    workOrderTaskResponseMutableLiveData.postValue(taskList);
                 }
@@ -269,7 +275,8 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                             workOrderResponseMutableLiveData.postValue(null);
                             APIError error = ErrorUtils.parseError(response);
                             for (String msg : error.getMessages()) {
-                                status.postValue(msg);
+                                Status newStatus = new Status(StatusCodes.FiixError, "requestAllTasksFromFiix", msg);
+                                status.postValue(newStatus);
                                 Log.d(TAG, String.valueOf(msg));
                                 break;
                             }
@@ -291,7 +298,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     }
 
-    public void getTasksForOrderFromFiix(int userId, int workOrderId) {
+    public void getTasksForOrderFromFiix(int userId, int workOrderId, Boolean estFlag) {
         FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
                 2, 8, 1);
 
@@ -319,7 +326,10 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         filters.add(filter);
 
         FindRequest workOrderRequest = new FindRequest("FindRequest", clientVersion, "WorkOrderTask", fields, filters);
-        requestTasksForWorkOrderFromFiix(workOrderRequest);
+        if (!estFlag)
+            requestTasksForWorkOrderFromFiix(workOrderRequest);
+        else
+            requestWorkOrderEstimatedTime(workOrderRequest);
     }
 
     private void requestTasksForWorkOrderFromFiix(FindRequest workOrderRequest) {
@@ -345,7 +355,59 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                             workOrderTaskResponseMutableLiveData.postValue(null);
                             APIError error = ErrorUtils.parseError(response);
                             for (String msg : error.getMessages()) {
-                                status.postValue(msg);
+                                Status newStatus = new Status(StatusCodes.FiixError, "requestTasksForWorkOrderFromFiix", msg);
+                                status.postValue(newStatus);
+                                Log.d(TAG, String.valueOf(msg));
+                                Log.d(TAG, String.valueOf(msg));
+                                break;
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<WorkOrderTask>> call, Throwable t) {
+                        workOrderTaskResponseMutableLiveData.postValue(null);
+
+                        if (t instanceof IOException) {
+                            Log.d(TAG, "this is an actual network failure: " + t.getMessage());
+                            // logging probably not necessary
+                        } else {
+                            Log.d(TAG, "conversion issue! big problems: " + t.getMessage());
+                        }
+                    }
+                });
+
+    }
+
+    private void requestWorkOrderEstimatedTime(FindRequest workOrderRequest) {
+        workOrderService.getWorkOrderTasks(workOrderRequest)
+                .enqueue(new Callback<List<WorkOrderTask>>() {
+
+                    @Override
+                    public void onResponse(Call<List<WorkOrderTask>> call, Response<List<WorkOrderTask>> response) {
+                        if (response.isSuccessful()) {
+                            if (response.body() != null) {
+                                if (response.body().isEmpty()) {
+                                    estimatedTimeResponseMutableLiveData.postValue(null);
+
+                                } else {
+                                    Double estTime = 0.0;
+                                    for (WorkOrderTask task :  response.body()){
+                                        estTime = estTime + task.getEstimatedHours();
+                                    }
+                                    estimatedTimeResponseMutableLiveData.postValue(estTime);
+                                }
+                            } else {
+                                estimatedTimeResponseMutableLiveData.postValue(null);
+                                Log.d(TAG, "response is empty");
+                            }
+                        } else {
+                            estimatedTimeResponseMutableLiveData.postValue(null);
+                            APIError error = ErrorUtils.parseError(response);
+                            for (String msg : error.getMessages()) {
+                                Status newStatus = new Status(StatusCodes.FiixError, "requestTasksForWorkOrderFromFiix", msg);
+                                status.postValue(newStatus);
+                                Log.d(TAG, String.valueOf(msg));
                                 Log.d(TAG, String.valueOf(msg));
                                 break;
                             }
@@ -375,10 +437,9 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         disposableCompletableObserver = new DisposableCompletableObserver() {
             @Override
             public void onComplete() {
-                // String msg = Resources.getSystem().getString(R.string.work_orders_added);
-                //status.postValue(msg);
-                // Log.d(TAG, msg);
-
+                String msg = application.getResources().getString(R.string.work_order_task_added);
+                Status newStatus = new Status(StatusCodes.addComplete, "WorkOrderTask", msg);
+                status.postValue(newStatus);
                 Log.d(TAG, "work order added to DB");
             }
 
@@ -411,6 +472,9 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                 WorkOrders.maintenanceTypeId.getField(),
                 WorkOrders.maintenanceType.getField(),
                 WorkOrders.requestedByUser.getField(),
+                WorkOrders.guestEmail.getField(),
+                WorkOrders.guestName.getField(),
+                WorkOrders.guestPhone.getField(),
                 WorkOrders.estCompletionDate.getField(),
                 WorkOrders.adminNotes.getField()
         ));
@@ -486,9 +550,9 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         disposableCompletableObserver = new DisposableCompletableObserver() {
             @Override
             public void onComplete() {
-                // String msg = Resources.getSystem().getString(R.string.work_orders_added);
-                //status.postValue(msg);
-                // Log.d(TAG, msg);
+                String msg = application.getResources().getString(R.string.work_orders_added);
+                Status newStatus = new Status(StatusCodes.addComplete, "WorkOrder", msg);
+                status.postValue(newStatus);
                 getWorkOrdersWithPriorities();
                 Log.d(TAG, "work order added to DB");
             }
@@ -576,7 +640,8 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                             Log.d(TAG, "priority response error");
                             APIError error = ErrorUtils.parseError(response);
                             for (String msg : error.getMessages()) {
-                                status.postValue(msg);
+                                Status newStatus = new Status(StatusCodes.addComplete, "requestPriorityFromFiix", msg);
+                                status.postValue(newStatus);
                                 Log.d(TAG, String.valueOf(msg));
                                 break;
                             }
@@ -599,7 +664,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     public void addPriorities(List<Priority> priorities) {
 
-        Completable completable = fiixDatabase.lookupTablesDao().insert(priorities);
+        Completable completable = fiixDatabase.lookupTablesDao().insertPriorities(priorities);
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         disposableCompletableObserver = new DisposableCompletableObserver() {
             @Override
@@ -698,7 +763,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         return estimatedTimeResponseMutableLiveData;
     }
 
-    public MutableLiveData<String> getStatus() {
+    public MutableLiveData<Status> getStatus() {
         return status;
     }
 

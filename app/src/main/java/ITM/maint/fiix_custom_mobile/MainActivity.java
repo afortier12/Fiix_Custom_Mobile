@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -21,11 +20,17 @@ import androidx.navigation.NavGraph;
 import androidx.navigation.NavInflater;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
+import androidx.work.Constraints;
+import androidx.work.NetworkType;
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkContinuation;
+import androidx.work.WorkManager;
 
 import javax.inject.Inject;
 
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragmentArgs;
+import ITM.maint.fiix_custom_mobile.utils.Workers.MaintenanceTypeSyncWorker;
 import dagger.android.support.DaggerAppCompatActivity;
 
 public class MainActivity extends DaggerAppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
@@ -37,6 +42,8 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
     private NavArgument idArg;
     private NavArgument usernameArg;
 
+    private WorkManager workManager;
+
     @Inject
     AppExecutor appExecutor;
 
@@ -44,17 +51,15 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-
         Intent intent = getIntent();
         username = intent.getStringExtra("User");
         id = intent.getIntExtra("id", 0);
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        //Remove notification bar
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //getSupportActionBar().hide();
-
         setContentView(R.layout.activity_main);
+
+        workManager = WorkManager.getInstance(this.getApplication());
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
 
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -90,6 +95,26 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         });
 
         checkCameraPermissions();
+    }
+
+    private void updateTables(){
+
+        Constraints constraints = new Constraints.Builder()
+                .setRequiredNetworkType(NetworkType.CONNECTED)
+                .setRequiresBatteryNotLow(true)
+                .build();
+
+        OneTimeWorkRequest typeRequest = new OneTimeWorkRequest.Builder(MaintenanceTypeSyncWorker.class)
+                .setConstraints(constraints)
+                .build();
+
+        WorkContinuation continuation = workManager.beginWith(typeRequest);
+
+
+        OneTimeWorkRequest typeAddtoDBRequest = new OneTimeWorkRequest.Builder(MaintenanceTypeSyncWorker.class)
+                .setConstraints(constraints)
+                .build();
+
     }
 
 
@@ -136,5 +161,4 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
             navController.navigate(navController.getGraph().getStartDestination());
     }
 
-    private void update
 }

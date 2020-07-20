@@ -39,6 +39,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPri
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderListAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderListViewModel;
+import ITM.maint.fiix_custom_mobile.utils.Status;
 
 public class WorkOrderListFragment extends Fragment  {
 
@@ -117,10 +118,10 @@ public class WorkOrderListFragment extends Fragment  {
             }
         });
 
-        viewModel.getResponseStatus().observe(getViewLifecycleOwner(), new Observer<String>() {
+        viewModel.getResponseStatus().observe(getViewLifecycleOwner(), new Observer<Status>() {
             @Override
-            public void onChanged(String s) {
-                Snackbar.make(getView(), s, Snackbar.LENGTH_LONG).show();
+            public void onChanged(Status status) {
+                Snackbar.make(getView(), status.getMessage(), Snackbar.LENGTH_LONG).show();
                 progressBarDialog.dismiss();
             }
         });

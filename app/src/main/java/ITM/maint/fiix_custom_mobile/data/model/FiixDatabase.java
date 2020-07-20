@@ -25,15 +25,20 @@ import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IRCADao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IUserDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Action;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
 import ITM.maint.fiix_custom_mobile.data.model.entity.User;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 
 @Database(entities = {Part.class, User.class, WorkOrder.class, WorkOrderTask.class,
-        Priority.class},version = 1)
+        Priority.class, Problem.class, Cause.class, Action.class,
+        FailureCodeNesting.class},version = 1)
 @TypeConverters({Converters.class})
 public abstract class FiixDatabase extends RoomDatabase {
 
@@ -84,7 +89,8 @@ public abstract class FiixDatabase extends RoomDatabase {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
                 /*ILookupTablesDao lookupTablesDao= INSTANCE.lookupTablesDao();
-                lookupTablesDao.deleteAll();
+                lookupTablesDao.deleteAllTypes();
+                lookupTablesDao.deleteAllStatuses();
 
                 List<Priority> priorities = new ArrayList<>();
                 priorities.add(new Priority(2665,"High", 1));
@@ -95,7 +101,12 @@ public abstract class FiixDatabase extends RoomDatabase {
 
                 lookupTablesDao.insert(priorities);*/
 
+
+
             });
+
+
+
         }
     };
 

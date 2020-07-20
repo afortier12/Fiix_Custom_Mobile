@@ -28,6 +28,8 @@ public class BaseRepository {
     protected CompositeDisposable compositeDisposable;
     protected DisposableCompletableObserver disposableCompletableObserver;
 
+    protected Application application;
+
     public BaseRepository(Application application) {
 
         fiixDatabase = FiixDatabase.getDatabase(application);
@@ -35,6 +37,8 @@ public class BaseRepository {
 
         component = DaggerRepositoryModule_RepositoryComponent.builder().build();
         component.inject(this);
+
+        this.application = application;
 
     }
 
