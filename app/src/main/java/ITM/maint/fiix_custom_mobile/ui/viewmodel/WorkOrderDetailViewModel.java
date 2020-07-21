@@ -9,7 +9,9 @@ import androidx.lifecycle.LiveData;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.api.IWorkOrderService;
+import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 
@@ -19,6 +21,8 @@ public class WorkOrderDetailViewModel extends AndroidViewModel implements IWorkO
     private IWorkOrderService workOrderService;
     private LiveData<List<WorkOrderTask>> workOrderTaskResponseLiveData;
     private LiveData<Double> estTimeResponseLiveData;
+    private LiveData<List<MaintenanceType>> maintenanceTypeLiveData;
+    private LiveData<List<WorkOrderStatus>> workOrderStatusLiveData;
     private LiveData<String> responseStatus;
 
 
@@ -31,10 +35,26 @@ public class WorkOrderDetailViewModel extends AndroidViewModel implements IWorkO
         workOrderService = workOrderRepository.getWorkOrderService();
         workOrderTaskResponseLiveData = workOrderRepository.getWorkOrderTaskResponseMutableLiveData();
         estTimeResponseLiveData = workOrderRepository.getEstimatedTimeResponseMutableLiveData();
+        maintenanceTypeLiveData = workOrderRepository.getMaintenanceTypeMutableLiveData();
+        workOrderStatusLiveData = workOrderRepository.getWorkOrderStatusMutableLiveData();
         //responseStatus = workOrderRepository.getStatus();
 
     }
 
+    @Override
+    public void getWorkOrderEstTime(int workOrderId, int userId) {
+        workOrderRepository.getEstTimefromDB(workOrderId, userId);
+    }
+
+    @Override
+    public void getMaintenanceTypeDetails() {
+        workOrderRepository.getMaintenanceTypes();
+    }
+
+    @Override
+    public void getWorkOrderStatusDetails() {
+        workOrderRepository.getWorkOrderStatuses();
+    }
 
 
     public LiveData<List<WorkOrderTask>> getWorkOrderTaskResponseLiveData() {
@@ -49,8 +69,11 @@ public class WorkOrderDetailViewModel extends AndroidViewModel implements IWorkO
         return responseStatus;
     }
 
-    @Override
-    public void getWorkOrderEstTime(int workOrderId, int userId) {
-        workOrderRepository.getEstTimefromDB(workOrderId, userId);
+    public LiveData<List<MaintenanceType>> getMaintenanceTypeLiveData() {
+        return maintenanceTypeLiveData;
+    }
+
+    public LiveData<List<WorkOrderStatus>> getWorkOrderStatusLiveData() {
+        return workOrderStatusLiveData;
     }
 }

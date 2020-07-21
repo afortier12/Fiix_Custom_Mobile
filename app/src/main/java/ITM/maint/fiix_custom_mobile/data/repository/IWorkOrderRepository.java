@@ -35,6 +35,12 @@ public interface IWorkOrderRepository {
             //add work order tasks to Fiix
             void addWorkOrderTasks(List<WorkOrderTask> taskList);
 
+            //get list of maintenance types from DB
+            void getMaintenanceTypes();
+
+            //get list of work order statuses from DB
+            void getWorkOrderStatuses();
+
             //update work order in Fiix
             void updateWorkOrder(WorkOrder workOrder);
         }

@@ -31,7 +31,12 @@ public interface IWorkOrder {
     }
 
     public interface IWorkOrderDetails {
+
         public void getWorkOrderEstTime(int workOrderId, int userId);
+
+        public void getMaintenanceTypeDetails();
+
+        public void getWorkOrderStatusDetails();
     }
 
 }

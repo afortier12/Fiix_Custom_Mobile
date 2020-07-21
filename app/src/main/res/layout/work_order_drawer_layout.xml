@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/detail_drawer_right"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layoutDirection="rtl"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_gravity="end">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/detail_drawer_group"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:singleSelection="true">
+
+        </com.google.android.material.chip.ChipGroup>
+    </LinearLayout>
+
+</androidx.drawerlayout.widget.DrawerLayout>

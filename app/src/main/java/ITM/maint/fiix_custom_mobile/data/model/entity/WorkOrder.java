@@ -154,7 +154,7 @@ public class WorkOrder implements Parcelable {
     @SerializedName("intMaintenanceTypeID")
     @Expose
     @ColumnInfo(name="maintenanceTypeId")
-    private String maintenanceTypeId;
+    private int maintenanceTypeId;
     @SerializedName("dtmDateLastModified")
     @Expose
     @ColumnInfo(name="dateModified")
@@ -248,7 +248,7 @@ public class WorkOrder implements Parcelable {
         this.guestPhone = in.readString();
         this.code = in.readString();
         this.completionNotes = in.readString();
-        this.maintenanceTypeId = in.readString();
+        this.maintenanceTypeId = in.readInt();
         this.dateModified = in.readString();
         this.adminNotes = in.readString();
         this.actionID = in.readInt();
@@ -290,7 +290,7 @@ public class WorkOrder implements Parcelable {
         dest.writeString(this.guestPhone);
         dest.writeString(this.code);
         dest.writeString(this.completionNotes);
-        dest.writeString(this.maintenanceTypeId);
+        dest.writeInt(this.maintenanceTypeId);
         dest.writeString(this.dateModified);
         dest.writeString(this.adminNotes);
         dest.writeInt(this.actionID);
@@ -593,11 +593,11 @@ public class WorkOrder implements Parcelable {
         this.completionNotes = completionNotes;
     }
 
-    public String getMaintenanceTypeId() {
+    public int getMaintenanceTypeId() {
         return maintenanceTypeId;
     }
 
-    public void setMaintenanceTypeId(String maintenanceTypeId) {
+    public void setMaintenanceTypeId(int maintenanceTypeId) {
         this.maintenanceTypeId = maintenanceTypeId;
     }
 

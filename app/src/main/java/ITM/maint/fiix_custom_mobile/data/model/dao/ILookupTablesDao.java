@@ -22,7 +22,7 @@ public interface ILookupTablesDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     Completable insertTypes(List<MaintenanceType> maintenanceTypes);
 
-    @Query("SELECT * from maintenance_type_table ORDER BY id ASC")
+    @Query("SELECT * from maintenance_type_table where color is not NULL ORDER BY id ASC")
     Single<List<MaintenanceType>> getMaintenanceType();
 
     @Query("DELETE FROM maintenance_type_table")

@@ -8,6 +8,31 @@
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="lighter_grey">#DDDDDD</color>
+
+    //work order status colors
+    <color name="status_101">#FF0000</color>
+    <color name="status_103">#808080</color>
+    <color name="status_100">#FFFF00</color>
+    <color name="status_102">#008000</color>
+    <color name="status_NA">#0000FF</color>
+
+    //maintenance type colors
+    <color name="Preventive">#2d61ae</color>
+    <color name="Safety">#FF9900</color>
+    <color name="Upgrade">#6fae9c</color>
+    <color name="Electrical">#d2ca4e</color>
+    <color name="Project">#967855</color>
+    <color name="Monitoring">#638582</color>
+    <color name="Other">#d36e87</color>
+    <color name="MACHINE_DOWN">#CC4140</color>
+    <color name="REPAIR">#74BC50</color>
+    <color name="Waiting_for_Vendor">#790FBB</color>
+    <color name="Continuous_Improvemnt">#4A3A99</color>
+    <color name="Welding">#D15F2E</color>
+    <color name="Facility">#FFF81F</color>
+    <color name="Fabrication">#C369FF</color>
+    <color name="type_NA">#0000FF</color>
+
     <color name="dark">#9A000000</color>
     <color name="home_page_mode_item_subtitle">#CCFFFFFF</color>
     <color name="reticle_ripple">#9AFFFFFF</color>

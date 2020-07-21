@@ -32,6 +32,8 @@ import ITM.maint.fiix_custom_mobile.ui.viewmodel.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
     protected static final String TAG = "LoginActivity";
+    protected static final String PREFERENCE_KEY = "LOGIN_KEY";
+
     protected static String saved_email;
     protected static SharedPreferences sharedPreferences;
     private TextInputEditText txtUserName;
@@ -114,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
         txtPassword.addTextChangedListener(new ValidationTextWatcher(txtPassword));
         txtUserName.addTextChangedListener(new ValidationTextWatcher(txtUserName));
 
-        sharedPreferences = getPreferences(Context.MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences(PREFERENCE_KEY, Context.MODE_PRIVATE);
         username = sharedPreferences.getString("DefaultUser", null);
         if (username != null){
             txtUserName.setText(username);

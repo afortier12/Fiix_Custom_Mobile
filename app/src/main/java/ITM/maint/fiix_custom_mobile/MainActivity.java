@@ -1,7 +1,9 @@
 package ITM.maint.fiix_custom_mobile;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Window;
@@ -25,24 +27,35 @@ import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkContinuation;
 import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
+
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import javax.inject.Inject;
 
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragmentArgs;
 import ITM.maint.fiix_custom_mobile.utils.Workers.MaintenanceTypeSyncWorker;
+import ITM.maint.fiix_custom_mobile.utils.Workers.WorkOrderStatusSyncWorker;
 import dagger.android.support.DaggerAppCompatActivity;
 
 public class MainActivity extends DaggerAppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 
     private static final int REQUEST_CAMERA_PERMISSION = 1;
     private static final String TAG = "MainActivity";
+    protected static final String PREFERENCE_KEY = "MAIN_KEY";
+    protected static SharedPreferences sharedPreferences;
     private String username;
     private int id;
     private NavArgument idArg;
     private NavArgument usernameArg;
 
     private WorkManager workManager;
+    private DateFormat dateFormat;
 
     @Inject
     AppExecutor appExecutor;
@@ -68,7 +81,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         idArg = new NavArgument.Builder().setDefaultValue(id).build();
         NavInflater navInflator = navController.getNavInflater();
         NavGraph navGraph = navInflator.inflate(R.navigation.mobile_navigation);
-        navGraph.addArgument("User",usernameArg);
+        navGraph.addArgument("User", usernameArg);
         navGraph.addArgument("id", idArg);
         navController.setGraph(navGraph);
         NavigationUI.setupWithNavController(navView, navController);
@@ -76,7 +89,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                switch (destination.getId()){
+                switch (destination.getId()) {
                     case R.id.navigation_home:
                         setTitle("Assigned Work Orders");
                         break;
@@ -94,8 +107,35 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
             }
         });
 
-        updateTables();
+        sharedPreferences = getSharedPreferences(PREFERENCE_KEY, Context.MODE_PRIVATE);
+        dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
+        Date updatedDate = compareDates();
+        if (updatedDate != null){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("LastUpdate", dateFormat.format(updatedDate));
+            editor.apply();
+            updateTables();
+        }
+
         checkCameraPermissions();
+    }
+
+    private Date compareDates(){
+        Date currentDate = new Date();
+        String lastUpdate = sharedPreferences.getString("LastUpdate", null);
+        if (lastUpdate != null){
+            try {
+                Date lastDate = dateFormat.parse(lastUpdate);
+                long difference = currentDate.getTime() - lastDate.getTime();
+                if ((difference/(1000*60*60*25)) > 1 )
+                    return currentDate;
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        } else {
+            return currentDate;
+        }
+        return null;
     }
 
     private void updateTables(){
@@ -105,16 +145,17 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                 .setRequiresBatteryNotLow(true)
                 .build();
 
-        OneTimeWorkRequest typeRequest = new OneTimeWorkRequest.Builder(MaintenanceTypeSyncWorker.class)
+        OneTimeWorkRequest maintenanceTypeRequest = new OneTimeWorkRequest.Builder(MaintenanceTypeSyncWorker.class)
                 .setConstraints(constraints)
                 .build();
 
-        WorkContinuation continuation = workManager.beginWith(typeRequest);
-
-
-        OneTimeWorkRequest typeAddtoDBRequest = new OneTimeWorkRequest.Builder(MaintenanceTypeSyncWorker.class)
+        OneTimeWorkRequest workOrderStatusRequest = new OneTimeWorkRequest.Builder(WorkOrderStatusSyncWorker.class)
                 .setConstraints(constraints)
                 .build();
+
+        workManager.beginWith(maintenanceTypeRequest)
+                .then(workOrderStatusRequest)
+                .enqueue();
 
     }
 
@@ -135,7 +176,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions,
-    int[] grantResults) {
+                int[] grantResults) {
         if (requestCode == REQUEST_CAMERA_PERMISSION) {
             if (grantResults.length > 0) {
                 if (grantResults[0] == PackageManager.PERMISSION_DENIED) {

@@ -27,9 +27,6 @@ import io.reactivex.Single;
 @Dao
 public interface IWorkOrderDao {
 
-    //@Query("SELECT id, workOrderId FROM work_order_task_table where assignedToId = :userId and completedDate is null")
-    //LiveData<List<WorkOrderTask>> getWorkOrderTasksForUser(int userId, int workOrderId);
-
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertTask(WorkOrderTask workOrderTask);
 
@@ -54,7 +51,7 @@ public interface IWorkOrderDao {
     Single<List<WorkOrder>> getAssignedWorkOrder(String username);
 
 
-    @Query("SELECT sum(estimatedHours) FROM work_order_task_table where id = :workOrderId")
+    @Query("SELECT sum(estimatedHours) as hours FROM work_order_task_table where id = :workOrderId")
     Single<Double> getWorkOrderEstimatedTime(int workOrderId);
 
     @Transaction
@@ -66,6 +63,5 @@ public interface IWorkOrderDao {
 
     @Query("SELECT * FROM priority_table")
     Single<List<Priority>> getPriorities();
-
 
 }

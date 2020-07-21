@@ -75,9 +75,11 @@ public class WorkOrderTaskFragment extends Fragment {
         viewModel.getWorkOrderTaskResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrderTask>>() {
             @Override
             public void onChanged(List<WorkOrderTask> workOrderTasks) {
-                workOrderTaskList.clear();
-                workOrderTaskList.addAll(workOrderTasks);
-                adapter.notifyDataSetChanged();
+                if (workOrderTasks != null) {
+                    workOrderTaskList.clear();
+                    workOrderTaskList.addAll(workOrderTasks);
+                    adapter.notifyDataSetChanged();
+                }
             }
         });
 

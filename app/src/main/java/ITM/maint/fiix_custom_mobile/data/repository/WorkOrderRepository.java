@@ -29,9 +29,11 @@ import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.dao.ILookupTablesDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao;
+import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
 import ITM.maint.fiix_custom_mobile.utils.Status;
@@ -56,6 +58,8 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     private MutableLiveData<List<WorkOrder>> workOrderResponseMutableLiveData;
     private MutableLiveData<List<WorkOrderTask>> workOrderTaskResponseMutableLiveData;
     private MutableLiveData<Double> estimatedTimeResponseMutableLiveData;
+    private MutableLiveData<List<MaintenanceType>> maintenanceTypeMutableLiveData;
+    private MutableLiveData<List<WorkOrderStatus>> workOrderStatusMutableLiveData;
     private MutableLiveData<Status> status;
 
     private IWorkOrderDao workOrderDao;
@@ -75,6 +79,8 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         workOrderResponseMutableLiveData = new MutableLiveData<List<WorkOrder>>();
         workOrderTaskResponseMutableLiveData = new MutableLiveData<List<WorkOrderTask>>();
         estimatedTimeResponseMutableLiveData = new MutableLiveData<Double>();
+        maintenanceTypeMutableLiveData = new MutableLiveData<List<MaintenanceType>>();
+        workOrderStatusMutableLiveData = new MutableLiveData<List<WorkOrderStatus>>();
         status = new MutableLiveData<Status>();
         workOrderService = ServiceGenerator.createService(IWorkOrderService.class);
 
@@ -358,7 +364,6 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                                 Status newStatus = new Status(StatusCodes.FiixError, "requestTasksForWorkOrderFromFiix", msg);
                                 status.postValue(newStatus);
                                 Log.d(TAG, String.valueOf(msg));
-                                Log.d(TAG, String.valueOf(msg));
                                 break;
                             }
                         }
@@ -445,7 +450,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
             @Override
             public void onError(Throwable e) {
-                String msg = Resources.getSystem().getString(R.string.work_order_add_error);
+                String msg = application.getResources().getString(R.string.work_order_add_error);
                 Log.d(TAG, "Error adding work order to DB");
             }
         };
@@ -453,7 +458,6 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
                 .subscribe(disposableCompletableObserver);
         compositeDisposable.add(disposableCompletableObserver);
     }
-
 
     @Override
     public void getWorkOrders(List<Integer> workOrders) {
@@ -559,7 +563,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
             @Override
             public void onError(Throwable e) {
-                String msg = Resources.getSystem().getString(R.string.work_order_add_error);
+                String msg = application.getResources().getString(R.string.work_order_add_error);
                 Log.d(TAG, "Error adding work order to DB");
             }
         };
@@ -669,16 +673,17 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         disposableCompletableObserver = new DisposableCompletableObserver() {
             @Override
             public void onComplete() {
-                // String msg = Resources.getSystem().getString(R.string.work_orders_added);
-                //status.postValue(msg);
-                // Log.d(TAG, msg);
+                String msg = application.getResources().getString(R.string.work_orders_added);
+                Status newStatus = new Status(StatusCodes.addComplete, "Priority", msg);
+                status.postValue(newStatus);
+                Log.d(TAG, msg);
                 getWorkOrdersFromDB();
                 Log.d(TAG, "priorities added to DB");
             }
 
             @Override
             public void onError(Throwable e) {
-                //String msg = Resources.getSystem().getString(R.string.work_order_add_error);
+                String msg = application.getResources().getString(R.string.work_order_add_error);
                 Log.d(TAG, "Error adding priorities to DB");
             }
         };
@@ -719,6 +724,71 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         });
 
     }
+
+
+    @Override
+    public void getMaintenanceTypes() {
+        Single<List<MaintenanceType>> single = fiixDatabase.lookupTablesDao().getMaintenanceType();
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<MaintenanceType>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                // add it to a CompositeDisposable
+                compositeDisposable.add(d);
+            }
+
+            @Override
+            public void onSuccess(List<MaintenanceType> typeList) {
+                if (typeList.isEmpty()) {
+                    //no maintenance types in database -> request from Fiix
+                    Log.d(TAG, "No maintenance types in DB");
+
+                } else {
+                    maintenanceTypeMutableLiveData.postValue(typeList);
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // show an error message
+                Log.d(TAG, "Error finding maintenance types from DB");
+            }
+
+        });
+    }
+
+    @Override
+    public void getWorkOrderStatuses() {
+        Single<List<WorkOrderStatus>> single = fiixDatabase.lookupTablesDao().getWorkOrderStatus();
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<WorkOrderStatus>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                // add it to a CompositeDisposable
+                compositeDisposable.add(d);
+            }
+
+            @Override
+            public void onSuccess(List<WorkOrderStatus> typeList) {
+                if (typeList.isEmpty()) {
+                    //no maintenance types in database -> request from Fiix
+                    Log.d(TAG, "No work order statuses in DB");
+
+                } else {
+                    workOrderStatusMutableLiveData.postValue(typeList);
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // show an error message
+                Log.d(TAG, "Error finding work order statuses from DB");
+            }
+        });
+    }
+
+
+
 
     @Override
     public void updateWorkOrder(WorkOrder workOrder) {
@@ -767,4 +837,11 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         return status;
     }
 
+    public MutableLiveData<List<MaintenanceType>> getMaintenanceTypeMutableLiveData() {
+        return maintenanceTypeMutableLiveData;
+    }
+
+    public MutableLiveData<List<WorkOrderStatus>> getWorkOrderStatusMutableLiveData() {
+        return workOrderStatusMutableLiveData;
+    }
 }
