@@ -28,17 +28,19 @@ import ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Action;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
+import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
 import ITM.maint.fiix_custom_mobile.data.model.entity.User;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 
 @Database(entities = {Part.class, User.class, WorkOrder.class, WorkOrderTask.class,
         Priority.class, Problem.class, Cause.class, Action.class,
-        FailureCodeNesting.class},version = 1)
+        FailureCodeNesting.class, MaintenanceType.class, WorkOrderStatus.class},version = 1)
 @TypeConverters({Converters.class})
 public abstract class FiixDatabase extends RoomDatabase {
 

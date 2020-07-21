@@ -9,7 +9,10 @@ import androidx.work.Data;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
+import com.google.gson.reflect.TypeToken;
+
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,11 +25,16 @@ import ITM.maint.fiix_custom_mobile.data.api.IWorkOrderService;
 import ITM.maint.fiix_custom_mobile.data.api.ServiceGenerator;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
+import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
+import ITM.maint.fiix_custom_mobile.data.model.dao.ILookupTablesDao;
 import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
+import ITM.maint.fiix_custom_mobile.utils.Box;
 import ITM.maint.fiix_custom_mobile.utils.Status;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 import io.reactivex.Completable;
 import io.reactivex.Scheduler;
+import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
@@ -37,6 +45,8 @@ public class MaintenanceTypeSyncWorker extends Worker {
 
     private static final String TAG = "SyncMaintenanceType";
     private ILookupTableService lookupTableService;
+    private ILookupTablesDao lookupTablesDao;
+    private FiixDatabase fiixDatabase;
 
     private static final String RESPONSE_KEY = "Maintenance_Type";
 
@@ -69,11 +79,29 @@ public class MaintenanceTypeSyncWorker extends Worker {
                     if (response.body().isEmpty()) {
                         Log.d(TAG, "Maintenance type request returned empty list");
                     } else {
-                        Data outputData = new Data.Builder()
-                                .putString(RESPONSE_KEY, response.body().toString())
-                                .build();
-                        return Result.success(outputData);
+
+                        fiixDatabase = FiixDatabase.getDatabase(getApplicationContext());
+                        lookupTablesDao = fiixDatabase.lookupTablesDao();
+                        CompositeDisposable compositeDisposable = new CompositeDisposable();
+
+                        Completable completable = fiixDatabase.lookupTablesDao().insertTypes(response.body());
+                        DisposableCompletableObserver disposableCompletableObserver = new DisposableCompletableObserver() {
+                            @Override
+                            public void onComplete() {
+                                Log.d(TAG, "priorities added to DB");
+                            }
+
+                            @Override
+                            public void onError(Throwable e) {
+                                Log.d(TAG, "Error adding priorities to DB");
+                            }
+                        };
+                        completable.subscribeOn(Schedulers.io())
+                                .subscribe(disposableCompletableObserver);
+                        compositeDisposable.add(disposableCompletableObserver);
+                        return Result.success();
                     }
+
                 } else {
                     Log.d(TAG, "Maintenance type response is empty");
                 }

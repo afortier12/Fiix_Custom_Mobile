@@ -82,14 +82,13 @@ public class WorkOrderDetailFragment extends Fragment {
                         estTime += task.getEstimatedHours();
                     }
                     int estHour = (int) estTime;
-                    String strEstHour = String.valueOf(estHour);
-                    if (strEstHour.length() < 2)
-                        Utils.padLeftZeros(strEstHour, 2 - strEstHour.length());
+                    String strEstHour = String.format("%02d",estHour);
                     int estMinute = (int) (estTime - estHour);
-                    String strEstMinute = String.valueOf(estMinute);
-                    if (strEstMinute.length() < 2)
-                        Utils.padRightZeros(strEstMinute, 2 - strEstMinute.length());
+                    String strEstMinute =  String.format("%02d",estMinute);
                     workOrder.setEstTime(strEstHour + ":" + strEstMinute);
+                    TextView tvEstTime = getView().findViewById(R.id.detail_estimated_time);
+                    if (tvEstTime != null)
+                        tvEstTime.setText(workOrder.getEstTime());
 
                 }
 
@@ -166,14 +165,13 @@ public class WorkOrderDetailFragment extends Fragment {
             String estTime = workOrder.getEstTime();
             if (estTime == null) {
                 tvEstTime.setText("N/A");
+                viewModel.getWorkOrderEstTime(workOrder.getId(), userId);
             } else {
                 tvEstTime.setText(estTime);
             }
             tvNotes.setText(workOrder.getCompletionNotes());
 
         }
-
-        viewModel.getWorkOrderEstTime(workOrder.getId(), userId);
 
 
     }

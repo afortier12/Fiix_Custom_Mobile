@@ -94,6 +94,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
             }
         });
 
+        updateTables();
         checkCameraPermissions();
     }
 
