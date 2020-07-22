@@ -8,8 +8,8 @@
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -472,22 +472,22 @@
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ScrollView
+        android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_gravity="top|end">
+        android:layout_gravity="top|end"
+        android:orientation="vertical">
 
-        <com.google.android.material.chip.ChipGroup
+        <RadioGroup
             android:id="@+id/detail_drawer_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            app:singleSelection="true">
+            android:orientation="vertical">
 
+        </RadioGroup>
 
-        </com.google.android.material.chip.ChipGroup>
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
 

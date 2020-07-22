@@ -51,7 +51,7 @@ public interface IWorkOrderDao {
     Single<List<WorkOrder>> getAssignedWorkOrder(String username);
 
 
-    @Query("SELECT sum(estimatedHours) as hours FROM work_order_task_table where id = :workOrderId")
+    @Query("SELECT COALESCE(sum(COALESCE(estimatedHours,0)), 0) as hours FROM work_order_task_table where id = :workOrderId")
     Single<Double> getWorkOrderEstimatedTime(int workOrderId);
 
     @Transaction

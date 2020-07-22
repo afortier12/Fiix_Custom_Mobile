@@ -2,6 +2,7 @@ package ITM.maint.fiix_custom_mobile.ui.view;
 
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
@@ -9,12 +10,16 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
@@ -204,7 +209,7 @@ public class WorkOrderDetailFragment extends Fragment {
             TextView tvNotes = view.findViewById(R.id.detail_note);
 
             DrawerLayout sideDrawer = view.findViewById(R.id.detail_drawer_right);
-            ChipGroup chipGroup = view.findViewById(R.id.detail_drawer_group);
+            RadioGroup radioGroup = view.findViewById(R.id.detail_drawer_group);
 
             sideDrawer.closeDrawer(Gravity.RIGHT);
 
@@ -227,33 +232,14 @@ public class WorkOrderDetailFragment extends Fragment {
             chipType.setOnClickListener(new Chip.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    int maxWidth = 0;
-                    DisplayMetrics displayMetrics = new DisplayMetrics();
-                    getActivity().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
-                    int minWidth = displayMetrics.widthPixels;
                     if (!sideDrawer.isDrawerOpen(Gravity.RIGHT)) {
-                        chipGroup.removeAllViews();
+                        radioGroup.removeAllViews();
 
                         for (MaintenanceType type: maintenanceTypeList){
-                            Chip chipType = new Chip(chipGroup.getContext());
+                            RadioButton chipType = new RadioButton(radioGroup.getContext());
                             chipType.setText(type.getStrName());
-                            chipType.setCheckable(true);
-                            String resourceName = type.getStrName().replaceAll(" ", "_");
-                            int chipColor = getResources().getIdentifier(resourceName, "color", getActivity().getPackageName());
-                            chipType.setChipBackgroundColorResource(chipColor);
-                            chipGroup.addView(chipType);
-
-                            int chipWidth = chipType.getWidth();
-                            if (chipWidth < minWidth)
-                                minWidth = chipWidth;
-                            if (chipWidth > maxWidth)
-                                maxWidth = chipWidth;
+                            radioGroup.addView(chipType);
                         }
-
-                        float width = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, maxWidth, displayMetrics);
-                        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) sideDrawer.getLayoutParams();
-                        params.width = (int) (width);
-                        sideDrawer.setLayoutParams(params);
                         sideDrawer.openDrawer(Gravity.RIGHT);
                     }
 

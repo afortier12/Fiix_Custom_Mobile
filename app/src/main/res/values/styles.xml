@@ -47,5 +47,9 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="radioButtonStyle" parent="Widget.MaterialComponents.CompoundButton.RadioButton">
+        <item name="android:textSize">18sp</item>
+    </style>
+
 
 </resources>
