@@ -8,8 +8,10 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import ITM.maint.fiix_custom_mobile.ui.adapter.ISharedAdapter;
+
 @Entity(tableName = "maintenance_type_table")
-public class MaintenanceType {
+public class MaintenanceType implements ISharedAdapter {
 
 
     @SerializedName("id")
