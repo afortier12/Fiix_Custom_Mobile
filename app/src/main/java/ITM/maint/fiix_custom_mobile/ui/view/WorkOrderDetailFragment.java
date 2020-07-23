@@ -52,7 +52,7 @@ public class WorkOrderDetailFragment extends Fragment {
     private List<MaintenanceType> maintenanceTypeList;
     private List<WorkOrderStatus> workOrderStatusList;
 
-    private List<T extends ISharedAdapter> adapterDisplayList;
+    private List<ISharedAdapter> adapterDisplayList;
     private List<WorkOrderStatus> workOrderStatusDisplayList;
 
     private RecyclerView recyclerView;
@@ -66,7 +66,6 @@ public class WorkOrderDetailFragment extends Fragment {
         maintenanceTypeList = new ArrayList<>();
         workOrderStatusList = new ArrayList<>();
 
-        adapterDisplayList = new ArrayList<>();
     }
 
     @Nullable
@@ -78,7 +77,7 @@ public class WorkOrderDetailFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_work_order_detail, container, false);
 
-        adapter = new ChipListAdapter(maintenanceTypeDisplayList, workOrderStatusDisplayList, new OnMaintenanceSelectedListener(root), new OnStatusSelectedListener(root));
+        adapter = ChipListAdapter.create(this.getContext(), 0);
 
         recyclerView = root.findViewById(R.id.maintenance_type_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -206,11 +205,7 @@ public class WorkOrderDetailFragment extends Fragment {
 
                 @Override
                 public void onDrawerClosed(@NonNull View drawerView) {
-                    if(adapter.getItemViewType(1) == ChipListAdapter.ITEM_TYPE_MAINTENANCE_TYPE) {
-                        adapter.notifyItemRangeRemoved(1, maintenanceTypeDisplayList.size());
-                    } else {
-                        adapter.notifyItemRangeRemoved(1, workOrderStatusDisplayList.size());
-                    }
+
                 }
 
                 @Override
@@ -266,9 +261,7 @@ public class WorkOrderDetailFragment extends Fragment {
                             radioGroup.addView(chipType);
                         }*/
                         workOrderStatusDisplayList.clear();
-                        maintenanceTypeDisplayList.addAll(maintenanceTypeList);
-                        adapter.setItemViewType(ChipListAdapter.ITEM_TYPE_MAINTENANCE_TYPE);
-                        adapter.notifyItemRangeInserted(0,maintenanceTypeDisplayList.size());
+
 
                         sideDrawer.openDrawer(Gravity.RIGHT);
                     }
@@ -282,9 +275,7 @@ public class WorkOrderDetailFragment extends Fragment {
                 public void onClick(View v) {
                     if (!sideDrawer.isDrawerOpen(Gravity.RIGHT)) {
                         workOrderStatusDisplayList.clear();
-                        workOrderStatusDisplayList.addAll(workOrderStatusList);
-                        adapter.setItemViewType(ChipListAdapter.ITEM_TYPE_WORK_ORDER_STATUS);
-                        adapter.notifyItemRangeInserted(0,workOrderStatusDisplayList.size());
+
 
                         sideDrawer.openDrawer(Gravity.RIGHT);
                     }
@@ -365,7 +356,7 @@ public class WorkOrderDetailFragment extends Fragment {
         }
     }
 
-    class OnMaintenanceSelectedListener implements ChipListAdapter.OnItemClickListener {
+   /* class OnMaintenanceSelectedListener implements ChipListAdapter.OnItemClickListener {
 
         private View view;
 
@@ -391,7 +382,7 @@ public class WorkOrderDetailFragment extends Fragment {
         public void onItemClick(WorkOrderStatus status) {
             setupStatusChip(status);
         }
-    }
+    }*/
 
 
 }
