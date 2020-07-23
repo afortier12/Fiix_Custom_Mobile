@@ -6,6 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="PrimaryActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/gold</item>
     </style>
 
     <style name="BarcodeTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -22,10 +27,10 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-
     <style name="TextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="hintTextAppearance">@style/HintText</item>
         <item name="android:paddingBottom">8dp</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
@@ -51,5 +56,11 @@
         <item name="android:textSize">18sp</item>
     </style>
 
+
+    <style name="buttonIcon" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:padding">0dp</item>
+    </style>
 
 </resources>

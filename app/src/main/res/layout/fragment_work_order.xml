@@ -1,32 +1,160 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragment_work_order"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_width="match_parent">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/fragment_work_order_tab_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabMode="scrollable">
-
-    <com.google.android.material.tabs.TabItem
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/detail" />
-
-    <com.google.android.material.tabs.TabItem
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tasks" />
-    </com.google.android.material.tabs.TabLayout>
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/fragment_work_order_viewpager"
+    <LinearLayout
+        android:id="@+id/fragment_work_order"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1" />
-</LinearLayout>
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/fragment_work_order_tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/detail" />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tasks" />
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/fragment_work_order_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/work_order_FAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            style="@style/PrimaryActionButton"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="66dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/ic_add_48px"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:fabSize="normal"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/work_order_sub_FAB_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toTopOf="@id/work_order_FAB"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/work_order_FAB_note"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                style="@style/PrimaryActionButton"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_note_add_24px"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:fabSize="normal"/>
+
+            <TextView
+                android:id="@+id/work_order_FAB_note_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/gold"
+                android:elevation="16dp"
+                android:gravity="center"
+                android:text="@string/notes"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/work_order_FAB_note"
+                app:layout_constraintEnd_toStartOf="@id/work_order_FAB_note"
+                app:layout_constraintTop_toTopOf="@+id/work_order_FAB_note" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/work_order_FAB_RCA"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                style="@style/PrimaryActionButton"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_stethoscope_24px"
+                app:layout_constraintBottom_toTopOf="@id/work_order_FAB_note"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:fabSize="normal"/>
+
+            <TextView
+                android:id="@+id/work_order_FAB_RCA_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/gold"
+                android:elevation="16dp"
+                android:gravity="center"
+                android:text="@string/RCA"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/work_order_FAB_RCA"
+                app:layout_constraintEnd_toStartOf="@id/work_order_FAB_RCA"
+                app:layout_constraintTop_toTopOf="@+id/work_order_FAB_RCA" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/work_order_FAB_Send_Fiix"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                style="@style/PrimaryActionButton"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:srcCompat="@drawable/ic_sync_24px"
+                app:layout_constraintBottom_toTopOf="@id/work_order_FAB_RCA"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:fabSize="normal"/>
+
+            <TextView
+                android:id="@+id/work_order_FAB_Send_Fiix_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/gold"
+                android:elevation="16dp"
+                android:gravity="center"
+                android:text="@string/update_fiix"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@+id/work_order_FAB_Send_Fiix"
+                app:layout_constraintEnd_toStartOf="@id/work_order_FAB_Send_Fiix"
+                app:layout_constraintTop_toTopOf="@+id/work_order_FAB_Send_Fiix" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
 

@@ -1,17 +1,22 @@
 package ITM.maint.fiix_custom_mobile.ui.view;
 
+import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
@@ -19,6 +24,7 @@ import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderViewPagerAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 
 public class WorkOrderFragment extends Fragment {
 
@@ -26,6 +32,11 @@ public class WorkOrderFragment extends Fragment {
     private WorkOrderViewPagerAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
+    private FloatingActionButton detailFAB;
+    private FloatingActionButton noteFAB;
+    private FloatingActionButton rcaFAB;
+    private FloatingActionButton updateFAB;
+    private ConstraintLayout subFABContainer;
 
     private String username;
     private int userId;
@@ -63,6 +74,43 @@ public class WorkOrderFragment extends Fragment {
         WorkOrderFragmentArgs args = WorkOrderFragmentArgs.fromBundle(getArguments());
         workOrder = args.getWorkOrder();
 
+
+        detailFAB = view.findViewById(R.id.work_order_FAB);
+        subFABContainer = view.findViewById(R.id.work_order_sub_FAB_container);
+        detailFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (subFABContainer.getVisibility() == View.INVISIBLE)
+                    subFABContainer.setVisibility(View.VISIBLE);
+                else
+                    subFABContainer.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        noteFAB = view.findViewById(R.id.work_order_FAB_note);
+        noteFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "note clicked");
+            }
+        });
+
+        rcaFAB = view.findViewById(R.id.work_order_FAB_RCA);
+        rcaFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "RCA clicked");
+            }
+        });
+
+        updateFAB = view.findViewById(R.id.work_order_FAB_Send_Fiix);
+        updateFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG, "update clicked");
+            }
+        });
+
         adapter = new WorkOrderViewPagerAdapter(getChildFragmentManager(), getLifecycle(), username, userId, workOrder);
 
         viewPager = (ViewPager2) view.findViewById(R.id.fragment_work_order_viewpager);
@@ -83,6 +131,11 @@ public class WorkOrderFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                if (tab.getPosition() == 0){
+                    detailFAB.setVisibility(View.VISIBLE);
+                } else {
+                    detailFAB.setVisibility(View.INVISIBLE);
+                }
             }
 
             @Override

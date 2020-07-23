@@ -1,28 +1,34 @@
 package ITM.maint.fiix_custom_mobile.ui.adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 
 public class TypeAdapter extends ChipListAdapter<MaintenanceType> {
 
-    public TypeAdapter(Context context) {
-        super(context);
+    private View itemView;
+
+    public TypeAdapter(Context context, ISharedAdapter.OnItemClickListener listener) {
+        super(context, listener);
     }
 
     @NonNull
     @Override
     public TypeAdapterViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-        View itemView = LayoutInflater.from(parent.getContext())
+        itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.chip_item, parent, false);
 
         return new TypeAdapterViewHolder(itemView);
@@ -39,26 +45,31 @@ public class TypeAdapter extends ChipListAdapter<MaintenanceType> {
         }
 
         @Override
-        protected void bind(ISharedAdapter data) {
-            /* MaintenanceType type = (MaintenanceType) maintenanceTypeList.get(position);
-            ((MaintenanceTypeResultsHolder) holder).chip.setText(type.getStrName());
-            ((MaintenanceTypeResultsHolder) holder).chip.setCheckable(true);
+        protected void bind(ISharedAdapter data, ISharedAdapter.OnItemClickListener listener) {
+            MaintenanceType type = (MaintenanceType) data;
+            chip.setText(type.getStrName());
+            chip.setCheckable(true);
             String name = type.getStrName().replaceAll(" ", "_");
             try {
                 int chipColorId = itemView.getResources().getIdentifier(name, "color", itemView.getContext().getPackageName());
                 String hexColor = itemView.getResources().getString(chipColorId).replaceAll("#ff", "");
                 if (Utils.isColorDark(Integer.parseInt(hexColor, 16)))
-                    ((MaintenanceTypeResultsHolder) holder).chip.setTextColor(Color.WHITE);
+                    chip.setTextColor(Color.WHITE);
                 else
-                    ((MaintenanceTypeResultsHolder) holder).chip.setTextColor(Color.BLACK);
-                ((MaintenanceTypeResultsHolder) holder).chip.setChipBackgroundColorResource(chipColorId);
-                ((MaintenanceTypeResultsHolder) holder).bind(type, typeListener);
+                    chip.setTextColor(Color.BLACK);
+                    chip.setChipBackgroundColorResource(chipColorId);
             } catch (Exception e) {
-                ((MaintenanceTypeResultsHolder) holder).chip.setChipBackgroundColorResource(R.color.type_NA);
-                ((MaintenanceTypeResultsHolder) holder).chip.setTextColor(Color.WHITE);
-            }*/
-        }
+                chip.setChipBackgroundColorResource(R.color.type_NA);
+                chip.setTextColor(Color.WHITE);
+            }
 
+            chip.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    listener.onTypeItemClick(type);
+                }
+            });
+        }
 
     }
 }

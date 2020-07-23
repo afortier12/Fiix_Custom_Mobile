@@ -3,6 +3,7 @@ package ITM.maint.fiix_custom_mobile.ui.view;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,6 +38,8 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.ui.adapter.ChipListAdapter;
 import ITM.maint.fiix_custom_mobile.ui.adapter.ISharedAdapter;
+import ITM.maint.fiix_custom_mobile.ui.adapter.StatusAdapter;
+import ITM.maint.fiix_custom_mobile.ui.adapter.TypeAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderDetailViewModel;
 import ITM.maint.fiix_custom_mobile.utils.Utils;
 
@@ -52,11 +55,9 @@ public class WorkOrderDetailFragment extends Fragment {
     private List<MaintenanceType> maintenanceTypeList;
     private List<WorkOrderStatus> workOrderStatusList;
 
-    private List<ISharedAdapter> adapterDisplayList;
-    private List<WorkOrderStatus> workOrderStatusDisplayList;
-
     private RecyclerView recyclerView;
-    private ChipListAdapter adapter;
+    private TypeAdapter typeAdapter;
+    private StatusAdapter statusAdapter;
 
     public WorkOrderDetailFragment(String username, int userId, WorkOrder workOrder) {
         this.username = username;
@@ -77,12 +78,11 @@ public class WorkOrderDetailFragment extends Fragment {
 
         View root = inflater.inflate(R.layout.fragment_work_order_detail, container, false);
 
-        adapter = ChipListAdapter.create(this.getContext(), 0);
+        typeAdapter = (TypeAdapter) ChipListAdapter.create(getContext(), 0, new OnChipSelectedListener(root));
+        statusAdapter = (StatusAdapter) ChipListAdapter.create(getContext(), 1, new OnChipSelectedListener(root));
 
         recyclerView = root.findViewById(R.id.maintenance_type_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        //recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), LinearLayoutManager.VERTICAL));
-        recyclerView.setAdapter(adapter);
 
         LinearLayout assetLayout = root.findViewById(R.id.detail_asset_layout);
         assetLayout.bringToFront();
@@ -192,57 +192,11 @@ public class WorkOrderDetailFragment extends Fragment {
             TextView tvNotes = view.findViewById(R.id.detail_note);
 
             DrawerLayout sideDrawer = view.findViewById(R.id.detail_drawer_right);
-            sideDrawer.addDrawerListener(new DrawerLayout.DrawerListener() {
-                @Override
-                public void onDrawerSlide(@NonNull View drawerView, float slideOffset) {
-
-                }
-
-                @Override
-                public void onDrawerOpened(@NonNull View drawerView) {
-
-                }
-
-                @Override
-                public void onDrawerClosed(@NonNull View drawerView) {
-
-                }
-
-                @Override
-                public void onDrawerStateChanged(int newState) {
-
-                }
-            });
-            /*RadioGroup radioGroup = view.findViewById(R.id.detail_drawer_group);
-
-            radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                @Override
-                public void onCheckedChanged(RadioGroup group, int checkedId) {
-                    RadioButton radioButton = (RadioButton) view.findViewById(checkedId);
-                    String selection = String.valueOf(radioButton.getText()).replaceAll("_", " ");
-                    Chip chipType = view.findViewById(R.id.detail_type);
-                    chipType.setText(selection);
-                    int chipColor = getResources().getIdentifier(selection, "color", getActivity().getPackageName());
-                    chipType.setChipBackgroundColorResource(chipColor);
-
-                    sideDrawer.closeDrawer(Gravity.RIGHT);
-                }
-            });*/
-
             sideDrawer.closeDrawer(Gravity.RIGHT);
 
             Drawable img;
-            if (workOrder.getPriorityOrder() < 7) {
-                img = ResourcesCompat.getDrawable(this.getResources(), R.drawable.ic_high_priority, null);
-                ivPriorityIcon.setImageDrawable(img);
-            } else if (workOrder.getPriorityOrder() < 9) {
-                img = ResourcesCompat.getDrawable(this.getResources(), R.drawable.ic_medium_priority, null);
-                ivPriorityIcon.setImageDrawable(img);
-            } else {
-                img = ResourcesCompat.getDrawable(this.getResources(), R.drawable.ic_calendar, null);
-                ivPriorityIcon.setImageDrawable(img);
-            }
-
+            img = Utils.getPriorityIcon(workOrder.getPriorityOrder(), getContext());
+            ivPriorityIcon.setImageDrawable(img);
             tvPriorityDescription.setText(workOrder.getExtraFields().getPriorityName());
             tvAsset.setText(workOrder.getAssets());
 
@@ -251,17 +205,9 @@ public class WorkOrderDetailFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if (!sideDrawer.isDrawerOpen(Gravity.RIGHT)) {
-                        /*radioGroup.removeAllViews();
-
-                        for (MaintenanceType type: maintenanceTypeList){
-                            RadioButton chipType = new RadioButton(radioGroup.getContext());
-                            Log.d(TAG, type.getStrName() + "=" + String.valueOf(chipType.getId()));
-                            chipType.setText(type.getStrName());
-
-                            radioGroup.addView(chipType);
-                        }*/
-                        workOrderStatusDisplayList.clear();
-
+                        recyclerView.setAdapter(typeAdapter);
+                        typeAdapter.clearData();
+                        typeAdapter.addData(maintenanceTypeList);
 
                         sideDrawer.openDrawer(Gravity.RIGHT);
                     }
@@ -274,8 +220,9 @@ public class WorkOrderDetailFragment extends Fragment {
                 @Override
                 public void onClick(View v) {
                     if (!sideDrawer.isDrawerOpen(Gravity.RIGHT)) {
-                        workOrderStatusDisplayList.clear();
-
+                        recyclerView.setAdapter(statusAdapter);
+                        statusAdapter.clearData();
+                        statusAdapter.addData(workOrderStatusList);
 
                         sideDrawer.openDrawer(Gravity.RIGHT);
                     }
@@ -321,9 +268,22 @@ public class WorkOrderDetailFragment extends Fragment {
         super.onDestroy();
     }
 
+    public void viewNotes(){
+
+    }
+
+    public void viewRCA(){
+
+    }
+
+    public void updateFiix(){
+
+    }
+
     private void setupMaintenanceChip(MaintenanceType type){
         Chip chipType = getView().findViewById(R.id.detail_type);
         try {
+            chipType.setText(type.getStrName());
             String resourceName = type.getStrName().replaceAll(" ", "_");
             int chipColor = getResources().getIdentifier(resourceName, "color", getActivity().getPackageName());
             String hexColor = getResources().getString(chipColor).replaceAll("#ff", "");
@@ -340,10 +300,11 @@ public class WorkOrderDetailFragment extends Fragment {
     }
 
     private void setupStatusChip(WorkOrderStatus status){
-        String resourceColor = "status_"+ String.valueOf(status.getIntControlID());
-        int chipColor = getResources().getIdentifier(resourceColor, "color", getActivity().getPackageName());
         Chip chipStatus = getView().findViewById(R.id.detail_status);
         try{
+            chipStatus.setText(status.getStrName());
+            String resourceColor = "status_"+ String.valueOf(status.getIntControlID());
+            int chipColor = getResources().getIdentifier(resourceColor, "color", getActivity().getPackageName());
             chipStatus.setChipBackgroundColorResource(chipColor);
             String hexColor = getResources().getString(chipColor).replaceAll("#ff", "");
             if (Utils.isColorDark(Integer.parseInt(hexColor, 16)))
@@ -356,33 +317,25 @@ public class WorkOrderDetailFragment extends Fragment {
         }
     }
 
-   /* class OnMaintenanceSelectedListener implements ChipListAdapter.OnItemClickListener {
+    class OnChipSelectedListener implements ISharedAdapter.OnItemClickListener {
 
         private View view;
 
-        public OnMaintenanceSelectedListener(View view) {
+        public OnChipSelectedListener(View view) {
             this.view = view;
         }
 
         @Override
-        public void onItemClick(MaintenanceType type) {
-            setupMaintenanceChip(type);
+        public void onTypeItemClick(MaintenanceType maintenanceType) {
+            setupMaintenanceChip(maintenanceType);
+            workOrder.setMaintenanceTypeId(maintenanceType.getId());
+        }
+
+        @Override
+        public void onStatusItemClick(WorkOrderStatus status) {
+            setupStatusChip(status);
+            workOrder.setStatusId(status.getId());
         }
     }
-
-    class OnStatusSelectedListener implements ChipListAdapter.OnStatusItemClickListener {
-
-        private View view;
-
-        public OnStatusSelectedListener(View view) {
-            this.view = view;
-        }
-
-        @Override
-        public void onItemClick(WorkOrderStatus status) {
-            setupStatusChip(status);
-        }
-    }*/
-
 
 }

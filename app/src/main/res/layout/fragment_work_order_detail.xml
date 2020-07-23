@@ -6,10 +6,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <ScrollView
-        android:id="@+id/scrollView2"
+        android:id="@+id/detail_right_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintHorizontal_weight="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +49,7 @@
                     android:id="@+id/work_order_detail_priority_text"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
@@ -224,60 +232,6 @@
                 </LinearLayout>
             </RelativeLayout>
 
-            <RelativeLayout
-                android:id="@+id/requestedBy_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp">
-
-                <LinearLayout
-                    android:id="@+id/detail_requestedBy_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_marginStart="10sp"
-                        android:background="@color/white"
-                        android:text="@string/requestedBy"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10sp"
-                    android:background="@drawable/border"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/detail_requestedBy_Name"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginEnd="10sp"
-                        android:padding="4sp"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/detail_requestedBy_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
-                        android:layout_marginEnd="10sp"
-                        android:padding="4sp"
-                        android:textSize="16sp" />
-
-                </LinearLayout>
-            </RelativeLayout>
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/schedule_est_container"
                 android:layout_width="match_parent"
@@ -425,6 +379,60 @@
                 </LinearLayout>
             </RelativeLayout>
 
+            <RelativeLayout
+                android:id="@+id/requestedBy_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+
+                <LinearLayout
+                    android:id="@+id/detail_requestedBy_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="10sp"
+                        android:background="@color/white"
+                        android:text="@string/requestedBy"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10sp"
+                    android:background="@drawable/border"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detail_requestedBy_Name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="10sp"
+                        android:padding="4sp"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/detail_requestedBy_email"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10sp"
+                        android:layout_marginTop="10sp"
+                        android:layout_marginEnd="10sp"
+                        android:padding="4sp"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/work_order_notes"
                 style="?attr/materialButtonOutlinedStyle"
@@ -467,38 +475,18 @@
                 app:strokeColor="@color/black">
 
             </com.google.android.material.button.MaterialButton>
-
-
         </LinearLayout>
     </ScrollView>
 
-    <!--
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="top|end"
-        android:orientation="vertical">
-
-        <RadioGroup
-            android:id="@+id/detail_drawer_group"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="vertical">
-
-        </RadioGroup>
-
-    </ScrollView>
-
-    -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="top|end"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background = "@color/white">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:id="@+id/maintenance_type_list" />
 

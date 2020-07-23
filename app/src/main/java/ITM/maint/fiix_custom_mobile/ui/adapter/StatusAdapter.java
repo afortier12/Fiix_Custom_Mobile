@@ -15,13 +15,14 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.utils.Utils;
 
 public class StatusAdapter extends ChipListAdapter<WorkOrderStatus> {
 
-    public StatusAdapter(Context context) {
-        super(context);
+    public StatusAdapter(Context context, ISharedAdapter.OnItemClickListener listener) {
+        super(context, listener);
     }
 
     @NonNull
@@ -34,8 +35,6 @@ public class StatusAdapter extends ChipListAdapter<WorkOrderStatus> {
         return new StatusAdapterViewHolder(itemView);
     }
 
-
-
     protected class StatusAdapterViewHolder extends ChipListAdapter.ChipListViewHolder{
 
         private Chip chip;
@@ -46,24 +45,30 @@ public class StatusAdapter extends ChipListAdapter<WorkOrderStatus> {
         }
 
         @Override
-        protected void bind(ISharedAdapter data) {
-           /*WorkOrderStatus status = (WorkOrderStatus) workOrderStatusList.get(position);
-            ((WorkOrderStatusResultsHolder) holder).chip.setText(status.getStrName());
-            ((WorkOrderStatusResultsHolder) holder).chip.setCheckable(true);
+        protected void bind(ISharedAdapter data, ISharedAdapter.OnItemClickListener listener) {
+            WorkOrderStatus status = (WorkOrderStatus) data;
+            chip.setText(status.getStrName());
+            chip.setCheckable(true);
             try {
                 String resourceColor = "status_"+ String.valueOf(status.getIntControlID());
                 int chipColor = itemView.getResources().getIdentifier(resourceColor, "color", itemView.getContext().getPackageName());
-                ((WorkOrderStatusResultsHolder) holder).chip.setChipBackgroundColorResource(chipColor);
+                chip.setChipBackgroundColorResource(chipColor);
                 String hexColor = itemView.getResources().getString(chipColor).replaceAll("#ff", "");
                 if (Utils.isColorDark(Integer.parseInt(hexColor, 16)))
-                    ((WorkOrderStatusResultsHolder) holder).chip.setTextColor(Color.WHITE);
+                    chip.setTextColor(Color.WHITE);
                 else
-                    ((WorkOrderStatusResultsHolder) holder).chip.setTextColor(Color.BLACK);
-                ((WorkOrderStatusResultsHolder) holder).bind(status, statusListener);
+                    chip.setTextColor(Color.BLACK);
             } catch (Exception e) {
-                ((WorkOrderStatusResultsHolder) holder).chip.setChipBackgroundColorResource(R.color.status_NA);
-                ((WorkOrderStatusResultsHolder) holder).chip.setTextColor(Color.WHITE);
-            }*/
+                chip.setChipBackgroundColorResource(R.color.status_NA);
+                chip.setTextColor(Color.WHITE);
+            }
+
+            chip.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    listener.onStatusItemClick(status);
+                }
+            });
         }
 
     }

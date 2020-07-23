@@ -56,40 +56,49 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_weight="4"
             app:layout_constraintStart_toEndOf="@+id/work_order_leftLayout"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread">
 
             <TextView
                 android:id="@+id/work_order_priority"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 android:padding="4dp"
-                android:textSize="14sp"
+                android:text="@string/hello"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/work_order_asset"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="spread" />
 
             <TextView
                 android:id="@+id/work_order_asset"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
                 android:padding="4dp"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="@+id/work_order_type"
+                android:text="@string/hello"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toTopOf="@id/work_order_type"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/work_order_priority" />
+                app:layout_constraintTop_toBottomOf="@id/work_order_priority"
+                app:layout_constraintVertical_chainStyle="spread"/>
 
             <TextView
                 android:id="@+id/work_order_type"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="4dp"
-                android:textSize="14sp"
-                app:layout_constraintBottom_toTopOf="parent"
+                android:text="@string/hello"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/work_order_asset" />
+                app:layout_constraintTop_toBottomOf="@id/work_order_asset"
+                app:layout_constraintVertical_chainStyle="spread"/>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

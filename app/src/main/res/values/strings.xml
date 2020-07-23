@@ -103,4 +103,5 @@
     <string name="notes">NOTES</string>
     <string name="detail_notes">Notes</string>
     <string name="work_order_task_added">Work order tasks added</string>
+    <string name="RCA">RCA</string>
 </resources>

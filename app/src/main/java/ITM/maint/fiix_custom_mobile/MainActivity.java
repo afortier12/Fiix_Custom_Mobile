@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
@@ -37,8 +38,10 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragmentArgs;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 import ITM.maint.fiix_custom_mobile.utils.Workers.MaintenanceTypeSyncWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.WorkOrderStatusSyncWorker;
 import dagger.android.support.DaggerAppCompatActivity;
@@ -94,8 +97,10 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                         setTitle("Assigned Work Orders");
                         break;
                     case R.id.navigation_workOrder:
-                        String code = WorkOrderFragmentArgs.fromBundle(arguments).getWorkOrder().getCode();
-                        setTitle("Work Order: " + code);
+                        WorkOrder workOrder = WorkOrderFragmentArgs.fromBundle(arguments).getWorkOrder();
+                        setTitle("Work Order: " + workOrder.getCode());
+                        Drawable img = Utils.getPriorityIcon(workOrder.getPriorityOrder(), getApplicationContext());
+                        getSupportActionBar().setIcon(img);
                         break;
                     case R.id.navigation_partAdd:
                         setTitle("Add Part");

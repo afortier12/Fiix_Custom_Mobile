@@ -16,6 +16,7 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 
 public class WorkOrderListAdapter extends RecyclerView.Adapter<WorkOrderListAdapter.WorkOrderResultsHolder> {
 
@@ -50,17 +51,8 @@ public class WorkOrderListAdapter extends RecyclerView.Adapter<WorkOrderListAdap
         //String problemCode = workOrder.getExtraFields().getProblem();
 
         Drawable img;
-        if (order < 7){
-            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_high_priority, null);
-            holder.priorityIcon.setImageDrawable(img);
-        } else if (order < 9) {
-            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_medium_priority, null);
-            holder.priorityIcon.setImageDrawable(img);
-        } else {
-            img = ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_calendar, null);
-            holder.priorityIcon.setImageDrawable(img);
-        }
-
+        img = Utils.getPriorityIcon(order, itemView.getContext());
+        holder.priorityIcon.setImageDrawable(img);
         holder.priorityText.setText(priority);
         holder.codeText.setText(code);
         holder.typeText.setText(type);

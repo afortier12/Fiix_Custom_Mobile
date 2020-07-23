@@ -2,6 +2,7 @@ package ITM.maint.fiix_custom_mobile.ui.adapter;
 
 import android.content.Context;
 import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -13,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 
 
 public abstract class ChipListAdapter<T extends ISharedAdapter> extends RecyclerView.Adapter<ChipListAdapter.ChipListViewHolder> {
@@ -20,13 +23,16 @@ public abstract class ChipListAdapter<T extends ISharedAdapter> extends Recycler
     protected final Context context;
     protected final ArrayList<T> chipList = new ArrayList<>();
 
-    public ChipListAdapter(Context context) {
+    private ISharedAdapter.OnItemClickListener listener;
+
+    public ChipListAdapter(Context context, ISharedAdapter.OnItemClickListener listener) {
         this.context = context;
+        this.listener = listener;
     }
 
     @Override
     public void onBindViewHolder(@NonNull ChipListAdapter.ChipListViewHolder holder, int position) {
-        holder.bind(chipList.get(position));
+        holder.bind(chipList.get(position), listener);
     }
 
     @Override
@@ -49,12 +55,15 @@ public abstract class ChipListAdapter<T extends ISharedAdapter> extends Recycler
     }
 
 
-    public static ChipListAdapter create(Context context, int adapterType) {
+
+
+    public static ChipListAdapter create(Context context, int adapterType, ISharedAdapter.OnItemClickListener listener) {
+
         switch (adapterType) {
             case 0:
-                return new TypeAdapter(context);
+                return new TypeAdapter(context, listener);
             case 1:
-                return new StatusAdapter(context);
+                return new StatusAdapter(context, listener);
             default:
                 throw new IllegalArgumentException("Invalid adapter type: " + adapterType);
 
@@ -62,7 +71,7 @@ public abstract class ChipListAdapter<T extends ISharedAdapter> extends Recycler
     }
 
 
-    protected abstract class ChipListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    protected abstract class ChipListViewHolder extends RecyclerView.ViewHolder {
 
         protected final Chip chip;
 
@@ -71,16 +80,9 @@ public abstract class ChipListAdapter<T extends ISharedAdapter> extends Recycler
             super(viewHolder);
 
             chip = (Chip) viewHolder.findViewById(R.id.chip_list_item);
-            viewHolder.setOnClickListener(this);
         }
 
-        protected abstract void bind(T data);
+        protected abstract void bind(T data, ISharedAdapter.OnItemClickListener listener);
 
-
-        @Override
-        public void onClick(View v) {
-
-
-        }
     }
 }

@@ -1,14 +1,31 @@
 package ITM.maint.fiix_custom_mobile.utils;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.widget.ImageView;
 
+import androidx.core.content.res.ResourcesCompat;
 import androidx.core.graphics.ColorUtils;
 
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.common.io.Resources;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 
+import ITM.maint.fiix_custom_mobile.R;
+
 public class Utils {
+
+    public static final float[] NEGATIVE = {
+            -1.0f,     0,     0,    0, 255, // red
+            0, -1.0f,     0,    0, 255, // green
+            0,     0, -1.0f,    0, 255, // blue
+            0,     0,     0, 1.0f,   0  // alpha
+    };
 
     // Serialize a single object.
     public static String serializeToJson(Box box, Type type) {
@@ -35,4 +52,17 @@ public class Utils {
 
         }
     }
+
+    public static Drawable getPriorityIcon(int order, Context itemView){
+        if (order < 7){
+            return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_high_priority, null);
+        } else if (order < 9) {
+            return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_medium_priority, null);
+        } else {
+            return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_calendar, null);
+        }
+    }
+
+
+
 }
