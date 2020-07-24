@@ -42,6 +42,10 @@ public class WorkOrderFragment extends Fragment {
     private int userId;
     private WorkOrder workOrder;
 
+    private static final int DETAIL_TAB_POSITION = 0;
+    private static final int TASK_TAB_POSITION = 1;
+    private int visibleTab;
+
 
     @Nullable
     @Override
@@ -81,7 +85,11 @@ public class WorkOrderFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if (subFABContainer.getVisibility() == View.INVISIBLE)
-                    subFABContainer.setVisibility(View.VISIBLE);
+                    if (visibleTab == DETAIL_TAB_POSITION) {
+                        subFABContainer.setVisibility(View.VISIBLE);
+                    } else {
+                        //add code to add task to work Order (dialog, view model, snackbar)
+                    }
                 else
                     subFABContainer.setVisibility(View.INVISIBLE);
             }
@@ -91,6 +99,7 @@ public class WorkOrderFragment extends Fragment {
         noteFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //add code to add note (dialog, view model, snackbar)
                 Log.d(TAG, "note clicked");
             }
         });
@@ -99,6 +108,7 @@ public class WorkOrderFragment extends Fragment {
         rcaFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //add code to update RCA (dialog, view model, snackbar)
                 Log.d(TAG, "RCA clicked");
             }
         });
@@ -107,6 +117,9 @@ public class WorkOrderFragment extends Fragment {
         updateFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //add code to add update
+                //if status changed to closed -> check if RCA selected
+                //  if not, display a banner notifying user to fill in RCA or change status
                 Log.d(TAG, "update clicked");
             }
         });
@@ -117,10 +130,12 @@ public class WorkOrderFragment extends Fragment {
         viewPager.setAdapter(adapter);
 
         tabLayout = (TabLayout) view.findViewById(R.id.fragment_work_order_tab_layout);
+        visibleTab = DETAIL_TAB_POSITION;
+
         new TabLayoutMediator(tabLayout, viewPager, new TabLayoutMediator.TabConfigurationStrategy() {
             @Override
             public void onConfigureTab(@NonNull TabLayout.Tab tab, int position) {
-                if (position == 0)
+                if (position == DETAIL_TAB_POSITION)
                     tab.setText(R.string.detail);
                 else
                     tab.setText(R.string.tasks);
@@ -131,11 +146,7 @@ public class WorkOrderFragment extends Fragment {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
-                if (tab.getPosition() == 0){
-                    detailFAB.setVisibility(View.VISIBLE);
-                } else {
-                    detailFAB.setVisibility(View.INVISIBLE);
-                }
+                visibleTab = tab.getPosition();
             }
 
             @Override

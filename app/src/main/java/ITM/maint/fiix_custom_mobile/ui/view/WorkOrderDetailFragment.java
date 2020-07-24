@@ -100,6 +100,8 @@ public class WorkOrderDetailFragment extends Fragment {
         estLayout.bringToFront();
         LinearLayout requestedLayout = root.findViewById(R.id.detail_requestedBy_layout);
         requestedLayout.bringToFront();
+        LinearLayout problemLayout = root.findViewById(R.id.detail_problem_layout);
+        problemLayout.bringToFront();
 
         viewModel.getWorkOrderTaskResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrderTask>>() {
             @Override

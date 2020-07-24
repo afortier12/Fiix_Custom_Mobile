@@ -11,6 +11,7 @@
         android:id="@+id/detail_right_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -86,7 +87,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="8sp"
                     android:background="@drawable/border"
                     android:orientation="vertical">
 
@@ -94,7 +95,7 @@
                         android:id="@+id/detail_asset"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10sp"
+                        android:layout_margin="8sp"
                         android:padding="4sp"
                         android:text="@string/hello"
                         android:textSize="16sp" />
@@ -129,7 +130,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="8sp"
                     android:background="@drawable/border"
                     android:orientation="vertical">
 
@@ -139,7 +140,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
+                        android:layout_marginTop="8sp"
                         android:padding="4sp"
                         android:text="@string/hello"
                         android:textAppearance="@style/AppTheme.Chip" />
@@ -173,7 +174,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="8sp"
                     android:background="@drawable/border"
                     android:orientation="vertical">
 
@@ -183,51 +184,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
+                        android:layout_marginTop="8sp"
                         android:text="@string/hello"
                         android:textAppearance="@style/AppTheme.Chip" />
-
-                </LinearLayout>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:id="@+id/description_container"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="4dp">
-
-                <LinearLayout
-                    android:id="@+id/detail_description_layout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start|top"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top"
-                        android:layout_marginStart="10sp"
-                        android:background="@color/white"
-                        android:text="@string/work_order_description"
-                        android:textSize="14sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10sp"
-                    android:background="@drawable/border"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/detail_description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10sp"
-                        android:padding="4sp"
-                        android:textSize="16sp" />
 
                 </LinearLayout>
             </RelativeLayout>
@@ -271,7 +230,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp"
+                        android:layout_marginTop="8sp"
                         android:background="@drawable/border"
                         android:orientation="vertical">
 
@@ -279,7 +238,7 @@
                             android:id="@+id/detail_scheduled_date"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="10sp"
+                            android:layout_margin="8sp"
                             android:padding="4sp"
                             android:textSize="16sp" />
 
@@ -320,7 +279,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10sp"
+                        android:layout_marginTop="8sp"
                         android:background="@drawable/border"
                         android:orientation="vertical">
 
@@ -338,13 +297,13 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <RelativeLayout
-                android:id="@+id/notes_container"
+                android:id="@+id/problem_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="4dp">
 
                 <LinearLayout
-                    android:id="@+id/detail_note_layout"
+                    android:id="@+id/detail_problem_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="start|top"
@@ -356,7 +315,7 @@
                         android:layout_gravity="top"
                         android:layout_marginStart="10sp"
                         android:background="@color/white"
-                        android:text="@string/detail_notes"
+                        android:text="@string/problem_description"
                         android:textSize="14sp" />
 
                 </LinearLayout>
@@ -364,20 +323,63 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="8sp"
                     android:background="@drawable/border"
                     android:orientation="vertical">
 
                     <TextView
-                        android:id="@+id/detail_note"
+                        android:id="@+id/detail_problem"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="10sp"
+                        android:layout_margin="8sp"
                         android:padding="4sp"
                         android:textSize="16sp" />
 
                 </LinearLayout>
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/description_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="4dp">
+
+                <LinearLayout
+                    android:id="@+id/detail_description_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="10sp"
+                        android:background="@color/white"
+                        android:text="@string/request_description"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8sp"
+                    android:background="@drawable/border"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detail_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8sp"
+                        android:padding="4sp"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
+
 
             <RelativeLayout
                 android:id="@+id/requestedBy_container"
@@ -406,7 +408,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10sp"
+                    android:layout_marginTop="8sp"
                     android:background="@drawable/border"
                     android:orientation="vertical">
 
@@ -415,7 +417,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
+                        android:layout_marginTop="8sp"
                         android:layout_marginEnd="10sp"
                         android:padding="4sp"
                         android:textSize="16sp" />
@@ -425,7 +427,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="10sp"
-                        android:layout_marginTop="10sp"
+                        android:layout_marginBottom="8sp"
                         android:layout_marginEnd="10sp"
                         android:padding="4sp"
                         android:textSize="16sp" />
@@ -433,48 +435,50 @@
                 </LinearLayout>
             </RelativeLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/work_order_notes"
-                style="?attr/materialButtonOutlinedStyle"
+            <RelativeLayout
+                android:id="@+id/notes_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|bottom"
-                android:gravity="center"
-                android:text="@string/notes"
-                android:textColor="@color/black"
-                app:icon="@drawable/ic_add"
-                app:iconGravity="start"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/notes_container"
-                app:strokeColor="@color/black">
+                android:padding="4dp">
 
-            </com.google.android.material.button.MaterialButton>
+                <LinearLayout
+                    android:id="@+id/detail_note_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="start|top"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:layout_marginStart="10sp"
+                        android:background="@color/white"
+                        android:text="@string/detail_notes"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8sp"
+                    android:background="@drawable/border"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detail_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8sp"
+                        android:padding="4sp"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </RelativeLayout>
 
 
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"
-                tools:ignore="UselessLeaf">
 
-            </FrameLayout>
-
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/work_order_update"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal|bottom"
-                android:gravity="center"
-                android:text="@string/update_fiix"
-                android:textColor="@color/black"
-                app:icon="@drawable/ic_arrow_circle_up_24px"
-                app:iconGravity="start"
-                app:strokeColor="@color/black">
-
-            </com.google.android.material.button.MaterialButton>
         </LinearLayout>
     </ScrollView>
 
@@ -482,6 +486,7 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="top|end"
+        android:layout_marginBottom="56dp"
         android:orientation="vertical"
         android:background = "@color/white">
 
