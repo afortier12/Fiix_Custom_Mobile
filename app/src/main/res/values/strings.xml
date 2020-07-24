@@ -106,4 +106,6 @@
     <string name="RCA">RCA</string>
     <string name="request_description">Request</string>
     <string name="problem_description">Problem</string>
+    <string name="update">UPDATE</string>
+    <string name="cancel">CANCEL</string>
 </resources>

@@ -109,6 +109,8 @@ public class WorkOrderFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 //add code to update RCA (dialog, view model, snackbar)
+                WorkOrderRCADialog dialog = new WorkOrderRCADialog();
+                dialog.setTargetFragment(WorkOrderFragment.this, );
                 Log.d(TAG, "RCA clicked");
             }
         });
