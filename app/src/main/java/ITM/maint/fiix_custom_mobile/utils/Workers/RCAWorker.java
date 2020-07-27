@@ -66,11 +66,17 @@ public class RCAWorker extends Worker {
                     .lines()
                     .collect(Collectors.joining("\n"));
 
-            JSONObject jsonObject = null;
-            jsonObject = new JSONObject(jsonString);
+            try {
+                JSONObject jsonObject = null;
+                jsonObject = new JSONObject(jsonString);
+            } catch (JSONException e){
+                JSONArray jsonArray = null;
+                jsonArray = new JSONArray(jsonString);
+            }
 
             Gson gson = new Gson();
-            FailureCodeNesting failureCodeNesting =gson.fromJson(jsonString, FailureCodeNesting.class);
+            Type listType = new TypeToken<ArrayList<FailureCodeNesting>>() {}.getType();
+            ArrayList<FailureCodeNesting> failureCodeNesting =gson.fromJson(jsonString, listType);
 
             FiixDatabase fiixDatabase = FiixDatabase.getDatabase(getApplicationContext());
             CompositeDisposable compositeDisposable = new CompositeDisposable();

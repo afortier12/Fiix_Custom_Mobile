@@ -11,6 +11,8 @@ import androidx.work.WorkerParameters;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -32,7 +34,7 @@ public class ProblemWorker extends Worker {
     private static final String TAG = "ProblemWorker";
     private static final String RESPONSE_KEY = "Problem";
 
-    private static final String problem_filename = "problem.json";
+    private static final String problem_filename = "problems.json";
 
     public ProblemWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -50,8 +52,13 @@ public class ProblemWorker extends Worker {
                     .lines()
                     .collect(Collectors.joining("\n"));
 
-            JSONObject jsonObject = null;
-            jsonObject = new JSONObject(jsonString);
+            try {
+                JSONObject jsonObject = null;
+                jsonObject = new JSONObject(jsonString);
+            } catch (JSONException e){
+                JSONArray jsonArray = null;
+                jsonArray = new JSONArray(jsonString);
+            }
 
             Gson gson = new Gson();
             Type listType = new TypeToken<ArrayList<Problem>>() {}.getType();

@@ -11,6 +11,8 @@ import androidx.work.WorkerParameters;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
@@ -32,7 +34,7 @@ public class CauseWorker extends Worker {
     private static final String TAG = "CauseWorker";
     private static final String RESPONSE_KEY = "Cause";
 
-    private static final String cause_filename = "cause.json";
+    private static final String cause_filename = "causes.json";
 
     public CauseWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
@@ -50,8 +52,13 @@ public class CauseWorker extends Worker {
                     .lines()
                     .collect(Collectors.joining("\n"));
 
-            JSONObject jsonObject = null;
-            jsonObject = new JSONObject(jsonString);
+            try {
+                JSONObject jsonObject = null;
+                jsonObject = new JSONObject(jsonString);
+            } catch (JSONException e){
+                JSONArray jsonArray = null;
+                jsonArray = new JSONArray(jsonString);
+            }
 
             Gson gson = new Gson();
             Type listType = new TypeToken<ArrayList<Cause>>() {}.getType();

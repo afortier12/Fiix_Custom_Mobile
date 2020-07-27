@@ -31,9 +31,8 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
 @Database(entities = {Part.class, User.class, WorkOrder.class, WorkOrderTask.class,
-        Priority.class, Problem.class, Cause.class, Action.class, FailureCodeNesting.Category.class,
-        FailureCodeNesting.Source.class, FailureCodeNesting.class, MaintenanceType.class,
-        WorkOrderStatus.class},version = 1)
+        Priority.class, Problem.class, Cause.class, Action.class, FailureCodeNesting.class,
+        FailureCodeNesting.Source.class, MaintenanceType.class, WorkOrderStatus.class},version = 1)
 @TypeConverters({Converters.class})
 public abstract class FiixDatabase extends RoomDatabase {
 

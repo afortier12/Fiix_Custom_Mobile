@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.Category;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.Source;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
@@ -45,18 +44,6 @@ public class Converters {
         // return date == null ? null : date.getTime();
     }
 
-    @TypeConverter
-    public static ArrayList<Category> fromCategoryList(String value){
-        Type listType = new TypeToken<ArrayList<Category>>() {}.getType();
-        return new Gson().fromJson(value, listType);
-    }
-
-    @TypeConverter
-    public static String categoryListToString(ArrayList<Category> list){
-        Gson gson = new Gson();
-        String json = gson.toJson(list);
-        return json;
-    }
 
     @TypeConverter
     public static ArrayList<Source> fromSourceList(String value){

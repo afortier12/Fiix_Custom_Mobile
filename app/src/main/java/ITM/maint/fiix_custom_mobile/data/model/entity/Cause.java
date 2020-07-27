@@ -19,9 +19,11 @@ public class Cause {
     private int id;
     @SerializedName("code")
     @Expose
+    @ColumnInfo(name="code")
     private String code;
     @SerializedName("description")
     @Expose
+    @ColumnInfo(name="description")
     private String description;
 
     public int getId() {

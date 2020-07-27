@@ -1,5671 +1,5666 @@
 [
     {
-        "id": "21,428",
+        "id": "21428",
         "code": "A-BLDVLV-FAIL",
         "description": "Automatic Bleed Valve Fouled"
     },
     {
-        "id": "21,429",
+        "id": "21429",
         "code": "ABRSVE-PRDCT",
         "description": "Abrasive product"
     },
     {
-        "id": "21,430",
+        "id": "21430",
         "code": "ACC-ERRTC",
         "description": "Acceleration Erratic"
     },
     {
-        "id": "21,431",
+        "id": "21431",
         "code": "ACHNL-FAIL",
         "description": "Auto Channel Failure"
     },
     {
-        "id": "21,432",
+        "id": "21432",
         "code": "ACORRSN-EQPTFAIL",
         "description": "Anti-Corrosion Equipment Failure"
     },
     {
-        "id": "21,433",
+        "id": "21433",
         "code": "ACORRSN-FAIL",
         "description": "Anti-Corrosion Failed"
     },
     {
-        "id": "21,434",
+        "id": "21434",
         "code": "ACT-DEFECT",
         "description": "Actuator Defective"
     },
     {
-        "id": "21,435",
+        "id": "21435",
         "code": "ACT-FAIL",
         "description": "Actuator Failed"
     },
     {
-        "id": "21,436",
+        "id": "21436",
         "code": "ACT-SPRG-BRKN",
         "description": "Actuator Spring Broken"
     },
     {
-        "id": "21,437",
+        "id": "21437",
         "code": "ADDITIVE-HI",
         "description": "Too much additive"
     },
     {
-        "id": "21,438",
+        "id": "21438",
         "code": "AGTR-IMBAL",
         "description": "Agitator Imbalance"
     },
     {
-        "id": "21,439",
+        "id": "21439",
         "code": "AGTR-LEAK",
         "description": "Agitator Leaking"
     },
     {
-        "id": "21,440",
+        "id": "21440",
         "code": "AGTR-PLGGD",
         "description": "Agitator Plugged"
     },
     {
-        "id": "21,441",
+        "id": "21441",
         "code": "AIRCLR-FOUL",
         "description": "Air Cooler Fouled"
     },
     {
-        "id": "21,442",
+        "id": "21442",
         "code": "AIRFLTR-CLGGD",
         "description": "Air filters clogged"
     },
     {
-        "id": "21,443",
+        "id": "21443",
         "code": "AIR-FLTRFEED",
         "description": "Air in filter feed"
     },
     {
-        "id": "21,444",
+        "id": "21444",
         "code": "AIRFLTR-FOULDMG",
         "description": "Air Filter Fouled/Damaged"
     },
     {
-        "id": "21,445",
+        "id": "21445",
         "code": "AIRFLW",
         "description": "Air flow "
     },
     {
-        "id": "21,446",
+        "id": "21446",
         "code": "AIRGAP-NONCFRM",
         "description": "Air Gap Non-Conformity"
     },
     {
-        "id": "21,447",
+        "id": "21447",
         "code": "AIR-INLT-DIRTY",
         "description": "Air Intake Dirty"
     },
     {
-        "id": "21,448",
+        "id": "21448",
         "code": "AIRPRESS-LO",
         "description": "Low air pressure"
     },
     {
-        "id": "21,449",
+        "id": "21449",
         "code": "AIRPRESS-SWIFLTY",
         "description": "Air pressure switch failure"
     },
     {
-        "id": "21,450",
+        "id": "21450",
         "code": "AIRSPPLY-CNTMNTD",
         "description": "Air Supply Contaminated"
     },
     {
-        "id": "21,451",
+        "id": "21451",
         "code": "AIRSPPLY-FLTY",
         "description": "Air Supply Faulty"
     },
     {
-        "id": "21,452",
+        "id": "21452",
         "code": "ALRM-AUDWEAK",
         "description": "Alarm Audibility Weak"
     },
     {
-        "id": "21,453",
+        "id": "21453",
         "code": "ALRM-NOSOUND",
         "description": "Alarm Not Sounding"
     },
     {
-        "id": "21,454",
+        "id": "21454",
         "code": "AMM-NOTREAD",
         "description": "Ammeter does not read"
     },
     {
-        "id": "21,455",
+        "id": "21455",
         "code": "ANCR-LOOSE/CRKD",
         "description": "Anchor Bolts; Loose/Cracked"
     },
     {
-        "id": "21,456",
+        "id": "21456",
         "code": "ARMTR-CCTOPN",
         "description": "Armature Circuit Open"
     },
     {
-        "id": "21,457",
+        "id": "21457",
         "code": "ARMTR-GRND",
         "description": "Armature Grounded"
     },
     {
-        "id": "21,458",
+        "id": "21458",
         "code": "ARMTR-IMBAL",
         "description": "Armature Imbalanced"
     },
     {
-        "id": "21,459",
+        "id": "21459",
         "code": "ARMTR-OPN",
         "description": "Armature Open"
     },
     {
-        "id": "21,460",
+        "id": "21460",
         "code": "ARMTR-SHORT",
         "description": "Armature Shorted"
     },
     {
-        "id": "21,461",
+        "id": "21461",
         "code": "ARMTR-T2TFLT",
         "description": "Armature Turn To Turn Fault"
     },
     {
-        "id": "21,462",
+        "id": "21462",
         "code": "A-SWI-IMPRPRLY-ADJSTD",
         "description": "Auto switch not adjusted"
     },
     {
-        "id": "21,463",
+        "id": "21463",
         "code": "AUXSWI-LOOSE",
         "description": "Auxiliary Switches Loose"
     },
     {
-        "id": "21,464",
+        "id": "21464",
         "code": "AUXSWI-MISALGN",
         "description": "Auxiliary Switches Misaligned"
     },
     {
-        "id": "21,465",
+        "id": "21465",
         "code": "AXISBD-BAD",
         "description": "Bad axis board"
     },
     {
-        "id": "21,466",
+        "id": "21466",
         "code": "BACKLASH",
         "description": "Backlash (faulty mechanical linkage)"
     },
     {
-        "id": "21,467",
+        "id": "21467",
         "code": "BAD-AIRQUAL",
         "description": "Poor air quality"
     },
     {
-        "id": "21,468",
+        "id": "21468",
         "code": "BADCXN-CONNCTR",
         "description": "Bad connection at connector"
     },
     {
-        "id": "21,469",
+        "id": "21469",
         "code": "BALL-WORN",
         "description": "Ball Worn"
     },
     {
-        "id": "21,470",
+        "id": "21470",
         "code": "BALSEAL-DMG",
         "description": "Balance Seal Damaged"
     },
     {
-        "id": "21,471",
+        "id": "21471",
         "code": "BAR-HI/LO",
         "description": "Bars High/Low"
     },
     {
-        "id": "21,472",
+        "id": "21472",
         "code": "BASE-ERDD",
         "description": "Base Eroded"
     },
     {
-        "id": "21,473",
+        "id": "21473",
         "code": "BASE-FDTNCRKG",
         "description": "Base Foundation Cracking"
     },
     {
-        "id": "21,474",
+        "id": "21474",
         "code": "BASE-FDTNDETD",
         "description": "Base Foundation Deteriorated"
     },
     {
-        "id": "21,475",
+        "id": "21475",
         "code": "BASE-RNG-CRRDED/CRKD/DSTRTD",
         "description": "Base Ring; Corroded/Cracked/Distorted"
     },
     {
-        "id": "21,476",
+        "id": "21476",
         "code": "BBAR-CXN-LSCRRDED",
         "description": "Bus Bar Connection Loose Or Corroded"
     },
     {
-        "id": "21,477",
+        "id": "21477",
         "code": "BCKPLT-CRRDED",
         "description": "Backplate Corroded"
     },
     {
-        "id": "21,478",
+        "id": "21478",
         "code": "BCKPLT-ERDD",
         "description": "Backplate Eroded"
     },
     {
-        "id": "21,479",
+        "id": "21479",
         "code": "BDY-CRKD",
         "description": "Body Cracked"
     },
     {
-        "id": "21,480",
+        "id": "21480",
         "code": "BDY-CRRDED/PITT",
         "description": "Body Corroded/Pitted"
     },
     {
-        "id": "21,481",
+        "id": "21481",
         "code": "BDY-ERDD",
         "description": "Body Eroded"
     },
     {
-        "id": "21,482",
+        "id": "21482",
         "code": "BDY-FLTY",
         "description": "Body Faulty"
     },
     {
-        "id": "21,483",
+        "id": "21483",
         "code": "BEARG-OVRHT",
         "description": "Bearing Overheat"
     },
     {
-        "id": "21,484",
+        "id": "21484",
         "code": "BELT-BRKN",
         "description": "Belt damaged or broken"
     },
     {
-        "id": "21,485",
+        "id": "21485",
         "code": "BELT-LOOSE",
         "description": "Belt Loose"
     },
     {
-        "id": "21,486",
+        "id": "21486",
         "code": "BELT-LOOSE/BRKN",
         "description": "Belt loose/broken"
     },
     {
-        "id": "21,487",
+        "id": "21487",
         "code": "BELT-MISALGN",
         "description": "Belt Misaligned"
     },
     {
-        "id": "21,488",
+        "id": "21488",
         "code": "BELT-TENS",
         "description": "Belt tension"
     },
     {
-        "id": "21,489",
+        "id": "21489",
         "code": "BELT-TNSR-FAIL",
         "description": "Belt Tensioner Failed"
     },
     {
-        "id": "21,490",
+        "id": "21490",
         "code": "BELT-WORN",
         "description": "Belt Worn"
     },
     {
-        "id": "21,491",
+        "id": "21491",
         "code": "BELT-XS-SLAP",
         "description": "Belt Excessive Slap/Play"
     },
     {
-        "id": "21,492",
+        "id": "21492",
         "code": "BFLPLT-CRKD/DMG",
         "description": "Baffle Plate Cracked/Damaged"
     },
     {
-        "id": "21,493",
+        "id": "21493",
         "code": "BFLPLT-CRRDED/ERDD",
         "description": "Baffle Plate Corroded/Eroded"
     },
     {
-        "id": "21,494",
+        "id": "21494",
         "code": "BLCKD-AIRFLTR",
         "description": "Blocked air filter"
     },
     {
-        "id": "21,495",
+        "id": "21495",
         "code": "BLCKD-AIR-FLTR",
         "description": "Blocked air filter"
     },
     {
-        "id": "21,496",
+        "id": "21496",
         "code": "BLCKD-FLUIDFLTR",
         "description": "Blocked fluid filter"
     },
     {
-        "id": "21,497",
+        "id": "21497",
         "code": "BLCKD-HOPPER",
         "description": "Blockage in hopper"
     },
     {
-        "id": "21,498",
+        "id": "21498",
         "code": "BLCKGE",
         "description": "Blockage"
     },
     {
-        "id": "21,499",
+        "id": "21499",
         "code": "BLD-BENT",
         "description": "Blade Bent"
     },
     {
-        "id": "21,500",
+        "id": "21500",
         "code": "BLD-ERDD",
         "description": "Blade Eroded"
     },
     {
-        "id": "21,501",
+        "id": "21501",
         "code": "BLEEDPORT-PLGGD",
         "description": "Bleed Port Plugged"
     },
     {
-        "id": "21,502",
+        "id": "21502",
         "code": "BLLW-ASSY-LEAK",
         "description": "Bellow Assembly Leaking"
     },
     {
-        "id": "21,503",
+        "id": "21503",
         "code": "BLW-LEAKRUPT",
         "description": "Bellows Leaking/Ruptured"
     },
     {
-        "id": "21,504",
+        "id": "21504",
         "code": "BLWR-CRRDED",
         "description": "Blower Corroded"
     },
     {
-        "id": "21,505",
+        "id": "21505",
         "code": "BLWR-ERDD",
         "description": "Blower Eroded"
     },
     {
-        "id": "21,506",
+        "id": "21506",
         "code": "BLWR-EROD",
         "description": "Blower Eroded"
     },
     {
-        "id": "21,507",
+        "id": "21507",
         "code": "BLWR-SEIZED",
         "description": "Blower Seized"
     },
     {
-        "id": "21,508",
+        "id": "21508",
         "code": "BNT-GSKT-LEAK",
         "description": "Bonnet Gasket Leak"
     },
     {
-        "id": "21,509",
+        "id": "21509",
         "code": "BOLT-CRRDED",
         "description": "Bolts Corroded"
     },
     {
-        "id": "21,510",
+        "id": "21510",
         "code": "BOLT-CRRDED/PITT",
         "description": "Bolting Corroded/ Pitted"
     },
     {
-        "id": "21,511",
+        "id": "21511",
         "code": "BOLT-LOOSE/BRKN",
         "description": "Bolt Loose/Broken"
     },
     {
-        "id": "21,512",
+        "id": "21512",
         "code": "BOLT-SFC-ERDD",
         "description": "Bolting Surface Eroded"
     },
     {
-        "id": "21,513",
+        "id": "21513",
         "code": "BRAKASSY-BRKN",
         "description": "Brake Assembly Broken"
     },
     {
-        "id": "21,514",
+        "id": "21514",
         "code": "BREAKER-RATEDLO",
         "description": "Breaker rated too low"
     },
     {
-        "id": "21,515",
+        "id": "21515",
         "code": "BRG-DRY",
         "description": "Bearing Dry"
     },
     {
-        "id": "21,516",
+        "id": "21516",
         "code": "BRG-FAIL",
         "description": "Bearing Failure"
     },
     {
-        "id": "21,517",
+        "id": "21517",
         "code": "BRG-FRICTION-HI",
         "description": "Bearing friction high"
     },
     {
-        "id": "21,518",
+        "id": "21518",
         "code": "BRG-FRZN",
         "description": "Bearing Frozen"
     },
     {
-        "id": "21,519",
+        "id": "21519",
         "code": "BRG-GALLNG",
         "description": "Bearing Galling"
     },
     {
-        "id": "21,520",
+        "id": "21520",
         "code": "BRG-LOOSE",
         "description": "Bearing Loose"
     },
     {
-        "id": "21,521",
+        "id": "21521",
         "code": "BRG-NOISY",
         "description": "Bearing Noisy"
     },
     {
-        "id": "21,522",
+        "id": "21522",
         "code": "BRG-OVRHEAT",
         "description": "Bearing Overheat"
     },
     {
-        "id": "21,523",
+        "id": "21523",
         "code": "BRG-PDSTL-CRKD",
         "description": "Bearing Pedestal Cracked"
     },
     {
-        "id": "21,524",
+        "id": "21524",
         "code": "BRG-SCORED",
         "description": "Bearing Scored"
     },
     {
-        "id": "21,525",
+        "id": "21525",
         "code": "BRG-SCR-OVRHT",
         "description": "Bearing Scored/Overheat"
     },
     {
-        "id": "21,526",
+        "id": "21526",
         "code": "BRG-SEIZED",
         "description": "Bearing Seized"
     },
     {
-        "id": "21,527",
+        "id": "21527",
         "code": "BRG-TIGHT",
         "description": "Bearing Tight"
     },
     {
-        "id": "21,528",
+        "id": "21528",
         "code": "BRG-WORN",
         "description": "Bearing Worn"
     },
     {
-        "id": "21,529",
+        "id": "21529",
         "code": "BRG-WORNDMG",
         "description": "Bearing Worn/Damaged"
     },
     {
-        "id": "21,530",
+        "id": "21530",
         "code": "BRG-WRNSCRD",
         "description": "Bearing Worn/Scored"
     },
     {
-        "id": "21,531",
+        "id": "21531",
         "code": "BRKN-BOLT",
         "description": "Bolt Loose/Broken"
     },
     {
-        "id": "21,532",
+        "id": "21532",
         "code": "BRKNCONNCTR-SENS",
         "description": "Broken connector in sensor"
     },
     {
-        "id": "21,533",
+        "id": "21533",
         "code": "BRKN-SCRW",
         "description": "ScrewLoose/Broken"
     },
     {
-        "id": "21,534",
+        "id": "21534",
         "code": "BRKN-SPRNG",
         "description": "Broken spring"
     },
     {
-        "id": "21,535",
+        "id": "21535",
         "code": "BRKR-FLTY-ALGN",
         "description": "Breaker Faulty Alignment"
     },
     {
-        "id": "21,536",
+        "id": "21536",
         "code": "BRKR-OVRHEAT",
         "description": "Breaker Overheat"
     },
     {
-        "id": "21,537",
+        "id": "21537",
         "code": "BRKR-TRIP",
         "description": "Breaker Tripped"
     },
     {
-        "id": "21,538",
+        "id": "21538",
         "code": "BRKR-WEAK",
         "description": "Breaker Weak"
     },
     {
-        "id": "21,539",
+        "id": "21539",
         "code": "BRN-FAIL",
         "description": "Burner Failed"
     },
     {
-        "id": "21,540",
+        "id": "21540",
         "code": "BRNG-DMG",
         "description": "Bearing damage"
     },
     {
-        "id": "21,541",
+        "id": "21541",
         "code": "BRNG-SEIZED",
         "description": "Seized bearing"
     },
     {
-        "id": "21,542",
+        "id": "21542",
         "code": "BRSH-ARC",
         "description": "Brush Arcing"
     },
     {
-        "id": "21,543",
+        "id": "21543",
         "code": "BRSH-DIRTYCLOG",
         "description": "Brushes Dirty/Clogged"
     },
     {
-        "id": "21,544",
+        "id": "21544",
         "code": "BRSH-LIP-WORN",
         "description": "Brush Holder Lip Worn"
     },
     {
-        "id": "21,545",
+        "id": "21545",
         "code": "BRSH-POSN-BAD",
         "description": "Brush Holder Position Incorrect"
     },
     {
-        "id": "21,546",
+        "id": "21546",
         "code": "BRSH-SHRT",
         "description": "Brush Holders Short/Ground"
     },
     {
-        "id": "21,547",
+        "id": "21547",
         "code": "BRSH-SKIRT-WORN/DMG/OOADJ",
         "description": "Brush skirts worn, damaged, out of adjustment"
     },
     {
-        "id": "21,548",
+        "id": "21548",
         "code": "BRSH-TNSN-BAD",
         "description": "Brush Tension Incorrect"
     },
     {
-        "id": "21,549",
+        "id": "21549",
         "code": "BRSH-TNSN-OFFSPEC",
         "description": "Brush Tension Off Specification"
     },
     {
-        "id": "21,550",
+        "id": "21550",
         "code": "BRSH-WORN",
         "description": "Brushes Worn"
     },
     {
-        "id": "21,551",
+        "id": "21551",
         "code": "BSHG-DETD",
         "description": "Bushing Deteriorated"
     },
     {
-        "id": "21,552",
+        "id": "21552",
         "code": "BSHG-DMGFAIL",
         "description": "Bushing Damaged /Failure"
     },
     {
-        "id": "21,553",
+        "id": "21553",
         "code": "BSHG-OVRHEAT",
         "description": "Bushing Overheat"
     },
     {
-        "id": "21,554",
+        "id": "21554",
         "code": "BSHG-SCORED",
         "description": "Bushing Scored"
     },
     {
-        "id": "21,555",
+        "id": "21555",
         "code": "BSHG-SEIZED",
         "description": "Bushing Seized"
     },
     {
-        "id": "21,556",
+        "id": "21556",
         "code": "BSHG-WORN",
         "description": "Bushing Worn"
     },
     {
-        "id": "21,557",
+        "id": "21557",
         "code": "BSHG-WORNDMG",
         "description": "Bushing Worn/Damaged"
     },
     {
-        "id": "21,558",
+        "id": "21558",
         "code": "BTUBE-LEAK",
         "description": "Bourdon Tube Leaking"
     },
     {
-        "id": "21,559",
+        "id": "21559",
         "code": "BTYCBL-CRRDED",
         "description": "Battery cables corroded"
     },
     {
-        "id": "21,560",
+        "id": "21560",
         "code": "BTYCBL-LOOSE",
         "description": "Battery cables loose"
     },
     {
-        "id": "21,561",
+        "id": "21561",
         "code": "BTYCHARGE-FLTY",
         "description": "Battery charger faulty"
     },
     {
-        "id": "21,562",
+        "id": "21562",
         "code": "BTYCHARGE-NOTCONNCTD",
         "description": "Battery charger not connected correctly"
     },
     {
-        "id": "21,563",
+        "id": "21563",
         "code": "BTY-CXNLOOSE",
         "description": "Battery Connection Loose"
     },
     {
-        "id": "21,564",
+        "id": "21564",
         "code": "BTY-DEAD",
         "description": "Batteries dead"
     },
     {
-        "id": "21,565",
+        "id": "21565",
         "code": "BTY-LO/DEAD",
         "description": "Low/dead battery"
     },
     {
-        "id": "21,566",
+        "id": "21566",
         "code": "BTY-LOPWR",
         "description": "Low battery power"
     },
     {
-        "id": "21,567",
+        "id": "21567",
         "code": "BTY-LOSPECGRVTY",
         "description": "Battery Low Specific Gravity"
     },
     {
-        "id": "21,568",
+        "id": "21568",
         "code": "BTY-SHORT",
         "description": "Battery Shorted"
     },
     {
-        "id": "21,569",
+        "id": "21569",
         "code": "BUBBLES-ELCTRDE",
         "description": "Bubbles in electrode or flow cell"
     },
     {
-        "id": "21,570",
+        "id": "21570",
         "code": "BUS-CXN-FLTY",
         "description": "Bus Connection Faulty"
     },
     {
-        "id": "21,571",
+        "id": "21571",
         "code": "BUS-WCXN-LSCRRDED",
         "description": "Bus Work Connection Loose/Corroded"
     },
     {
-        "id": "21,572",
+        "id": "21572",
         "code": "BYPVLV-STKOPN",
         "description": "Bypass Valve Stuck Open"
     },
     {
-        "id": "21,573",
+        "id": "21573",
         "code": "CAPCTR-FAIL",
         "description": "Capacitor Failure"
     },
     {
-        "id": "21,574",
+        "id": "21574",
         "code": "CARD-DEFECT",
         "description": "Board/Card Defective"
     },
     {
-        "id": "21,575",
+        "id": "21575",
         "code": "CASE-CRKD",
         "description": "Casing Cracked"
     },
     {
-        "id": "21,576",
+        "id": "21576",
         "code": "CASE-CRRDED",
         "description": "Casing Corroded"
     },
     {
-        "id": "21,577",
+        "id": "21577",
         "code": "CASE-DMG",
         "description": "Casing Damaged"
     },
     {
-        "id": "21,578",
+        "id": "21578",
         "code": "CASE-ERDD",
         "description": "Casing Eroded"
     },
     {
-        "id": "21,579",
+        "id": "21579",
         "code": "CASE-WRNDMG",
         "description": "Case Worn/Damaged"
     },
     {
-        "id": "21,580",
+        "id": "21580",
         "code": "CASE-WRNG-WORN",
         "description": "Casing Wear Ring Worn"
     },
     {
-        "id": "21,581",
+        "id": "21581",
         "code": "CATHPROT-DMG",
         "description": "Cathodic Protection Damaged"
     },
     {
-        "id": "21,582",
+        "id": "21582",
         "code": "CBL-BENT",
         "description": "Cable Bent"
     },
     {
-        "id": "21,583",
+        "id": "21583",
         "code": "CBL-BRK",
         "description": "Break in cable"
     },
     {
-        "id": "21,584",
+        "id": "21584",
         "code": "CBLCHAIN-DEFORMD",
         "description": "Cable chain deformed"
     },
     {
-        "id": "21,585",
+        "id": "21585",
         "code": "CBL-CXN-LOOSE",
         "description": "Cable/Connection Loose"
     },
     {
-        "id": "21,586",
+        "id": "21586",
         "code": "CBL-DMG",
         "description": "Cable damage"
     },
     {
-        "id": "21,587",
+        "id": "21587",
         "code": "CBL-FRAY",
         "description": "Cable Frayed"
     },
     {
-        "id": "21,588",
+        "id": "21588",
         "code": "CBL-FRICTION",
         "description": "Cable friction through clamps"
     },
     {
-        "id": "21,589",
+        "id": "21589",
         "code": "CBL-SEVER",
         "description": "Cable Severed"
     },
     {
-        "id": "21,590",
+        "id": "21590",
         "code": "CBL-STRETCH",
         "description": "Cable Stretched"
     },
     {
-        "id": "21,591",
+        "id": "21591",
         "code": "CBRD-COM-DFCT",
         "description": "Circuit Board Component Defected"
     },
     {
-        "id": "21,592",
+        "id": "21592",
         "code": "CFG-CRRDED",
         "description": "Centrifuge Corroded"
     },
     {
-        "id": "21,593",
+        "id": "21593",
         "code": "CFG-ERDD",
         "description": "Centrifuge Eroded"
     },
     {
-        "id": "21,594",
+        "id": "21594",
         "code": "CFG-LOOSE",
         "description": "Centrifugal Device Loose"
     },
     {
-        "id": "21,595",
+        "id": "21595",
         "code": "CGVLV-DMG",
         "description": "Cage Valve Damaged"
     },
     {
-        "id": "21,596",
+        "id": "21596",
         "code": "CGVLV-ERDD",
         "description": "Cage Valve Eroded"
     },
     {
-        "id": "21,597",
+        "id": "21597",
         "code": "CHAIN-WORN",
         "description": "Chain Worn"
     },
     {
-        "id": "21,598",
+        "id": "21598",
         "code": "CHARGE-FLTY",
         "description": "Charger Faulty"
     },
     {
-        "id": "21,599",
+        "id": "21599",
         "code": "CHCK-CNVYR-PWR",
         "description": "Check conveyor plugged in"
     },
     {
-        "id": "21,600",
+        "id": "21600",
         "code": "CHEM-DAMAGE",
         "description": "Chemical Damage"
     },
     {
-        "id": "21,601",
+        "id": "21601",
         "code": "CHKVLVE-FLTY",
         "description": "Check valve faulty"
     },
     {
-        "id": "21,602",
+        "id": "21602",
         "code": "CLAMP-PRESS-LO",
         "description": "Clamp pressure too low"
     },
     {
-        "id": "21,603",
+        "id": "21603",
         "code": "CLDG-DMGMISS",
         "description": "Cladding Damaged/Missing"
     },
     {
-        "id": "21,604",
+        "id": "21604",
         "code": "CLGGD-AIRBRGS",
         "description": "Clogged air bearings"
     },
     {
-        "id": "21,605",
+        "id": "21605",
         "code": "CLOSD-VLVE",
         "description": "Closed valve"
     },
     {
-        "id": "21,606",
+        "id": "21606",
         "code": "CLR-PLGGD",
         "description": "Cooler Plugged"
     },
     {
-        "id": "21,607",
+        "id": "21607",
         "code": "CLS-SLND-FLTY",
         "description": "Close Solenoid Faulty"
     },
     {
-        "id": "21,608",
+        "id": "21608",
         "code": "CLTDSK-SCORE",
         "description": "Clutch Disk Scored"
     },
     {
-        "id": "21,609",
+        "id": "21609",
         "code": "CLTDSK-SEP/CRKD",
         "description": "Clutch Disk Separated/Cracked"
     },
     {
-        "id": "21,610",
+        "id": "21610",
         "code": "CLTDSK-WARP",
         "description": "Clutch Disk Warped"
     },
     {
-        "id": "21,611",
+        "id": "21611",
         "code": "CLTDSK-WORNDMG",
         "description": "Clutch Disk Worn/Damaged"
     },
     {
-        "id": "21,612",
+        "id": "21612",
         "code": "CMD-ERR",
         "description": "Command Error"
     },
     {
-        "id": "21,613",
+        "id": "21613",
         "code": "CMPNNTS-DMG",
         "description": "Damaged components"
     },
     {
-        "id": "21,614",
+        "id": "21614",
         "code": "CMTR-DIRTY",
         "description": "Commutator Dirty"
     },
     {
-        "id": "21,615",
+        "id": "21615",
         "code": "CMTR-DSCLR",
         "description": "Commutator Discoloring"
     },
     {
-        "id": "21,616",
+        "id": "21616",
         "code": "CMTR-RGHSCR",
         "description": "Commutator Rough/Scored"
     },
     {
-        "id": "21,617",
+        "id": "21617",
         "code": "CMTR-XSWEAR",
         "description": "Commutator Excessive Wear"
     },
     {
-        "id": "21,618",
+        "id": "21618",
         "code": "CNCTROD-BRKN",
         "description": "Connecting Rod Broken/Bent"
     },
     {
-        "id": "21,619",
+        "id": "21619",
         "code": "CNDNSTN",
         "description": "Condensation"
     },
     {
-        "id": "21,620",
+        "id": "21620",
         "code": "CNTC-FAIL",
         "description": "Contact failure/weld"
     },
     {
-        "id": "21,621",
+        "id": "21621",
         "code": "CNTCT-BURN",
         "description": "Contact Burned"
     },
     {
-        "id": "21,622",
+        "id": "21622",
         "code": "CNTCT-CRRDED",
         "description": "Contacts Corroded"
     },
     {
-        "id": "21,623",
+        "id": "21623",
         "code": "CNTCT-DMG",
         "description": "Contacts Damaged"
     },
     {
-        "id": "21,624",
+        "id": "21624",
         "code": "CNTCT-MSALGN",
         "description": "Contact Misalignment"
     },
     {
-        "id": "21,625",
+        "id": "21625",
         "code": "CNTCTR-FLTY",
         "description": "Contactor faulty"
     },
     {
-        "id": "21,626",
+        "id": "21626",
         "code": "CNTMNTD",
         "description": "Contaminated"
     },
     {
-        "id": "21,627",
+        "id": "21627",
         "code": "CNTMNTN",
         "description": "Contamination"
     },
     {
-        "id": "21,628",
+        "id": "21628",
         "code": "CNTMNTN-SEIZE-VLV",
         "description": "Contamination Seizing Valve"
     },
     {
-        "id": "21,629",
+        "id": "21629",
         "code": "CNVYR-VIBRTN",
         "description": "Conveyor Vibration"
     },
     {
-        "id": "21,630",
+        "id": "21630",
         "code": "COAT-INT-DMG",
         "description": "Coating-Internal Eroded/Torn/Peeled"
     },
     {
-        "id": "21,631",
+        "id": "21631",
         "code": "COIL-BURN",
         "description": "Coil burn out"
     },
     {
-        "id": "21,632",
+        "id": "21632",
         "code": "COIL-SHORT",
         "description": "Coilt shorted"
     },
     {
-        "id": "21,633",
+        "id": "21633",
         "code": "COMP-WORN",
         "description": "Worn out components"
     },
     {
-        "id": "21,634",
+        "id": "21634",
         "code": "CONT-COROD",
         "description": "Contacts Corroded"
     },
     {
-        "id": "21,635",
+        "id": "21635",
         "code": "COOLANT-BU",
         "description": "Coolant/oil build up"
     },
     {
-        "id": "21,636",
+        "id": "21636",
         "code": "COOLANT-NOTWORK",
         "description": "Coolant not working"
     },
     {
-        "id": "21,637",
+        "id": "21637",
         "code": "COOLINGFAN-FAIL",
         "description": "Cooling Fan Failed"
     },
     {
-        "id": "21,638",
+        "id": "21638",
         "code": "COOLING-SPD-SLO/FAST",
         "description": "Cooling speed too fast/slow"
     },
     {
-        "id": "21,639",
+        "id": "21639",
         "code": "CORRSN",
         "description": "Corrosion"
     },
     {
-        "id": "21,640",
+        "id": "21640",
         "code": "CPL-BRKN/LOOSE",
         "description": "Coupling broken/loose"
     },
     {
-        "id": "21,641",
+        "id": "21641",
         "code": "CPL-DMGWORN",
         "description": "Coupling Worn/Damaged"
     },
     {
-        "id": "21,642",
+        "id": "21642",
         "code": "CPLELMNT-BRKN",
         "description": "Coupling Element Broken"
     },
     {
-        "id": "21,643",
+        "id": "21643",
         "code": "CPLELMNT-SLIP",
         "description": "Coupling Element Slipping"
     },
     {
-        "id": "21,644",
+        "id": "21644",
         "code": "CPL-FAIL",
         "description": "Coupling Failure"
     },
     {
-        "id": "21,645",
+        "id": "21645",
         "code": "CPL-GEAR-LOOSE",
         "description": "Coupling Gear Loose"
     },
     {
-        "id": "21,646",
+        "id": "21646",
         "code": "CPL-OOBAL",
         "description": "Coupling Out Of Balance"
     },
     {
-        "id": "21,647",
+        "id": "21647",
         "code": "CPL-SEAL-WORN",
         "description": "Coupling Seal Worn"
     },
     {
-        "id": "21,648",
+        "id": "21648",
         "code": "CPL-SEIZED",
         "description": "Coupling Seized"
     },
     {
-        "id": "21,649",
+        "id": "21649",
         "code": "CRASHSWI-OP",
         "description": "Crash switch operated"
     },
     {
-        "id": "21,650",
+        "id": "21650",
         "code": "CRKSHFT-BRKN",
         "description": "Crankshaft Broken"
     },
     {
-        "id": "21,651",
+        "id": "21651",
         "code": "CRKSHFT-CRKD",
         "description": "Crankshaft Cracked"
     },
     {
-        "id": "21,652",
+        "id": "21652",
         "code": "CRKSHFT-SCORED",
         "description": "Crankshaft Scored"
     },
     {
-        "id": "21,653",
+        "id": "21653",
         "code": "CTRL-DRIFT",
         "description": "Control Drift"
     },
     {
-        "id": "21,654",
+        "id": "21654",
         "code": "CTRL-ERRTC",
         "description": "Control Erratic"
     },
     {
-        "id": "21,655",
+        "id": "21655",
         "code": "CTRL-FLTY",
         "description": "Control Faulty"
     },
     {
-        "id": "21,656",
+        "id": "21656",
         "code": "CTRL-INDICATN-CALBRTN",
         "description": "Control Indication Calibration"
     },
     {
-        "id": "21,657",
+        "id": "21657",
         "code": "CTRLR-DFCT",
         "description": "Controller Defective"
     },
     {
-        "id": "21,658",
+        "id": "21658",
         "code": "CTRLR-DRIFT",
         "description": "Controller Drift"
     },
     {
-        "id": "21,659",
+        "id": "21659",
         "code": "CTRLR-ERRTC-OUTPT",
         "description": "Controller Erratic Output"
     },
     {
-        "id": "21,660",
+        "id": "21660",
         "code": "CTRLR-ISSUE",
         "description": "Controller issue"
     },
     {
-        "id": "21,661",
+        "id": "21661",
         "code": "CTRL-RLY-FAIL",
         "description": "Control Relay Failure"
     },
     {
-        "id": "21,662",
+        "id": "21662",
         "code": "CTRLR-NOTINHOLDSTATE",
         "description": "Controller is not in a hold state"
     },
     {
-        "id": "21,663",
+        "id": "21663",
         "code": "CTRLR-OOCLBRTN",
         "description": "Controller Out Of Calibration"
     },
     {
-        "id": "21,664",
+        "id": "21664",
         "code": "CTRL-TXFMR-FAIL",
         "description": "Control Transformer Failure"
     },
     {
-        "id": "21,665",
+        "id": "21665",
         "code": "CTRL-TXFRSWI-MLFCTN",
         "description": "Control/Transfer Switch Malfunction"
     },
     {
-        "id": "21,666",
+        "id": "21666",
         "code": "CUST-ERR",
         "description": "Customer error"
     },
     {
-        "id": "21,667",
+        "id": "21667",
         "code": "CUTTNGTOOL-BLUNT",
         "description": "Cutting tool blunt"
     },
     {
-        "id": "21,668",
+        "id": "21668",
         "code": "CUTTNGTOOL-MOVESLO/FAST",
         "description": "Cutting tool moving too slow/fast"
     },
     {
-        "id": "21,669",
+        "id": "21669",
         "code": "CUT-WIDTH/DEPTH-HI",
         "description": "Cut width/depth too high"
     },
     {
-        "id": "21,670",
+        "id": "21670",
         "code": "CXN-LOOSE",
         "description": "Connection Loose"
     },
     {
-        "id": "21,671",
+        "id": "21671",
         "code": "CXN-WRNG",
         "description": "Connections Incorrect"
     },
     {
-        "id": "21,672",
+        "id": "21672",
         "code": "CYL-AIR-LEAK",
         "description": "Cylinder Air Leakage"
     },
     {
-        "id": "21,673",
+        "id": "21673",
         "code": "CYL-CRKD",
         "description": "Cylinder Cracked"
     },
     {
-        "id": "21,674",
+        "id": "21674",
         "code": "CYL-CRRDED",
         "description": "Cylinder Corroded"
     },
     {
-        "id": "21,675",
+        "id": "21675",
         "code": "CYL-DMGWORN",
         "description": "Cylinder Worn/Damaged"
     },
     {
-        "id": "21,676",
+        "id": "21676",
         "code": "CYL-SCORED",
         "description": "Cylinder Scored"
     },
     {
-        "id": "21,677",
+        "id": "21677",
         "code": "CYL-WORN",
         "description": "Cylinder Worn"
     },
     {
-        "id": "21,678",
+        "id": "21678",
         "code": "DATALINE-FAIL",
         "description": "Data line failure"
     },
     {
-        "id": "21,679",
+        "id": "21679",
         "code": "DATASETTNG-WRNG",
         "description": "Data setting wrong"
     },
     {
-        "id": "21,680",
+        "id": "21680",
         "code": "DC-ARR-DEFECT",
         "description": "Defective DC arrestor"
     },
     {
-        "id": "21,681",
+        "id": "21681",
         "code": "DCCABLES-SHORT",
         "description": "Short circuit in DC cables"
     },
     {
-        "id": "21,682",
+        "id": "21682",
         "code": "DEADBND",
         "description": "Dead band"
     },
     {
-        "id": "21,683",
+        "id": "21683",
         "code": "DEADBND-HI",
         "description": "Dead Band High"
     },
     {
-        "id": "21,684",
+        "id": "21684",
         "code": "DEBRIS-INSIDE",
         "description": "Debris inside"
     },
     {
-        "id": "21,685",
+        "id": "21685",
         "code": "DEBRIS-MNDRVMECH",
         "description": "Debris stuck in main brush drive mechanism"
     },
     {
-        "id": "21,686",
+        "id": "21686",
         "code": "DEBRIS-REST-MOVE",
         "description": "Debris restricting movement"
     },
     {
-        "id": "21,687",
+        "id": "21687",
         "code": "DEBRISTRAY-FULL",
         "description": "Debris tray full"
     },
     {
-        "id": "21,688",
+        "id": "21688",
         "code": "DEF-BREAKER",
         "description": "Defective breaker"
     },
     {
-        "id": "21,689",
+        "id": "21689",
         "code": "DENSITY-CHNG",
         "description": "Density change"
     },
     {
-        "id": "21,690",
+        "id": "21690",
         "code": "DFSR-DMGWORN",
         "description": "Diffuser Worn/Damaged"
     },
     {
-        "id": "21,691",
+        "id": "21691",
         "code": "DHUMD-CTRL-DRIFT",
         "description": "Dehumidifier Control Drift"
     },
     {
-        "id": "21,692",
+        "id": "21692",
         "code": "DHUMD-CTRL-ERRTC",
         "description": "Dehumidifier Control Erratic"
     },
     {
-        "id": "21,693",
+        "id": "21693",
         "code": "DIODE-FAIL",
         "description": "Diode Failed"
     },
     {
-        "id": "21,694",
+        "id": "21694",
         "code": "DIODE-SHORT",
         "description": "Diode shorted"
     },
     {
-        "id": "21,695",
+        "id": "21695",
         "code": "DIRT-SQGEEBLD",
         "description": "Dirt between the squeegee blades"
     },
     {
-        "id": "21,696",
+        "id": "21696",
         "code": "DISCHRGE-LINE-BLOCKD",
         "description": "Discharge line blocked"
     },
     {
-        "id": "21,697",
+        "id": "21697",
         "code": "DISTLLATN -PLATES-FOUL",
         "description": "Distillation plates fouled"
     },
     {
-        "id": "21,698",
+        "id": "21698",
         "code": "DMG",
         "description": "Damaged"
     },
     {
-        "id": "21,699",
+        "id": "21699",
         "code": "DOORINTLOK-CCTFLTY",
         "description": "Door Interlock circuit faulty"
     },
     {
-        "id": "21,700",
+        "id": "21700",
         "code": "DPGM-CRKD",
         "description": "Diaphragm Cracked"
     },
     {
-        "id": "21,701",
+        "id": "21701",
         "code": "DPGM-CRKD/LEAK",
         "description": "Diaphragm Cracked/Leaking"
     },
     {
-        "id": "21,702",
+        "id": "21702",
         "code": "DPGM-LEAK",
         "description": "Diaphragm Leaking"
     },
     {
-        "id": "21,703",
+        "id": "21703",
         "code": "DPGM-RUPT",
         "description": "Diaphragm Ruptured"
     },
     {
-        "id": "21,704",
+        "id": "21704",
         "code": "DPGM-STIFF",
         "description": "Diaphragm Stiffening"
     },
     {
-        "id": "21,705",
+        "id": "21705",
         "code": "DRAINHOSE-OPN",
         "description": "Drain hose open"
     },
     {
-        "id": "21,706",
+        "id": "21706",
         "code": "DRPGM-RUPT",
         "description": "Diaphragm Ruptured"
     },
     {
-        "id": "21,707",
+        "id": "21707",
         "code": "DRTY",
         "description": "Dirty"
     },
     {
-        "id": "21,708",
+        "id": "21708",
         "code": "DRUM-CREEP",
         "description": "Drum Creeping"
     },
     {
-        "id": "21,709",
+        "id": "21709",
         "code": "DRUM-SEIZED",
         "description": "Drum Seized"
     },
     {
-        "id": "21,710",
+        "id": "21710",
         "code": "DRV-ASSY-FLTY",
         "description": "Drive Assembly Faulty"
     },
     {
-        "id": "21,711",
+        "id": "21711",
         "code": "DRV-CLLR-LOOSE",
         "description": "Drive Collar Loose"
     },
     {
-        "id": "21,712",
+        "id": "21712",
         "code": "DRV-FAIL",
         "description": "Drive Failed"
     },
     {
-        "id": "21,713",
+        "id": "21713",
         "code": "DRV-FLTY",
         "description": "Drive Faulty"
     },
     {
-        "id": "21,714",
+        "id": "21714",
         "code": "DRV-INS-DMGWORN",
         "description": "Drive Insert Worn/Damaged"
     },
     {
-        "id": "21,715",
+        "id": "21715",
         "code": "DRV-MTR-FLTY",
         "description": "Drive Motor Faulty"
     },
     {
-        "id": "21,716",
+        "id": "21716",
         "code": "DRV-MTR-SEIZED",
         "description": "Drive Motor Seized"
     },
     {
-        "id": "21,717",
+        "id": "21717",
         "code": "DRV-MTR-WNDBURN",
         "description": "Drive Motor Windings Burned"
     },
     {
-        "id": "21,718",
+        "id": "21718",
         "code": "DRV-SEIZED",
         "description": "Drive Seized"
     },
     {
-        "id": "21,719",
+        "id": "21719",
         "code": "DSCHG-TMP-HI",
         "description": "Discharge Temperature High"
     },
     {
-        "id": "21,720",
+        "id": "21720",
         "code": "DSK-CRRDED",
         "description": "Disk Corroded"
     },
     {
-        "id": "21,721",
+        "id": "21721",
         "code": "DSK-NOTSEAT",
         "description": "Disk Not Seating (Leaking By)"
     },
     {
-        "id": "21,722",
+        "id": "21722",
         "code": "DSK-PITTED",
         "description": "Disk Pitted"
     },
     {
-        "id": "21,723",
+        "id": "21723",
         "code": "DSK-STUCK",
         "description": "Disk Stuck"
     },
     {
-        "id": "21,724",
+        "id": "21724",
         "code": "DSK-WARPTMP",
         "description": "Disk Warped Due To Temperature"
     },
     {
-        "id": "21,725",
+        "id": "21725",
         "code": "DSK-WORN",
         "description": "Disk Worn"
     },
     {
-        "id": "21,726",
+        "id": "21726",
         "code": "DSPLY-FLTY",
         "description": "Display faulty"
     },
     {
-        "id": "21,727",
+        "id": "21727",
         "code": "DSTRBTR-BRKN",
         "description": "Distributor Broken"
     },
     {
-        "id": "21,728",
+        "id": "21728",
         "code": "DSTRBTR-ERDD",
         "description": "Distributor Eroded"
     },
     {
-        "id": "21,729",
+        "id": "21729",
         "code": "DSTRBTR-PLGGD/RSTRCTD",
         "description": "Distributor Plugged/Restricted"
     },
     {
-        "id": "21,730",
+        "id": "21730",
         "code": "DTCT-ALRM-ERRTC",
         "description": "Detector Alarms Erratic"
     },
     {
-        "id": "21,731",
+        "id": "21731",
         "code": "DTCTR-DISCONN",
         "description": "Detector Disconnected"
     },
     {
-        "id": "21,732",
+        "id": "21732",
         "code": "DTCTR-NOOUTPT",
         "description": "Detector No Output"
     },
     {
-        "id": "21,733",
+        "id": "21733",
         "code": "DTYCYCL-XS",
         "description": "Duty Cycle Excessive"
     },
     {
-        "id": "21,734",
+        "id": "21734",
         "code": "DUSTSEAL-WORN/DMG/OOADJ",
         "description": "Dust seals worn, damaged, out of adjustment"
     },
     {
-        "id": "21,735",
+        "id": "21735",
         "code": "DYNBRK-RSTRS",
         "description": "Dynamic Braking Resistors"
     },
     {
-        "id": "21,736",
+        "id": "21736",
         "code": "EDCTR-ERDD",
         "description": "Eductor Eroded"
     },
     {
-        "id": "21,737",
+        "id": "21737",
         "code": "EDCTR-LEAK",
         "description": "Eductor Leaking"
     },
     {
-        "id": "21,738",
+        "id": "21738",
         "code": "EDCTR-PLGGD",
         "description": "Eductor Plugged"
     },
     {
-        "id": "21,739",
+        "id": "21739",
         "code": "EJCTR-ERDD",
         "description": "Ejector Eroded"
     },
     {
-        "id": "21,740",
+        "id": "21740",
         "code": "EJCTR-PLGGD",
         "description": "Ejector Plugged"
     },
     {
-        "id": "21,741",
+        "id": "21741",
         "code": "EL-CCB-FAIL",
         "description": "Contact weld"
     },
     {
-        "id": "21,742",
+        "id": "21742",
         "code": "EL-CCB-FLTY",
         "description": "Electronic Circuit Board Faulty"
     },
     {
-        "id": "21,743",
+        "id": "21743",
         "code": "EL-CCT-FAIL",
         "description": "Electronic Circuit Failure"
     },
     {
-        "id": "21,744",
+        "id": "21744",
         "code": "ELCTRCAL-FLT",
         "description": "Electrical fault"
     },
     {
-        "id": "21,745",
+        "id": "21745",
         "code": "ELCTRCL-BRK-FLTY",
         "description": "Electrical Braking Faulty"
     },
     {
-        "id": "21,746",
+        "id": "21746",
         "code": "ELCTRCL-FLT",
         "description": "Electrical fault"
     },
     {
-        "id": "21,747",
+        "id": "21747",
         "code": "ELCTRDE-DIRTY",
         "description": "Electrode dirty"
     },
     {
-        "id": "21,748",
+        "id": "21748",
         "code": "ELCTRDE-NOTCONNCTD",
         "description": "Electrode not connected to controller"
     },
     {
-        "id": "21,749",
+        "id": "21749",
         "code": "ELCTRDE-NOTIMMRSD",
         "description": "Electrode not completely immersed in solution"
     },
     {
-        "id": "21,750",
+        "id": "21750",
         "code": "ELECT_BRD_FAIL",
         "description": "Electronic Circuit Board Failure"
     },
     {
-        "id": "21,751",
+        "id": "21751",
         "code": "ELECTRL-DMG",
         "description": "Electrical damage"
     },
     {
-        "id": "21,752",
+        "id": "21752",
         "code": "ELECTRL-NOISE",
         "description": "Electrical noise"
     },
     {
-        "id": "21,753",
+        "id": "21753",
         "code": "ELECTRSTTC-INTRFNCE",
         "description": "Electrostatic interference"
     },
     {
-        "id": "21,754",
+        "id": "21754",
         "code": "EL-FAIL",
         "description": "Electronics Failed"
     },
     {
-        "id": "21,755",
+        "id": "21755",
         "code": "EL-FAULT",
         "description": "Electronics Faulty"
     },
     {
-        "id": "21,756",
+        "id": "21756",
         "code": "ELMNT-BURN",
         "description": "Element Burnt Out"
     },
     {
-        "id": "21,757",
+        "id": "21757",
         "code": "ELMNT-CNTMNTD",
         "description": "Element Contaminated"
     },
     {
-        "id": "21,758",
+        "id": "21758",
         "code": "ELMNT-CRRDED",
         "description": "Element Corroded"
     },
     {
-        "id": "21,759",
+        "id": "21759",
         "code": "ELMNT-DMG",
         "description": "Element Damaged"
     },
     {
-        "id": "21,760",
+        "id": "21760",
         "code": "ELMNT-HARD",
         "description": "Element Hardened"
     },
     {
-        "id": "21,761",
+        "id": "21761",
         "code": "ELMNT-OPN",
         "description": "Element Open"
     },
     {
-        "id": "21,762",
+        "id": "21762",
         "code": "ELMNT-OVRHEAT",
         "description": "Element Overheat"
     },
     {
-        "id": "21,763",
+        "id": "21763",
         "code": "ELMNT-RUPT",
         "description": "Element Ruptured"
     },
     {
-        "id": "21,764",
+        "id": "21764",
         "code": "ELMNT-XS-CTSCALE",
         "description": "Element Excessive Coating/Scale"
     },
     {
-        "id": "21,765",
+        "id": "21765",
         "code": "EMRGNCYSTOP-ENGAGD",
         "description": "Emergency stop activated"
     },
     {
-        "id": "21,766",
+        "id": "21766",
         "code": "EMRGNCYSTOP-ON",
         "description": "Emergency stop switch on"
     },
     {
-        "id": "21,767",
+        "id": "21767",
         "code": "ENC-FAIL",
         "description": "Encoder failure"
     },
     {
-        "id": "21,768",
+        "id": "21768",
         "code": "ENC-SEAL-CRKG",
         "description": "Enclosure Seal Cracking"
     },
     {
-        "id": "21,769",
+        "id": "21769",
         "code": "ENC-SEAL-LEAK",
         "description": "Enclosure Seal Leaking"
     },
     {
-        "id": "21,770",
+        "id": "21770",
         "code": "ENDBBRG-HSG-WEAR",
         "description": "End Ball Bearing Housing Wear"
     },
     {
-        "id": "21,771",
+        "id": "21771",
         "code": "END-PLAY-XS",
         "description": "End Play Excessive"
     },
     {
-        "id": "21,772",
+        "id": "21772",
         "code": "EQTUBE-PLGGD/RSTRCTD",
         "description": "Equalizer Tube Plugged/Restricted"
     },
     {
-        "id": "21,773",
+        "id": "21773",
         "code": "ETHERNET-DISCNNCT/DMG",
         "description": "Ethernet cable disconnected/damaged"
     },
     {
-        "id": "21,774",
+        "id": "21774",
         "code": "EVAPRTR-ICED",
         "description": "Evaporator iced up"
     },
     {
-        "id": "21,775",
+        "id": "21775",
         "code": "EXCHG-CNTMNTN",
         "description": "Exchanger Contamination (Dirt, Sand, Grit, Water)"
     },
     {
-        "id": "21,776",
+        "id": "21776",
         "code": "EXCHG-PLGGD",
         "description": "Exchanger Plugged"
     },
     {
-        "id": "21,777",
+        "id": "21777",
         "code": "EXCS-BLDUP",
         "description": "Excess chip build-up"
     },
     {
-        "id": "21,778",
+        "id": "21778",
         "code": "EXP-ROCKS",
         "description": "Exposure to sharp rocks"
     },
     {
-        "id": "21,779",
+        "id": "21779",
         "code": "EXP-SUN",
         "description": "Exposure to sunlight"
     },
     {
-        "id": "21,780",
+        "id": "21780",
         "code": "EXT-CORRSN",
         "description": "Exchanger Contamination (Dirt, Sand, Grit, Water)"
     },
     {
-        "id": "21,781",
+        "id": "21781",
         "code": "EXT-CRRD",
         "description": "External Corrosion"
     },
     {
-        "id": "21,782",
+        "id": "21782",
         "code": "EXTG-CHG-ESC",
         "description": "Extinguisher Charge Escape"
     },
     {
-        "id": "21,783",
+        "id": "21783",
         "code": "EXTG-OUTDATED",
         "description": "Extinguisher Outdated"
     },
     {
-        "id": "21,784",
+        "id": "21784",
         "code": "EXTRA-PWR",
         "description": "Extra power needed"
     },
     {
-        "id": "21,785",
+        "id": "21785",
         "code": "FAN",
         "description": "Fan"
     },
     {
-        "id": "21,786",
+        "id": "21786",
         "code": "FANBLD-IMBAL",
         "description": "Fan Blade Imbalance"
     },
     {
-        "id": "21,787",
+        "id": "21787",
         "code": "FAN-CRRDED",
         "description": "Fan Corroded"
     },
     {
-        "id": "21,788",
+        "id": "21788",
         "code": "FAN-ENCL-DMG",
         "description": "Fan Enclosure Damaged"
     },
     {
-        "id": "21,789",
+        "id": "21789",
         "code": "FAN-HUB-CRKD",
         "description": "Fan Hub Cracked"
     },
     {
-        "id": "21,790",
+        "id": "21790",
         "code": "FDTN-DMG",
         "description": "Foundation Damaged"
     },
     {
-        "id": "21,791",
+        "id": "21791",
         "code": "FEED-SPD-CHNG",
         "description": "Feed speed change"
     },
     {
-        "id": "21,792",
+        "id": "21792",
         "code": "FEEDSPD-LO/HI",
         "description": "Feed speed too Low/High"
     },
     {
-        "id": "21,793",
+        "id": "21793",
         "code": "FGAS-LEAK",
         "description": "Fuel Gas Leaking"
     },
     {
-        "id": "21,794",
+        "id": "21794",
         "code": "FLD-CCT-OPN",
         "description": "Field Circuit Open"
     },
     {
-        "id": "21,795",
+        "id": "21795",
         "code": "FLD-GND",
         "description": "Field Ground"
     },
     {
-        "id": "21,796",
+        "id": "21796",
         "code": "FLD-SHORT",
         "description": "Field Shorted"
     },
     {
-        "id": "21,797",
+        "id": "21797",
         "code": "FLD-WIND-GND",
         "description": "Field Winding Grounded"
     },
     {
-        "id": "21,798",
+        "id": "21798",
         "code": "FLD-WIND-HIRES",
         "description": "Field Winding Highly Resistant"
     },
     {
-        "id": "21,799",
+        "id": "21799",
         "code": "FLD-WIND-T2TSHORT",
         "description": "Field Winding Turn To Turn Short"
     },
     {
-        "id": "21,800",
+        "id": "21800",
         "code": "FLOATLVLSENS-BRKN",
         "description": "Float level sensor broken"
     },
     {
-        "id": "21,801",
+        "id": "21801",
         "code": "FLOATLVLSENS-STCK",
         "description": "Float level sensor stuck closed"
     },
     {
-        "id": "21,802",
+        "id": "21802",
         "code": "FLOAT-PUNCT",
         "description": "Float Punctured"
     },
     {
-        "id": "21,803",
+        "id": "21803",
         "code": "FLOODING",
         "description": "Flooding"
     },
     {
-        "id": "21,804",
+        "id": "21804",
         "code": "FLP-ERDD",
         "description": "Flapper Eroded"
     },
     {
-        "id": "21,805",
+        "id": "21805",
         "code": "FLP-HNG-FLTY",
         "description": "Flapper Hinge Faulty"
     },
     {
-        "id": "21,806",
+        "id": "21806",
         "code": "FLP-NZL-FLTY",
         "description": "Flapper/Nozzle Faulty"
     },
     {
-        "id": "21,807",
+        "id": "21807",
         "code": "FLP-PIN-FLTY",
         "description": "Flapper Pin Faulty"
     },
     {
-        "id": "21,808",
+        "id": "21808",
         "code": "FLP-WEAR",
         "description": "Flapper Wear"
     },
     {
-        "id": "21,809",
+        "id": "21809",
         "code": "FLP-WORN",
         "description": "Flapper Worn"
     },
     {
-        "id": "21,810",
+        "id": "21810",
         "code": "FLTDETECT",
         "description": "Fault Detected"
     },
     {
-        "id": "21,811",
+        "id": "21811",
         "code": "FLTR-CLGGD",
         "description": "Filters clogged"
     },
     {
-        "id": "21,813",
+        "id": "21813",
         "code": "FLTR-PLGGD",
         "description": "Filter Plugged"
     },
     {
-        "id": "21,814",
+        "id": "21814",
         "code": "FLTR-SYS",
         "description": "Filter system"
     },
     {
-        "id": "21,815",
+        "id": "21815",
         "code": "FLTY-SLND-VLVE",
         "description": "Faulty solenoid valve"
     },
     {
-        "id": "21,816",
+        "id": "21816",
         "code": "FLWRATE-VAR",
         "description": "Varying flow rates"
     },
     {
-        "id": "21,817",
+        "id": "21817",
         "code": "FLX-PLT-DMGWORN",
         "description": "Flex Plates Worn/Damaged"
     },
     {
-        "id": "21,818",
+        "id": "21818",
         "code": "FOOT-SOFT",
         "description": "Foot Soft"
     },
     {
-        "id": "21,819",
+        "id": "21819",
         "code": "FOOT-VLV-MLFCTN",
         "description": "Foot Valve Malfunction"
     },
     {
-        "id": "21,820",
+        "id": "21820",
         "code": "FOOT-VLV-NOTSUB",
         "description": "Foot Valve / Pipe Opening Not Submerged Enough"
     },
     {
-        "id": "21,821",
+        "id": "21821",
         "code": "FORGNMATL-MTR",
         "description": "Foreign Material In Motor"
     },
     {
-        "id": "21,822",
+        "id": "21822",
         "code": "FORGNMATL-VLV",
         "description": "Foreign Material In Valve"
     },
     {
-        "id": "21,823",
+        "id": "21823",
         "code": "FRM-BOLT-LOOSE",
         "description": "Frame Bolts Loose"
     },
     {
-        "id": "21,824",
+        "id": "21824",
         "code": "FRM-CRKG",
         "description": "Frame Cracking"
     },
     {
-        "id": "21,825",
+        "id": "21825",
         "code": "FRN-BRN-CRKD",
         "description": "Furnace Burners Cracked"
     },
     {
-        "id": "21,826",
+        "id": "21826",
         "code": "FRN-BRN-WORN",
         "description": "Furnace Burners Worn"
     },
     {
-        "id": "21,827",
+        "id": "21827",
         "code": "FRN-IGN-MISFIRE",
         "description": "Furnace Ignitor Misfiring"
     },
     {
-        "id": "21,828",
+        "id": "21828",
         "code": "FRN-STRCT-CRKG",
         "description": "Furnace Structure Cracking"
     },
     {
-        "id": "21,829",
+        "id": "21829",
         "code": "FRQ-CTRL-ERRTC",
         "description": "Frequency Control Erratic"
     },
     {
-        "id": "21,830",
+        "id": "21830",
         "code": "FSTR-DMG",
         "description": "Fasteners Damaged"
     },
     {
-        "id": "21,831",
+        "id": "21831",
         "code": "FSTR-STRIPPED",
         "description": "Fasteners Stripped"
     },
     {
-        "id": "21,832",
+        "id": "21832",
         "code": "FT-PEDAL-FLTY",
         "description": "Foot pedal faulty"
     },
     {
-        "id": "21,833",
+        "id": "21833",
         "code": "FULCRUM-SEIZED",
         "description": "Fulcrum Seized"
     },
     {
-        "id": "21,834",
+        "id": "21834",
         "code": "FUSE-BLWN",
         "description": "Fuse Blown"
     },
     {
-        "id": "21,835",
+        "id": "21835",
         "code": "FUSE-BURN",
         "description": "Fuse - Burnt"
     },
     {
-        "id": "21,836",
+        "id": "21836",
         "code": "FUSE-CRKD",
         "description": "Fuse Cracked"
     },
     {
-        "id": "21,837",
+        "id": "21837",
         "code": "FUSE-CXN-CRRDED",
         "description": "Fuse Connection Corroded"
     },
     {
-        "id": "21,838",
+        "id": "21838",
         "code": "FUSE-ELMNT-LOOSE",
         "description": "Fuse Element Loose"
     },
     {
-        "id": "21,839",
+        "id": "21839",
         "code": "FUSE-FAIL",
         "description": "Fuse Failure"
     },
     {
-        "id": "21,840",
+        "id": "21840",
         "code": "FUSE-FLT",
         "description": "Fuse Fault"
     },
     {
-        "id": "21,841",
+        "id": "21841",
         "code": "FUSE-HLDR-DETD",
         "description": "Fuse Holder Deteriorated"
     },
     {
-        "id": "21,842",
+        "id": "21842",
         "code": "FUSE-OVRHEAT",
         "description": "Fuse Overheat"
     },
     {
-        "id": "21,843",
+        "id": "21843",
         "code": "FUSEPROT-DEV-OPN",
         "description": "Fuse Or Protective Device Open"
     },
     {
-        "id": "21,844",
+        "id": "21844",
         "code": "GBOX-CASE-CRKD",
         "description": "Gear Box Case Cracked"
     },
     {
-        "id": "21,845",
+        "id": "21845",
         "code": "GBOX-FAIL",
         "description": "Gearbox fail"
     },
     {
-        "id": "21,846",
+        "id": "21846",
         "code": "GDE-SCORED",
         "description": "Guide Scored"
     },
     {
-        "id": "21,847",
+        "id": "21847",
         "code": "GEAR-BRKN",
         "description": "Gear Broken"
     },
     {
-        "id": "21,848",
+        "id": "21848",
         "code": "GEAR-CHIP",
         "description": "Gears Chipped"
     },
     {
-        "id": "21,849",
+        "id": "21849",
         "code": "GEAR-WORN",
         "description": "Gear Worn"
     },
     {
-        "id": "21,850",
+        "id": "21850",
         "code": "GGE-FLTY",
         "description": "Gauge Faulty"
     },
     {
-        "id": "21,851",
+        "id": "21851",
         "code": "GGE-INDICATN-DRIFT",
         "description": "Gauge Indication Drift"
     },
     {
-        "id": "21,852",
+        "id": "21852",
         "code": "GGE-LEAK",
         "description": "Gauge Leaking"
     },
     {
-        "id": "21,853",
+        "id": "21853",
         "code": "GGE-MVASSY-DMG",
         "description": "Gauge Movement Assembly Damaged"
     },
     {
-        "id": "21,854",
+        "id": "21854",
         "code": "GGE-PLGGD",
         "description": "Gauge Plugged"
     },
     {
-        "id": "21,855",
+        "id": "21855",
         "code": "GLND-CRKD",
         "description": "Gland Cracked"
     },
     {
-        "id": "21,856",
+        "id": "21856",
         "code": "GLND-DMG",
         "description": "Gland Damaged"
     },
     {
-        "id": "21,857",
+        "id": "21857",
         "code": "GRBX-FAIL",
         "description": "Gearbox failure"
     },
     {
-        "id": "21,858",
+        "id": "21858",
         "code": "GRID-BRKN",
         "description": "Grid Broken"
     },
     {
-        "id": "21,859",
+        "id": "21859",
         "code": "GRID-SEIZED",
         "description": "Grid Seized"
     },
     {
-        "id": "21,860",
+        "id": "21860",
         "code": "GRTBSE-CRKD/DETD",
         "description": "Grout/Base Cracked/Deteriorated"
     },
     {
-        "id": "21,861",
+        "id": "21861",
         "code": "GSKT-DMG",
         "description": "Gasket Damaged"
     },
     {
-        "id": "21,862",
+        "id": "21862",
         "code": "GSKT-FLTY",
         "description": "Gasket Faulty"
     },
     {
-        "id": "21,863",
+        "id": "21863",
         "code": "GSKT-LEAK",
         "description": "Gasket Leak"
     },
     {
-        "id": "21,864",
+        "id": "21864",
         "code": "GSKT-SFC-CRRDED/PITT",
         "description": "Gasketing Surface Corroded/Pitted"
     },
     {
-        "id": "21,865",
+        "id": "21865",
         "code": "GSKT-SFC-ERDD",
         "description": "Gasketing Surface Eroded"
     },
     {
-        "id": "21,866",
+        "id": "21866",
         "code": "HD-DMG",
         "description": "Reader head damaged"
     },
     {
-        "id": "21,867",
+        "id": "21867",
         "code": "HEAT",
         "description": "Heat"
     },
     {
-        "id": "21,868",
+        "id": "21868",
         "code": "HITEMP",
         "description": "High Temperature"
     },
     {
-        "id": "21,869",
+        "id": "21869",
         "code": "HIVISC",
         "description": "Viscosity too high"
     },
     {
-        "id": "21,870",
+        "id": "21870",
         "code": "HI-VISC",
         "description": "High Viscosity"
     },
     {
-        "id": "21,871",
+        "id": "21871",
         "code": "HI-WTR-PRESS",
         "description": "High water pressure"
     },
     {
-        "id": "21,872",
+        "id": "21872",
         "code": "HLDLMT-CNTC-FLTY",
         "description": "Holding and Limit Contacts Faulty Or Misaligned"
     },
     {
-        "id": "21,873",
+        "id": "21873",
         "code": "HMD-CNTMNTD",
         "description": "Humidifier Contaminated"
     },
     {
-        "id": "21,874",
+        "id": "21874",
         "code": "HMD-CTRL-DRIFT",
         "description": "Humidifier Control Drift"
     },
     {
-        "id": "21,875",
+        "id": "21875",
         "code": "HMD-WTRSPPLY-RSTRCTD",
         "description": "Humidifier Water Supply Restricted"
     },
     {
-        "id": "21,876",
+        "id": "21876",
         "code": "HOLDPRESS-LO",
         "description": "Hold pressure too low"
     },
     {
-        "id": "21,877",
+        "id": "21877",
         "code": "HOLDTIME-LO",
         "description": "Hold time too low"
     },
     {
-        "id": "21,878",
+        "id": "21878",
         "code": "HOPPER-DUSTFLTR-CLGGD",
         "description": "Hopper dust filter clogged"
     },
     {
-        "id": "21,879",
+        "id": "21879",
         "code": "HOPPER-FULL",
         "description": "Hopper full"
     },
     {
-        "id": "21,880",
+        "id": "21880",
         "code": "HOPPERSKIRT-WORN/DMG",
         "description": "Hopper skirts worn or damaged"
     },
     {
-        "id": "21,881",
+        "id": "21881",
         "code": "HOUSNG-DMG",
         "description": "Housing damaged"
     },
     {
-        "id": "21,882",
+        "id": "21882",
         "code": "HSG-ERDD",
         "description": "Housing Eroded"
     },
     {
-        "id": "21,883",
+        "id": "21883",
         "code": "HTR-BURN",
         "description": "Heater Burned Out"
     },
     {
-        "id": "21,884",
+        "id": "21884",
         "code": "HTR-CTRL-DRIFT",
         "description": "Heater Control Drift"
     },
     {
-        "id": "21,885",
+        "id": "21885",
         "code": "HTR-CTRL-ERRTC",
         "description": "Heater Control Erratic"
     },
     {
-        "id": "21,886",
+        "id": "21886",
         "code": "HTR-DISC",
         "description": "Heater Disconnected"
     },
     {
-        "id": "21,887",
+        "id": "21887",
         "code": "HTR-ELMNT-BURN",
         "description": "Heater Element Burned"
     },
     {
-        "id": "21,888",
+        "id": "21888",
         "code": "HTR-PLGGD",
         "description": "Heater Plugged"
     },
     {
-        "id": "21,889",
+        "id": "21889",
         "code": "HTR-SEAL-LEAK",
         "description": "Heater Seal Leaking"
     },
     {
-        "id": "21,890",
+        "id": "21890",
         "code": "HTR-SHELL-BRTL",
         "description": "Heater Shell Brittle"
     },
     {
-        "id": "21,891",
+        "id": "21891",
         "code": "HTR-TMP-HIFAIL",
         "description": "Heater Temperature High Failure"
     },
     {
-        "id": "21,892",
+        "id": "21892",
         "code": "HUB-WORNDMG",
         "description": "Hub Worn/Damaged"
     },
     {
-        "id": "21,893",
+        "id": "21893",
         "code": "HW-BRKN",
         "description": "Hardware Broken"
     },
     {
-        "id": "21,894",
+        "id": "21894",
         "code": "HYD-BPVLV-FOUL",
         "description": "Hydraulic Bypass Valve Fouled"
     },
     {
-        "id": "21,895",
+        "id": "21895",
         "code": "HYD-BPVLV-IMPRPRLY-ADJSTD",
         "description": "Hydraulic Bypass Valve Misadjusted"
     },
     {
-        "id": "21,896",
+        "id": "21896",
         "code": "HYD-BPVLV-PASS",
         "description": "Hydraulic Bypass Valve Passing"
     },
     {
-        "id": "21,897",
+        "id": "21897",
         "code": "HYD-DPGM-RUPT",
         "description": "Hydraulic Diaphragm Ruptured"
     },
     {
-        "id": "21,898",
+        "id": "21898",
         "code": "HYD-HOSE-CRKD",
         "description": "Hydraulic Hose Cracked"
     },
     {
-        "id": "21,899",
+        "id": "21899",
         "code": "HYDPUMP-BAD",
         "description": "Hydraulic pump not working"
     },
     {
-        "id": "21,900",
+        "id": "21900",
         "code": "HYDPUMP-PWRLO",
         "description": "Hydraulic pump power too low"
     },
     {
-        "id": "21,901",
+        "id": "21901",
         "code": "HYD-SYS-NOPRIME",
         "description": "Hydraulic System Lost Prime"
     },
     {
-        "id": "21,902",
+        "id": "21902",
         "code": "HYDTB-DETD",
         "description": "Hydratube Deteriorated"
     },
     {
-        "id": "21,903",
+        "id": "21903",
         "code": "HYDTB-HOLED",
         "description": "Hydratube Holed"
     },
     {
-        "id": "21,904",
+        "id": "21904",
         "code": "HYSTRSIS",
         "description": "Hysteresis"
     },
     {
-        "id": "21,905",
+        "id": "21905",
         "code": "I/OLET-PLGGD",
         "description": "Inlet/Outlet Plugged"
     },
     {
-        "id": "21,906",
+        "id": "21906",
         "code": "I-FLUCT",
         "description": "Current fluctuation"
     },
     {
-        "id": "21,907",
+        "id": "21907",
         "code": "IGN-BURN",
         "description": "Ignitor Burned Off"
     },
     {
-        "id": "21,908",
+        "id": "21908",
         "code": "IGN-FCCB-FLTY",
         "description": "Ignition Firing Circuit Board Faulty"
     },
     {
-        "id": "21,909",
+        "id": "21909",
         "code": "IGN-TXFMR-FAIL",
         "description": "Ignitor Transformer Failure"
     },
     {
-        "id": "21,910",
+        "id": "21910",
         "code": "I-IMBAL",
         "description": "Current Imbalance"
     },
     {
-        "id": "21,911",
+        "id": "21911",
         "code": "I-LO",
         "description": "Not enough current"
     },
     {
-        "id": "21,912",
+        "id": "21912",
         "code": "IMPLLR-CLOG",
         "description": "Impeller Clogged"
     },
     {
-        "id": "21,913",
+        "id": "21913",
         "code": "IMPLLR-CLOSE-CONTAINER",
         "description": "Impeller too close to side of container"
     },
     {
-        "id": "21,914",
+        "id": "21914",
         "code": "IMPLLR-CRKD",
         "description": "Impeller Cracked"
     },
     {
-        "id": "21,915",
+        "id": "21915",
         "code": "IMPLLR-CRRDED",
         "description": "Impeller Corroded"
     },
     {
-        "id": "21,916",
+        "id": "21916",
         "code": "IMPLLR-DMG",
         "description": "Impeller damaged"
     },
     {
-        "id": "21,917",
+        "id": "21917",
         "code": "IMPLLR-ERDD",
         "description": "Impeller Eroded"
     },
     {
-        "id": "21,918",
+        "id": "21918",
         "code": "IMPLLR-IMBAL",
         "description": "Impeller imbalanced"
     },
     {
-        "id": "21,919",
+        "id": "21919",
         "code": "IMPLLR-NOTCNTRD",
         "description": "Impeller not centered"
     },
     {
-        "id": "21,920",
+        "id": "21920",
         "code": "IMPLLR-SHFT-LONG",
         "description": "Impeller shaft too long"
     },
     {
-        "id": "21,921",
+        "id": "21921",
         "code": "IMPLLR-VIBRTN",
         "description": "Impeller Vibration"
     },
     {
-        "id": "21,922",
+        "id": "21922",
         "code": "IMPLLR-WEARRING-WORN",
         "description": "Impeller Wear Ring Worn"
     },
     {
-        "id": "21,923",
+        "id": "21923",
         "code": "IMPRPR-AGITATN",
         "description": "Improper agitation"
     },
     {
-        "id": "21,924",
+        "id": "21924",
         "code": "IMPRPR-BAFFL",
         "description": "Improper baffling"
     },
     {
-        "id": "21,925",
+        "id": "21925",
         "code": "IMPRPR-CLEAN",
         "description": "Improper cleaning"
     },
     {
-        "id": "21,926",
+        "id": "21926",
         "code": "IMPRPR-GASVENT",
         "description": "Improper gas venting"
     },
     {
-        "id": "21,927",
+        "id": "21927",
         "code": "IMPRPR-INST",
         "description": "Improper installation"
     },
     {
-        "id": "21,928",
+        "id": "21928",
         "code": "IMPRPR-LUBE",
         "description": "Improper lubrication"
     },
     {
-        "id": "21,929",
+        "id": "21929",
         "code": "IMPRPR-MAINT",
         "description": "Improper maintenance"
     },
     {
-        "id": "21,931",
+        "id": "21931",
         "code": "IMPRPR-MIX",
         "description": "Improper mixing"
     },
     {
-        "id": "21,932",
+        "id": "21932",
         "code": "INCRRCT-FLTR-MEDIA",
         "description": "Incorrect filter media"
     },
     {
-        "id": "21,933",
+        "id": "21933",
         "code": "INCRRCT-INST",
         "description": "Incorrect installation"
     },
     {
-        "id": "21,934",
+        "id": "21934",
         "code": "INDICATN-VAR",
         "description": "Indication Variance"
     },
     {
-        "id": "21,935",
+        "id": "21935",
         "code": "INJCTN-PRESS-LO/HI",
         "description": "Injction pressure too high/low"
     },
     {
-        "id": "21,936",
+        "id": "21936",
         "code": "INJCTN-SPD-LO/HI",
         "description": "Injection speed too low/high"
     },
     {
-        "id": "21,937",
+        "id": "21937",
         "code": "INLET-BLOCK",
         "description": "Inlet blockage"
     },
     {
-        "id": "21,938",
+        "id": "21938",
         "code": "INP-SIG-FLTY",
         "description": "Input Signal Faulty"
     },
     {
-        "id": "21,939",
+        "id": "21939",
         "code": "INP-TUB-LEAK",
         "description": "Input Tubing Leaking"
     },
     {
-        "id": "21,940",
+        "id": "21940",
         "code": "INS-CONED",
         "description": "Insert Coned"
     },
     {
-        "id": "21,941",
+        "id": "21941",
         "code": "INS-CRKD",
         "description": "Insert Cracked"
     },
     {
-        "id": "21,942",
+        "id": "21942",
         "code": "INSL-CRKG",
         "description": "Insulation Cracking"
     },
     {
-        "id": "21,943",
+        "id": "21943",
         "code": "INSL-DETD",
         "description": "Insulation Deteriorated"
     },
     {
-        "id": "21,944",
+        "id": "21944",
         "code": "INSL-DETDDMGMISS",
         "description": "Insulation Deteriorating/Damaged/Missing"
     },
     {
-        "id": "21,945",
+        "id": "21945",
         "code": "INSL-DMG",
         "description": "Insulation Damaged"
     },
     {
-        "id": "21,946",
+        "id": "21946",
         "code": "INSL-DMGMISS",
         "description": "Insulation Damaged/Missing"
     },
     {
-        "id": "21,947",
+        "id": "21947",
         "code": "INS-SCORED",
         "description": "Insert Scored"
     },
     {
-        "id": "21,948",
+        "id": "21948",
         "code": "INS-WORN",
         "description": "Insert Worn"
     },
     {
-        "id": "21,949",
+        "id": "21949",
         "code": "INT-CRRSN",
         "description": "Internal Corrosion"
     },
     {
-        "id": "21,950",
+        "id": "21950",
         "code": "INTLOKSWI-FAIL",
         "description": "Interlock switch failure"
     },
     {
-        "id": "21,951",
+        "id": "21951",
         "code": "INTPL-POL-BAD",
         "description": "Interpole Of Polarity Incorrect"
     },
     {
-        "id": "21,952",
+        "id": "21952",
         "code": "INVTR-FAIL",
         "description": "Inverter Failure"
     },
     {
-        "id": "21,953",
+        "id": "21953",
         "code": "INVTR-HOT",
         "description": "Inverter Hot"
     },
     {
-        "id": "21,954",
+        "id": "21954",
         "code": "INVTR-INTRFNCE",
         "description": "Inverter Interference"
     },
     {
-        "id": "21,955",
+        "id": "21955",
         "code": "INVTR-SETWRNG",
         "description": "Inverter setting wrong"
     },
     {
-        "id": "21,956",
+        "id": "21956",
         "code": "INVTR-SHORT",
         "description": "Inverter Shorting"
     },
     {
-        "id": "21,957",
+        "id": "21957",
         "code": "INVTR-SIG-REV",
         "description": "Inverter signal reversed"
     },
     {
-        "id": "21,958",
+        "id": "21958",
         "code": "INVTR-TRIP",
         "description": "Inverter Tripped"
     },
     {
-        "id": "21,959",
+        "id": "21959",
         "code": "IO-CCB-FLTY",
         "description": "I/O Circuit Boards Faulty"
     },
     {
-        "id": "21,960",
+        "id": "21960",
         "code": "IO-CXN-LOOSE",
         "description": "Input/Output Connection Loose"
     },
     {
-        "id": "21,961",
+        "id": "21961",
         "code": "IO-FLT",
         "description": "Input/output fault"
     },
     {
-        "id": "21,962",
+        "id": "21962",
         "code": "I-OUTPT-INCRCT",
         "description": "Current Output Incorrect"
     },
     {
-        "id": "21,963",
+        "id": "21963",
         "code": "ISOLTN-EQPT-MLFCTN",
         "description": "Isolation Equipment Malfunction"
     },
     {
-        "id": "21,964",
+        "id": "21964",
         "code": "I-TXFMR-ERR",
         "description": "Current Transformer Error"
     },
     {
-        "id": "21,965",
+        "id": "21965",
         "code": "I-TXFMR-OVRHEAT",
         "description": "Current Transformer Overheat"
     },
     {
-        "id": "21,966",
+        "id": "21966",
         "code": "JOG-FCN-FLTY",
         "description": "Jogging Function Faulty"
     },
     {
-        "id": "21,967",
+        "id": "21967",
         "code": "KEY-SHEAR",
         "description": "Key Sheared"
     },
     {
-        "id": "21,968",
+        "id": "21968",
         "code": "KEYWAY-WORN",
         "description": "Keyway Worn"
     },
     {
-        "id": "21,969",
+        "id": "21969",
         "code": "KEY-WORN",
         "description": "Key Worn"
     },
     {
-        "id": "21,970",
+        "id": "21970",
         "code": "LDRPLTFM-CRRDED/DMG",
         "description": "Ladders/Platforms Corroded/Damaged"
     },
     {
-        "id": "21,971",
+        "id": "21971",
         "code": "LEAD-CXN-WRNG",
         "description": "Lead Connections Wrong"
     },
     {
-        "id": "21,972",
+        "id": "21972",
         "code": "LEAKS",
         "description": "Leaks"
     },
     {
-        "id": "21,973",
+        "id": "21973",
         "code": "LGCCT-FLTY",
         "description": "Logic Circuit Faulty"
     },
     {
-        "id": "21,974",
+        "id": "21974",
         "code": "LGDEBRISTRAP-DMG",
         "description": "Large debris trap damage"
     },
     {
-        "id": "21,975",
+        "id": "21975",
         "code": "LIMSWI-IMPRPRSET",
         "description": "Limit Switches Improperly Set"
     },
     {
-        "id": "21,976",
+        "id": "21976",
         "code": "LINE-CLOG",
         "description": "Line Clogged"
     },
     {
-        "id": "21,977",
+        "id": "21977",
         "code": "LINE-DMG",
         "description": "Line Damaged"
     },
     {
-        "id": "21,978",
+        "id": "21978",
         "code": "LINK-WORN",
         "description": "Linkage Worn"
     },
     {
-        "id": "21,979",
+        "id": "21979",
         "code": "LIPSEAL-LEAK",
         "description": "Lip Seal Leak"
     },
     {
-        "id": "21,980",
+        "id": "21980",
         "code": "LIQSPD-HI",
         "description": "Liquid speed too high"
     },
     {
-        "id": "21,981",
+        "id": "21981",
         "code": "LIQ-SURGE",
         "description": "Liquid surge"
     },
     {
-        "id": "21,982",
+        "id": "21982",
         "code": "LNKLVR-OOCALBRTN",
         "description": "Link and Levers Out Of Calibration"
     },
     {
-        "id": "21,983",
+        "id": "21983",
         "code": "LNR-CRKD/SWL/FAIL",
         "description": "Liner Cracked/Swelling/Failed"
     },
     {
-        "id": "21,984",
+        "id": "21984",
         "code": "LNR-ERDD/TORN/PEEL",
         "description": "Liner Eroded/Torn/Peeled"
     },
     {
-        "id": "21,985",
+        "id": "21985",
         "code": "LOADCELL-OVRLOAD",
         "description": "Overloading load cell"
     },
     {
-        "id": "21,986",
+        "id": "21986",
         "code": "LOADCELLS-FLTY",
         "description": "Load cells faulty"
     },
     {
-        "id": "21,987",
+        "id": "21987",
         "code": "LO-AIRFLW",
         "description": "Not enough airflow"
     },
     {
-        "id": "21,988",
+        "id": "21988",
         "code": "LOBE-CNTCT-OOTIMING",
         "description": "Lobes Made Contact, Out Of Timing"
     },
     {
-        "id": "21,989",
+        "id": "21989",
         "code": "LOBE-CVTY-CNTMNTD",
         "description": "Lobes Cavity Contaminated"
     },
     {
-        "id": "21,990",
+        "id": "21990",
         "code": "LO-OIL-LVL",
         "description": "Low Oil Level"
     },
     {
-        "id": "21,991",
+        "id": "21991",
         "code": "LOOSE",
         "description": "Loose"
     },
     {
-        "id": "21,992",
+        "id": "21992",
         "code": "LOOSE-BRG",
         "description": "Loose bearing"
     },
     {
-        "id": "21,993",
+        "id": "21993",
         "code": "LOOSE-CPLNG",
         "description": "Loose coupling"
     },
     {
-        "id": "19,658",
+        "id": "19658",
         "code": "LOOSE-ELCTRCL-CXN",
         "description": "Loose electrical connections"
     },
     {
-        "id": "21,994",
+        "id": "21994",
         "code": "LOOSE-GASKET",
         "description": "Loose gasket"
     },
     {
-        "id": "21,995",
+        "id": "21995",
         "code": "LOOSE-PACKING",
         "description": "Loose packing"
     },
     {
-        "id": "21,996",
+        "id": "21996",
         "code": "LOOSE-PULLEY",
         "description": "Loose pulley"
     },
     {
-        "id": "21,997",
+        "id": "21997",
         "code": "LOOSE-SHFT",
         "description": "Loose shaft"
     },
     {
-        "id": "21,998",
+        "id": "21998",
         "code": "LOOSE-WIRE/CXN",
         "description": "Loose wire/connection"
     },
     {
-        "id": "21,999",
+        "id": "21999",
         "code": "LOUVR-BENT",
         "description": "Louver Bent"
     },
     {
-        "id": "22,000",
+        "id": "22000",
         "code": "LOUVR-LOOSE",
         "description": "Louvers Loose"
     },
     {
-        "id": "22,001",
+        "id": "22001",
         "code": "LOUVR-PTTRAVEL",
         "description": "Louver Partial Travel"
     },
     {
-        "id": "22,002",
+        "id": "22002",
         "code": "LOUVR-SEIZED",
         "description": "Louver Seized"
     },
     {
-        "id": "22,003",
+        "id": "22003",
         "code": "LOUVR-STKCLOSE",
         "description": "Louvers Stuck Closed"
     },
     {
-        "id": "22,004",
+        "id": "22004",
         "code": "LO-VISC",
         "description": "Low Viscosity"
     },
     {
-        "id": "22,005",
+        "id": "22005",
         "code": "LO-WTRFLW",
         "description": "Low Water flow"
     },
     {
-        "id": "22,006",
+        "id": "22006",
         "code": "LT-BURNT",
         "description": "Bulb burnt out"
     },
     {
-        "id": "22,007",
+        "id": "22007",
         "code": "LUBE-INSUFF",
         "description": "Not enough lubrication"
     },
     {
-        "id": "22,008",
+        "id": "22008",
         "code": "LUBE-OIL-LEAK",
         "description": "Lube Oil Leak"
     },
     {
-        "id": "22,009",
+        "id": "22009",
         "code": "LVRSYS-OOCALBRTN",
         "description": "Lever System Out Of Calibration"
     },
     {
-        "id": "22,010",
+        "id": "22010",
         "code": "LWHD-CRKD",
         "description": "Lower Head; Cracked/Blistered"
     },
     {
-        "id": "22,011",
+        "id": "22011",
         "code": "LWHD-DFRMD",
         "description": "Lower Head; Bulged/Buckled/Deformed"
     },
     {
-        "id": "22,012",
+        "id": "22012",
         "code": "LWHD-EXT-CRRDED",
         "description": "Lower Head; Exterior Corroded (Cui)"
     },
     {
-        "id": "22,013",
+        "id": "22013",
         "code": "LWHD-INT-CRRDED",
         "description": "Lower Head; Interior Corroded"
     },
     {
-        "id": "22,014",
+        "id": "22014",
         "code": "LWHD-LAMDFCT",
         "description": "Lower Head; Laminations/Defects"
     },
     {
-        "id": "22,015",
+        "id": "22015",
         "code": "LWHD-MECH-DMG",
         "description": "Lower Head; Mechanical Damage/Dented"
     },
     {
-        "id": "22,016",
+        "id": "22016",
         "code": "MAG-WEAK",
         "description": "Magnets Weak"
     },
     {
-        "id": "22,017",
+        "id": "22017",
         "code": "MCHNE-NOTCOUNTBAL",
         "description": "Machine not counter balanced"
     },
     {
-        "id": "22,018",
+        "id": "22018",
         "code": "MCHNE-NOTLVL",
         "description": "Machine imperfectly levelled"
     },
     {
-        "id": "22,019",
+        "id": "22019",
         "code": "MCHNE-OOCALBRTN",
         "description": "Machine out of calibration"
     },
     {
-        "id": "22,020",
+        "id": "22020",
         "code": "MECH-DEGRADE",
         "description": "Mechanical degradation"
     },
     {
-        "id": "22,021",
+        "id": "22021",
         "code": "MECH-SEAL-FAIL",
         "description": "Mechanical Seal Failure"
     },
     {
-        "id": "22,022",
+        "id": "22022",
         "code": "MEDIA-VISC",
         "description": "Media viscosity"
     },
     {
-        "id": "22,023",
+        "id": "22023",
         "code": "METER-CALBTN",
         "description": "Meter Calibration"
     },
     {
-        "id": "22,024",
+        "id": "22024",
         "code": "METER-DRIFT",
         "description": "Meter Drift"
     },
     {
-        "id": "22,025",
+        "id": "22025",
         "code": "METER-INDICATN-DRIFT",
         "description": "Meter Indication Drift"
     },
     {
-        "id": "22,026",
+        "id": "22026",
         "code": "METER-INDICATN-ERRTC",
         "description": "Meter Indication Erratic"
     },
     {
-        "id": "22,027",
+        "id": "22027",
         "code": "METER-NO-INDICATG",
         "description": "Meter Not Indicating"
     },
     {
-        "id": "22,028",
+        "id": "22028",
         "code": "MFR-FLAW",
         "description": "Manufacturing flaw"
     },
     {
-        "id": "22,029",
+        "id": "22029",
         "code": "MICAHIGH",
         "description": "Mica High"
     },
     {
-        "id": "22,030",
+        "id": "22030",
         "code": "MISALGN-SLUG-OP",
         "description": "Misalignment Sluggish Operation"
     },
     {
-        "id": "22,031",
+        "id": "22031",
         "code": "MISAPPLCTN",
         "description": "Misapplication"
     },
     {
-        "id": "22,032",
+        "id": "22032",
         "code": "MISUSE",
         "description": "Misuse"
     },
     {
-        "id": "22,033",
+        "id": "22033",
         "code": "MN/SIDEBRSHDRV-FAIL",
         "description": "Main/side brush drive failure"
     },
     {
-        "id": "22,034",
+        "id": "22034",
         "code": "MN/SIDEBRSH-OOADJ",
         "description": "Main and side brushes not adjusted properly"
     },
     {
-        "id": "22,035",
+        "id": "22035",
         "code": "MN-SPOOL-STK",
         "description": "Main spool stuck"
     },
     {
-        "id": "22,036",
+        "id": "22036",
         "code": "MOIST",
         "description": "Moisture"
     },
     {
-        "id": "22,037",
+        "id": "22037",
         "code": "MOLD-DESIGN",
         "description": "Mold design"
     },
     {
-        "id": "22,038",
+        "id": "22038",
         "code": "MOLDINGPRESS-LO",
         "description": "Molding pressure too low"
     },
     {
-        "id": "22,039",
+        "id": "22039",
         "code": "MOLDPARTS-NOTALIGNED",
         "description": "Mold parts not aligned"
     },
     {
-        "id": "22,040",
+        "id": "22040",
         "code": "MOLDTEMP-LO/HI",
         "description": "Mold temperature too low/high"
     },
     {
-        "id": "22,041",
+        "id": "22041",
         "code": "MOLD-WORN",
         "description": "Mold worn"
     },
     {
-        "id": "22,042",
+        "id": "22042",
         "code": "MOVINGPARTS-IMPCT",
         "description": "Unintentional impact between parts"
     },
     {
-        "id": "22,043",
+        "id": "22043",
         "code": "MTR-1PHASE",
         "description": "Motor Running On Single Phase"
     },
     {
-        "id": "22,044",
+        "id": "22044",
         "code": "MTR-BSEGRT-FAIL",
         "description": "Motor Base/Grouting Failing"
     },
     {
-        "id": "22,045",
+        "id": "22045",
         "code": "MTR-CNTCT-BURN",
         "description": "Motor Contact Burned Or Scalded"
     },
     {
-        "id": "22,046",
+        "id": "22046",
         "code": "MTR-DEF",
         "description": "Motor or motor control defective"
     },
     {
-        "id": "22,047",
+        "id": "22047",
         "code": "MTRDRVE-FLTY",
         "description": "Motor drive faulty"
     },
     {
-        "id": "22,048",
+        "id": "22048",
         "code": "MTR-FLTY",
         "description": "Motor faulty"
     },
     {
-        "id": "22,049",
+        "id": "22049",
         "code": "MTR-HOT",
         "description": "Motor Hot"
     },
     {
-        "id": "22,050",
+        "id": "22050",
         "code": "MTRLBLDUP-SCREW/DISCHRGE",
         "description": "Material build up on screw/discharge tube"
     },
     {
-        "id": "22,051",
+        "id": "22051",
         "code": "MTRL-INCMPTBLTY",
         "description": "Material  incompatibilities"
     },
     {
-        "id": "22,052",
+        "id": "22052",
         "code": "MTRL-INCRRCT-STORE",
         "description": "Material stored incorrectly"
     },
     {
-        "id": "22,053",
+        "id": "22053",
         "code": "MTRL-TEMP-LO/HI",
         "description": "Material temperature too low/high"
     },
     {
-        "id": "22,054",
+        "id": "22054",
         "code": "MTR-NOISY",
         "description": "Motor Noisy"
     },
     {
-        "id": "22,055",
+        "id": "22055",
         "code": "MTROIL-CNTMNTN",
         "description": "Motor oil contamination"
     },
     {
-        "id": "22,056",
+        "id": "22056",
         "code": "MTR-OVRHEAT",
         "description": "Motor Overheat"
     },
     {
-        "id": "22,057",
+        "id": "22057",
         "code": "MTR-REDCD-OUTPT",
         "description": "Motor Reduced Output"
     },
     {
-        "id": "22,058",
+        "id": "22058",
         "code": "MTR-SHFT-BENT",
         "description": "Motor Shaft Bent"
     },
     {
-        "id": "22,059",
+        "id": "22059",
         "code": "MTR-SHFT-SEIZED",
         "description": "Motor Shaft Seized"
     },
     {
-        "id": "22,060",
+        "id": "22060",
         "code": "MTR-STRT-OVRHEAT",
         "description": "Motor Starter Overheat"
     },
     {
-        "id": "22,061",
+        "id": "22061",
         "code": "MTR-VIBRTN",
         "description": "Motor Vibrating"
     },
     {
-        "id": "22,062",
+        "id": "22062",
         "code": "NARROW/BLCKD-GATES",
         "description": "Narrow/blocked gates"
     },
     {
-        "id": "22,063",
+        "id": "22063",
         "code": "NDL-BRKN",
         "description": "Needle Broken"
     },
     {
-        "id": "22,064",
+        "id": "22064",
         "code": "NDLVLV-DMG",
         "description": "Needle Valves Damaged"
     },
     {
-        "id": "22,065",
+        "id": "22065",
         "code": "NDLVLV-PLGGD",
         "description": "Needle Valves Plugged"
     },
     {
-        "id": "22,066",
+        "id": "22066",
         "code": "NEGLIGENCE",
         "description": "Negligence"
     },
     {
-        "id": "22,067",
+        "id": "22067",
         "code": "NO-AC-PWR",
         "description": "No AC power"
     },
     {
-        "id": "22,068",
+        "id": "22068",
         "code": "NO-AIRFLW",
         "description": "Not enough airflow"
     },
     {
-        "id": "22,069",
+        "id": "22069",
         "code": "NO-INTSUPPT",
         "description": "No internal support"
     },
     {
-        "id": "22,070",
+        "id": "22070",
         "code": "NOISE",
         "description": "Electrical Noise"
     },
     {
-        "id": "22,071",
+        "id": "22071",
         "code": "NO-OUTPT",
         "description": "No Output"
     },
     {
-        "id": "22,072",
+        "id": "22072",
         "code": "NO-PM",
         "description": "No preventive maintenance"
     },
     {
-        "id": "22,073",
+        "id": "22073",
         "code": "NO-PWR",
         "description": "No power"
     },
     {
-        "id": "22,074",
+        "id": "22074",
         "code": "NOPWR-CHARGE",
         "description": "No power to charger"
     },
     {
-        "id": "22,075",
+        "id": "22075",
         "code": "NOSIG-MTRCNTCTR",
         "description": "No signal from motor contactor"
     },
     {
-        "id": "22,076",
+        "id": "22076",
         "code": "NOTCHARGING",
         "description": "Not Charging"
     },
     {
-        "id": "22,077",
+        "id": "22077",
         "code": "NO-VOLT",
         "description": "No voltage"
     },
     {
-        "id": "22,078",
+        "id": "22078",
         "code": "NOZZLE-DIAM-SMALL",
         "description": "Nozzle diameter too small"
     },
     {
-        "id": "22,079",
+        "id": "22079",
         "code": "NOZZLE-TEMP-LO",
         "description": "Nozzle temperature too low"
     },
     {
-        "id": "22,080",
+        "id": "22080",
         "code": "NZL-CRKD/DMG",
         "description": "Nozzle Cracked/Damaged"
     },
     {
-        "id": "22,081",
+        "id": "22081",
         "code": "NZL-CRRDED/CRKD",
         "description": "Nozzle Corroded/Cracked"
     },
     {
-        "id": "22,082",
+        "id": "22082",
         "code": "NZL-CRRDED/ERDD",
         "description": "Nozzle Corroded/Eroded"
     },
     {
-        "id": "22,083",
+        "id": "22083",
         "code": "NZL-GSKT-LEAKDMG",
         "description": "Nozzle Gasket Leaking/Damaged"
     },
     {
-        "id": "22,084",
+        "id": "22084",
         "code": "NZL-GSKTSFC-CRRDED",
         "description": "Nozzle Gasket Surface Corroded"
     },
     {
-        "id": "22,085",
+        "id": "22085",
         "code": "NZL-RESTRICT",
         "description": "Nozzle Restrictions"
     },
     {
-        "id": "22,086",
+        "id": "22086",
         "code": "OIL-ACID-HI/LO",
         "description": "Oil Acidity High/Low"
     },
     {
-        "id": "22,087",
+        "id": "22087",
         "code": "OIL-ADD-DEPL",
         "description": "Oil Additives Depleted"
     },
     {
-        "id": "22,088",
+        "id": "22088",
         "code": "OIL-CNTMNTD",
         "description": "Oil Contaminated"
     },
     {
-        "id": "22,089",
+        "id": "22089",
         "code": "OIL-CRBNDIRTYVRNSH",
         "description": "Oil Carbonized/Dirty/Varnished"
     },
     {
-        "id": "22,090",
+        "id": "22090",
         "code": "OIL-DEGRADE",
         "description": "Oil Degraded"
     },
     {
-        "id": "22,091",
+        "id": "22091",
         "code": "OIL-LEAK",
         "description": "Oil Leak"
     },
     {
-        "id": "22,092",
+        "id": "22092",
         "code": "OIL-LINE-BLOCKD",
         "description": "Oil line blocked"
     },
     {
-        "id": "22,093",
+        "id": "22093",
         "code": "OIL-PMP-WORN",
         "description": "Oil Pump Worn/Faulty"
     },
     {
-        "id": "22,094",
+        "id": "22094",
         "code": "OIL-TEMP-HI",
         "description": "Oil Temperature High"
     },
     {
-        "id": "22,095",
+        "id": "22095",
         "code": "OIL-TEMP-LO",
         "description": "Oil Temperature Low"
     },
     {
-        "id": "22,096",
+        "id": "22096",
         "code": "OIL-WIPER-WORN",
         "description": "Oil Wiper Worn/Broken"
     },
     {
-        "id": "22,097",
+        "id": "22097",
         "code": "OOBALNC",
         "description": "Out Of Balance"
     },
     {
-        "id": "22,098",
+        "id": "22098",
         "code": "OOCALBRTN",
         "description": "Out Of Calibration"
     },
     {
-        "id": "22,099",
+        "id": "22099",
         "code": "OOLSWI-ACTV",
         "description": "Outer limit switch active"
     },
     {
-        "id": "22,100",
+        "id": "22100",
         "code": "OORANGE",
         "description": "Out Of Range"
     },
     {
-        "id": "22,101",
+        "id": "22101",
         "code": "OP-ERR",
         "description": "Operator error"
     },
     {
-        "id": "22,102",
+        "id": "22102",
         "code": "OP-HSG-CRKD",
         "description": "Operator Housing Cracked"
     },
     {
-        "id": "22,103",
+        "id": "22103",
         "code": "OPN-CCT",
         "description": "Open Circuit"
     },
     {
-        "id": "22,104",
+        "id": "22104",
         "code": "OP-STEM-BENT",
         "description": "Operator Stem Bent"
     },
     {
-        "id": "22,105",
+        "id": "22105",
         "code": "ORFC-PLGGD",
         "description": "Orifice Plugged"
     },
     {
-        "id": "22,106",
+        "id": "22106",
         "code": "ORING-DETD",
         "description": "O-Ring Deteriorated"
     },
     {
-        "id": "22,107",
+        "id": "22107",
         "code": "ORING-DMG",
         "description": "O-Ring Damaged"
     },
     {
-        "id": "22,108",
+        "id": "22108",
         "code": "ORING-STIFF",
         "description": "O-Ring Stiffening"
     },
     {
-        "id": "22,109",
+        "id": "22109",
         "code": "ORING-WORNDMG",
         "description": "O-Ring Worn/Damaged"
     },
     {
-        "id": "22,110",
+        "id": "22110",
         "code": "OUT-POS",
         "description": "Out of position"
     },
     {
-        "id": "22,111",
+        "id": "22111",
         "code": "OUTPT-ERRTC",
         "description": "Erratic Output"
     },
     {
-        "id": "22,112",
+        "id": "22112",
         "code": "OUTPT-HI",
         "description": "Output too high"
     },
     {
-        "id": "22,113",
+        "id": "22113",
         "code": "OUTPT-SIG-FAIL",
         "description": "Output Signal Failure"
     },
     {
-        "id": "22,114",
+        "id": "22114",
         "code": "OVRBEND",
         "description": "Overbending"
     },
     {
-        "id": "22,115",
+        "id": "22115",
         "code": "OVRCHARGE",
         "description": "Overcharging"
     },
     {
-        "id": "22,116",
+        "id": "22116",
         "code": "OVRHEAT",
         "description": "Over Heating"
     },
     {
-        "id": "22,117",
+        "id": "22117",
         "code": "OVRI",
         "description": "Overcurrent"
     },
     {
-        "id": "22,118",
+        "id": "22118",
         "code": "OVRI-PROTCCT-FAIL",
         "description": "Over Current Protection Circuit Failure"
     },
     {
-        "id": "22,119",
+        "id": "22119",
         "code": "OVRLOAD",
         "description": "Overload"
     },
     {
-        "id": "22,120",
+        "id": "22120",
         "code": "OVRLOAD-CCT-FAIL",
         "description": "Overload Protection Circuit Failure"
     },
     {
-        "id": "22,121",
+        "id": "22121",
         "code": "OVRLOAD-PRT-FAIL",
         "description": "Overload Protection Failed"
     },
     {
-        "id": "22,122",
+        "id": "22122",
         "code": "OVRLOAD-TRIP",
         "description": "Overload Trip"
     },
     {
-        "id": "22,123",
+        "id": "22123",
         "code": "OVRPRESS",
         "description": "Overpressure"
     },
     {
-        "id": "22,124",
+        "id": "22124",
         "code": "OVRSZD-VLV",
         "description": "Oversized valve"
     },
     {
-        "id": "22,125",
+        "id": "22125",
         "code": "OVRTQD-VLV-PCKGING",
         "description": "Overtorqued valve packaging"
     },
     {
-        "id": "22,126",
+        "id": "22126",
         "code": "OVRVOLT-TRIP",
         "description": "Over Voltage Trip"
     },
     {
-        "id": "22,127",
+        "id": "22127",
         "code": "PCKG-DRY",
         "description": "Packing Dry"
     },
     {
-        "id": "22,128",
+        "id": "22128",
         "code": "PCKG-HARD",
         "description": "Packing Hardening"
     },
     {
-        "id": "22,129",
+        "id": "22129",
         "code": "PCKG-LEAK",
         "description": "Packing Leaking"
     },
     {
-        "id": "22,130",
+        "id": "22130",
         "code": "PCKG-WORN",
         "description": "Packing Worn"
     },
     {
-        "id": "22,131",
+        "id": "22131",
         "code": "PCKG-WORNDMG",
         "description": "Packing Worn/Damaged"
     },
     {
-        "id": "22,132",
+        "id": "22132",
         "code": "PHSE-OPN",
         "description": "Phase Open"
     },
     {
-        "id": "22,133",
+        "id": "22133",
         "code": "PHSE-SNSELMT-FAIL",
         "description": "Phase Sensing Element Failed"
     },
     {
-        "id": "22,134",
+        "id": "22134",
         "code": "PIN-BRKN",
         "description": "Pin Broken"
     },
     {
-        "id": "22,135",
+        "id": "22135",
         "code": "PIN-SCORED",
         "description": "Pin Scored"
     },
     {
-        "id": "22,136",
+        "id": "22136",
         "code": "PIN-SCRDWORNDMG",
         "description": "Pin Scored/Worn/Damaged"
     },
     {
-        "id": "22,137",
+        "id": "22137",
         "code": "PIN-WORNDMG",
         "description": "Pin Worn/Damaged"
     },
     {
-        "id": "22,138",
+        "id": "22138",
         "code": "PIPE-CRKG",
         "description": "Piping Cracking"
     },
     {
-        "id": "22,139",
+        "id": "22139",
         "code": "PIPEFITG-LEAK",
         "description": "Pipe Fittings Leak"
     },
     {
-        "id": "22,140",
+        "id": "22140",
         "code": "PIPE-LEAK",
         "description": "Piping Leaking"
     },
     {
-        "id": "22,141",
+        "id": "22141",
         "code": "PIPE-PLGGD",
         "description": "Piping Plugged"
     },
     {
-        "id": "22,142",
+        "id": "22142",
         "code": "PIPE-VIBRTN",
         "description": "Piping Vibrating"
     },
     {
-        "id": "22,143",
+        "id": "22143",
         "code": "PLNGR-NORET-SS",
         "description": "Plunger Not Returning To Steady State"
     },
     {
-        "id": "22,144",
+        "id": "22144",
         "code": "PLT-BODY-DMG",
         "description": "Pilot Body - Damaged"
     },
     {
-        "id": "22,145",
+        "id": "22145",
         "code": "PLT-FLTR-PLGGD",
         "description": "Pilot Filter - Plugged"
     },
     {
-        "id": "22,146",
+        "id": "22146",
         "code": "PLT-FLW/PRESSSWI-FAIL",
         "description": "Pilot Flow/Pressure Switch - Failure"
     },
     {
-        "id": "22,147",
+        "id": "22147",
         "code": "PLT-GSKT-LEAK",
         "description": "Pilot Gasket Leak"
     },
     {
-        "id": "22,148",
+        "id": "22148",
         "code": "PLT-HYD-LOFLUID",
         "description": "Pilot (Hydraulic) Low On Fluid"
     },
     {
-        "id": "22,149",
+        "id": "22149",
         "code": "PLT-LINE-BRKN/CRKD",
         "description": "Pilot Line - Broken/Cracked"
     },
     {
-        "id": "22,150",
+        "id": "22150",
         "code": "PLT-LINE-PLGGD/RSTRCTD",
         "description": "Pilot Line - Plugged/Restricted"
     },
     {
-        "id": "22,151",
+        "id": "22151",
         "code": "PLT-SEAT-WORN",
         "description": "Pilot Seat - Worn"
     },
     {
-        "id": "22,152",
+        "id": "22152",
         "code": "PLT-SPRG-WEAK",
         "description": "Pilot Spring - Weak"
     },
     {
-        "id": "22,153",
+        "id": "22153",
         "code": "PLUG-THRD-CORRSN",
         "description": "Plug thread corrosion"
     },
     {
-        "id": "22,154",
+        "id": "22154",
         "code": "PMP-CVTATNG",
         "description": "Pump Cavitating"
     },
     {
-        "id": "22,155",
+        "id": "22155",
         "code": "PMP-FAIL",
         "description": "Pump failure"
     },
     {
-        "id": "22,156",
+        "id": "22156",
         "code": "PMP-FND-CRKG",
         "description": "Pump Foundation Cracking"
     },
     {
-        "id": "22,157",
+        "id": "22157",
         "code": "PMP-OVRLOADED",
         "description": "Pump overloaded"
     },
     {
-        "id": "22,158",
+        "id": "22158",
         "code": "PMP-PRIME-LOST",
         "description": "Pump Prime Lost"
     },
     {
-        "id": "22,159",
+        "id": "22159",
         "code": "PMP-SEIZED",
         "description": "Pump Seized"
     },
     {
-        "id": "22,160",
+        "id": "22160",
         "code": "PMP-SUPRT-CRKD",
         "description": "Pump Support Cracked"
     },
     {
-        "id": "22,161",
+        "id": "22161",
         "code": "PMP-VIBRTN",
         "description": "Pump Vibration Excessive"
     },
     {
-        "id": "22,162",
+        "id": "22162",
         "code": "PMP-WORN",
         "description": "Pump Worn"
     },
     {
-        "id": "22,163",
+        "id": "22163",
         "code": "POD-WORN",
         "description": "Tool pod worn"
     },
     {
-        "id": "22,164",
+        "id": "22164",
         "code": "POOR-BOND",
         "description": "Poor bond"
     },
     {
-        "id": "22,165",
+        "id": "22165",
         "code": "POOR-LIQ-CONTCT",
         "description": "Inadequate liquid contact"
     },
     {
-        "id": "22,166",
+        "id": "22166",
         "code": "POOR-MOLDMAINT",
         "description": "Poor mold maintenance"
     },
     {
-        "id": "22,167",
+        "id": "22167",
         "code": "POOR-PM",
         "description": "Poor preventive maintenance"
     },
     {
-        "id": "22,168",
+        "id": "22168",
         "code": "POPPET-WORN",
         "description": "Poppet Worn"
     },
     {
-        "id": "22,169",
+        "id": "22169",
         "code": "POSITNER-NOT-CAL",
         "description": "Positioner not calibrated"
     },
     {
-        "id": "22,170",
+        "id": "22170",
         "code": "POSN-CNTMNTD-AIR",
         "description": "Position Contaminated From Supply Air"
     },
     {
-        "id": "22,171",
+        "id": "22171",
         "code": "POSTOL-2LARGE",
         "description": "Positioning tolerance too large"
     },
     {
-        "id": "22,172",
+        "id": "22172",
         "code": "POWER-FAIL",
         "description": "Power feed failure (tripped CB/blown fuse)"
     },
     {
-        "id": "22,173",
+        "id": "22173",
         "code": "PRC-DPGM-RUPT",
         "description": "Process Diaphragm Ruptured"
     },
     {
-        "id": "22,174",
+        "id": "22174",
         "code": "PRCPTR-ELCTRDE-GND",
         "description": "Precipitator Electrodes Grounded"
     },
     {
-        "id": "22,175",
+        "id": "22175",
         "code": "PRCPTR-ERDD",
         "description": "Precipitator Eroded"
     },
     {
-        "id": "22,176",
+        "id": "22176",
         "code": "PRCPTR-HIVOLT-TFMR-FAIL",
         "description": "Precipitator High Voltage Transformer Failure"
     },
     {
-        "id": "22,177",
+        "id": "22177",
         "code": "PRCPTR-I/VOLT-CTRL",
         "description": "Precipitator Current/Voltage Control"
     },
     {
-        "id": "22,178",
+        "id": "22178",
         "code": "PRCPTR-PLT-FRM-BENT",
         "description": "Precipitator Collector Plate Frames Bent"
     },
     {
-        "id": "22,179",
+        "id": "22179",
         "code": "PRESSDIFF",
         "description": "Pressure differential"
     },
     {
-        "id": "22,180",
+        "id": "22180",
         "code": "PRESSDROP",
         "description": "Pressure drop"
     },
     {
-        "id": "22,181",
+        "id": "22181",
         "code": "PRESS-HI/LO",
         "description": "Pressure too high/low"
     },
     {
-        "id": "22,182",
+        "id": "22182",
         "code": "PRESS-LO",
         "description": "Low pressure"
     },
     {
-        "id": "22,183",
+        "id": "22183",
         "code": "PRESSPLT-CRKD",
         "description": "Pressure Plate Cracked"
     },
     {
-        "id": "22,184",
+        "id": "22184",
         "code": "PRESSPLT-SCORED",
         "description": "Pressure Plate Scored"
     },
     {
-        "id": "22,185",
+        "id": "22185",
         "code": "PRESSPLT-WARPED",
         "description": "Pressure Plate Warped"
     },
     {
-        "id": "22,186",
+        "id": "22186",
         "code": "PRESSPLT-WORNDMG",
         "description": "Pressure Plate Worn/Damaged"
     },
     {
-        "id": "22,187",
+        "id": "22187",
         "code": "PRESS-SETLO",
         "description": "Pressure set too low"
     },
     {
-        "id": "22,188",
+        "id": "22188",
         "code": "PRESS-SPIKES",
         "description": "Press-spikes"
     },
     {
-        "id": "22,189",
+        "id": "22189",
         "code": "PRESSSWI-FAIL",
         "description": "Pressure Switch Failed"
     },
     {
-        "id": "22,190",
+        "id": "22190",
         "code": "PRESS-VACM-PULSE",
         "description": "Pressure/vacuum pulse"
     },
     {
-        "id": "22,191",
+        "id": "22191",
         "code": "PRKNGBRAK-ON",
         "description": "Parking brake on"
     },
     {
-        "id": "22,192",
+        "id": "22192",
         "code": "PROBE-NOTQUALFD",
         "description": "Probe has not been qualified"
     },
     {
-        "id": "22,193",
+        "id": "22193",
         "code": "PROBE-OOCALBRTN",
         "description": "Probe out of calibration"
     },
     {
-        "id": "22,194",
+        "id": "22194",
         "code": "PROBE-OPN/DEFLCTD",
         "description": "Probe is open/deflected"
     },
     {
-        "id": "22,195",
+        "id": "22195",
         "code": "PROBESIGCONVERTOR-ERR",
         "description": "Probe signal convertor error"
     },
     {
-        "id": "22,196",
+        "id": "22196",
         "code": "PROCSSNG-SPD-FAST",
         "description": "Processing speed too fast"
     },
     {
-        "id": "22,197",
+        "id": "22197",
         "code": "PRODCT-TEMP-LO",
         "description": "Product temperature too low"
     },
     {
-        "id": "22,198",
+        "id": "22198",
         "code": "PROD-FLAW",
         "description": "Production flaw"
     },
     {
-        "id": "22,199",
+        "id": "22199",
         "code": "PROG-ERR",
         "description": "Programming Error"
     },
     {
-        "id": "22,200",
+        "id": "22200",
         "code": "PRSEC-WINDG-SHORT",
         "description": "Primary / Secondary Winding Shorted"
     },
     {
-        "id": "22,201",
+        "id": "22201",
         "code": "PRTRLY-CALBRTN-DRIFT",
         "description": "Protective Relay Calibration Drift"
     },
     {
-        "id": "22,202",
+        "id": "22202",
         "code": "PRTRLY-FAIL",
         "description": "Protective Relay Failure"
     },
     {
-        "id": "22,203",
+        "id": "22203",
         "code": "PSTN-CRRDED",
         "description": "Piston Corroded"
     },
     {
-        "id": "22,204",
+        "id": "22204",
         "code": "PSTN-DIRTY",
         "description": "Piston Dirty"
     },
     {
-        "id": "22,205",
+        "id": "22205",
         "code": "PSTNPLUG-LEAKPASS",
         "description": "Piston/Plug Leaking/Passing"
     },
     {
-        "id": "22,206",
+        "id": "22206",
         "code": "PSTNPLUG-WORN",
         "description": "Piston/Plug Worn"
     },
     {
-        "id": "22,207",
+        "id": "22207",
         "code": "PSTN-RNG-BRKN",
         "description": "Piston Ring Broken"
     },
     {
-        "id": "22,208",
+        "id": "22208",
         "code": "PSTN-RNG-CRRDED",
         "description": "Piston Ring Corroded"
     },
     {
-        "id": "22,209",
+        "id": "22209",
         "code": "PSTN-RNG-LNDWORN",
         "description": "Piston Ring Lands Worn"
     },
     {
-        "id": "22,210",
+        "id": "22210",
         "code": "PSTN-RNG-WORNDMG",
         "description": "Piston Ring Worn/Damaged"
     },
     {
-        "id": "22,211",
+        "id": "22211",
         "code": "PSTN-SCORED",
         "description": "Piston Scored"
     },
     {
-        "id": "22,212",
+        "id": "22212",
         "code": "PSTN-SEAL-WORNDMG",
         "description": "Piston Seal Worn/Damaged"
     },
     {
-        "id": "22,213",
+        "id": "22213",
         "code": "PSTN-SEIZED-CNTMNTD",
         "description": "Piston - Seized (Contaminated)"
     },
     {
-        "id": "22,214",
+        "id": "22214",
         "code": "PSTN-WORN",
         "description": "Piston Worn"
     },
     {
-        "id": "22,215",
+        "id": "22215",
         "code": "PSTN-WORNDMG",
         "description": "Piston Worn/Damaged"
     },
     {
-        "id": "22,216",
+        "id": "22216",
         "code": "PT-TXFMR-FSE-BLWN",
         "description": "Potential Transformer Fuse Blown"
     },
     {
-        "id": "22,217",
+        "id": "22217",
         "code": "PWRAMP-OFFSET",
         "description": "Power amplifier offset"
     },
     {
-        "id": "22,218",
+        "id": "22218",
         "code": "PWR-FAIL-OP",
         "description": "Power failure during operation"
     },
     {
-        "id": "22,219",
+        "id": "22219",
         "code": "PWRSPPLY-FAIL",
         "description": "Power Supply Failure"
     },
     {
-        "id": "22,220",
+        "id": "22220",
         "code": "PWRSPPLY-FLT",
         "description": "Power supply fault"
     },
     {
-        "id": "22,221",
+        "id": "22221",
         "code": "PWRSPPLY-FLTY",
         "description": "Power Supply Faulty"
     },
     {
-        "id": "22,222",
+        "id": "22222",
         "code": "RCKALM-ASSY-MISALGN",
         "description": "Racking and Alignment Assembly Misaligned"
     },
     {
-        "id": "22,223",
+        "id": "22223",
         "code": "RDUCR-LEAK",
         "description": "Reducer Leaking"
     },
     {
-        "id": "22,224",
+        "id": "22224",
         "code": "RECVRYTANK-FULL",
         "description": "Recovery tank full"
     },
     {
-        "id": "22,225",
+        "id": "22225",
         "code": "REDUCED-PERF",
         "description": "Reduced Performance"
     },
     {
-        "id": "22,226",
+        "id": "22226",
         "code": "REED-FAIL",
         "description": "Reed Failed"
     },
     {
-        "id": "22,227",
+        "id": "22227",
         "code": "REFRGRNT-LEAK",
         "description": "Refrigerant leak"
     },
     {
-        "id": "22,228",
+        "id": "22228",
         "code": "REFUNIT-FLTY",
         "description": "Refrigeration unit faulty"
     },
     {
-        "id": "22,229",
+        "id": "22229",
         "code": "REG-FILL-CNDSATE",
         "description": "Regulator Filled With Condensate"
     },
     {
-        "id": "22,230",
+        "id": "22230",
         "code": "REG-PLGGD",
         "description": "Regulator Plugged"
     },
     {
-        "id": "22,231",
+        "id": "22231",
         "code": "REV-PHASE",
         "description": "Reverse Phase"
     },
     {
-        "id": "22,232",
+        "id": "22232",
         "code": "RING-CRRDED",
         "description": "Ring Corroded"
     },
     {
-        "id": "22,233",
+        "id": "22233",
         "code": "RING-DMG",
         "description": "Ring Damaged"
     },
     {
-        "id": "22,234",
+        "id": "22234",
         "code": "RING-DSTRTD",
         "description": "Ring Distorted"
     },
     {
-        "id": "22,235",
+        "id": "22235",
         "code": "RING-ERDD",
         "description": "Ring Eroded"
     },
     {
-        "id": "22,236",
+        "id": "22236",
         "code": "RING-FOUL",
         "description": "Ring Fouled"
     },
     {
-        "id": "22,237",
+        "id": "22237",
         "code": "RING-GEAR-WORN",
         "description": "Ring Gear Worn"
     },
     {
-        "id": "22,238",
+        "id": "22238",
         "code": "RING-MISALGN",
         "description": "Ring Misaligned"
     },
     {
-        "id": "22,239",
+        "id": "22239",
         "code": "RING-WORN",
         "description": "Ring Worn"
     },
     {
-        "id": "22,240",
+        "id": "22240",
         "code": "RLYBD-BAD",
         "description": "Bad relay board"
     },
     {
-        "id": "22,241",
+        "id": "22241",
         "code": "RLY-FAIL",
         "description": "Relay Failure"
     },
     {
-        "id": "22,242",
+        "id": "22242",
         "code": "RLY-FLTY",
         "description": "Relay faulty"
     },
     {
-        "id": "22,243",
+        "id": "22243",
         "code": "RLY-HOT",
         "description": "Relay Hot"
     },
     {
-        "id": "22,244",
+        "id": "22244",
         "code": "RLY-NO-OUTPT",
         "description": "Relay No Output"
     },
     {
-        "id": "22,245",
+        "id": "22245",
         "code": "RLY-PROT-DFCTV",
         "description": "Relay Protection Defective"
     },
     {
-        "id": "22,246",
+        "id": "22246",
         "code": "RLY-PWRSRC-FAIL",
         "description": "Relay Power Source Failure"
     },
     {
-        "id": "22,247",
+        "id": "22247",
         "code": "RLY-WIRE-FLT",
         "description": "Relay Wiring Fault"
     },
     {
-        "id": "22,248",
+        "id": "22248",
         "code": "RNG-SPRG-WORN",
         "description": "Range Spring Worn"
     },
     {
-        "id": "22,249",
+        "id": "22249",
         "code": "ROD-BRKN/BENT",
         "description": "Rod Broken/Bent"
     },
     {
-        "id": "22,250",
+        "id": "22250",
         "code": "ROD-WORNDMG",
         "description": "Rod Worn/Damaged"
     },
     {
-        "id": "22,251",
+        "id": "22251",
         "code": "ROT-ELMNT-ERDD",
         "description": "Rotating Element Eroded"
     },
     {
-        "id": "22,252",
+        "id": "22252",
         "code": "RRINGS-WORNDMG",
         "description": "Rider Ring Worn/Damaged"
     },
     {
-        "id": "22,253",
+        "id": "22253",
         "code": "RTD-FAIL",
         "description": "Rtd Failure"
     },
     {
-        "id": "22,254",
+        "id": "22254",
         "code": "RTRBAR-BRKN",
         "description": "Rotor Bars Broken"
     },
     {
-        "id": "22,255",
+        "id": "22255",
         "code": "RTRBAR-LOOSE",
         "description": "Rotor Bars Loose"
     },
     {
-        "id": "22,256",
+        "id": "22256",
         "code": "RTRBAR-OPN",
         "description": "Rotor Bars Open"
     },
     {
-        "id": "22,257",
+        "id": "22257",
         "code": "RTR-BRK/CRKD",
         "description": "Rotor Broke/Cracked"
     },
     {
-        "id": "22,258",
+        "id": "22258",
         "code": "RTR-CRRDED/ERDD",
         "description": "Rotor Corroded/Eroded"
     },
     {
-        "id": "22,259",
+        "id": "22259",
         "code": "RTR-DELAM",
         "description": "Rotor Delaminated"
     },
     {
-        "id": "22,260",
+        "id": "22260",
         "code": "RTR-DIRTCNTMNTD",
         "description": "Rotor Dirty Or Contaminated"
     },
     {
-        "id": "22,261",
+        "id": "22261",
         "code": "RTR-DMG",
         "description": "Rotor damaged"
     },
     {
-        "id": "22,262",
+        "id": "22262",
         "code": "RTR-DSCLR-RUB",
         "description": "Rotor Discolored/Rubbed"
     },
     {
-        "id": "22,263",
+        "id": "22263",
         "code": "RTR-ERING-PORSTY",
         "description": "Rotor End Ring Porosity"
     },
     {
-        "id": "22,264",
+        "id": "22264",
         "code": "RTR-SCORED",
         "description": "Rotor Scored"
     },
     {
-        "id": "22,265",
+        "id": "22265",
         "code": "RTR-SEIZED",
         "description": "Rotors Seized"
     },
     {
-        "id": "22,266",
+        "id": "22266",
         "code": "RTR-WORNDMG",
         "description": "Rotor Worn/Damaged"
     },
     {
-        "id": "22,267",
+        "id": "22267",
         "code": "SCALE-DMG/CNTMNTN",
         "description": "Scale damage/contamination"
     },
     {
-        "id": "22,268",
+        "id": "22268",
         "code": "SCALE-FORM",
         "description": "Scale build up"
     },
     {
-        "id": "22,269",
+        "id": "22269",
         "code": "SCALEREAD-FAIL",
         "description": "Scale reading failure"
     },
     {
-        "id": "22,270",
+        "id": "22270",
         "code": "SCRBBR-NOTCHARGE",
         "description": "Scrubber not charged"
     },
     {
-        "id": "22,271",
+        "id": "22271",
         "code": "SCRBHD-RAISED",
         "description": "Scrub head is raised off floor"
     },
     {
-        "id": "22,272",
+        "id": "22272",
         "code": "SCR-FAIL",
         "description": "SCR Failed (Silicon Control Rectifier)"
     },
     {
-        "id": "22,273",
+        "id": "22273",
         "code": "SCR-GATE-FAIL",
         "description": "SCR Gate Failure"
     },
     {
-        "id": "22,274",
+        "id": "22274",
         "code": "SCRP-RING-WORN",
         "description": "Scraper Ring Worn"
     },
     {
-        "id": "22,275",
+        "id": "22275",
         "code": "SCRWBRK-NUTFAIL",
         "description": "Screw break/nut failure"
     },
     {
-        "id": "22,276",
+        "id": "22276",
         "code": "SDLSUPP-CRKD/DMG",
         "description": "Saddles-Support Cracked/Damaged"
     },
     {
-        "id": "22,277",
+        "id": "22277",
         "code": "SDLSUPP-CRRDED/ERDD",
         "description": "Saddles-Support Corroded/Eroded"
     },
     {
-        "id": "22,278",
+        "id": "22278",
         "code": "SEAL-AIRPRESS-LO",
         "description": "Seal Air Pressure Low"
     },
     {
-        "id": "22,279",
+        "id": "22279",
         "code": "SEAL-BRKN",
         "description": "Seal Broken"
     },
     {
-        "id": "22,280",
+        "id": "22280",
         "code": "SEAL-DMG",
         "description": "Seal Damaged"
     },
     {
-        "id": "22,281",
+        "id": "22281",
         "code": "SEAL-FACE-DMG",
         "description": "Seal Faces Damaged"
     },
     {
-        "id": "22,282",
+        "id": "22282",
         "code": "SEAL-FACE-WORN",
         "description": "Seal Faces Worn"
     },
     {
-        "id": "22,283",
+        "id": "22283",
         "code": "SEAL-HARD",
         "description": "Seal Hard"
     },
     {
-        "id": "22,284",
+        "id": "22284",
         "code": "SEAL-LEAK",
         "description": "Seal Leaking"
     },
     {
-        "id": "22,285",
+        "id": "22285",
         "code": "SEAL-RUPT",
         "description": "Seal Rupture"
     },
     {
-        "id": "22,286",
+        "id": "22286",
         "code": "SEAL-WORN",
         "description": "Seal Worn"
     },
     {
-        "id": "22,287",
+        "id": "22287",
         "code": "SEAT-CRRDED/PITT",
         "description": "Seat Corroded/Pitted"
     },
     {
-        "id": "22,288",
+        "id": "22288",
         "code": "SEAT-DSTRTD",
         "description": "Seat Distorted"
     },
     {
-        "id": "22,289",
+        "id": "22289",
         "code": "SEAT-ERDD",
         "description": "Seat Eroded"
     },
     {
-        "id": "22,290",
+        "id": "22290",
         "code": "SEAT-PASS-FGNMATL",
         "description": "Seat Passing Has Foreign Material"
     },
     {
-        "id": "22,291",
+        "id": "22291",
         "code": "SEAT-SEIZE",
         "description": "Seat Seize"
     },
     {
-        "id": "22,292",
+        "id": "22292",
         "code": "SEAT-SFC-SCORED",
         "description": "Seating Surface Scored"
     },
     {
-        "id": "22,293",
+        "id": "22293",
         "code": "SEAT-WORN",
         "description": "Seat Worn"
     },
     {
-        "id": "22,294",
+        "id": "22294",
         "code": "SEIZED-TEMP-CHNG",
         "description": "Seized Due To Temperature Changes"
     },
     {
-        "id": "22,295",
+        "id": "22295",
         "code": "SELENIUMSTK-DEFECT",
         "description": "Defective Selenium stack"
     },
     {
-        "id": "22,296",
+        "id": "22296",
         "code": "SENS-DMG",
         "description": "Sensor Damaged"
     },
     {
-        "id": "22,297",
+        "id": "22297",
         "code": "SENS-FAIL",
         "description": "Sensor Failed"
     },
     {
-        "id": "22,298",
+        "id": "22298",
         "code": "SENS-FLT",
         "description": "Sensor issue"
     },
     {
-        "id": "22,299",
+        "id": "22299",
         "code": "SENS-FLTY",
         "description": "Sensor/Element/Probe Faulty"
     },
     {
-        "id": "22,301",
+        "id": "22301",
         "code": "SENS-NOTCONN",
         "description": "Sensor not connected"
     },
     {
-        "id": "22,302",
+        "id": "22302",
         "code": "SEPRTR-FOUL",
         "description": "Separator Fouled"
     },
     {
-        "id": "22,303",
+        "id": "22303",
         "code": "SER-MTR-RUN-NOLEAD",
         "description": "Series Motor Running Without A Lead"
     },
     {
-        "id": "22,304",
+        "id": "22304",
         "code": "SERVOMTR-NOTENGAGED",
         "description": "Servo motors not engaged"
     },
     {
-        "id": "22,305",
+        "id": "22305",
         "code": "SFC-CRRDED",
         "description": "Surface Corroded"
     },
     {
-        "id": "22,306",
+        "id": "22306",
         "code": "SFC-PITT",
         "description": "Surface Pitted"
     },
     {
-        "id": "22,307",
+        "id": "22307",
         "code": "SHELL-BRITTLE",
         "description": "Shell Brittle"
     },
     {
-        "id": "22,308",
+        "id": "22308",
         "code": "SHELL-ERDD",
         "description": "Shell Eroded"
     },
     {
-        "id": "22,309",
+        "id": "22309",
         "code": "SHELL-LEAK",
         "description": "Shell Leaking"
     },
     {
-        "id": "22,310",
+        "id": "22310",
         "code": "SHFT-BENT",
         "description": "Shaft Bent"
     },
     {
-        "id": "22,311",
+        "id": "22311",
         "code": "SHFT-BRKN/BENT",
         "description": "Shaft Broken/Bent"
     },
     {
-        "id": "22,312",
+        "id": "22312",
         "code": "SHFT-CRRDED",
         "description": "Shaft Corroded"
     },
     {
-        "id": "22,313",
+        "id": "22313",
         "code": "SHFT-DMG",
         "description": "Shaft Damaged"
     },
     {
-        "id": "22,314",
+        "id": "22314",
         "code": "SHFTDRV-FAIL",
         "description": "Shaft drive failure"
     },
     {
-        "id": "22,315",
+        "id": "22315",
         "code": "SHFT-ERDD",
         "description": "Shaft Eroded"
     },
     {
-        "id": "22,316",
+        "id": "22316",
         "code": "SHFT-HUB-WORN",
         "description": "Shaft Hub Worn"
     },
     {
-        "id": "22,317",
+        "id": "22317",
         "code": "SHFT-PITT",
         "description": "Shaft Pitted"
     },
     {
-        "id": "22,318",
+        "id": "22318",
         "code": "SHFT-SCORED",
         "description": "Shaft Scored"
     },
     {
-        "id": "22,319",
+        "id": "22319",
         "code": "SHFT-SEIZED",
         "description": "Shaft Seized"
     },
     {
-        "id": "22,320",
+        "id": "22320",
         "code": "SHFT-UNBALNC",
         "description": "Shaft Unbalanced"
     },
     {
-        "id": "22,321",
+        "id": "22321",
         "code": "SHFT-WORN",
         "description": "Shaft Worn"
     },
     {
-        "id": "22,322",
+        "id": "22322",
         "code": "SHIP-DMG",
         "description": "Shipping damage"
     },
     {
-        "id": "22,323",
+        "id": "22323",
         "code": "SHOCK",
         "description": "Shock"
     },
     {
-        "id": "22,324",
+        "id": "22324",
         "code": "SHORT",
         "description": "Shorted"
     },
     {
-        "id": "22,325",
+        "id": "22325",
         "code": "SHORT-CCT",
         "description": "Short Circuit"
     },
     {
-        "id": "22,326",
+        "id": "22326",
         "code": "SHORT-FLDOPN",
         "description": "Short Field Open"
     },
     {
-        "id": "22,327",
+        "id": "22327",
         "code": "SHVE-WORN",
         "description": "Sheaves Worn"
     },
     {
-        "id": "22,328",
+        "id": "22328",
         "code": "SIG-INTRFNCE",
         "description": "Signal interference"
     },
     {
-        "id": "22,329",
+        "id": "22329",
         "code": "SIG-LOSS",
         "description": "Signal Loss"
     },
     {
-        "id": "22,330",
+        "id": "22330",
         "code": "SIG-OUTPT",
         "description": "Signal output"
     },
     {
-        "id": "22,331",
+        "id": "22331",
         "code": "SILO-PLGGD",
         "description": "Silo Plugged"
     },
     {
-        "id": "22,332",
+        "id": "22332",
         "code": "SKRT-CRRDED/CRKD/DSTRTD",
         "description": "Skirt; Corroded/Cracked/Distorted"
     },
     {
-        "id": "22,333",
+        "id": "22333",
         "code": "SLEEVE-DTRTD",
         "description": "Sleeving Deteriorated"
     },
     {
-        "id": "22,334",
+        "id": "22334",
         "code": "SLEEVE-SCORED",
         "description": "Sleeve Scored"
     },
     {
-        "id": "22,335",
+        "id": "22335",
         "code": "SLND-BURN",
         "description": "Solenoid Coil Burned"
     },
     {
-        "id": "22,336",
+        "id": "22336",
         "code": "SLND-FAIL",
         "description": "Solenoid Failure"
     },
     {
-        "id": "22,337",
+        "id": "22337",
         "code": "SLND-FLTY",
         "description": "Solenoid faulty"
     },
     {
-        "id": "22,338",
+        "id": "22338",
         "code": "SLND-SHORT",
         "description": "Solenoid Coil Shorted"
     },
     {
-        "id": "22,339",
+        "id": "22339",
         "code": "SLND-VLVLOAD-FAIL",
         "description": "Solenoid Valve Loading Failed"
     },
     {
-        "id": "22,340",
+        "id": "22340",
         "code": "SLUGGING",
         "description": "Slugging"
     },
     {
-        "id": "22,341",
+        "id": "22341",
         "code": "SOLFLTR-CLGGD",
         "description": "Solution filter clogged"
     },
     {
-        "id": "22,342",
+        "id": "22342",
         "code": "SOL-OLD",
         "description": "Solution is not fresh"
     },
     {
-        "id": "22,343",
+        "id": "22343",
         "code": "SOLVLV-CLGGD",
         "description": "Solution valve clogged"
     },
     {
-        "id": "22,344",
+        "id": "22344",
         "code": "SOLVLV-NOTCONNCTD",
         "description": "Solution valve not connected"
     },
     {
-        "id": "22,345",
+        "id": "22345",
         "code": "SOLVLV-OFF",
         "description": "Solution valve turned off"
     },
     {
-        "id": "22,346",
+        "id": "22346",
         "code": "SPD-LO/HI",
         "description": "Speed too high/low"
     },
     {
-        "id": "22,347",
+        "id": "22347",
         "code": "SPDSET-HI",
         "description": "Speed setting too high"
     },
     {
-        "id": "22,348",
+        "id": "22348",
         "code": "SPINDLE-MTR-FAIL",
         "description": "Spindle motor failure"
     },
     {
-        "id": "22,349",
+        "id": "22349",
         "code": "SPOOL-HUB-WORN",
         "description": "Spool Hub Worn"
     },
     {
-        "id": "22,350",
+        "id": "22350",
         "code": "SPPLY-PRESS-LO",
         "description": "Supply Pressure Low"
     },
     {
-        "id": "22,351",
+        "id": "22351",
         "code": "SPRCKT-TEETH-BRKN",
         "description": "Sprocket Teeth Broken"
     },
     {
-        "id": "22,352",
+        "id": "22352",
         "code": "SPRG-BEND",
         "description": "Spring Bend"
     },
     {
-        "id": "22,353",
+        "id": "22353",
         "code": "SPRG-BRKN",
         "description": "Spring Broken"
     },
     {
-        "id": "22,354",
+        "id": "22354",
         "code": "SPRG-DMG",
         "description": "Spring Damaged"
     },
     {
-        "id": "22,355",
+        "id": "22355",
         "code": "SPRG-FAIL",
         "description": "Spring Failure"
     },
     {
-        "id": "22,356",
+        "id": "22356",
         "code": "SPRG-PSTNRTRN-WEAK",
         "description": "Spring Piston Return Weak"
     },
     {
-        "id": "22,357",
+        "id": "22357",
         "code": "SPRG-SOFT",
         "description": "Spring Soft"
     },
     {
-        "id": "22,358",
+        "id": "22358",
         "code": "SPRG-TNSN-FLTY",
         "description": "Spring Tension Faulty"
     },
     {
-        "id": "22,359",
+        "id": "22359",
         "code": "SPRG-TNSN-WEAK",
         "description": "Spring Tension Weak"
     },
     {
-        "id": "22,360",
+        "id": "22360",
         "code": "SPRG-VLV-WEAK",
         "description": "Spring Valve Weak"
     },
     {
-        "id": "22,361",
+        "id": "22361",
         "code": "SPRG-WEAK",
         "description": "Spring Weak"
     },
     {
-        "id": "22,362",
+        "id": "22362",
         "code": "SPRG-WEAKFATGD",
         "description": "Spring Weak/Fatigued"
     },
     {
-        "id": "22,363",
+        "id": "22363",
         "code": "SPRG-WORN",
         "description": "Spring Worn"
     },
     {
-        "id": "22,364",
+        "id": "22364",
         "code": "SPRS-FAIL",
         "description": "Suppressor/Diode failure"
     },
     {
-        "id": "22,365",
+        "id": "22365",
         "code": "SPRT-CRKD",
         "description": "Support Cracked"
     },
     {
-        "id": "22,366",
+        "id": "22366",
         "code": "SQGEEBLD-LOOSE",
         "description": "Squeegee blades loose"
     },
     {
-        "id": "22,367",
+        "id": "22367",
         "code": "SQGEEBLD-WORN/CRKD",
         "description": "Squeegee blades worn/cracked"
     },
     {
-        "id": "22,368",
+        "id": "22368",
         "code": "SQGEE-OOADJ",
         "description": "Squeegee out of ajustment"
     },
     {
-        "id": "22,369",
+        "id": "22369",
         "code": "STD-BAD",
         "description": "Standard is bad"
     },
     {
-        "id": "22,370",
+        "id": "22370",
         "code": "STEM-BENT",
         "description": "Stem Bent"
     },
     {
-        "id": "22,371",
+        "id": "22371",
         "code": "STEM-CRRDED",
         "description": "Stem Corroded"
     },
     {
-        "id": "22,372",
+        "id": "22372",
         "code": "STEM-SEIZED",
         "description": "Stem Seized"
     },
     {
-        "id": "22,373",
+        "id": "22373",
         "code": "STEM-WORN",
         "description": "Stem Worn"
     },
     {
-        "id": "22,374",
+        "id": "22374",
         "code": "STEPPR-MTR-FAIL",
         "description": "Stepper motor failure"
     },
     {
-        "id": "22,375",
+        "id": "22375",
         "code": "STFBOX-XSWEAR",
         "description": "Stuffing Box Excessive Wear"
     },
     {
-        "id": "22,376",
+        "id": "22376",
         "code": "STICTION",
         "description": "Stiction (stick and friction)"
     },
     {
-        "id": "22,377",
+        "id": "22377",
         "code": "STM-FLW-BAD",
         "description": "Steam Flow Incorrect"
     },
     {
-        "id": "22,378",
+        "id": "22378",
         "code": "STRCT-BCKLBENT",
         "description": "Structure Buckled/Bent"
     },
     {
-        "id": "22,379",
+        "id": "22379",
         "code": "STRCT-CRKG",
         "description": "Structure Cracking"
     },
     {
-        "id": "22,380",
+        "id": "22380",
         "code": "STRCT-CRRDED",
         "description": "Structure Corroded"
     },
     {
-        "id": "22,381",
+        "id": "22381",
         "code": "STRCT-LOOSE",
         "description": "Structure Loose"
     },
     {
-        "id": "22,382",
+        "id": "22382",
         "code": "STRCT-SAG",
         "description": "Structure Sagging"
     },
     {
-        "id": "22,383",
+        "id": "22383",
         "code": "STRTR-CNTCT-WORN",
         "description": "Starter Contacts Worn"
     },
     {
-        "id": "22,384",
+        "id": "22384",
         "code": "STRTR-DSC-MCHINT-WRN",
         "description": "Starter Disconnect Mechanical Interlock Worn"
     },
     {
-        "id": "22,385",
+        "id": "22385",
         "code": "STRTR-LOOSE",
         "description": "Starter Loose"
     },
     {
-        "id": "22,386",
+        "id": "22386",
         "code": "STRTR-OVRHEAT",
         "description": "Starter Overheat"
     },
     {
-        "id": "22,387",
+        "id": "22387",
         "code": "STTR-DIRTYCNTMNTD",
         "description": "Stator Dirty Or Contaminated"
     },
     {
-        "id": "22,388",
+        "id": "22388",
         "code": "STTR-GND",
         "description": "Stator Grounded"
     },
     {
-        "id": "22,389",
+        "id": "22389",
         "code": "STTR-LAM-LOOSE",
         "description": "Stator Laminations Loose"
     },
     {
-        "id": "22,390",
+        "id": "22390",
         "code": "STTR-OPN",
         "description": "Stator Open"
     },
     {
-        "id": "22,391",
+        "id": "22391",
         "code": "STTR-OVRLOAD",
         "description": "Stator Overload"
     },
     {
-        "id": "22,392",
+        "id": "22392",
         "code": "STTR-SCORED",
         "description": "Stator Scored"
     },
     {
-        "id": "22,393",
+        "id": "22393",
         "code": "STTR-SHORT",
         "description": "Stator Shorted"
     },
     {
-        "id": "22,394",
+        "id": "22394",
         "code": "STTR-T2T-SHORT",
         "description": "Stator Turn To Turn Shorts"
     },
     {
-        "id": "22,395",
+        "id": "22395",
         "code": "SUCTN-FLTR-BLCKD",
         "description": "Suction filter blocked"
     },
     {
-        "id": "22,396",
+        "id": "22396",
         "code": "SUCTN-FLTR-BLOCKD",
         "description": "Suction filter blocked"
     },
     {
-        "id": "22,397",
+        "id": "22397",
         "code": "SUCTN-LINE-CLOG",
         "description": "Suction Line Clogged"
     },
     {
-        "id": "22,398",
+        "id": "22398",
         "code": "SWI-BURN",
         "description": "Switch Burned"
     },
     {
-        "id": "22,399",
+        "id": "22399",
         "code": "SWI-CRRDED",
         "description": "Switch Corroded"
     },
     {
-        "id": "22,400",
+        "id": "22400",
         "code": "SWI-DIRTY",
         "description": "Switch Dirty"
     },
     {
-        "id": "22,401",
+        "id": "22401",
         "code": "SWI-FLTY",
         "description": "Switch faulty"
     },
     {
-        "id": "22,402",
+        "id": "22402",
         "code": "SWIGEAR-BRKN",
         "description": "Switchgear Broken"
     },
     {
-        "id": "22,403",
+        "id": "22403",
         "code": "SWIGEAR-BURN",
         "description": "Switchgear Burned"
     },
     {
-        "id": "22,404",
+        "id": "22404",
         "code": "SWIGEAR-SEIZED",
         "description": "Switchgear Seized"
     },
     {
-        "id": "22,405",
+        "id": "22405",
         "code": "SWIGEAR-TXSTR",
         "description": "Switching Transistor"
     },
     {
-        "id": "22,406",
+        "id": "22406",
         "code": "SWI-OVRHEAT",
         "description": "Switch Overheat"
     },
     {
-        "id": "22,407",
+        "id": "22407",
         "code": "SWI-STICKY",
         "description": "Switch Sticky"
     },
     {
-        "id": "22,408",
+        "id": "22408",
         "code": "SWI-STUCK",
         "description": "Switch Stuck"
     },
     {
-        "id": "22,409",
+        "id": "22409",
         "code": "SYS-OVRPRESS",
         "description": "System over pressure"
     },
     {
-        "id": "22,410",
+        "id": "22410",
         "code": "TCPL-MTRWIND-FLTY",
         "description": "RTD and Thermocouple Indication Motor Windings Faulty"
     },
     {
-        "id": "22,411",
+        "id": "22411",
         "code": "TEMP",
         "description": "Temperature"
     },
     {
-        "id": "22,412",
+        "id": "22412",
         "code": "TEMP-SENS-FLTY",
         "description": "Faulty temperature sensor"
     },
     {
-        "id": "22,413",
+        "id": "22413",
         "code": "TERM-CRRDED",
         "description": "Terminals Corroded"
     },
     {
-        "id": "22,414",
+        "id": "22414",
         "code": "TERM-LOOSE/BRKN",
         "description": "Terminals Loose/Broken"
     },
     {
-        "id": "22,415",
+        "id": "22415",
         "code": "THRML-CYCLG",
         "description": "Thermal cycling"
     },
     {
-        "id": "22,416",
+        "id": "22416",
         "code": "THRTBSH-ERDD",
         "description": "Throat Bushing Eroded"
     },
     {
-        "id": "22,417",
+        "id": "22417",
         "code": "THRTBSH-WORN",
         "description": "Throat Bushing Worn"
     },
     {
-        "id": "22,418",
+        "id": "22418",
         "code": "TIM-SWI-FAIL",
         "description": "Timer switch faulty"
     },
     {
-        "id": "22,419",
+        "id": "22419",
         "code": "TMGGEAR-BRKN",
         "description": "Timing Gears Broken"
     },
     {
-        "id": "22,420",
+        "id": "22420",
         "code": "TMPCTRL-SWI-FLTY",
         "description": "Temperature Control Switch Faulty"
     },
     {
-        "id": "22,421",
+        "id": "22421",
         "code": "TMPSWI-FAIL",
         "description": "Temperature Switch Failed"
     },
     {
-        "id": "22,422",
+        "id": "22422",
         "code": "TOLRNCE-CHNG",
         "description": "Tolerances Changed"
     },
     {
-        "id": "22,423",
+        "id": "22423",
         "code": "TRAPPEDAIR-MTRL",
         "description": "Trapped air in material"
     },
     {
-        "id": "22,424",
+        "id": "22424",
         "code": "TRAPPEDAIR-OVRHT",
         "description": "Trapped air overheating"
     },
     {
-        "id": "22,425",
+        "id": "22425",
         "code": "TRB-BLD-DMG",
         "description": "Turbine Blade Damaged"
     },
     {
-        "id": "22,426",
+        "id": "22426",
         "code": "TRB-CS-LIQMIG",
         "description": "Turbine Casing, Liquid Migrated"
     },
     {
-        "id": "22,427",
+        "id": "22427",
         "code": "TRB-DFSR-CRKD",
         "description": "Turbine Diffuser Cracked"
     },
     {
-        "id": "22,428",
+        "id": "22428",
         "code": "TRCNG-FLTY",
         "description": "Tracing Faulty"
     },
     {
-        "id": "22,429",
+        "id": "22429",
         "code": "TRCNG-LEAK",
         "description": "Tracing Leaking"
     },
     {
-        "id": "22,430",
+        "id": "22430",
         "code": "TRIPCOIL-FLTY",
         "description": "Trip Coil Faulty"
     },
     {
-        "id": "22,431",
+        "id": "22431",
         "code": "TRIPSOLND-BURN",
         "description": "Trip Solenoid Burned"
     },
     {
-        "id": "22,432",
+        "id": "22432",
         "code": "TUBE-CRKD",
         "description": "Tube Cracked"
     },
     {
-        "id": "22,433",
+        "id": "22433",
         "code": "TUBE-CRRDED/ERDD",
         "description": "Tubes Corroded/Eroded"
     },
     {
-        "id": "22,434",
+        "id": "22434",
         "code": "TUBE-FOUL",
         "description": "Tubes Fouled"
     },
     {
-        "id": "22,435",
+        "id": "22435",
         "code": "TUBE-LEAK",
         "description": "Tubes Leaking"
     },
     {
-        "id": "22,436",
+        "id": "22436",
         "code": "TUBE-LOOSE",
         "description": "Tubing Loose"
     },
     {
-        "id": "22,437",
+        "id": "22437",
         "code": "TUBE-LOOSE/CRKD",
         "description": "Tubing Loose / Cracked"
     },
     {
-        "id": "22,438",
+        "id": "22438",
         "code": "TUBE-PLGGD",
         "description": "Tubes Plugged"
     },
     {
-        "id": "22,439",
+        "id": "22439",
         "code": "TXDCR-OOCALBRTN",
         "description": "Transducer Out Of Calibration"
     },
     {
-        "id": "22,440",
+        "id": "22440",
         "code": "TXDCR-OVRHEAT",
         "description": "Transducer Overheat"
     },
     {
-        "id": "22,441",
+        "id": "22441",
         "code": "TXFMR-DFCT",
         "description": "Defective transformer"
     },
     {
-        "id": "22,442",
+        "id": "22442",
         "code": "TXFMR-NOTEFFCNT",
         "description": "Transformer Not Efficient"
     },
     {
-        "id": "22,443",
+        "id": "22443",
         "code": "TXFMR-OIL-LEAK",
         "description": "Transformer Oil Leaks"
     },
     {
-        "id": "22,444",
+        "id": "22444",
         "code": "TXFMR-OVRHEAT",
         "description": "Transformer Overheat"
     },
     {
-        "id": "22,445",
+        "id": "22445",
         "code": "TXFMR-SHORT",
         "description": "Transformer Shorted"
     },
     {
-        "id": "22,446",
+        "id": "22446",
         "code": "TXFRSWI-FAIL",
         "description": "Transfer Switch Failure"
     },
     {
-        "id": "22,447",
+        "id": "22447",
         "code": "UH-BLGBKLDFRM",
         "description": "Upper Head; Bulged/Buckled/Deformed"
     },
     {
-        "id": "22,448",
+        "id": "22448",
         "code": "UH-CRKD/BLSTD",
         "description": "Upper Head; Cracked/Blistered"
     },
     {
-        "id": "22,449",
+        "id": "22449",
         "code": "UH-EXTCRRDED",
         "description": "Upper Head; Exterior Corroded (Cui)"
     },
     {
-        "id": "22,450",
+        "id": "22450",
         "code": "UH-INTCRRDED",
         "description": "Upper Head; Interior Corroded"
     },
     {
-        "id": "22,451",
+        "id": "22451",
         "code": "UH-LAMDFCT",
         "description": "Upper Head; Laminations/Defects"
     },
     {
-        "id": "22,452",
+        "id": "22452",
         "code": "UH-MECH-DMGDNT",
         "description": "Upper Head; Mechanical Damage/Dented"
     },
     {
-        "id": "22,453",
+        "id": "22453",
         "code": "ULDR-STK",
         "description": "Unloader Sticking"
     },
     {
-        "id": "22,454",
+        "id": "22454",
         "code": "UNDRCHGE",
         "description": "Undercharging"
     },
     {
-        "id": "22,455",
+        "id": "22455",
         "code": "UNDRSZD-ACT",
         "description": "Undersized actuators"
     },
     {
-        "id": "22,456",
+        "id": "22456",
         "code": "UNDRSZD-FLTR",
         "description": "Undersized filter"
     },
     {
-        "id": "22,457",
+        "id": "22457",
         "code": "UNDRSZD-VLV",
         "description": "Undersized valve"
     },
     {
-        "id": "22,458",
+        "id": "22458",
         "code": "UNEVEN-MOLDTEMP",
         "description": "Uneven Mold temperatures"
     },
     {
-        "id": "22,459",
+        "id": "22459",
         "code": "UNEVEN-WORK-PLATFORM",
         "description": "Uneven working platform"
     },
     {
-        "id": "22,460",
+        "id": "22460",
         "code": "USE-EXCS",
         "description": "Excessive use"
     },
     {
-        "id": "22,461",
+        "id": "22461",
         "code": "USE-IMPROP",
         "description": "Improper use"
     },
     {
-        "id": "22,462",
+        "id": "22462",
         "code": "USR-ERR",
         "description": "User error"
     },
     {
-        "id": "22,463",
+        "id": "22463",
         "code": "VACMFAN-FAIL",
         "description": "Vacuum fan failure"
     },
     {
-        "id": "22,464",
+        "id": "22464",
         "code": "VACMFAN-OFF",
         "description": "Vacuum fan off"
     },
     {
-        "id": "22,465",
+        "id": "22465",
         "code": "VACMHOSE- NOTON",
         "description": "Vacuum hose not attached"
     },
     {
-        "id": "22,466",
+        "id": "22466",
         "code": "VACMHOSE-BLCKD",
         "description": "Vacuum hose blocked"
     },
     {
-        "id": "22,467",
+        "id": "22467",
         "code": "VACMHOSE-CRKD",
         "description": "Vacuum hose cracked"
     },
     {
-        "id": "22,468",
+        "id": "22468",
         "code": "VACMHOSE-DMG",
         "description": "Vacuum hose damaged"
     },
     {
-        "id": "22,469",
+        "id": "22469",
         "code": "VACMLID-GSKT-WORN/CRKD",
         "description": "Vacuum lid gasket worn/cracked"
     },
     {
-        "id": "22,470",
+        "id": "22470",
         "code": "VACMMTR-MOUNT",
         "description": "Vacuum motor not mounted correctly"
     },
     {
-        "id": "22,471",
+        "id": "22471",
         "code": "VACMMTR-NOTRUN",
         "description": "Vacuum motor not running"
     },
     {
-        "id": "22,472",
+        "id": "22472",
         "code": "VACMMTR-WORN",
         "description": "Vacuum motor worn out"
     },
     {
-        "id": "22,473",
+        "id": "22473",
         "code": "VACM-PUMPOIL-CNTMNTD",
         "description": "Vacuum pump oil contaminated"
     },
     {
-        "id": "22,474",
+        "id": "22474",
         "code": "VANDALISM",
         "description": "Vandalism"
     },
     {
-        "id": "22,475",
+        "id": "22475",
         "code": "VBELT-WRN/CRKD",
         "description": "V-Belts Worn/Cracked"
     },
     {
-        "id": "22,476",
+        "id": "22476",
         "code": "VIBRTN",
         "description": "Vibration High"
     },
     {
-        "id": "22,477",
+        "id": "22477",
         "code": "VIRUS",
         "description": "Virus"
     },
     {
-        "id": "22,478",
+        "id": "22478",
         "code": "VLV-BALL-ERDD",
         "description": "Valve Ball Eroded"
     },
     {
-        "id": "22,479",
+        "id": "22479",
         "code": "VLV-BALL-FOUL",
         "description": "Valve Ball Fouled"
     },
     {
-        "id": "22,480",
+        "id": "22480",
         "code": "VLV-BALL-SCORE",
         "description": "Valve Ball Scored"
     },
     {
-        "id": "22,481",
+        "id": "22481",
         "code": "VLV-BDY-CRRDED",
         "description": "Valve Body Corroded"
     },
     {
-        "id": "22,482",
+        "id": "22482",
         "code": "VLV-BDY-DMG",
         "description": "Valve Body Damaged"
     },
     {
-        "id": "22,483",
+        "id": "22483",
         "code": "VLV-BRKN",
         "description": "Valve Broken"
     },
     {
-        "id": "22,484",
+        "id": "22484",
         "code": "VLV-CAPGSKT-LK",
         "description": "Valve Cap Gasket Leak"
     },
     {
-        "id": "22,485",
+        "id": "22485",
         "code": "VLV-DSCHG-LK",
         "description": "Valve Discharge Leaks"
     },
     {
-        "id": "22,486",
+        "id": "22486",
         "code": "VLV-FAIL",
         "description": "Valve Failed"
     },
     {
-        "id": "22,487",
+        "id": "22487",
         "code": "VLV-FAILTOOP",
         "description": "Valve Failed To Operate"
     },
     {
-        "id": "22,488",
+        "id": "22488",
         "code": "VLV-FOUL",
         "description": "Valve Fouled"
     },
     {
-        "id": "22,489",
+        "id": "22489",
         "code": "VLV-GSKT-LK",
         "description": "Valve Gaskets Leaks"
     },
     {
-        "id": "22,490",
+        "id": "22490",
         "code": "VLV-HYD-MUFOUL",
         "description": "Valve Hydraulic Makeup Fouled"
     },
     {
-        "id": "22,491",
+        "id": "22491",
         "code": "VLV-HYD-MUSCORE",
         "description": "Valve Hydraulic Makeup Scored"
     },
     {
-        "id": "22,492",
+        "id": "22492",
         "code": "VLV-INSL-DMGMISS",
         "description": "Valve Insulation Damaged/Missing"
     },
     {
-        "id": "22,493",
+        "id": "22493",
         "code": "VLV-LEAK",
         "description": "Valve Leaking"
     },
     {
-        "id": "22,494",
+        "id": "22494",
         "code": "VLV-LVR-OPNWEEP",
         "description": "Valve Lever - Open Position (Weeping)"
     },
     {
-        "id": "22,495",
+        "id": "22495",
         "code": "VLV-NORESEAT",
         "description": "Valve Not Reseating"
     },
     {
-        "id": "22,496",
+        "id": "22496",
         "code": "VLV-OOCALBRTN",
         "description": "Valve - Out Of Calibration"
     },
     {
-        "id": "22,497",
+        "id": "22497",
         "code": "VLV-PASS",
         "description": "Valve Passing"
     },
     {
-        "id": "22,498",
+        "id": "22498",
         "code": "VLV-PASSWEEP",
         "description": "Valve Passing/Weeping"
     },
     {
-        "id": "22,499",
+        "id": "22499",
         "code": "VLV-PIP-PLGGD/RSTRCTD",
         "description": "Valve Piping - Plugged/Restricted"
     },
     {
-        "id": "22,500",
+        "id": "22500",
         "code": "VLV-PLGGD",
         "description": "Valve Plugged"
     },
     {
-        "id": "22,501",
+        "id": "22501",
         "code": "VLV-PLT-BRKN/WRN",
         "description": "Valve Plate Broken/Worn"
     },
     {
-        "id": "22,502",
+        "id": "22502",
         "code": "VLV-PLT-SCORED",
         "description": "Valve Plate Scored"
     },
     {
-        "id": "22,503",
+        "id": "22503",
         "code": "VLV-PRESSSET-SCRWFLTY",
         "description": "Valve Pressure Set Screw Faulty"
     },
     {
-        "id": "22,504",
+        "id": "22504",
         "code": "VLV-RSTRCTD-FLW",
         "description": "Valve Restricted Flow (Choking)"
     },
     {
-        "id": "22,505",
+        "id": "22505",
         "code": "VLV-SCORE",
         "description": "Valve Scored"
     },
     {
-        "id": "22,506",
+        "id": "22506",
         "code": "VLV-SEAL-LEAK",
         "description": "Valve Seal - Leaking"
     },
     {
-        "id": "22,507",
+        "id": "22507",
         "code": "VLV-SEAT-ERDD",
         "description": "Valve Seat Eroded"
     },
     {
-        "id": "22,508",
+        "id": "22508",
         "code": "VLV-SEAT-FOUL",
         "description": "Valve Seat Fouled"
     },
     {
-        "id": "22,509",
+        "id": "22509",
         "code": "VLV-SEAT-SCORE",
         "description": "Valve Seat Scored"
     },
     {
-        "id": "22,510",
+        "id": "22510",
         "code": "VLV-SEAT-WORN",
         "description": "Valve Seat Worn"
     },
     {
-        "id": "22,511",
+        "id": "22511",
         "code": "VLV-SEIZED",
         "description": "Valve Seized"
     },
     {
-        "id": "22,512",
+        "id": "22512",
         "code": "VLV-STEM-STK",
         "description": "Valve Stem Stuck"
     },
     {
-        "id": "22,513",
+        "id": "22513",
         "code": "VLV-STK",
         "description": "Valve Sticking"
     },
     {
-        "id": "22,514",
+        "id": "22514",
         "code": "VLV-SUCTN-LEAK",
         "description": "Valve Suction Leaks"
     },
     {
-        "id": "22,515",
+        "id": "22515",
         "code": "VOLT-ERRTC",
         "description": "Voltage erratic"
     },
     {
-        "id": "22,516",
+        "id": "22516",
         "code": "VOLT-HI",
         "description": "Too much voltage"
     },
     {
-        "id": "22,517",
+        "id": "22517",
         "code": "VOLT-LO",
         "description": "Low voltage"
     },
     {
-        "id": "22,518",
+        "id": "22518",
         "code": "VOLT-OOSPEC",
         "description": "Supply voltage out of spec"
     },
     {
-        "id": "22,519",
+        "id": "22519",
         "code": "VOLT-SRC-BAD",
         "description": "Voltage Source Wrong"
     },
     {
-        "id": "22,520",
+        "id": "22520",
         "code": "VOLT-WRNG",
         "description": "Wrong voltage"
     },
     {
-        "id": "22,521",
+        "id": "22521",
         "code": "VSL-OVRPRESS",
         "description": "Vessel Over-Pressured"
     },
     {
-        "id": "22,522",
+        "id": "22522",
         "code": "VSL-UNDPRESS",
         "description": "Vessel Under-Pressured"
     },
     {
-        "id": "22,523",
+        "id": "22523",
         "code": "WALL-CRRDED",
         "description": "Wall Corroded"
     },
     {
-        "id": "22,524",
+        "id": "22524",
         "code": "WALL-EROSN",
         "description": "Wall Erosion"
     },
     {
-        "id": "22,525",
+        "id": "22525",
         "code": "WALLLN-CRKG",
         "description": "Walls/Lining Cracking"
     },
     {
-        "id": "22,526",
+        "id": "22526",
         "code": "WALLLN-CRRDED/PITT",
         "description": "Walls/Lining Corroded/Pitted"
     },
     {
-        "id": "22,527",
+        "id": "22527",
         "code": "WALLLN-DIRTY/SCALE",
         "description": "Walls/Lining Dirty/Scaled"
     },
     {
-        "id": "22,528",
+        "id": "22528",
         "code": "WALLLN-DMG",
         "description": "Walls/Lining Damaged"
     },
     {
-        "id": "22,529",
+        "id": "22529",
         "code": "WALLLN-LEAK",
         "description": "Walls/Lining Leaking"
     },
     {
-        "id": "22,530",
+        "id": "22530",
         "code": "WALLTHICK-DIFFERENCES",
         "description": "Wall thickness differences"
     },
     {
-        "id": "22,531",
+        "id": "22531",
         "code": "WANDHLDG-BRCKT-BENT",
         "description": "Wand holding bracket bent"
     },
     {
-        "id": "22,532",
+        "id": "22532",
         "code": "WEARRNG-WRN",
         "description": "Wear Ring Worn"
     },
     {
-        "id": "22,533",
+        "id": "22533",
         "code": "WEIGHT-TOOMUCH",
         "description": "Too much weight"
     },
     {
-        "id": "22,534",
+        "id": "22534",
         "code": "WELD-CRKD",
         "description": "Weld Cracked"
     },
     {
-        "id": "22,535",
+        "id": "22535",
         "code": "WHEELS-BRKN",
         "description": "Broken wheels"
     },
     {
-        "id": "22,536",
+        "id": "22536",
         "code": "WIRE-BRKN",
         "description": "Wire Broken"
     },
     {
-        "id": "22,537",
+        "id": "22537",
         "code": "WIRE-BRN",
         "description": "Wiring Burned"
     },
     {
-        "id": "22,538",
+        "id": "22538",
         "code": "WIRE-CRRDED",
         "description": "Wire corroded"
     },
     {
-        "id": "22,539",
+        "id": "22539",
         "code": "WIRE-CXN-IMPRPR",
         "description": "Wiring Connections Improper"
     },
     {
-        "id": "22,540",
+        "id": "22540",
         "code": "WIRE-DMG",
         "description": "Wiring damage"
     },
     {
-        "id": "22,541",
+        "id": "22541",
         "code": "WIRE-FLT",
         "description": "Wiring Fault"
     },
     {
-        "id": "22,542",
+        "id": "22542",
         "code": "WIRE-GND",
         "description": "Wire Grounded"
     },
     {
-        "id": "22,543",
+        "id": "22543",
         "code": "WIRE-LOOSE-CXN",
         "description": "Loose Wiring Connections"
     },
     {
-        "id": "22,544",
+        "id": "22544",
         "code": "WIRE-OPN/BRKN",
         "description": "Wire Open/Broken"
     },
     {
-        "id": "22,545",
+        "id": "22545",
         "code": "WIRE-OVRHEAT",
         "description": "Wire Overheat"
     },
     {
-        "id": "22,546",
+        "id": "22546",
         "code": "WIRE-SHORT",
         "description": "Wire Shorting"
     },
     {
-        "id": "22,547",
+        "id": "22547",
         "code": "WIRE-SPRT-BAD",
         "description": "Wiring Support Inadequate"
     },
     {
-        "id": "22,548",
+        "id": "22548",
         "code": "WNDG-BURN",
         "description": "Winding Burned"
     },
     {
-        "id": "22,549",
+        "id": "22549",
         "code": "WRNG-BRSH",
         "description": "Wrong sweeping brush"
     },
     {
-        "id": "22,550",
+        "id": "22550",
         "code": "WRNG-CMMND",
         "description": "Incorrect command"
     },
     {
-        "id": "22,551",
+        "id": "22551",
         "code": "WRNG-LADDER",
         "description": "Wrong ladder for the job"
     },
     {
-        "id": "22,552",
+        "id": "22552",
         "code": "WRNG-MTRL",
         "description": "Incorrect material"
     },
     {
-        "id": "22,553",
+        "id": "22553",
         "code": "WRNG-PRG",
         "description": "Incorrect programming"
     },
     {
-        "id": "22,554",
+        "id": "22554",
         "code": "WRNG-SYS-HZD",
         "description": "Wrong system for hazard"
     },
     {
-        "id": "22,555",
+        "id": "22555",
         "code": "XHDGD-WORNDMG",
         "description": "Crosshead Guide Worn/Damaged"
     },
     {
-        "id": "22,556",
+        "id": "22556",
         "code": "XS-CNDSATE",
         "description": "Excessive Condensation/Humidity"
     },
     {
-        "id": "22,557",
+        "id": "22557",
         "code": "XS-DIRT",
         "description": "Excessive Dust/Dirt"
     },
     {
-        "id": "22,558",
+        "id": "22558",
         "code": "XS-MOIST",
         "description": "Excess moisture"
     },
     {
-        "id": "22,559",
+        "id": "22559",
         "code": "XS-WEAR",
         "description": "Excessive wear "
     },
     {
-        "id": "22,560",
+        "id": "22560",
         "code": "YOKE-BRKN",
         "description": "Yoke Broken - Lack Of Support"
     },
     {
-        "id": "22,561",
+        "id": "22561",
         "code": "ZAXIS-DRVI-LO",
         "description": "Z axis drive current too low"
     },
     {
-        "id": "22,562",
-        "code": "ZAXIS-MTRPWR-LO",
-        "description": "Z axis motor power too low"
-    },
-    {
-        "id": "",
+        "id": "22562",
         "code": "ZAXIS-MTRPWR-LO",
         "description": "Z axis motor power too low"
     }

@@ -17,11 +17,13 @@ public class Problem {
     @NonNull
     @ColumnInfo(name="id")
     private int id;
-    @SerializedName("Problem Code")
+    @SerializedName("code")
     @Expose
+    @ColumnInfo(name="code")
     private String problemCode;
-    @SerializedName("Description")
+    @SerializedName("description")
     @Expose
+    @ColumnInfo(name="description")
     private String description;
 
     public String getProblemCode() {

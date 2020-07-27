@@ -177,6 +177,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
 
         workManager.beginWith(problemRequest)
                 .then(causeRequest)
+                .then(rcaRequest)
                 .enqueue();
 
         //                .then(workOrderStatusRequest)
