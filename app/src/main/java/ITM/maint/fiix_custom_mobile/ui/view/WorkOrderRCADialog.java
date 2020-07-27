@@ -1,7 +1,9 @@
 package ITM.maint.fiix_custom_mobile.ui.view;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +18,12 @@ import ITM.maint.fiix_custom_mobile.R;
 public class WorkOrderRCADialog extends DialogFragment {
 
     public static final String TAG = "WorkOrderRCADialog";
+
+    public interface OnRCAListener {
+        void sendRCA(String category, String source, String problem, String cause, String action);
+    }
+
+    public OnRCAListener onRCAListener;
 
 
     public static WorkOrderRCADialog display(FragmentManager fragmentManager){
@@ -53,6 +61,18 @@ public class WorkOrderRCADialog extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        try {
+            onRCAListener = (OnRCAListener) getTargetFragment();
+            Log.d(TAG, "onAttach: " + onRCAListener);
+        } catch (ClassCastException e){
+            Log.d(TAG, "onAttach: ClassCastException" + e.getMessage());
+        }
     }
 
 

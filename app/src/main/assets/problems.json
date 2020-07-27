@@ -1,0 +1,1572 @@
+[
+    {
+        "id": "22,355",
+        "code": "ACCRCY",
+        "description": "Accuracy"
+    },
+    {
+        "id": "22,356",
+        "code": "ACT-SLOW",
+        "description": "Actuator slow"
+    },
+    {
+        "id": "22,357",
+        "code": "ACT-STUCK",
+        "description": "Actuator stuck"
+    },
+    {
+        "id": "22,358",
+        "code": "AIR-FLOW",
+        "description": "Air delivery erratic"
+    },
+    {
+        "id": "22,359",
+        "code": "ALIGN",
+        "description": "Alignment"
+    },
+    {
+        "id": "22,360",
+        "code": "ALRM-FLT-FRQ",
+        "description": "Frequent fault alarm"
+    },
+    {
+        "id": "22,361",
+        "code": "AMP-HIGH",
+        "description": "Amperage high"
+    },
+    {
+        "id": "22,362",
+        "code": "APPLNCS-CONST-REPAIR",
+        "description": "Appliances need constant repair"
+    },
+    {
+        "id": "22,363",
+        "code": "ATC-ALM",
+        "description": "ATC alarm"
+    },
+    {
+        "id": "22,364",
+        "code": "AUD-WEAK",
+        "description": "Audibility weak"
+    },
+    {
+        "id": "22,365",
+        "code": "AXES-MOVEIRREGULAR",
+        "description": "Not repeatable"
+    },
+    {
+        "id": "22,366",
+        "code": "BEARNG-PEDCRKD",
+        "description": "Bearing Pedestal cracked"
+    },
+    {
+        "id": "22,367",
+        "code": "BENT",
+        "description": "Bent"
+    },
+    {
+        "id": "22,368",
+        "code": "BENT-BLADE",
+        "description": "Blade bent"
+    },
+    {
+        "id": "22,369",
+        "code": "BLCKSMOKE-ENG",
+        "description": "Black smoke from engine"
+    },
+    {
+        "id": "22,370",
+        "code": "BOILER-FAIL",
+        "description": "Boiler failure"
+    },
+    {
+        "id": "22,371",
+        "code": "BOW-LEAK",
+        "description": "Bow leaks"
+    },
+    {
+        "id": "22,372",
+        "code": "BRKN",
+        "description": "Broken"
+    },
+    {
+        "id": "22,373",
+        "code": "BRKR-FRQTRIP",
+        "description": "Breaker tripped frequently"
+    },
+    {
+        "id": "22,374",
+        "code": "BRKR-NOTTRIP",
+        "description": "Breaker does not trip"
+    },
+    {
+        "id": "22,375",
+        "code": "BRKR-TRIP",
+        "description": "Breaker trips immediately"
+    },
+    {
+        "id": "22,376",
+        "code": "BRKR-TRIP-USED",
+        "description": "Breaker trips after long periods of use"
+    },
+    {
+        "id": "22,377",
+        "code": "BRSHMTR-NOTOP",
+        "description": "Brush motor does not operate"
+    },
+    {
+        "id": "22,378",
+        "code": "BTN-DMG",
+        "description": "Button head damaged"
+    },
+    {
+        "id": "22,379",
+        "code": "BTN-FAIL",
+        "description": "Button not functioning properly"
+    },
+    {
+        "id": "22,380",
+        "code": "BTY-NOPWR",
+        "description": "Battery no power"
+    },
+    {
+        "id": "22,381",
+        "code": "BURNED",
+        "description": "Burned"
+    },
+    {
+        "id": "22,382",
+        "code": "BURNMARKS",
+        "description": "Burn marks"
+    },
+    {
+        "id": "22,383",
+        "code": "BYPASS",
+        "description": "Bypassing"
+    },
+    {
+        "id": "22,384",
+        "code": "CARVING-DIFFSHADES",
+        "description": "Carving different shades"
+    },
+    {
+        "id": "22,385",
+        "code": "CARVING-IRREGULAR",
+        "description": "Carving irregularly"
+    },
+    {
+        "id": "22,386",
+        "code": "CASE-CRKD",
+        "description": "Case cracked"
+    },
+    {
+        "id": "22,387",
+        "code": "CASE-CRRDED",
+        "description": "Casing corroded"
+    },
+    {
+        "id": "22,388",
+        "code": "CATHPROT-DMG",
+        "description": "Cathodic Protection damaged"
+    },
+    {
+        "id": "22,389",
+        "code": "CHG-ESCP",
+        "description": "Charge escape"
+    },
+    {
+        "id": "22,390",
+        "code": "CHG-LOOSING",
+        "description": "Loosing charge"
+    },
+    {
+        "id": "22,391",
+        "code": "CHK-ENG-LIGHT",
+        "description": "Check engine light on"
+    },
+    {
+        "id": "22,392",
+        "code": "CHNG-SIGOUTPT",
+        "description": "Sudden change in output signal at certain pressures"
+    },
+    {
+        "id": "22,393",
+        "code": "CHUCK-NOTCLAMP/UNCLAMP",
+        "description": "Chuck will not clamp/unclamp"
+    },
+    {
+        "id": "22,394",
+        "code": "CMPRSSR-FAIL",
+        "description": "Compressor failure"
+    },
+    {
+        "id": "22,395",
+        "code": "CNCROUTER-ERR",
+        "description": "CNC router error"
+    },
+    {
+        "id": "22,396",
+        "code": "CNTLR -ALARM",
+        "description": "Controller alarm"
+    },
+    {
+        "id": "22,397",
+        "code": "CNTLR -FAULT",
+        "description": "Controller fault"
+    },
+    {
+        "id": "22,398",
+        "code": "CNTLR-ALARM",
+        "description": "Controller fault"
+    },
+    {
+        "id": "22,399",
+        "code": "CNTLR-ERROR",
+        "description": "Controller error"
+    },
+    {
+        "id": "22,400",
+        "code": "CNTMNTD",
+        "description": "Fluid contaminated"
+    },
+    {
+        "id": "22,401",
+        "code": "COL-FLOODED",
+        "description": "Column flooded"
+    },
+    {
+        "id": "22,402",
+        "code": "COMM-ERROR",
+        "description": "Communication error"
+    },
+    {
+        "id": "22,403",
+        "code": "COMPNENT-OOSPEC",
+        "description": "Components out of spec"
+    },
+    {
+        "id": "22,404",
+        "code": "CONTRLLER-NOTRSPND",
+        "description": "Controller does not respond"
+    },
+    {
+        "id": "22,405",
+        "code": "CORRDED",
+        "description": "Corroded"
+    },
+    {
+        "id": "22,406",
+        "code": "CORRSN",
+        "description": "Corrosion"
+    },
+    {
+        "id": "22,407",
+        "code": "CPL-VIB",
+        "description": "Coupling Vibrating"
+    },
+    {
+        "id": "22,408",
+        "code": "CRKD",
+        "description": "Cracked"
+    },
+    {
+        "id": "22,409",
+        "code": "CRKD/LEAK",
+        "description": "Cracked/leaking"
+    },
+    {
+        "id": "22,410",
+        "code": "CTRL-DRIFT",
+        "description": "Control Drift"
+    },
+    {
+        "id": "22,411",
+        "code": "CTRL-ERRTC",
+        "description": "Control erratic"
+    },
+    {
+        "id": "22,412",
+        "code": "CTRL-LOSS",
+        "description": "Loss of control"
+    },
+    {
+        "id": "22,413",
+        "code": "CTRL-POOR",
+        "description": "Poor Control"
+    },
+    {
+        "id": "22,414",
+        "code": "CTRL-STICK",
+        "description": "Control sticky"
+    },
+    {
+        "id": "22,415",
+        "code": "CVTATNG",
+        "description": "Cavitating"
+    },
+    {
+        "id": "22,416",
+        "code": "CYCLING",
+        "description": "Cycling"
+    },
+    {
+        "id": "22,417",
+        "code": "DECAY-PRESSOUTPT-SIG",
+        "description": "Decaying pressure output signal over time"
+    },
+    {
+        "id": "22,418",
+        "code": "DIRTY",
+        "description": "Dirty"
+    },
+    {
+        "id": "22,419",
+        "code": "DISCOLORATION",
+        "description": "Discoloration"
+    },
+    {
+        "id": "22,420",
+        "code": "DMG",
+        "description": "Damaged"
+    },
+    {
+        "id": "22,421",
+        "code": "DOESNOTREG",
+        "description": "Does not regulate"
+    },
+    {
+        "id": "22,422",
+        "code": "DRIFT",
+        "description": "Drifting"
+    },
+    {
+        "id": "22,423",
+        "code": "DRIVER-FAIL",
+        "description": "Driver failure"
+    },
+    {
+        "id": "22,424",
+        "code": "DSTRTD",
+        "description": "Distorted"
+    },
+    {
+        "id": "22,425",
+        "code": "EFFCYLOSS",
+        "description": "Efficiency Loss"
+    },
+    {
+        "id": "22,426",
+        "code": "EMRGNCYSTOP-NOTCLR",
+        "description": "Emergency Stop will not clear"
+    },
+    {
+        "id": "22,427",
+        "code": "ENCODER-ERR",
+        "description": "Encoder error"
+    },
+    {
+        "id": "22,428",
+        "code": "ENG-STALL",
+        "description": "Engine stalling"
+    },
+    {
+        "id": "22,429",
+        "code": "EROSN",
+        "description": "Erosion"
+    },
+    {
+        "id": "22,430",
+        "code": "ERRTC",
+        "description": "Erratic"
+    },
+    {
+        "id": "22,431",
+        "code": "ERRTC-READ",
+        "description": "Erratic reading"
+    },
+    {
+        "id": "22,432",
+        "code": "EXCSSVE-WEAR",
+        "description": "Excessive wear"
+    },
+    {
+        "id": "22,433",
+        "code": "EXPLODED",
+        "description": "Exploded"
+    },
+    {
+        "id": "22,434",
+        "code": "FAILED",
+        "description": "Failed"
+    },
+    {
+        "id": "22,435",
+        "code": "FALSE-READ",
+        "description": "False readings"
+    },
+    {
+        "id": "22,436",
+        "code": "FAN-FAILED",
+        "description": "Fan failure"
+    },
+    {
+        "id": "22,437",
+        "code": "FAN-NOISY",
+        "description": "Fan noisy"
+    },
+    {
+        "id": "22,438",
+        "code": "FAN-VIBRTN",
+        "description": "Fan vibrating"
+    },
+    {
+        "id": "22,439",
+        "code": "FEED-PROBLEMS",
+        "description": "Feed problems"
+    },
+    {
+        "id": "22,440",
+        "code": "FLAPPING",
+        "description": "Flapping"
+    },
+    {
+        "id": "22,441",
+        "code": "FLASH",
+        "description": "Flash"
+    },
+    {
+        "id": "22,442",
+        "code": "FLOOD-OIL",
+        "description": "Flooded with Oil"
+    },
+    {
+        "id": "22,443",
+        "code": "FLOW-LO",
+        "description": "Flow low"
+    },
+    {
+        "id": "22,444",
+        "code": "FLTRCAKE-ERDD",
+        "description": "Filter cake eroded"
+    },
+    {
+        "id": "22,445",
+        "code": "FLTR-CAPACTY-OVRWHLMD",
+        "description": "Filter capacity overwhelmed"
+    },
+    {
+        "id": "22,446",
+        "code": "FLTR-DMG",
+        "description": "Filter damaged"
+    },
+    {
+        "id": "22,447",
+        "code": "FLTR-LEAVES-WARPED",
+        "description": "Filter leaves warped"
+    },
+    {
+        "id": "22,448",
+        "code": "FLW-MARKS",
+        "description": "Flow marks"
+    },
+    {
+        "id": "22,449",
+        "code": "FLW-RESTRICT",
+        "description": "Produce flow restriction"
+    },
+    {
+        "id": "22,450",
+        "code": "FNDTN-CRKG",
+        "description": "Foundation cracking"
+    },
+    {
+        "id": "22,451",
+        "code": "FRAME-BENT",
+        "description": "Frame bent"
+    },
+    {
+        "id": "22,452",
+        "code": "FRAME-BRKE",
+        "description": "Frame broke"
+    },
+    {
+        "id": "22,453",
+        "code": "FROZEN",
+        "description": "Frozen"
+    },
+    {
+        "id": "22,454",
+        "code": "GGE-FLTY",
+        "description": "Gauge faulty"
+    },
+    {
+        "id": "22,455",
+        "code": "GREYSMOKE-ENG",
+        "description": "Grey smoke from engine"
+    },
+    {
+        "id": "22,456",
+        "code": "GRID-BRKN",
+        "description": "Grid broken"
+    },
+    {
+        "id": "22,457",
+        "code": "GRID-SEIZED",
+        "description": "Grid seized"
+    },
+    {
+        "id": "22,458",
+        "code": "GRND-FLT",
+        "description": "Ground Fault"
+    },
+    {
+        "id": "22,459",
+        "code": "HD-DMG",
+        "description": "Head damaged"
+    },
+    {
+        "id": "22,460",
+        "code": "HEAT-LOSING",
+        "description": "Losing heat"
+    },
+    {
+        "id": "22,461",
+        "code": "HI-PRESS",
+        "description": "High pressure"
+    },
+    {
+        "id": "22,462",
+        "code": "HI-PWR-DEMAND",
+        "description": "High power demand"
+    },
+    {
+        "id": "22,463",
+        "code": "HOOKS-BENT",
+        "description": "Bent or damaged hooks"
+    },
+    {
+        "id": "22,464",
+        "code": "HOTSPOT",
+        "description": "Hot spot"
+    },
+    {
+        "id": "22,465",
+        "code": "HOUSNG-DMG",
+        "description": "Housing damaged"
+    },
+    {
+        "id": "22,466",
+        "code": "HP-HI",
+        "description": "High horsepower"
+    },
+    {
+        "id": "22,467",
+        "code": "HYDROSTATIC-LOCKUP",
+        "description": "Hydrostatic lockup"
+    },
+    {
+        "id": "22,468",
+        "code": "IMPLLR-ROTATN-WRG-DIRECTN",
+        "description": "Impeller rotation wrong direction"
+    },
+    {
+        "id": "22,469",
+        "code": "INCOMPLETE-MIX",
+        "description": "Incomplete mixing"
+    },
+    {
+        "id": "22,470",
+        "code": "INDICATN-DRIFT",
+        "description": "Indication Drift"
+    },
+    {
+        "id": "22,471",
+        "code": "INDICATN-ERRTC",
+        "description": "Indication erratic"
+    },
+    {
+        "id": "22,472",
+        "code": "INLN-NOCHNG-ELCTRDE-CAL",
+        "description": "Inline readings do not change but electrode will calibrate"
+    },
+    {
+        "id": "22,473",
+        "code": "INSL-CRKD",
+        "description": "Insulation cracked"
+    },
+    {
+        "id": "22,474",
+        "code": "IOSHFT-LEAK",
+        "description": "Input/Output Shaft leaking"
+    },
+    {
+        "id": "22,475",
+        "code": "JETTING",
+        "description": "Jetting"
+    },
+    {
+        "id": "22,476",
+        "code": "KNOCKING",
+        "description": "Knocking"
+    },
+    {
+        "id": "22,477",
+        "code": "LADDER-SLIP",
+        "description": "Ladder slipped"
+    },
+    {
+        "id": "22,478",
+        "code": "LARGECHNG-ZEROREAD",
+        "description": "Large change in zero offset reading"
+    },
+    {
+        "id": "22,479",
+        "code": "LEAK-AIR",
+        "description": "Leaks air"
+    },
+    {
+        "id": "22,480",
+        "code": "LEAK-CLNT",
+        "description": "Leaks Coolant"
+    },
+    {
+        "id": "22,481",
+        "code": "LEAK-EXT",
+        "description": "Leaking externally"
+    },
+    {
+        "id": "22,482",
+        "code": "LEAK-INT",
+        "description": "Leaking internally"
+    },
+    {
+        "id": "22,483",
+        "code": "LEAK-MECHSEAL",
+        "description": "Mechanical seal leaking"
+    },
+    {
+        "id": "22,484",
+        "code": "LEAK-OIL",
+        "description": "Leaks oil"
+    },
+    {
+        "id": "22,485",
+        "code": "LEAK-OILGRS",
+        "description": "Leaking Oil/grease"
+    },
+    {
+        "id": "22,486",
+        "code": "LEAK-PCKING",
+        "description": "Packing leaking"
+    },
+    {
+        "id": "22,487",
+        "code": "LEAK-PRDCT",
+        "description": "Leaks Product"
+    },
+    {
+        "id": "22,488",
+        "code": "LEAK-PRESSPORT",
+        "description": "Leaking from the pressure port"
+    },
+    {
+        "id": "22,489",
+        "code": "LEAK-TUBE",
+        "description": "Tubes leaking"
+    },
+    {
+        "id": "22,490",
+        "code": "LIQ-HAMMER",
+        "description": "Liquid hammer"
+    },
+    {
+        "id": "22,491",
+        "code": "LO-EVAP-PRESS",
+        "description": "Low evaporator pressure"
+    },
+    {
+        "id": "22,492",
+        "code": "LO-FILTR-RATE",
+        "description": "Low filtration rate"
+    },
+    {
+        "id": "22,493",
+        "code": "LO-FLOW",
+        "description": "Low Flow"
+    },
+    {
+        "id": "22,494",
+        "code": "LOOSE",
+        "description": "Loose"
+    },
+    {
+        "id": "22,495",
+        "code": "LOPERF/PRESSFLW",
+        "description": "Low performance, Pressure / flow"
+    },
+    {
+        "id": "22,496",
+        "code": "LO-PWR",
+        "description": "Low machine power"
+    },
+    {
+        "id": "22,497",
+        "code": "LOPWR-OUTPT",
+        "description": "Power Output low"
+    },
+    {
+        "id": "22,498",
+        "code": "LO-PWR-OUTPT",
+        "description": "Low power output"
+    },
+    {
+        "id": "22,499",
+        "code": "LOSS",
+        "description": "Loss"
+    },
+    {
+        "id": "22,500",
+        "code": "LOSS-MOTDRV",
+        "description": "Motive Drive loss"
+    },
+    {
+        "id": "22,501",
+        "code": "LOSS-PRESS",
+        "description": "Loss of pressure"
+    },
+    {
+        "id": "22,502",
+        "code": "LOSS-SIGOUTPT",
+        "description": "Complete loss of output signal"
+    },
+    {
+        "id": "22,503",
+        "code": "LT-STCK-OFF",
+        "description": "Light not turning on"
+    },
+    {
+        "id": "22,504",
+        "code": "LT-STCK-ON",
+        "description": "Light not turning off"
+    },
+    {
+        "id": "22,505",
+        "code": "LVL-LO",
+        "description": "Level low"
+    },
+    {
+        "id": "22,506",
+        "code": "MACHINE-CHATTER",
+        "description": "Machine chatter"
+    },
+    {
+        "id": "22,507",
+        "code": "MACHINE-OVRSPD",
+        "description": "Machine overspeed"
+    },
+    {
+        "id": "22,508",
+        "code": "MCHNE-NOTMOVE",
+        "description": "Machine does not move"
+    },
+    {
+        "id": "22,509",
+        "code": "MECHDMG",
+        "description": "Mechanically damaged"
+    },
+    {
+        "id": "22,510",
+        "code": "MISFIRING",
+        "description": "Misfiring"
+    },
+    {
+        "id": "22,511",
+        "code": "MISINDICATG",
+        "description": "Misindicating"
+    },
+    {
+        "id": "22,512",
+        "code": "MTR -NOTRESPNDNG",
+        "description": "Motor not responding"
+    },
+    {
+        "id": "22,513",
+        "code": "MTRL-SLIDING",
+        "description": "Material sliding"
+    },
+    {
+        "id": "22,514",
+        "code": "MTRL-STICKING",
+        "description": "Material sticking"
+    },
+    {
+        "id": "22,515",
+        "code": "MTR-NOT ENGAGE/REENGAGE",
+        "description": "Motor will not engage/re-engage"
+    },
+    {
+        "id": "22,516",
+        "code": "MTR-STALL",
+        "description": "Motor stalling"
+    },
+    {
+        "id": "22,517",
+        "code": "MVE-TIMEOUTFLT",
+        "description": "Move timeout fault"
+    },
+    {
+        "id": "22,518",
+        "code": "NOCONTACT",
+        "description": "No contact"
+    },
+    {
+        "id": "22,519",
+        "code": "NOCTRL",
+        "description": "No control"
+    },
+    {
+        "id": "22,520",
+        "code": "NO-DC-OUTPT",
+        "description": "No DC output"
+    },
+    {
+        "id": "22,521",
+        "code": "NODISPLAY",
+        "description": "No Display"
+    },
+    {
+        "id": "22,522",
+        "code": "NOFLW",
+        "description": "No flow"
+    },
+    {
+        "id": "22,523",
+        "code": "NOFUNCTION",
+        "description": "Not functional"
+    },
+    {
+        "id": "22,524",
+        "code": "NOHEAT",
+        "description": "No heat"
+    },
+    {
+        "id": "22,525",
+        "code": "NO-INDICATN",
+        "description": "Not indicating"
+    },
+    {
+        "id": "22,526",
+        "code": "NOISE-ABNORMAL",
+        "description": "Noise abnormal"
+    },
+    {
+        "id": "22,527",
+        "code": "NOISY",
+        "description": "Noisy"
+    },
+    {
+        "id": "22,528",
+        "code": "NOOUTPT",
+        "description": "No output"
+    },
+    {
+        "id": "22,529",
+        "code": "NOPRESS-OUTPT",
+        "description": "No pressure at output"
+    },
+    {
+        "id": "22,530",
+        "code": "NO-PWR",
+        "description": "No Power"
+    },
+    {
+        "id": "22,531",
+        "code": "NOREG",
+        "description": "No regulation"
+    },
+    {
+        "id": "22,532",
+        "code": "NOSIGNAL",
+        "description": "No Signal"
+    },
+    {
+        "id": "22,533",
+        "code": "NOSPDCTRL",
+        "description": "No speed control"
+    },
+    {
+        "id": "22,534",
+        "code": "NOSTART",
+        "description": "No start"
+    },
+    {
+        "id": "22,535",
+        "code": "NOTCOOLING",
+        "description": "Not cooling correctly"
+    },
+    {
+        "id": "22,536",
+        "code": "NOTFLTR-CORRCT",
+        "description": "Not filtering correctly"
+    },
+    {
+        "id": "22,537",
+        "code": "NOT-OP",
+        "description": "Not operating"
+    },
+    {
+        "id": "22,538",
+        "code": "NOTRANSFER",
+        "description": "No transfer"
+    },
+    {
+        "id": "22,539",
+        "code": "NOTRAPCOLPLT",
+        "description": "Not Rapping Collector Plates"
+    },
+    {
+        "id": "22,540",
+        "code": "NOT-REACH-PRESS",
+        "description": "Will not reach pressure"
+    },
+    {
+        "id": "22,541",
+        "code": "NOTSOUNDING",
+        "description": "Not sounding"
+    },
+    {
+        "id": "22,542",
+        "code": "NOTSTART-MOVE/SCAN",
+        "description": "Cannot start a move/scan"
+    },
+    {
+        "id": "22,543",
+        "code": "NOTSUCK-DIRTYWTR",
+        "description": "Not sucking dirty water up"
+    },
+    {
+        "id": "22,544",
+        "code": "NOTTURNING",
+        "description": "Not turning"
+    },
+    {
+        "id": "22,545",
+        "code": "NO-VACM",
+        "description": "Not keeping a vacuum"
+    },
+    {
+        "id": "22,546",
+        "code": "NO-WTRDOWN",
+        "description": "Not putting water down"
+    },
+    {
+        "id": "22,547",
+        "code": "OBSTRCT",
+        "description": "Obstructed"
+    },
+    {
+        "id": "22,548",
+        "code": "OFFSPEC",
+        "description": "Off specification"
+    },
+    {
+        "id": "22,549",
+        "code": "OIL-CARRYOVR",
+        "description": "Oil carried over"
+    },
+    {
+        "id": "22,550",
+        "code": "OIL-CONSUME",
+        "description": "Consumes Oil"
+    },
+    {
+        "id": "22,551",
+        "code": "OIL-LOSS",
+        "description": "Loss of oil"
+    },
+    {
+        "id": "22,552",
+        "code": "OOCALBRTN",
+        "description": "Out of calibration"
+    },
+    {
+        "id": "22,553",
+        "code": "OPNEARLY",
+        "description": "Opens early"
+    },
+    {
+        "id": "22,554",
+        "code": "OP-POOR",
+        "description": "Poor Operation"
+    },
+    {
+        "id": "22,555",
+        "code": "OP-SLUGGISH",
+        "description": "Operation sluggish"
+    },
+    {
+        "id": "22,556",
+        "code": "OUTDATED",
+        "description": "Outdated"
+    },
+    {
+        "id": "22,557",
+        "code": "OUT-POSITION",
+        "description": "Out of position"
+    },
+    {
+        "id": "22,558",
+        "code": "OUTPT",
+        "description": "Output"
+    },
+    {
+        "id": "22,559",
+        "code": "OUTPT-ERRTC",
+        "description": "Erratic output"
+    },
+    {
+        "id": "22,560",
+        "code": "OUTPT-RED",
+        "description": "Reduced output"
+    },
+    {
+        "id": "22,561",
+        "code": "OUTPTSIG-FIXVAL",
+        "description": "Output signal stays at fixed value when pressure changes"
+    },
+    {
+        "id": "22,562",
+        "code": "OUTPT-STD-DIF-SOL",
+        "description": "Output in standard is different than solution"
+    },
+    {
+        "id": "22,563",
+        "code": "OVERTRAVEL",
+        "description": "Overtravel"
+    },
+    {
+        "id": "22,564",
+        "code": "OVRHEAT",
+        "description": "Overheated"
+    },
+    {
+        "id": "22,565",
+        "code": "OVRHEAT-ELCTRNCS",
+        "description": "Overheating electronics"
+    },
+    {
+        "id": "22,566",
+        "code": "OVRHEAT-MTR",
+        "description": "Motor overheating"
+    },
+    {
+        "id": "22,567",
+        "code": "OVRHEAT-PUMP",
+        "description": "Pump overheating"
+    },
+    {
+        "id": "22,568",
+        "code": "OVRLOAD",
+        "description": "Overload"
+    },
+    {
+        "id": "22,569",
+        "code": "OVRPRESS",
+        "description": "Overpressure"
+    },
+    {
+        "id": "22,570",
+        "code": "OVRSHOOT-TGTPOS",
+        "description": "Overshoot target position"
+    },
+    {
+        "id": "22,571",
+        "code": "OVRSPD",
+        "description": "Overspeed"
+    },
+    {
+        "id": "22,572",
+        "code": "PARTS-STICKNG-MOLD",
+        "description": "Sticking of parts in the mold"
+    },
+    {
+        "id": "22,573",
+        "code": "PERF-POOR",
+        "description": "Reduced performance"
+    },
+    {
+        "id": "22,574",
+        "code": "PIN-BRKN",
+        "description": "Pin broken"
+    },
+    {
+        "id": "22,575",
+        "code": "PLGGD",
+        "description": "Plugged"
+    },
+    {
+        "id": "22,576",
+        "code": "PLUGGED",
+        "description": "Plugged"
+    },
+    {
+        "id": "22,577",
+        "code": "PMP-INTMT",
+        "description": "Intermittent pumping"
+    },
+    {
+        "id": "22,578",
+        "code": "POD-POS",
+        "description": "Holder out of position"
+    },
+    {
+        "id": "22,579",
+        "code": "POLE-LOOSE",
+        "description": "Pole loose"
+    },
+    {
+        "id": "22,580",
+        "code": "POORFUEL-ECNMY",
+        "description": "Poor fuel economy"
+    },
+    {
+        "id": "22,581",
+        "code": "POOR-POSITIONACCRCY",
+        "description": "Poor positioning accuracy"
+    },
+    {
+        "id": "22,582",
+        "code": "POOR-SWEEP",
+        "description": "Poor sweeping"
+    },
+    {
+        "id": "22,583",
+        "code": "POORWELD-LINE",
+        "description": "Poor weld line"
+    },
+    {
+        "id": "22,584",
+        "code": "PRESSDIFF-LOSS",
+        "description": "Loss of differential pressure"
+    },
+    {
+        "id": "22,585",
+        "code": "PRESS-HAMMER",
+        "description": "Pressure hammer"
+    },
+    {
+        "id": "22,586",
+        "code": "PRESS-LO",
+        "description": "Low pressure"
+    },
+    {
+        "id": "22,587",
+        "code": "PRESS-LOSS",
+        "description": "Loss of pressure/flow"
+    },
+    {
+        "id": "22,588",
+        "code": "PRTTRVL",
+        "description": "Partial travel"
+    },
+    {
+        "id": "22,589",
+        "code": "PUMP-FAIL",
+        "description": "Pump fail"
+    },
+    {
+        "id": "22,590",
+        "code": "PUMP-NOISY",
+        "description": "Noisy pump"
+    },
+    {
+        "id": "22,591",
+        "code": "PUNCT",
+        "description": "Punctured"
+    },
+    {
+        "id": "22,592",
+        "code": "PWR",
+        "description": "Power issues"
+    },
+    {
+        "id": "22,593",
+        "code": "PWR-INTMT",
+        "description": "Power Intermittent"
+    },
+    {
+        "id": "22,594",
+        "code": "PWR-LOSS",
+        "description": "Power loss"
+    },
+    {
+        "id": "22,595",
+        "code": "RED-EFFCY",
+        "description": "Reduced efficiency"
+    },
+    {
+        "id": "22,596",
+        "code": "RED-MTRLDELIVRY",
+        "description": "Reduction of material delivery"
+    },
+    {
+        "id": "22,597",
+        "code": "RES-CRRDED",
+        "description": "Reservoir corroded"
+    },
+    {
+        "id": "22,598",
+        "code": "ROUGH/RAISED-EDGE",
+        "description": "Rough/raised edges"
+    },
+    {
+        "id": "22,599",
+        "code": "ROUGH-IN-MTN",
+        "description": "Rough in motion"
+    },
+    {
+        "id": "22,600",
+        "code": "SCALE-READFLT",
+        "description": "Scale reading fault"
+    },
+    {
+        "id": "22,601",
+        "code": "SCRBBR-LEAK",
+        "description": "Scrubber leaking"
+    },
+    {
+        "id": "22,602",
+        "code": "SCRBBR-NOTRUN",
+        "description": "Scrubber not running"
+    },
+    {
+        "id": "22,603",
+        "code": "SCRBBR-NOTRUNLONG",
+        "description": "Scrubber runs for just a few minutes"
+    },
+    {
+        "id": "22,604",
+        "code": "SCREW-ENGGEMNT-FAILURE",
+        "description": "Screw Engagement failures"
+    },
+    {
+        "id": "22,605",
+        "code": "SEAL-BRKN",
+        "description": "Seal broken"
+    },
+    {
+        "id": "22,606",
+        "code": "SEAL-LEAK",
+        "description": "Seal leaking"
+    },
+    {
+        "id": "22,607",
+        "code": "SEIZED",
+        "description": "Jammed/Seized"
+    },
+    {
+        "id": "22,608",
+        "code": "SEIZED-FUNC",
+        "description": "Seized functioning"
+    },
+    {
+        "id": "22,609",
+        "code": "SHORT",
+        "description": "Shorted"
+    },
+    {
+        "id": "22,610",
+        "code": "SHORT-CCT",
+        "description": "Short circuit"
+    },
+    {
+        "id": "22,611",
+        "code": "SHORTED",
+        "description": "Shorted"
+    },
+    {
+        "id": "22,612",
+        "code": "SHORTSHOT",
+        "description": "Short shot"
+    },
+    {
+        "id": "22,613",
+        "code": "SIG-INCORRECT",
+        "description": "Incorrect signal"
+    },
+    {
+        "id": "22,614",
+        "code": "SILVER-STREAK",
+        "description": "Silver streaking"
+    },
+    {
+        "id": "22,615",
+        "code": "SINK-MARKS",
+        "description": "Sink marks"
+    },
+    {
+        "id": "22,616",
+        "code": "SLIP",
+        "description": "Slip"
+    },
+    {
+        "id": "22,617",
+        "code": "SLND-ERRTC",
+        "description": "Solenoid erratic"
+    },
+    {
+        "id": "22,618",
+        "code": "SLND-LEAK",
+        "description": "Solenoid leaking"
+    },
+    {
+        "id": "22,619",
+        "code": "SLND-LOWZ",
+        "description": "Solenoid has low impedance"
+    },
+    {
+        "id": "22,620",
+        "code": "SLND-OVRHEAT",
+        "description": "Solenoid Overheat"
+    },
+    {
+        "id": "22,621",
+        "code": "SLND-SEIZED",
+        "description": "Solenoid seized"
+    },
+    {
+        "id": "22,622",
+        "code": "SLOWRESPNSE",
+        "description": "Slow response"
+    },
+    {
+        "id": "22,623",
+        "code": "SLUGGISH",
+        "description": "Sluggish"
+    },
+    {
+        "id": "22,624",
+        "code": "SND-INTRMT",
+        "description": "Sounding intermittently"
+    },
+    {
+        "id": "22,625",
+        "code": "SPD-LO",
+        "description": "Speed low"
+    },
+    {
+        "id": "22,626",
+        "code": "SPINDLEMTR-REVERSE",
+        "description": "Spindle motor reverses"
+    },
+    {
+        "id": "22,627",
+        "code": "SPINDLENOISE-ABNORMAL",
+        "description": "Spindle noise abnormal"
+    },
+    {
+        "id": "22,628",
+        "code": "SPINDLE-STOPS",
+        "description": "Spindle stops"
+    },
+    {
+        "id": "22,629",
+        "code": "SPLIT",
+        "description": "Split"
+    },
+    {
+        "id": "22,630",
+        "code": "SQGEE-STREAKY",
+        "description": "Squeegee leaving streaks"
+    },
+    {
+        "id": "22,631",
+        "code": "STALLING",
+        "description": "Stalling"
+    },
+    {
+        "id": "22,632",
+        "code": "STARVING",
+        "description": "Starving"
+    },
+    {
+        "id": "22,633",
+        "code": "STEM-SEIZED",
+        "description": "Stem seized"
+    },
+    {
+        "id": "22,634",
+        "code": "STEP-BRKN",
+        "description": "Broken step"
+    },
+    {
+        "id": "22,635",
+        "code": "STICKING",
+        "description": "Sticking"
+    },
+    {
+        "id": "22,636",
+        "code": "STOPPED",
+        "description": "Stopped"
+    },
+    {
+        "id": "22,637",
+        "code": "STUCK-OFF",
+        "description": "Not turning off"
+    },
+    {
+        "id": "22,638",
+        "code": "STUCK-ON",
+        "description": "Not turning on"
+    },
+    {
+        "id": "22,639",
+        "code": "STUCK-OPNCLS",
+        "description": "Stuck Open/Closed"
+    },
+    {
+        "id": "22,640",
+        "code": "SURFACE-DELAMINATION",
+        "description": "Surface Delamination"
+    },
+    {
+        "id": "22,641",
+        "code": "SURGED",
+        "description": "Surged"
+    },
+    {
+        "id": "22,642",
+        "code": "SYSRESET",
+        "description": "System reset"
+    },
+    {
+        "id": "22,643",
+        "code": "TEMP-DEV",
+        "description": "Temperature deviation"
+    },
+    {
+        "id": "22,644",
+        "code": "TIMER-ERROR",
+        "description": "Does not run for selected time"
+    },
+    {
+        "id": "22,645",
+        "code": "TRIP-FREQ",
+        "description": "Tripped frequently"
+    },
+    {
+        "id": "22,646",
+        "code": "TRIPPED",
+        "description": "Tripped"
+    },
+    {
+        "id": "22,647",
+        "code": "TRUCKWHEEL-WEAR",
+        "description": "End truck wheels wear"
+    },
+    {
+        "id": "22,648",
+        "code": "TURB-STALL",
+        "description": "Turbine stall"
+    },
+    {
+        "id": "22,649",
+        "code": "UNEFFICIENT",
+        "description": "Inefficient"
+    },
+    {
+        "id": "22,650",
+        "code": "UNEVEN-MILLING",
+        "description": "Uneven milling"
+    },
+    {
+        "id": "22,651",
+        "code": "UNSERVICABLE",
+        "description": "Unserviceable"
+    },
+    {
+        "id": "22,652",
+        "code": "UNSTABLE",
+        "description": "Unstable or drifting reading"
+    },
+    {
+        "id": "22,653",
+        "code": "VACMMTR-NOTRUN",
+        "description": "Vacuum motor not running"
+    },
+    {
+        "id": "22,654",
+        "code": "VACMWAND-NOTON",
+        "description": "Vacuum wand does not come on"
+    },
+    {
+        "id": "22,655",
+        "code": "VACUUMMTR-NOISY",
+        "description": "Vacuum motor making a grinding noise"
+    },
+    {
+        "id": "22,656",
+        "code": "VAC-VOIDS",
+        "description": "Vacuum voids"
+    },
+    {
+        "id": "22,657",
+        "code": "VIBRTN",
+        "description": "Excessive vibration"
+    },
+    {
+        "id": "22,658",
+        "code": "VLV-ADJ",
+        "description": "Valve cannot be adjusted to desired setting"
+    },
+    {
+        "id": "22,659",
+        "code": "VLV-NOTHOLDPRESS",
+        "description": "Valve will not hold pressure"
+    },
+    {
+        "id": "22,660",
+        "code": "VLV-NOTMOVE",
+        "description": "Valve will not move"
+    },
+    {
+        "id": "22,661",
+        "code": "VOLT-CTRL-POOR",
+        "description": "Poor voltage control"
+    },
+    {
+        "id": "22,662",
+        "code": "WARPAGE",
+        "description": "Warpage"
+    },
+    {
+        "id": "22,663",
+        "code": "WARPING",
+        "description": "Warping"
+    },
+    {
+        "id": "22,664",
+        "code": "WIRE-DMG",
+        "description": "Damage to the Wire rope"
+    },
+    {
+        "id": "22,665",
+        "code": "WORN",
+        "description": "Worn"
+    },
+    {
+        "id": "22,666",
+        "code": "WRONG-READ",
+        "description": "Wrong reading"
+    },
+    {
+        "id": "22,667",
+        "code": "XS-DUST",
+        "description": "Excessive dusting"
+    },
+    {
+        "id": "20,225",
+        "code": "ZAXIS-OOCTRL",
+        "description": "Z axis out of control"
+    }
+]

@@ -108,4 +108,5 @@
     <string name="problem_description">Problem</string>
     <string name="update">UPDATE</string>
     <string name="cancel">CANCEL</string>
+    <string name="problem_category_hint_text">Category</string>
 </resources>

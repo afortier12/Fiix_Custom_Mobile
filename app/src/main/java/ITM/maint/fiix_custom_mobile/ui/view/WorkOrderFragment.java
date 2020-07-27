@@ -1,6 +1,5 @@
 package ITM.maint.fiix_custom_mobile.ui.view;
 
-import android.graphics.ColorMatrixColorFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,7 +14,6 @@ import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
@@ -24,9 +22,8 @@ import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderViewPagerAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
-import ITM.maint.fiix_custom_mobile.utils.Utils;
 
-public class WorkOrderFragment extends Fragment {
+public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.OnRCAListener {
 
     private static final String TAG = "WorkOrderFragment";
     private WorkOrderViewPagerAdapter adapter;
@@ -45,6 +42,10 @@ public class WorkOrderFragment extends Fragment {
     private static final int DETAIL_TAB_POSITION = 0;
     private static final int TASK_TAB_POSITION = 1;
     private int visibleTab;
+
+    private static final int RCA_FRAGMENT_REQUEST_CODE = 22;
+
+
 
 
     @Nullable
@@ -110,7 +111,8 @@ public class WorkOrderFragment extends Fragment {
             public void onClick(View v) {
                 //add code to update RCA (dialog, view model, snackbar)
                 WorkOrderRCADialog dialog = new WorkOrderRCADialog();
-                dialog.setTargetFragment(WorkOrderFragment.this, );
+                dialog.setTargetFragment(WorkOrderFragment.this, RCA_FRAGMENT_REQUEST_CODE);
+                dialog.show(getChildFragmentManager(), "RCA");
                 Log.d(TAG, "RCA clicked");
             }
         });
@@ -173,6 +175,8 @@ public class WorkOrderFragment extends Fragment {
 
     }
 
+
+
     @Override
     public void onPause() {
         super.onPause();
@@ -183,5 +187,8 @@ public class WorkOrderFragment extends Fragment {
         super.onDestroy();
     }
 
+    @Override
+    public void sendRCA(String category, String source, String problem, String cause, String action) {
 
+    }
 }

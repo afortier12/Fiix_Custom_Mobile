@@ -98,6 +98,7 @@ public class UserRepository extends BaseRepository{
             @Override
             public void onError(Throwable e) {
                 // show an error message
+                FindUserFromFiix(username);
                 Log.d(TAG, "Error finding work order from DB");
             }
 

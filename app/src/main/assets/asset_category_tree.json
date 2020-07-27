@@ -1,0 +1,349 @@
+{
+    "category": [
+        {
+            "name": "Battery",
+            "source": [
+                "Battery-Lead Acid",
+                "Battery-Lithium-ion",
+                "Battery Charger"
+            ]
+        },
+        {
+            "name": "Blower",
+            "source": [
+                "Blower-Centrifugal",
+                "Blower-Rotary Lobe "
+            ]
+        },
+        {
+            "name": "Centrifuge",
+            "source": [
+                "Centrifuge"
+            ]
+        },
+        {
+            "name": "Chiller/Heat Exchanger",
+            "source": [
+                "Chiller/Refrigeration",
+                "Heat Exchanger",
+                "Heat Exchanger - Condenser",
+                "Heat Exchanger - Cooler"
+            ]
+        },
+        {
+            "name": "CMM",
+            "source": [
+                "CMM"
+            ]
+        },
+        {
+            "name": "CNC",
+            "source": [
+                "CNC"
+            ]
+        },
+        {
+            "name": "Compressor",
+            "source": [
+                "Compressor-Centrifugal",
+                "Compressor-Reciprocating",
+                "Compressor-Rotary Screw"
+            ]
+        },
+        {
+            "name": "Conveyor",
+            "source": [
+                "Conveyor"
+            ]
+        },
+        {
+            "name": "Cooling Tower",
+            "source": [
+                "Cooling Tower"
+            ]
+        },
+        {
+            "name": "Crane",
+            "source": [
+                "Crane (Overhead /Portable/ Grid)"
+            ]
+        },
+        {
+            "name": "Dehumidifier",
+            "source": [
+                "Dehumidifier"
+            ]
+        },
+        {
+            "name": "Dryer",
+            "source": [
+                "Dryer"
+            ]
+        },
+        {
+            "name": "Electrical",
+            "source": [
+                "Accelerometer",
+                "Alarm (light/horn/buzzer)",
+                "Light",
+                "Button",
+                "Circuit Breaker",
+                "Breaker Cell",
+                "Breaker Panel",
+                "Capacitor",
+                "Controller Electronic",
+                "Control Station",
+                "Contactor/Relay",
+                "Coupling-Magnetic/Eddy Current",
+                "Detector",
+                "Electrical Wiring",
+                "Encoder",
+                "Fuse (general)",
+                "Heater - Electric",
+                "Inverter (AC/DC)",
+                "Loop - Instrument",
+                "Meter - Electronic",
+                "Motor Control Center (< 750VAC",
+                "Panel (electrical)",
+                "Power Supply",
+                "Programable Logic Controller",
+                "Rectifier",
+                "Relay Electronic",
+                "Sensor - Conductivity",
+                "Sensor - Temperature",
+                "Switch - Electric",
+                "Switch Level",
+                "Switch Temperature",
+                "Switchgear - Electric",
+                "Transducer",
+                "Transfer Switches",
+                "Transformer Control",
+                "Transformer Distribution",
+                "Uninterrupted Power Supply (UPS system)",
+                "Valve Solenoid-(subclass) Electrical",
+                "VFD (Variable Frequency Drive)",
+                "Encoder",
+                "Switch - Hydraulic",
+                "Sensor (Element)",
+                "Sensor - Pressure",
+                "Switch Flow",
+                "Valve Actuator - Electric",
+                "Sensor -Air Flow",
+                "Sensor -Air Flow",
+                "Switch - Pneumatic",
+                "Laser"
+            ]
+        },
+        {
+            "name": "Enclosure",
+            "source": [
+                "Enclosure"
+            ]
+        },
+        {
+            "name": "Facility",
+            "source": [
+                "Barriers and Railings",
+                "Extinguisher Fire",
+                "Fire Suppression System",
+                "Floor scrubber",
+                "Floor sweeper",
+                "Heater - Steam",
+                "Ladder"
+            ]
+        },
+        {
+            "name": "Fan",
+            "source": [
+                "Fan",
+                "Fan Centrifugal"
+            ]
+        },
+        {
+            "name": "Filter",
+            "source": [
+                "Precipitator - Electrostatic"
+            ]
+        },
+        {
+            "name": "Fluid",
+            "source": [
+                "Oil"
+            ]
+        },
+        {
+            "name": "Furnace",
+            "source": [
+                "Boiler-Fire-tube",
+                "Furnace",
+                "Ignitor",
+                "Temperature Regulator"
+            ]
+        },
+        {
+            "name": "Hoist",
+            "source": [
+                "Hoist"
+            ]
+        },
+        {
+            "name": "Hopper",
+            "source": [
+                "Hopper",
+                "Hopper"
+            ]
+        },
+        {
+            "name": "Humidifier",
+            "source": [
+                "Humidifier"
+            ]
+        },
+        {
+            "name": "Hydraulic",
+            "source": [
+                "Coupling-Fluid",
+                "Eductor",
+                "Ejector",
+                "Relay Hydraulic",
+                "Valve Actuator - Fluid/Hydraulic",
+                "Valve Solenoid- (subclass) Hydraulic",
+                "Element/filter unit",
+                "Actuator Cylinder Type",
+                "Actuator Diaphragm Type",
+                "Actuator Electric Motor",
+                "Actuator Damper",
+                "Gauge",
+                "Piping",
+                "Pipe - PVC",
+                "Regulator - Pressure",
+                "Tank - Storage",
+                "Valve Actuator - Manual",
+                "Valve Ball",
+                "Valve Butterfly",
+                "Valve Check",
+                "Valve Diaphragm",
+                "Valve - Flow control",
+                "Valve Gate",
+                "Valve Globe",
+                "Valve Knife",
+                "Valve Needle",
+                "Valve Plug",
+                "Valve Poppet",
+                "Valve - Pressure Control",
+                "Valve Regulator",
+                "Valve Safety/Relief",
+                "Valve Solenoid",
+                "Switch - Hydraulic",
+                "Sensor (Element)",
+                "Sensor - Pressure",
+                "Switch Flow",
+                "Valve Actuator - Electric"
+            ]
+        },
+        {
+            "name": "Injection Molder",
+            "source": [
+                "Injection Molder"
+            ]
+        },
+        {
+            "name": "Mechanical",
+            "source": [
+                "Agitator",
+                "Belt",
+                "Clutch/Brake",
+                "Coupling-Flexible",
+                "Coupling-Gear",
+                "Coupling Grid",
+                "Expansion joint",
+                "Gear Box",
+                "Louvers",
+                "Structure",
+                "Fastener/Hardware"
+            ]
+        },
+        {
+            "name": "Mixer",
+            "source": [
+                "Mixer"
+            ]
+        },
+        {
+            "name": "Motor/Pump",
+            "source": [
+                "Motor Electric",
+                "Motor-Hydraulic/Pneumatic",
+                "Motor - Stepper",
+                "Pump - Centrifugal",
+                "Pump - Centrifugal Vertical",
+                "Pump - Rotary",
+                "Pump Vacuum"
+            ]
+        },
+        {
+            "name": "Pneumatic",
+            "source": [
+                "Controller Pneumatic",
+                "Plenum (air)",
+                "Relay Pneumatic",
+                "Silencer",
+                "Vacuum evaporation and distillation",
+                "Vacuum filters",
+                "Valve Actuator - Pneumatic",
+                "Element/filter unit",
+                "Actuator Cylinder Type",
+                "Actuator Diaphragm Type",
+                "Actuator Electric Motor",
+                "Actuator Damper",
+                "Gauge",
+                "Piping",
+                "Pipe - PVC",
+                "Regulator - Pressure",
+                "Tank - Storage",
+                "Valve Actuator - Manual",
+                "Valve Ball",
+                "Valve Butterfly",
+                "Valve Check",
+                "Valve Diaphragm",
+                "Valve - Flow control",
+                "Valve Gate",
+                "Valve Globe",
+                "Valve Knife",
+                "Valve Needle",
+                "Valve Plug",
+                "Valve Poppet",
+                "Valve - Pressure Control",
+                "Valve Regulator",
+                "Valve Safety/Relief",
+                "Valve Solenoid",
+                "Sensor (Element)",
+                "Sensor - Pressure",
+                "Switch Flow",
+                "Valve Actuator - Electric",
+                "Sensor -Air Flow",
+                "Sensor -Air Flow",
+                "Switch - Pneumatic"
+            ]
+        },
+        {
+            "name": "Robot",
+            "source": [
+                "Robot"
+            ]
+        },
+        {
+            "name": "Scale",
+            "source": [
+                "Scale"
+            ]
+        },
+        {
+            "name": "Tool Changer",
+            "source": [
+                "Tool changer",
+                "Tool Pod"
+            ]
+        }
+    ]
+}

@@ -25,5 +25,6 @@ public interface IRCADao {
     Completable insertActions(List<Action> causes);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    Completable insertFailureCodeNesting(List<FailureCodeNesting> nestings);
+    Completable insertFailureCodeNesting(FailureCodeNesting nestings);
+
 }

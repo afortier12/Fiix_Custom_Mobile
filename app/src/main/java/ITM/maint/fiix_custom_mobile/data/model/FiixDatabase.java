@@ -1,8 +1,6 @@
 package ITM.maint.fiix_custom_mobile.data.model;
 
 import android.content.Context;
-import android.net.CaptivePortal;
-import android.os.AsyncTask;
 
 import androidx.annotation.NonNull;
 import androidx.room.Database;
@@ -11,15 +9,10 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import javax.inject.Inject;
-
-import ITM.maint.fiix_custom_mobile.constants.Fiix;
+import ITM.maint.fiix_custom_mobile.data.model.Converters.Converters;
 import ITM.maint.fiix_custom_mobile.data.model.dao.ILookupTablesDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IRCADao;
@@ -36,11 +29,11 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.User;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
-import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 
 @Database(entities = {Part.class, User.class, WorkOrder.class, WorkOrderTask.class,
-        Priority.class, Problem.class, Cause.class, Action.class,
-        FailureCodeNesting.class, MaintenanceType.class, WorkOrderStatus.class},version = 1)
+        Priority.class, Problem.class, Cause.class, Action.class, FailureCodeNesting.Category.class,
+        FailureCodeNesting.Source.class, FailureCodeNesting.class, MaintenanceType.class,
+        WorkOrderStatus.class},version = 1)
 @TypeConverters({Converters.class})
 public abstract class FiixDatabase extends RoomDatabase {
 

@@ -17,6 +17,12 @@ public class Cause {
     @NonNull
     @ColumnInfo(name="id")
     private int id;
+    @SerializedName("code")
+    @Expose
+    private String code;
+    @SerializedName("description")
+    @Expose
+    private String description;
 
     public int getId() {
         return id;
@@ -24,5 +30,21 @@ public class Cause {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
