@@ -39,4 +39,17 @@ public interface IWorkOrder {
         public void getWorkOrderStatusDetails();
     }
 
+    public interface IWorkOrderRCA{
+
+        public void getCategoryList();
+
+        public void getSourceList(int categoryId);
+
+        public void getProblemList(int sourceId);
+
+        public void getCauseList(int sourceId);
+
+        public void getActionList();
+    }
+
 }

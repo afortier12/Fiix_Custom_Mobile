@@ -45,4 +45,17 @@ public interface IWorkOrderRepository {
             void updateWorkOrder(WorkOrder workOrder);
         }
 
+        public interface WorkOrderRCA {
+
+            void getCategories();
+
+            void getSources(int categoryId);
+
+            void getProblems(int sourceId);
+
+            void getCauses(int sourceId);
+
+            void getActions();
+        }
+
 }

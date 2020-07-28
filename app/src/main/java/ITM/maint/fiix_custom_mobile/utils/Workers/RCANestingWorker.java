@@ -23,29 +23,30 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
-import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
 import io.reactivex.Completable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class CauseWorker extends Worker {
+public class RCANestingWorker extends Worker {
 
-    private static final String TAG = "CauseWorker";
-    private static final String RESPONSE_KEY = "Cause";
+    private static final String TAG = "RCANestingWorker";
+    private static final String RESPONSE_KEY = "RCA_NESTING";
 
-    private static final String cause_filename = "causes.json";
+    private static final String fileName = "asset_category_tree.json";
 
-    public CauseWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public RCANestingWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
     @NonNull
     @Override
     public Result doWork() {
+
         AssetManager assetManager = getApplicationContext().getAssets();
         try {
-            InputStream inputStream = assetManager.open(cause_filename);
+            InputStream inputStream = assetManager.open(fileName);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             String jsonString =bufferedReader
@@ -61,24 +62,23 @@ public class CauseWorker extends Worker {
             }
 
             Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<Cause>>() {}.getType();
-            ArrayList<Cause> causes =gson.fromJson(jsonString, listType);
+            Type listType = new TypeToken<ArrayList<FailureCodeNesting>>() {}.getType();
+            ArrayList<FailureCodeNesting> failureCodeNesting =gson.fromJson(jsonString, listType);
 
             FiixDatabase fiixDatabase = FiixDatabase.getDatabase(getApplicationContext());
             CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-            Completable completable = fiixDatabase.rcaDao().insertCauses(causes);
+            Completable completable = fiixDatabase.rcaDao().insertFailureCodeNesting(failureCodeNesting);
             DisposableCompletableObserver disposableCompletableObserver = new DisposableCompletableObserver() {
                 @Override
                 public void onComplete() {
-                    Log.d(TAG, "Causes added to DB");
+                    Log.d(TAG, "RCA nesting added to DB");
                 }
 
                 @Override
                 public void onError(Throwable e) {
-
                     Log.d(TAG, e.getMessage());
-                    Log.d(TAG, "Error adding causes to DB");
+                    Log.d(TAG, "Error adding RCA nesting to DB");
                 }
             };
             completable.subscribeOn(Schedulers.io())
@@ -91,4 +91,6 @@ public class CauseWorker extends Worker {
             return Result.failure();
         }
     }
+
+
 }

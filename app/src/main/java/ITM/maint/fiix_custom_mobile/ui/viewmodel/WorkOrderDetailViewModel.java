@@ -18,7 +18,6 @@ import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 public class WorkOrderDetailViewModel extends AndroidViewModel implements IWorkOrder.IWorkOrderDetails {
 
     private WorkOrderRepository workOrderRepository;
-    private IWorkOrderService workOrderService;
     private LiveData<List<WorkOrderTask>> workOrderTaskResponseLiveData;
     private LiveData<Double> estTimeResponseLiveData;
     private LiveData<List<MaintenanceType>> maintenanceTypeLiveData;
@@ -32,7 +31,6 @@ public class WorkOrderDetailViewModel extends AndroidViewModel implements IWorkO
 
     public void init() {
         workOrderRepository = new WorkOrderRepository(this.getApplication());
-        workOrderService = workOrderRepository.getWorkOrderService();
         workOrderTaskResponseLiveData = workOrderRepository.getWorkOrderTaskResponseMutableLiveData();
         estTimeResponseLiveData = workOrderRepository.getEstimatedTimeResponseMutableLiveData();
         maintenanceTypeLiveData = workOrderRepository.getMaintenanceTypeMutableLiveData();

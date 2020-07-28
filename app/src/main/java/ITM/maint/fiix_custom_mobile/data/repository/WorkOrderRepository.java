@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import java.io.IOException;
@@ -29,8 +30,12 @@ import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.dao.ILookupTablesDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Action;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
 import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
@@ -49,7 +54,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WorkOrderRepository extends BaseRepository implements IWorkOrderRepository.WorkOrderList, IWorkOrderRepository.WorkOrderDetail {
+public class WorkOrderRepository extends BaseRepository implements IWorkOrderRepository.WorkOrderList, IWorkOrderRepository.WorkOrderDetail, IWorkOrderRepository.WorkOrderRCA {
 
     private static int FRESH_TIMEOUT_IN_MINUTES = 3;
 
@@ -61,6 +66,13 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     private MutableLiveData<List<MaintenanceType>> maintenanceTypeMutableLiveData;
     private MutableLiveData<List<WorkOrderStatus>> workOrderStatusMutableLiveData;
     private MutableLiveData<Status> status;
+
+
+    private MutableLiveData<List<FailureCodeNesting>> failureCodeNestingMutableLiveData;
+    private MutableLiveData<List<FailureCodeNesting.Source>> sourceMutableLiveData;
+    private MutableLiveData<List<Problem>> problemMutableLiveData;
+    private MutableLiveData<List<Cause>> causeMutableLiveData;
+    private MutableLiveData<List<Action>> actionMutableLiveData;
 
     private IWorkOrderDao workOrderDao;
     private ILookupTablesDao lookupTablesDao;
@@ -83,6 +95,12 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         workOrderStatusMutableLiveData = new MutableLiveData<List<WorkOrderStatus>>();
         status = new MutableLiveData<Status>();
         workOrderService = ServiceGenerator.createService(IWorkOrderService.class);
+
+        failureCodeNestingMutableLiveData = new MutableLiveData<List<FailureCodeNesting>>();
+        sourceMutableLiveData = new MutableLiveData<List<FailureCodeNesting.Source>>();
+        problemMutableLiveData = new MutableLiveData<List<Problem>>();
+        causeMutableLiveData = new MutableLiveData<List<Cause>>();
+        actionMutableLiveData = new MutableLiveData<List<Action>>();
 
         workOrderIdList = new ArrayList<>();
 
@@ -843,5 +861,71 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     public MutableLiveData<List<WorkOrderStatus>> getWorkOrderStatusMutableLiveData() {
         return workOrderStatusMutableLiveData;
+    }
+
+    @Override
+    public void getCategories() {
+
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        Single single = fiixDatabase.rcaDao().getCategories();
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<FailureCodeNesting>>() {
+
+            @Override
+            public void onSubscribe(Disposable d) {
+                compositeDisposable.add(d);
+            }
+
+            @Override
+            public void onSuccess(List<FailureCodeNesting> failureCodeNestings) {
+                Log.d(TAG, "RCA nesting added to DB");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, e.getMessage());
+                Log.d(TAG, "Error adding RCA nesting to DB");
+            }
+        });
+
+    }
+
+    @Override
+    public void getSources(int categoryId) {
+
+    }
+
+    @Override
+    public void getProblems(int sourceId) {
+
+    }
+
+    @Override
+    public void getCauses(int sourceId) {
+
+    }
+
+    @Override
+    public void getActions() {
+
+    }
+
+    public MutableLiveData<List<FailureCodeNesting>> getFailureCodeNestingMutableLiveData() {
+        return failureCodeNestingMutableLiveData;
+    }
+
+    public MutableLiveData<List<FailureCodeNesting.Source>> getSourceMutableLiveData() {
+        return sourceMutableLiveData;
+    }
+
+    public MutableLiveData<List<Problem>> getProblemMutableLiveData() {
+        return problemMutableLiveData;
+    }
+
+    public MutableLiveData<List<Cause>> getCauseMutableLiveData() {
+        return causeMutableLiveData;
+    }
+
+    public MutableLiveData<List<Action>> getActionMutableLiveData() {
+        return actionMutableLiveData;
     }
 }

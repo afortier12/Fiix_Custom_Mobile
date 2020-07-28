@@ -76,6 +76,8 @@ public class ProblemWorker extends Worker {
 
                 @Override
                 public void onError(Throwable e) {
+
+                    Log.d(TAG, e.getMessage());
                     Log.d(TAG, "Error adding problems to DB");
                 }
             };
@@ -85,6 +87,7 @@ public class ProblemWorker extends Worker {
 
             return Result.success();
         } catch (Exception e){
+            Log.d(TAG, e.getMessage());
             return Result.failure();
         }
     }

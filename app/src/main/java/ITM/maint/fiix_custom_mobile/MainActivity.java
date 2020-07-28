@@ -26,9 +26,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.work.Constraints;
 import androidx.work.NetworkType;
 import androidx.work.OneTimeWorkRequest;
-import androidx.work.WorkContinuation;
 import androidx.work.WorkManager;
-import androidx.work.WorkRequest;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -38,8 +36,6 @@ import java.util.Locale;
 
 import javax.inject.Inject;
 
-import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
-import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragmentArgs;
@@ -47,7 +43,8 @@ import ITM.maint.fiix_custom_mobile.utils.Utils;
 import ITM.maint.fiix_custom_mobile.utils.Workers.CauseWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.MaintenanceTypeSyncWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.ProblemWorker;
-import ITM.maint.fiix_custom_mobile.utils.Workers.RCAWorker;
+import ITM.maint.fiix_custom_mobile.utils.Workers.RCANestingWorker;
+import ITM.maint.fiix_custom_mobile.utils.Workers.RCASourceWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.WorkOrderStatusSyncWorker;
 import dagger.android.support.DaggerAppCompatActivity;
 
@@ -120,12 +117,12 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         sharedPreferences = getSharedPreferences(PREFERENCE_KEY, Context.MODE_PRIVATE);
         dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
         Date updatedDate = compareDates();
-        //if (updatedDate != null){
-        //    SharedPreferences.Editor editor = sharedPreferences.edit();
-        //    editor.putString("LastUpdate", dateFormat.format(updatedDate));
-        //    editor.apply();
+        if (updatedDate != null){
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("LastUpdate", dateFormat.format(updatedDate));
+            editor.apply();
             updateTables();
-        //}
+        }
 
         checkCameraPermissions();
     }
@@ -171,13 +168,17 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                 .setConstraints(constraints)
                 .build();
 
-        OneTimeWorkRequest rcaRequest = new OneTimeWorkRequest.Builder(RCAWorker.class)
+        OneTimeWorkRequest rcaSourceRequest = new OneTimeWorkRequest.Builder(RCASourceWorker.class)
+                .setConstraints(constraints)
+                .build();
+        OneTimeWorkRequest rcaNestingRequest = new OneTimeWorkRequest.Builder(RCANestingWorker.class)
                 .setConstraints(constraints)
                 .build();
 
         workManager.beginWith(problemRequest)
                 .then(causeRequest)
-                .then(rcaRequest)
+                .then(rcaSourceRequest)
+                .then(rcaNestingRequest)
                 .enqueue();
 
         //                .then(workOrderStatusRequest)

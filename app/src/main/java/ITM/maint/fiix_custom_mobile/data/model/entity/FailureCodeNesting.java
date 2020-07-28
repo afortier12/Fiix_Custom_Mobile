@@ -14,6 +14,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import org.checkerframework.checker.units.qual.C;
+import org.checkerframework.common.aliasing.qual.Unique;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ import static androidx.room.ForeignKey.NO_ACTION;
         indices = {@Index(value = {"id"}, unique = true),
                 @Index(value = {"source_name"})},
         foreignKeys = @ForeignKey(entity = FailureCodeNesting.Source.class,
-                parentColumns = "id",
+                parentColumns = "name",
                 childColumns = "source_name",
                 onDelete = CASCADE))
 public class FailureCodeNesting {
@@ -38,8 +39,6 @@ public class FailureCodeNesting {
     //  ...
     //}
 
-    @SerializedName("id")
-    @Expose
     @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name="id")
@@ -50,6 +49,7 @@ public class FailureCodeNesting {
     private String name;
     @SerializedName("source")
     @Expose
+    @Unique
     @ColumnInfo(name="source_name")
     private String source_name;
 
@@ -79,6 +79,7 @@ public class FailureCodeNesting {
 
     @Entity(tableName = "rca_source_table",
             indices = {@Index(value = {"id"}, unique = true),
+                    @Index(value = {"name"}, unique = true),
                     @Index(value = {"problem_id"}),
                     @Index(value = {"cause_id"})},
             foreignKeys = {@ForeignKey(entity = Problem.class,
@@ -97,8 +98,7 @@ public class FailureCodeNesting {
         //  ...
         //}
 
-        @SerializedName("id")
-        @Expose
+
         @PrimaryKey(autoGenerate = true)
         @NonNull
         @ColumnInfo(name="id")
@@ -106,10 +106,10 @@ public class FailureCodeNesting {
         @SerializedName("name")
         @Expose
         private String name;
-        @SerializedName("problem_id")
+        @SerializedName("problem")
         @Expose
         private int problem_id;
-        @SerializedName("cause_id")
+        @SerializedName("cause")
         @Expose
         private int cause_id;
 
@@ -177,13 +177,13 @@ public class FailureCodeNesting {
         @Embedded
         private Source source;
         @Relation(
-                parentColumn = "problem_id",
+                parentColumn = "problem",
                 entityColumn = "id",
                 entity = Problem.class
         )
         private List<Problem> problemList;
         @Relation(
-                parentColumn = "cause_id",
+                parentColumn = "cause",
                 entityColumn = "id",
                 entity = Cause.class
         )

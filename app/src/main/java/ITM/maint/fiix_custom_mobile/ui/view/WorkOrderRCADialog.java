@@ -14,23 +14,18 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.FragmentManager;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 
 public class WorkOrderRCADialog extends DialogFragment {
 
     public static final String TAG = "WorkOrderRCADialog";
+    private WorkOrderRepository workOrderRepository;
 
     public interface OnRCAListener {
         void sendRCA(String category, String source, String problem, String cause, String action);
     }
 
     public OnRCAListener onRCAListener;
-
-
-    public static WorkOrderRCADialog display(FragmentManager fragmentManager){
-        WorkOrderRCADialog workOrderRCADialog = new WorkOrderRCADialog();
-        workOrderRCADialog.show(fragmentManager, TAG);
-        return workOrderRCADialog;
-    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +56,8 @@ public class WorkOrderRCADialog extends DialogFragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+
     }
 
     @Override

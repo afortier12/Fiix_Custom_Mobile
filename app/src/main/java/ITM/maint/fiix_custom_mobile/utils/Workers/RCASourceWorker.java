@@ -39,17 +39,14 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class RCAWorker extends Worker {
+public class RCASourceWorker extends Worker {
 
-    private static final String TAG = "RCAWorker";
-    private static final String RESPONSE_KEY = "RCA";
+    private static final String TAG = "RCASourceWorker";
+    private static final String RESPONSE_KEY = "RCA_SOURCE";
 
-    private static final String fileName = "failure_nesting.json";
-    private static final String problem_fileName = "problem.json";
-    private static final String cause_filename = "cause.json";
-    private static final String asset_filename = "asset.json";
+    private static final String fileName = "asset_tree.json";
 
-    public RCAWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public RCASourceWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
@@ -75,22 +72,23 @@ public class RCAWorker extends Worker {
             }
 
             Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<FailureCodeNesting>>() {}.getType();
-            ArrayList<FailureCodeNesting> failureCodeNesting =gson.fromJson(jsonString, listType);
+            Type listType = new TypeToken<ArrayList<FailureCodeNesting.Source>>() {}.getType();
+            ArrayList<FailureCodeNesting.Source> sourceNesting =gson.fromJson(jsonString, listType);
 
             FiixDatabase fiixDatabase = FiixDatabase.getDatabase(getApplicationContext());
             CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-            Completable completable = fiixDatabase.rcaDao().insertFailureCodeNesting(failureCodeNesting);
+            Completable completable = fiixDatabase.rcaDao().insertSourceNesting(sourceNesting);
             DisposableCompletableObserver disposableCompletableObserver = new DisposableCompletableObserver() {
                 @Override
                 public void onComplete() {
-                    Log.d(TAG, "Work order statuses added to DB");
+                    Log.d(TAG, "RCA sources added to DB");
                 }
 
                 @Override
                 public void onError(Throwable e) {
-                    Log.d(TAG, "Error adding work order statuses to DB");
+                    Log.d(TAG, e.getMessage());
+                    Log.d(TAG, "Error adding RCA sources to DB");
                 }
             };
             completable.subscribeOn(Schedulers.io())
@@ -99,6 +97,7 @@ public class RCAWorker extends Worker {
 
             return Result.success();
         } catch (Exception e){
+            Log.d(TAG, e.getMessage());
             return Result.failure();
         }
     }
