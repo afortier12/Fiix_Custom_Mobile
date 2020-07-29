@@ -1,762 +1,952 @@
 [
     {
+        "id": 0,
         "name": "Battery",
-        "source": "Battery-Lead Acid"
+        "source": 44
     },
     {
+        "id": 1,
         "name": "Battery",
-        "source": "Battery-Lithium-ion"
+        "source": 53
     },
     {
+        "id": 2,
         "name": "Battery",
-        "source": "Battery Charger"
+        "source": 62
     },
     {
+        "id": 3,
         "name": "Blower",
-        "source": "Blower-Centrifugal"
+        "source": 70
     },
     {
+        "id": 4,
         "name": "Blower",
-        "source": "Blower-Rotary Lobe"
+        "source": 79
     },
     {
+        "id": 5,
         "name": "Centrifuge",
-        "source": "Centrifuge"
+        "source": 117
     },
     {
+        "id": 6,
         "name": "Chiller/Heat Exchanger",
-        "source": "Chiller/Refrigeration"
+        "source": 131
     },
     {
+        "id": 7,
         "name": "Chiller/Heat Exchanger",
-        "source": "Heat Exchanger"
+        "source": 669
     },
     {
+        "id": 8,
         "name": "Chiller/Heat Exchanger",
-        "source": "Heat Exchanger - Condenser"
+        "source": 704
     },
     {
+        "id": 9,
         "name": "Chiller/Heat Exchanger",
-        "source": "Heat Exchanger - Cooler"
+        "source": 739
     },
     {
+        "id": 10,
         "name": "CMM",
-        "source": "CMM"
+        "source": 417
     },
     {
+        "id": 11,
         "name": "CNC",
-        "source": "CNC"
+        "source": 169
     },
     {
+        "id": 12,
         "name": "Compressor",
-        "source": "Compressor-Centrifugal"
+        "source": 214
     },
     {
+        "id": 13,
         "name": "Compressor",
-        "source": "Compressor-Reciprocating"
+        "source": 242
     },
     {
+        "id": 14,
         "name": "Compressor",
-        "source": "Compressor-Rotary Screw"
+        "source": 308
     },
     {
+        "id": 15,
         "name": "Conveyor",
-        "source": "Conveyor"
+        "source": 398
     },
     {
+        "id": 16,
         "name": "Cooling Tower",
-        "source": "Cooling Tower"
+        "source": 408
     },
     {
+        "id": 17,
         "name": "Crane",
-        "source": "Crane (Overhead /Portable/ Grid)"
+        "source": 473
     },
     {
+        "id": 18,
         "name": "Dehumidifier",
-        "source": "Dehumidifier"
+        "source": 481
     },
     {
+        "id": 19,
         "name": "Dryer",
-        "source": "Dryer"
+        "source": 489
     },
     {
+        "id": 20,
         "name": "Electrical",
-        "source": "Accelerometer"
+        "source": 0
     },
     {
+        "id": 21,
         "name": "Electrical",
-        "source": "Alarm (light/horn/buzzer)"
+        "source": 33
     },
     {
+        "id": 22,
         "name": "Electrical",
-        "source": "Light"
+        "source": 38
     },
     {
+        "id": 23,
         "name": "Electrical",
-        "source": "Button"
+        "source": 41
     },
     {
+        "id": 24,
         "name": "Electrical",
-        "source": "Circuit Breaker"
+        "source": 96
     },
     {
+        "id": 25,
         "name": "Electrical",
-        "source": "Breaker Cell"
+        "source": 105
     },
     {
+        "id": 26,
         "name": "Electrical",
-        "source": "Breaker Panel"
+        "source": 108
     },
     {
+        "id": 27,
         "name": "Electrical",
-        "source": "Capacitor"
+        "source": 112
     },
     {
+        "id": 28,
         "name": "Electrical",
-        "source": "Controller Electronic"
+        "source": 370
     },
     {
+        "id": 29,
         "name": "Electrical",
-        "source": "Control Station"
+        "source": 390
     },
     {
+        "id": 30,
         "name": "Electrical",
-        "source": "Contactor/Relay"
+        "source": 394
     },
     {
+        "id": 31,
         "name": "Electrical",
-        "source": "Coupling-Magnetic/Eddy Current"
+        "source": 469
     },
     {
+        "id": 32,
         "name": "Electrical",
-        "source": "Detector"
+        "source": 485
     },
     {
+        "id": 33,
         "name": "Electrical",
-        "source": "Electrical Wiring"
+        "source": 503
     },
     {
+        "id": 34,
         "name": "Electrical",
-        "source": "Encoder"
+        "source": 1525
     },
     {
+        "id": 35,
         "name": "Electrical",
-        "source": "Fuse (general)"
+        "source": 635
     },
     {
+        "id": 36,
         "name": "Electrical",
-        "source": "Heater - Electric"
+        "source": 652
     },
     {
+        "id": 37,
         "name": "Electrical",
-        "source": "Inverter (AC/DC)"
+        "source": 825
     },
     {
+        "id": 38,
         "name": "Electrical",
-        "source": "Loop - Instrument"
+        "source": 838
     },
     {
+        "id": 39,
         "name": "Electrical",
-        "source": "Meter - Electronic"
+        "source": 851
     },
     {
+        "id": 40,
         "name": "Electrical",
-        "source": "Motor Control Center (< 750VAC"
+        "source": 864
     },
     {
+        "id": 41,
         "name": "Electrical",
-        "source": "Panel (electrical)"
+        "source": 965
     },
     {
+        "id": 42,
         "name": "Electrical",
-        "source": "Power Supply"
+        "source": 982
     },
     {
+        "id": 43,
         "name": "Electrical",
-        "source": "Programable Logic Controller"
+        "source": 990
     },
     {
+        "id": 44,
         "name": "Electrical",
-        "source": "Rectifier"
+        "source": 1132
     },
     {
+        "id": 45,
         "name": "Electrical",
-        "source": "Relay Electronic"
+        "source": 1148
     },
     {
+        "id": 46,
         "name": "Electrical",
-        "source": "Sensor - Conductivity"
+        "source": 1194
     },
     {
+        "id": 47,
         "name": "Electrical",
-        "source": "Sensor - Temperature"
+        "source": 1214
     },
     {
+        "id": 48,
         "name": "Electrical",
-        "source": "Switch - Electric"
+        "source": 1238
     },
     {
+        "id": 49,
         "name": "Electrical",
-        "source": "Switch Level"
+        "source": 1253
     },
     {
+        "id": 50,
         "name": "Electrical",
-        "source": "Switch Temperature"
+        "source": 1260
     },
     {
+        "id": 51,
         "name": "Electrical",
-        "source": "Switchgear - Electric"
+        "source": 1262
     },
     {
+        "id": 52,
         "name": "Electrical",
-        "source": "Transducer"
+        "source": 1271
     },
     {
+        "id": 53,
         "name": "Electrical",
-        "source": "Transfer Switches"
+        "source": 1273
     },
     {
+        "id": 54,
         "name": "Electrical",
-        "source": "Transformer Control"
+        "source": 1276
     },
     {
+        "id": 55,
         "name": "Electrical",
-        "source": "Transformer Distribution"
+        "source": 1279
     },
     {
+        "id": 56,
         "name": "Electrical",
-        "source": "Uninterrupted Power Supply (UPS system)"
+        "source": 1283
     },
     {
+        "id": 57,
         "name": "Electrical",
-        "source": "Valve Solenoid-(subclass) Electrical"
+        "source": 1478
     },
     {
+        "id": 58,
         "name": "Electrical",
-        "source": "VFD (Variable Frequency Drive)"
+        "source": 1484
     },
     {
+        "id": 59,
         "name": "Electrical",
-        "source": "Encoder"
+        "source": 1525
     },
     {
+        "id": 60,
         "name": "Electrical",
-        "source": "Switch - Hydraulic"
+        "source": 1241
     },
     {
+        "id": 61,
         "name": "Electrical",
-        "source": "Sensor (Element)"
+        "source": 1187
     },
     {
+        "id": 62,
         "name": "Electrical",
-        "source": "Sensor - Pressure"
+        "source": 1205
     },
     {
+        "id": 63,
         "name": "Electrical",
-        "source": "Switch Flow"
+        "source": 1246
     },
     {
+        "id": 64,
         "name": "Electrical",
-        "source": "Valve Actuator - Electric"
+        "source": 1326
     },
     {
+        "id": 65,
         "name": "Electrical",
-        "source": "Sensor -Air Flow"
+        "source": 1190
     },
     {
+        "id": 66,
         "name": "Electrical",
-        "source": "Sensor -Air Flow"
+        "source": 1190
     },
     {
+        "id": 67,
         "name": "Electrical",
-        "source": "Switch - Pneumatic"
+        "source": 1243
     },
     {
+        "id": 68,
         "name": "Electrical",
-        "source": "Laser"
+        "source": 833
     },
     {
+        "id": 69,
         "name": "Enclosure",
-        "source": "Enclosure"
+        "source": 517
     },
     {
+        "id": 70,
         "name": "Facility",
-        "source": "Barriers and Railings"
+        "source": 43
     },
     {
+        "id": 71,
         "name": "Facility",
-        "source": "Extinguisher Fire"
+        "source": 524
     },
     {
+        "id": 72,
         "name": "Facility",
-        "source": "Fire Suppression System"
+        "source": 562
     },
     {
+        "id": 73,
         "name": "Facility",
-        "source": "Floor scrubber"
+        "source": 567
     },
     {
+        "id": 74,
         "name": "Facility",
-        "source": "Floor sweeper"
+        "source": 609
     },
     {
+        "id": 75,
         "name": "Facility",
-        "source": "Heater - Steam"
+        "source": 662
     },
     {
+        "id": 76,
         "name": "Facility",
-        "source": "Ladder"
+        "source": 834
     },
     {
+        "id": 77,
         "name": "Fan",
-        "source": "Fan"
+        "source": 530
     },
     {
+        "id": 78,
         "name": "Fan",
-        "source": "Fan Centrifugal"
+        "source": 539
     },
     {
+        "id": 79,
         "name": "Filter",
-        "source": "Precipitator - Electrostatic"
+        "source": 984
     },
     {
+        "id": 80,
         "name": "Fluid",
-        "source": "Oil"
+        "source": 960
     },
     {
+        "id": 81,
         "name": "Furnace",
-        "source": "Boiler-Fire-tube"
+        "source": 91
     },
     {
+        "id": 82,
         "name": "Furnace",
-        "source": "Furnace"
+        "source": 630
     },
     {
+        "id": 83,
         "name": "Furnace",
-        "source": "Ignitor"
+        "source": 791
     },
     {
+        "id": 84,
         "name": "Furnace",
-        "source": "Temperature Regulator"
+        "source": 1268
     },
     {
+        "id": 85,
         "name": "Hoist",
-        "source": "Hoist"
+        "source": 774
     },
     {
+        "id": 86,
         "name": "Hopper",
-        "source": "Hopper"
+        "source": 1531
     },
     {
+        "id": 87,
         "name": "Hopper",
-        "source": "Hopper"
+        "source": 1531
     },
     {
+        "id": 88,
         "name": "Humidifier",
-        "source": "Humidifier"
+        "source": 785
     },
     {
+        "id": 89,
         "name": "Hydraulic",
-        "source": "Coupling-Fluid"
+        "source": 456
     },
     {
+        "id": 90,
         "name": "Hydraulic",
-        "source": "Eductor"
+        "source": 498
     },
     {
+        "id": 91,
         "name": "Hydraulic",
-        "source": "Ejector"
+        "source": 501
     },
     {
+        "id": 92,
         "name": "Hydraulic",
-        "source": "Relay Hydraulic"
+        "source": 1152
     },
     {
+        "id": 93,
         "name": "Hydraulic",
-        "source": "Valve Actuator - Fluid/Hydraulic"
+        "source": 1328
     },
     {
+        "id": 94,
         "name": "Hydraulic",
-        "source": "Valve Solenoid- (subclass) Hydraulic"
+        "source": 1481
     },
     {
+        "id": 95,
         "name": "Hydraulic",
-        "source": "Element/filter unit"
+        "source": 512
     },
     {
+        "id": 96,
         "name": "Hydraulic",
-        "source": "Actuator Cylinder Type"
+        "source": 3
     },
     {
+        "id": 97,
         "name": "Hydraulic",
-        "source": "Actuator Diaphragm Type"
+        "source": 8
     },
     {
+        "id": 98,
         "name": "Hydraulic",
-        "source": "Actuator Electric Motor"
+        "source": 17
     },
     {
+        "id": 99,
         "name": "Hydraulic",
-        "source": "Actuator Damper"
+        "source": 25
     },
     {
+        "id": 100,
         "name": "Hydraulic",
-        "source": "Gauge"
+        "source": 640
     },
     {
+        "id": 101,
         "name": "Hydraulic",
-        "source": "Piping"
+        "source": 966
     },
     {
+        "id": 102,
         "name": "Hydraulic",
-        "source": "Pipe - PVC"
+        "source": 972
     },
     {
+        "id": 103,
         "name": "Hydraulic",
-        "source": "Regulator - Pressure"
+        "source": 1144
     },
     {
+        "id": 104,
         "name": "Hydraulic",
-        "source": "Tank - Storage"
+        "source": 1265
     },
     {
+        "id": 105,
         "name": "Hydraulic",
-        "source": "Valve Actuator - Manual"
+        "source": 1329
     },
     {
+        "id": 106,
         "name": "Hydraulic",
-        "source": "Valve Ball"
+        "source": 1355
     },
     {
+        "id": 107,
         "name": "Hydraulic",
-        "source": "Valve Butterfly"
+        "source": 1360
     },
     {
+        "id": 108,
         "name": "Hydraulic",
-        "source": "Valve Check"
+        "source": 1366
     },
     {
+        "id": 109,
         "name": "Hydraulic",
-        "source": "Valve Diaphragm"
+        "source": 1398
     },
     {
+        "id": 110,
         "name": "Hydraulic",
-        "source": "Valve - Flow control"
+        "source": 1400
     },
     {
+        "id": 111,
         "name": "Hydraulic",
-        "source": "Valve Gate"
+        "source": 1417
     },
     {
+        "id": 112,
         "name": "Hydraulic",
-        "source": "Valve Globe"
+        "source": 1420
     },
     {
+        "id": 113,
         "name": "Hydraulic",
-        "source": "Valve Knife"
+        "source": 1423
     },
     {
+        "id": 114,
         "name": "Hydraulic",
-        "source": "Valve Needle"
+        "source": 1426
     },
     {
+        "id": 115,
         "name": "Hydraulic",
-        "source": "Valve Plug"
+        "source": 1429
     },
     {
+        "id": 116,
         "name": "Hydraulic",
-        "source": "Valve Poppet"
+        "source": 1432
     },
     {
+        "id": 117,
         "name": "Hydraulic",
-        "source": "Valve - Pressure Control"
+        "source": 1434
     },
     {
+        "id": 118,
         "name": "Hydraulic",
-        "source": "Valve Regulator"
+        "source": 1440
     },
     {
+        "id": 119,
         "name": "Hydraulic",
-        "source": "Valve Safety/Relief"
+        "source": 1442
     },
     {
+        "id": 120,
         "name": "Hydraulic",
-        "source": "Valve Solenoid"
+        "source": 1472
     },
     {
+        "id": 121,
         "name": "Hydraulic",
-        "source": "Switch - Hydraulic"
+        "source": 1241
     },
     {
+        "id": 122,
         "name": "Hydraulic",
-        "source": "Sensor (Element)"
+        "source": 1187
     },
     {
+        "id": 123,
         "name": "Hydraulic",
-        "source": "Sensor - Pressure"
+        "source": 1205
     },
     {
+        "id": 124,
         "name": "Hydraulic",
-        "source": "Switch Flow"
+        "source": 1246
     },
     {
+        "id": 125,
         "name": "Hydraulic",
-        "source": "Valve Actuator - Electric"
+        "source": 1326
     },
     {
+        "id": 126,
         "name": "Injection Molder",
-        "source": "Injection Molder"
+        "source": 794
     },
     {
+        "id": 127,
         "name": "Mechanical",
-        "source": "Agitator"
+        "source": 28
     },
     {
+        "id": 128,
         "name": "Mechanical",
-        "source": "Belt"
+        "source": 66
     },
     {
+        "id": 129,
         "name": "Mechanical",
-        "source": "Clutch/Brake"
+        "source": 147
     },
     {
+        "id": 130,
         "name": "Mechanical",
-        "source": "Coupling-Flexible"
+        "source": 452
     },
     {
+        "id": 131,
         "name": "Mechanical",
-        "source": "Coupling-Gear"
+        "source": 461
     },
     {
+        "id": 132,
         "name": "Mechanical",
-        "source": "Coupling Grid"
+        "source": 464
     },
     {
+        "id": 133,
         "name": "Mechanical",
-        "source": "Expansion joint"
+        "source": 519
     },
     {
+        "id": 134,
         "name": "Mechanical",
-        "source": "Gear Box"
+        "source": 645
     },
     {
+        "id": 135,
         "name": "Mechanical",
-        "source": "Louvers"
+        "source": 845
     },
     {
+        "id": 136,
         "name": "Mechanical",
-        "source": "Structure"
+        "source": 1234
     },
     {
+        "id": 137,
         "name": "Mechanical",
-        "source": "Fastener/Hardware"
+        "source": 558
     },
     {
+        "id": 138,
         "name": "Mixer",
-        "source": "Mixer"
+        "source": 856
     },
     {
+        "id": 139,
         "name": "Motor/Pump",
-        "source": "Motor Electric"
+        "source": 883
     },
     {
+        "id": 140,
         "name": "Motor/Pump",
-        "source": "Motor-Hydraulic/Pneumatic"
+        "source": 948
     },
     {
+        "id": 141,
         "name": "Motor/Pump",
-        "source": "Motor - Stepper"
+        "source": 953
     },
     {
+        "id": 142,
         "name": "Motor/Pump",
-        "source": "Pump - Centrifugal"
+        "source": 994
     },
     {
+        "id": 143,
         "name": "Motor/Pump",
-        "source": "Pump - Centrifugal Vertical"
+        "source": 1057
     },
     {
+        "id": 144,
         "name": "Motor/Pump",
-        "source": "Pump - Rotary"
+        "source": 1090
     },
     {
+        "id": 145,
         "name": "Motor/Pump",
-        "source": "Pump Vacuum"
+        "source": 1099
     },
     {
+        "id": 146,
         "name": "Pneumatic",
-        "source": "Controller Pneumatic"
+        "source": 374
     },
     {
+        "id": 147,
         "name": "Pneumatic",
-        "source": "Plenum (air)"
+        "source": 980
     },
     {
+        "id": 148,
         "name": "Pneumatic",
-        "source": "Relay Pneumatic"
+        "source": 1156
     },
     {
+        "id": 149,
         "name": "Pneumatic",
-        "source": "Silencer"
+        "source": 1219
     },
     {
+        "id": 150,
         "name": "Pneumatic",
-        "source": "Vacuum evaporation and distillation"
+        "source": 1286
     },
     {
+        "id": 151,
         "name": "Pneumatic",
-        "source": "Vacuum filters"
+        "source": 1310
     },
     {
+        "id": 152,
         "name": "Pneumatic",
-        "source": "Valve Actuator - Pneumatic"
+        "source": 1352
     },
     {
+        "id": 153,
         "name": "Pneumatic",
-        "source": "Element/filter unit"
+        "source": 512
     },
     {
+        "id": 154,
         "name": "Pneumatic",
-        "source": "Actuator Cylinder Type"
+        "source": 3
     },
     {
+        "id": 155,
         "name": "Pneumatic",
-        "source": "Actuator Diaphragm Type"
+        "source": 8
     },
     {
+        "id": 156,
         "name": "Pneumatic",
-        "source": "Actuator Electric Motor"
+        "source": 17
     },
     {
+        "id": 157,
         "name": "Pneumatic",
-        "source": "Actuator Damper"
+        "source": 25
     },
     {
+        "id": 158,
         "name": "Pneumatic",
-        "source": "Gauge"
+        "source": 640
     },
     {
+        "id": 159,
         "name": "Pneumatic",
-        "source": "Piping"
+        "source": 966
     },
     {
+        "id": 160,
         "name": "Pneumatic",
-        "source": "Pipe - PVC"
+        "source": 972
     },
     {
+        "id": 161,
         "name": "Pneumatic",
-        "source": "Regulator - Pressure"
+        "source": 1144
     },
     {
+        "id": 162,
         "name": "Pneumatic",
-        "source": "Tank - Storage"
+        "source": 1265
     },
     {
+        "id": 163,
         "name": "Pneumatic",
-        "source": "Valve Actuator - Manual"
+        "source": 1329
     },
     {
+        "id": 164,
         "name": "Pneumatic",
-        "source": "Valve Ball"
+        "source": 1355
     },
     {
+        "id": 165,
         "name": "Pneumatic",
-        "source": "Valve Butterfly"
+        "source": 1360
     },
     {
+        "id": 166,
         "name": "Pneumatic",
-        "source": "Valve Check"
+        "source": 1366
     },
     {
+        "id": 167,
         "name": "Pneumatic",
-        "source": "Valve Diaphragm"
+        "source": 1398
     },
     {
+        "id": 168,
         "name": "Pneumatic",
-        "source": "Valve - Flow control"
+        "source": 1400
     },
     {
+        "id": 169,
         "name": "Pneumatic",
-        "source": "Valve Gate"
+        "source": 1417
     },
     {
+        "id": 170,
         "name": "Pneumatic",
-        "source": "Valve Globe"
+        "source": 1420
     },
     {
+        "id": 171,
         "name": "Pneumatic",
-        "source": "Valve Knife"
+        "source": 1423
     },
     {
+        "id": 172,
         "name": "Pneumatic",
-        "source": "Valve Needle"
+        "source": 1426
     },
     {
+        "id": 173,
         "name": "Pneumatic",
-        "source": "Valve Plug"
+        "source": 1429
     },
     {
+        "id": 174,
         "name": "Pneumatic",
-        "source": "Valve Poppet"
+        "source": 1432
     },
     {
+        "id": 175,
         "name": "Pneumatic",
-        "source": "Valve - Pressure Control"
+        "source": 1434
     },
     {
+        "id": 176,
         "name": "Pneumatic",
-        "source": "Valve Regulator"
+        "source": 1440
     },
     {
+        "id": 177,
         "name": "Pneumatic",
-        "source": "Valve Safety/Relief"
+        "source": 1442
     },
     {
+        "id": 178,
         "name": "Pneumatic",
-        "source": "Valve Solenoid"
+        "source": 1472
     },
     {
+        "id": 179,
         "name": "Pneumatic",
-        "source": "Sensor (Element)"
+        "source": 1187
     },
     {
+        "id": 180,
         "name": "Pneumatic",
-        "source": "Sensor - Pressure"
+        "source": 1205
     },
     {
+        "id": 181,
         "name": "Pneumatic",
-        "source": "Switch Flow"
+        "source": 1246
     },
     {
+        "id": 182,
         "name": "Pneumatic",
-        "source": "Valve Actuator - Electric"
+        "source": 1326
     },
     {
+        "id": 183,
         "name": "Pneumatic",
-        "source": "Sensor -Air Flow"
+        "source": 1190
     },
     {
+        "id": 184,
         "name": "Pneumatic",
-        "source": "Sensor -Air Flow"
+        "source": 1190
     },
     {
+        "id": 185,
         "name": "Pneumatic",
-        "source": "Switch - Pneumatic"
+        "source": 1243
     },
     {
+        "id": 186,
         "name": "Robot",
-        "source": "Robot"
+        "source": 1159
     },
     {
+        "id": 187,
         "name": "Scale",
-        "source": "Scale"
+        "source": 1179
     },
     {
+        "id": 188,
         "name": "Tool Changer",
-        "source": "Tool changer"
+        "source": 1510
     },
     {
+        "id": 189,
         "name": "Tool Changer",
-        "source": "Tool Pod"
+        "source": 1524
     }
 ]

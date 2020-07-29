@@ -101,6 +101,7 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
             @Override
             public void onClick(View v) {
                 //add code to add note (dialog, view model, snackbar)
+                subFABContainer.setVisibility(View.INVISIBLE);
                 Log.d(TAG, "note clicked");
             }
         });
@@ -110,9 +111,10 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
             @Override
             public void onClick(View v) {
                 //add code to update RCA (dialog, view model, snackbar)
-                WorkOrderRCADialog dialog = new WorkOrderRCADialog();
+                subFABContainer.setVisibility(View.INVISIBLE);
+                WorkOrderRCADialog dialog = new WorkOrderRCADialog(workOrder);
                 dialog.setTargetFragment(WorkOrderFragment.this, RCA_FRAGMENT_REQUEST_CODE);
-                dialog.show(getChildFragmentManager(), "RCA");
+                dialog.show(getParentFragmentManager(), "RCA");
                 Log.d(TAG, "RCA clicked");
             }
         });
@@ -122,6 +124,7 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
             @Override
             public void onClick(View v) {
                 //add code to add update
+                subFABContainer.setVisibility(View.INVISIBLE);
                 //if status changed to closed -> check if RCA selected
                 //  if not, display a banner notifying user to fill in RCA or change status
                 Log.d(TAG, "update clicked");
@@ -170,8 +173,6 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
                 tabLayout.selectTab(tabLayout.getTabAt(position));
             }
         });
-
-
 
     }
 

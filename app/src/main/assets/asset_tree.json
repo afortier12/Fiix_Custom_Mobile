@@ -1,7711 +1,9253 @@
 [
     {
         "name": "Accelerometer",
+        "id": 0,
         "problem": 22422,
         "cause": 22352
     },
     {
         "name": "Accelerometer",
+        "id": 1,
         "problem": 22430,
         "cause": 22353
     },
     {
         "name": "Accelerometer",
+        "id": 2,
         "problem": 22511,
         "cause": 22357
     },
     {
         "name": "Actuator Cylinder Type",
+        "id": 3,
         "problem": 22555,
         "cause": 21882
     },
     {
         "name": "Actuator Cylinder Type",
+        "id": 4,
         "problem": 0,
         "cause": 22108
     },
     {
         "name": "Actuator Cylinder Type",
+        "id": 5,
         "problem": 0,
         "cause": 22422
     },
     {
         "name": "Actuator Cylinder Type",
+        "id": 6,
         "problem": 22607,
         "cause": 0
     },
     {
         "name": "Actuator Cylinder Type",
+        "id": 7,
         "problem": 22552,
         "cause": 0
     },
     {
         "name": "Actuator Diaphragm Type",
+        "id": 8,
         "problem": 22555,
         "cause": 21683
     },
     {
         "name": "Actuator Diaphragm Type",
+        "id": 9,
         "problem": 0,
         "cause": 21706
     },
     {
         "name": "Actuator Diaphragm Type",
+        "id": 10,
         "problem": 0,
         "cause": 21704
     },
     {
         "name": "Actuator Diaphragm Type",
+        "id": 11,
         "problem": 22607,
         "cause": 22030
     },
     {
         "name": "Actuator Diaphragm Type",
+        "id": 12,
         "problem": 22552,
         "cause": 22104
     },
     {
         "name": "Actuator Diaphragm Type",
+        "id": 13,
         "problem": 0,
         "cause": 22294
     },
     {
         "name": "Actuator Diaphragm Type",
+        "id": 14,
         "problem": 0,
         "cause": 22370
     },
     {
         "name": "Actuator Diaphragm Type",
+        "id": 15,
         "problem": 0,
         "cause": 22375
     },
     {
         "name": "Actuator Diaphragm Type",
+        "id": 16,
         "problem": 0,
         "cause": 22560
     },
     {
         "name": "Actuator Electric Motor",
+        "id": 17,
         "problem": 22555,
         "cause": 21513
     },
     {
         "name": "Actuator Electric Motor",
+        "id": 18,
         "problem": 0,
         "cause": 21717
     },
     {
         "name": "Actuator Electric Motor",
+        "id": 19,
         "problem": 0,
         "cause": 21872
     },
     {
         "name": "Actuator Electric Motor",
+        "id": 20,
         "problem": 22607,
         "cause": 21975
     },
     {
         "name": "Actuator Electric Motor",
+        "id": 21,
         "problem": 22552,
         "cause": 22045
     },
     {
         "name": "Actuator Electric Motor",
+        "id": 22,
         "problem": 0,
         "cause": 22058
     },
     {
         "name": "Actuator Electric Motor",
+        "id": 23,
         "problem": 0,
         "cause": 22059
     },
     {
         "name": "Actuator Electric Motor",
+        "id": 24,
         "problem": 0,
         "cause": 22219
     },
     {
         "name": "Actuator Damper",
+        "id": 25,
         "problem": 22552,
         "cause": 21503
     },
     {
         "name": "Actuator Damper",
+        "id": 26,
         "problem": 0,
         "cause": 22102
     },
     {
         "name": "Actuator Damper",
+        "id": 27,
         "problem": 22607,
         "cause": 22104
     },
     {
         "name": "Agitator",
+        "id": 28,
         "problem": 22657,
         "cause": 21438
     },
     {
         "name": "Agitator",
+        "id": 29,
         "problem": 0,
         "cause": 21439
     },
     {
         "name": "Agitator",
+        "id": 30,
         "problem": 22576,
         "cause": 21440
     },
     {
         "name": "Agitator",
+        "id": 31,
         "problem": 22607,
         "cause": 21522
     },
     {
         "name": "Agitator",
+        "id": 32,
         "problem": 0,
         "cause": 21712
     },
     {
         "name": "Alarm (light/horn/buzzer)",
+        "id": 33,
         "problem": 22434,
         "cause": 21452
     },
     {
         "name": "Alarm (light/horn/buzzer)",
+        "id": 34,
         "problem": 22541,
         "cause": 21453
     },
     {
         "name": "Alarm (light/horn/buzzer)",
+        "id": 35,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Alarm (light/horn/buzzer)",
+        "id": 36,
         "problem": 22530,
         "cause": 0
     },
     {
         "name": "Alarm (light/horn/buzzer)",
+        "id": 37,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Light",
+        "id": 38,
         "problem": 22503,
         "cause": 0
     },
     {
         "name": "Light",
+        "id": 39,
         "problem": 22504,
         "cause": 0
     },
     {
         "name": "Light",
+        "id": 40,
         "problem": 0,
         "cause": 21537
     },
     {
         "name": "Button",
+        "id": 41,
         "problem": 22378,
         "cause": 21698
     },
     {
         "name": "Button",
+        "id": 42,
         "problem": 22379,
         "cause": 0
     },
     {
         "name": "Barriers and Railings",
+        "id": 43,
         "problem": 22372,
         "cause": 21991
     },
     {
         "name": "Battery-Lead Acid",
+        "id": 44,
         "problem": 22593,
         "cause": 21563
     },
     {
         "name": "Battery-Lead Acid",
+        "id": 45,
         "problem": 22498,
         "cause": 21567
     },
     {
         "name": "Battery-Lead Acid",
+        "id": 46,
         "problem": 22609,
         "cause": 21568
     },
     {
         "name": "Battery-Lead Acid",
+        "id": 47,
         "problem": 22408,
         "cause": 21598
     },
     {
         "name": "Battery-Lead Acid",
+        "id": 48,
         "problem": 0,
         "cause": 22071
     },
     {
         "name": "Battery-Lead Acid",
+        "id": 49,
         "problem": 0,
         "cause": 22115
     },
     {
         "name": "Battery-Lead Acid",
+        "id": 50,
         "problem": 0,
         "cause": 22413
     },
     {
         "name": "Battery-Lead Acid",
+        "id": 51,
         "problem": 0,
         "cause": 22414
     },
     {
         "name": "Battery-Lead Acid",
+        "id": 52,
         "problem": 0,
         "cause": 22454
     },
     {
         "name": "Battery-Lithium-ion",
+        "id": 53,
         "problem": 22408,
         "cause": 21563
     },
     {
         "name": "Battery-Lithium-ion",
+        "id": 54,
         "problem": 22498,
         "cause": 21568
     },
     {
         "name": "Battery-Lithium-ion",
+        "id": 55,
         "problem": 22566,
         "cause": 21598
     },
     {
         "name": "Battery-Lithium-ion",
+        "id": 56,
         "problem": 22593,
         "cause": 22071
     },
     {
         "name": "Battery-Lithium-ion",
+        "id": 57,
         "problem": 22591,
         "cause": 22115
     },
     {
         "name": "Battery-Lithium-ion",
+        "id": 58,
         "problem": 22609,
         "cause": 22198
     },
     {
         "name": "Battery-Lithium-ion",
+        "id": 59,
         "problem": 0,
         "cause": 22413
     },
     {
         "name": "Battery-Lithium-ion",
+        "id": 60,
         "problem": 0,
         "cause": 22414
     },
     {
         "name": "Battery-Lithium-ion",
+        "id": 61,
         "problem": 0,
         "cause": 22454
     },
     {
         "name": "Battery Charger",
+        "id": 62,
         "problem": 22360,
         "cause": 22541
     },
     {
         "name": "Battery Charger",
+        "id": 63,
         "problem": 22593,
         "cause": 21840
     },
     {
         "name": "Battery Charger",
+        "id": 64,
         "problem": 22390,
         "cause": 0
     },
     {
         "name": "Battery Charger",
+        "id": 65,
         "problem": 22579,
         "cause": 0
     },
     {
         "name": "Belt",
+        "id": 66,
         "problem": 22372,
         "cause": 21491
     },
     {
         "name": "Belt",
+        "id": 67,
         "problem": 22408,
         "cause": 21487
     },
     {
         "name": "Belt",
+        "id": 68,
         "problem": 22527,
         "cause": 21490
     },
     {
         "name": "Belt",
+        "id": 69,
         "problem": 22440,
         "cause": 21485
     },
     {
         "name": "Blower-Centrifugal",
+        "id": 70,
         "problem": 22406,
         "cause": 21447
     },
     {
         "name": "Blower-Centrifugal",
+        "id": 71,
         "problem": 22476,
         "cause": 21528
     },
     {
         "name": "Blower-Centrifugal",
+        "id": 72,
         "problem": 0,
         "cause": 21500
     },
     {
         "name": "Blower-Centrifugal",
+        "id": 73,
         "problem": 22425,
         "cause": 21504
     },
     {
         "name": "Blower-Centrifugal",
+        "id": 74,
         "problem": 22564,
         "cause": 21505
     },
     {
         "name": "Blower-Centrifugal",
+        "id": 75,
         "problem": 22607,
         "cause": 21507
     },
     {
         "name": "Blower-Centrifugal",
+        "id": 76,
         "problem": 22648,
         "cause": 21653
     },
     {
         "name": "Blower-Centrifugal",
+        "id": 77,
         "problem": 22657,
         "cause": 22097
     },
     {
         "name": "Blower-Centrifugal",
+        "id": 78,
         "problem": 0,
         "cause": 22130
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 79,
         "problem": 22406,
         "cause": 21447
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 80,
         "problem": 22564,
         "cause": 21528
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 81,
         "problem": 22607,
         "cause": 21500
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 82,
         "problem": 22476,
         "cause": 21504
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 83,
         "problem": 22527,
         "cause": 21505
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 84,
         "problem": 22657,
         "cause": 22265
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 85,
         "problem": 0,
         "cause": 21989
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 86,
         "problem": 0,
         "cause": 21988
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 87,
         "problem": 0,
         "cause": 22097
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 88,
         "problem": 0,
         "cause": 22130
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 89,
         "problem": 0,
         "cause": 22419
     },
     {
         "name": "Blower-Rotary Lobe",
+        "id": 90,
         "problem": 0,
         "cause": 22286
     },
     {
         "name": "Boiler-Fire-tube",
+        "id": 91,
         "problem": 22524,
         "cause": 21539
     },
     {
         "name": "Boiler-Fire-tube",
+        "id": 92,
         "problem": 22422,
         "cause": 21655
     },
     {
         "name": "Boiler-Fire-tube",
+        "id": 93,
         "problem": 0,
         "cause": 22307
     },
     {
         "name": "Boiler-Fire-tube",
+        "id": 94,
         "problem": 22586,
         "cause": 22433
     },
     {
         "name": "Boiler-Fire-tube",
+        "id": 95,
         "problem": 22460,
         "cause": 22434
     },
     {
         "name": "Circuit Breaker",
+        "id": 96,
         "problem": 0,
         "cause": 21536
     },
     {
         "name": "Circuit Breaker",
+        "id": 97,
         "problem": 22530,
         "cause": 21537
     },
     {
         "name": "Circuit Breaker",
+        "id": 98,
         "problem": 22458,
         "cause": 21538
     },
     {
         "name": "Circuit Breaker",
+        "id": 99,
         "problem": 0,
         "cause": 21607
     },
     {
         "name": "Circuit Breaker",
+        "id": 100,
         "problem": 0,
         "cause": 21624
     },
     {
         "name": "Circuit Breaker",
+        "id": 101,
         "problem": 0,
         "cause": 21623
     },
     {
         "name": "Circuit Breaker",
+        "id": 102,
         "problem": 0,
         "cause": 21716
     },
     {
         "name": "Circuit Breaker",
+        "id": 103,
         "problem": 0,
         "cause": 22358
     },
     {
         "name": "Circuit Breaker",
+        "id": 104,
         "problem": 0,
         "cause": 22431
     },
     {
         "name": "Breaker Cell",
+        "id": 105,
         "problem": 22564,
         "cause": 21463
     },
     {
         "name": "Breaker Cell",
+        "id": 106,
         "problem": 0,
         "cause": 21570
     },
     {
         "name": "Breaker Cell",
+        "id": 107,
         "problem": 22594,
         "cause": 22222
     },
     {
         "name": "Breaker Panel",
+        "id": 108,
         "problem": 22418,
         "cause": 21476
     },
     {
         "name": "Breaker Panel",
+        "id": 109,
         "problem": 22494,
         "cause": 0
     },
     {
         "name": "Breaker Panel",
+        "id": 110,
         "problem": 22594,
         "cause": 0
     },
     {
         "name": "Breaker Panel",
+        "id": 111,
         "problem": 22406,
         "cause": 0
     },
     {
         "name": "Capacitor",
+        "id": 112,
         "problem": 22564,
         "cause": 21910
     },
     {
         "name": "Capacitor",
+        "id": 113,
         "problem": 0,
         "cause": 21834
     },
     {
         "name": "Capacitor",
+        "id": 114,
         "problem": 0,
         "cause": 22076
     },
     {
         "name": "Capacitor",
+        "id": 115,
         "problem": 0,
         "cause": 22309
     },
     {
         "name": "Capacitor",
+        "id": 116,
         "problem": 0,
         "cause": 22541
     },
     {
         "name": "Centrifuge",
+        "id": 117,
         "problem": 22400,
         "cause": 21516
     },
     {
         "name": "Centrifuge",
+        "id": 118,
         "problem": 22644,
         "cause": 21592
     },
     {
         "name": "Centrifuge",
+        "id": 119,
         "problem": 22476,
         "cause": 21593
     },
     {
         "name": "Centrifuge",
+        "id": 120,
         "problem": 22521,
         "cause": 21712
     },
     {
         "name": "Centrifuge",
+        "id": 121,
         "problem": 22527,
         "cause": 21713
     },
     {
         "name": "Centrifuge",
+        "id": 122,
         "problem": 22568,
         "cause": 21950
     },
     {
         "name": "Centrifuge",
+        "id": 123,
         "problem": 22571,
         "cause": 22046
     },
     {
         "name": "Centrifuge",
+        "id": 124,
         "problem": 22576,
         "cause": 22073
     },
     {
         "name": "Centrifuge",
+        "id": 125,
         "problem": 22498,
         "cause": 22218
     },
     {
         "name": "Centrifuge",
+        "id": 126,
         "problem": 22607,
         "cause": 22220
     },
     {
         "name": "Centrifuge",
+        "id": 127,
         "problem": 22625,
         "cause": 22228
     },
     {
         "name": "Centrifuge",
+        "id": 128,
         "problem": 22642,
         "cause": 22261
     },
     {
         "name": "Centrifuge",
+        "id": 129,
         "problem": 22643,
         "cause": 22418
     },
     {
         "name": "Centrifuge",
+        "id": 130,
         "problem": 22657,
         "cause": 22462
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 131,
         "problem": 22394,
         "cause": 21494
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 132,
         "problem": 22530,
         "cause": 21496
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 133,
         "problem": 22467,
         "cause": 0
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 134,
         "problem": 22490,
         "cause": 21605
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 135,
         "problem": 22586,
         "cause": 21627
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 136,
         "problem": 22535,
         "cause": 21746
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 137,
         "problem": 22589,
         "cause": 21774
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 138,
         "problem": 22564,
         "cause": 21815
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 139,
         "problem": 0,
         "cause": 21803
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 140,
         "problem": 0,
         "cause": 21929
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 141,
         "problem": 0,
         "cause": 22007
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 142,
         "problem": 0,
         "cause": 21670
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 143,
         "problem": 0,
         "cause": 22155
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 144,
         "problem": 0,
         "cause": 22227
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 145,
         "problem": 0,
         "cause": 22340
     },
     {
         "name": "Chiller/Refrigeration",
+        "id": 146,
         "problem": 0,
         "cause": 21528
     },
     {
         "name": "Clutch/Brake",
+        "id": 147,
         "problem": 22527,
         "cause": 21522
     },
     {
         "name": "Clutch/Brake",
+        "id": 148,
         "problem": 22616,
         "cause": 21524
     },
     {
         "name": "Clutch/Brake",
+        "id": 149,
         "problem": 22657,
         "cause": 21526
     },
     {
         "name": "Clutch/Brake",
+        "id": 150,
         "problem": 0,
         "cause": 21529
     },
     {
         "name": "Clutch/Brake",
+        "id": 151,
         "problem": 0,
         "cause": 21511
     },
     {
         "name": "Clutch/Brake",
+        "id": 152,
         "problem": 0,
         "cause": 21553
     },
     {
         "name": "Clutch/Brake",
+        "id": 153,
         "problem": 0,
         "cause": 21554
     },
     {
         "name": "Clutch/Brake",
+        "id": 154,
         "problem": 0,
         "cause": 21555
     },
     {
         "name": "Clutch/Brake",
+        "id": 155,
         "problem": 0,
         "cause": 21557
     },
     {
         "name": "Clutch/Brake",
+        "id": 156,
         "problem": 0,
         "cause": 21608
     },
     {
         "name": "Clutch/Brake",
+        "id": 157,
         "problem": 0,
         "cause": 21609
     },
     {
         "name": "Clutch/Brake",
+        "id": 158,
         "problem": 0,
         "cause": 21610
     },
     {
         "name": "Clutch/Brake",
+        "id": 159,
         "problem": 0,
         "cause": 21611
     },
     {
         "name": "Clutch/Brake",
+        "id": 160,
         "problem": 0,
         "cause": 21978
     },
     {
         "name": "Clutch/Brake",
+        "id": 161,
         "problem": 0,
         "cause": 22183
     },
     {
         "name": "Clutch/Brake",
+        "id": 162,
         "problem": 0,
         "cause": 22184
     },
     {
         "name": "Clutch/Brake",
+        "id": 163,
         "problem": 0,
         "cause": 22185
     },
     {
         "name": "Clutch/Brake",
+        "id": 164,
         "problem": 0,
         "cause": 22186
     },
     {
         "name": "Clutch/Brake",
+        "id": 165,
         "problem": 0,
         "cause": 22311
     },
     {
         "name": "Clutch/Brake",
+        "id": 166,
         "problem": 0,
         "cause": 22318
     },
     {
         "name": "Clutch/Brake",
+        "id": 167,
         "problem": 0,
         "cause": 22321
     },
     {
         "name": "Clutch/Brake",
+        "id": 168,
         "problem": 0,
         "cause": 22353
     },
     {
         "name": "CNC",
+        "id": 169,
         "problem": 22365,
         "cause": 21445
     },
     {
         "name": "CNC",
+        "id": 170,
         "problem": 22381,
         "cause": 22240
     },
     {
         "name": "CNC",
+        "id": 171,
         "problem": 22384,
         "cause": 21540
     },
     {
         "name": "CNC",
+        "id": 172,
         "problem": 22385,
         "cause": 21599
     },
     {
         "name": "CNC",
+        "id": 173,
         "problem": 22393,
         "cause": 21834
     },
     {
         "name": "CNC",
+        "id": 174,
         "problem": 22395,
         "cause": 21660
     },
     {
         "name": "CNC",
+        "id": 175,
         "problem": 22403,
         "cause": 21636
     },
     {
         "name": "CNC",
+        "id": 176,
         "problem": 22426,
         "cause": 21640
     },
     {
         "name": "CNC",
+        "id": 177,
         "problem": 22506,
         "cause": 21669
     },
     {
         "name": "CNC",
+        "id": 178,
         "problem": 22513,
         "cause": 21667
     },
     {
         "name": "CNC",
+        "id": 179,
         "problem": 22514,
         "cause": 21668
     },
     {
         "name": "CNC",
+        "id": 180,
         "problem": 22530,
         "cause": 21678
     },
     {
         "name": "CNC",
+        "id": 181,
         "problem": 22566,
         "cause": 21679
     },
     {
         "name": "CNC",
+        "id": 182,
         "problem": 22598,
         "cause": 21726
     },
     {
         "name": "CNC",
+        "id": 183,
         "problem": 22626,
         "cause": 21699
     },
     {
         "name": "CNC",
+        "id": 184,
         "problem": 22627,
         "cause": 21712
     },
     {
         "name": "CNC",
+        "id": 185,
         "problem": 22628,
         "cause": 21753
     },
     {
         "name": "CNC",
+        "id": 186,
         "problem": 22650,
         "cause": 21792
     },
     {
         "name": "CNC",
+        "id": 187,
         "problem": 20225,
         "cause": 21811
     },
     {
         "name": "CNC",
+        "id": 188,
         "problem": 22363,
         "cause": 21832
     },
     {
         "name": "CNC",
+        "id": 189,
         "problem": 22563,
         "cause": 21899
     },
     {
         "name": "CNC",
+        "id": 190,
         "problem": 0,
         "cause": 21900
     },
     {
         "name": "CNC",
+        "id": 191,
         "problem": 0,
         "cause": 21925
     },
     {
         "name": "CNC",
+        "id": 192,
         "problem": 0,
         "cause": 21928
     },
     {
         "name": "CNC",
+        "id": 193,
         "problem": 0,
         "cause": 21929
     },
     {
         "name": "CNC",
+        "id": 194,
         "problem": 0,
         "cause": 22553
     },
     {
         "name": "CNC",
+        "id": 195,
         "problem": 0,
         "cause": 21961
     },
     {
         "name": "CNC",
+        "id": 196,
         "problem": 0,
         "cause": 21954
     },
     {
         "name": "CNC",
+        "id": 197,
         "problem": 0,
         "cause": 21955
     },
     {
         "name": "CNC",
+        "id": 198,
         "problem": 0,
         "cause": 21957
     },
     {
         "name": "CNC",
+        "id": 199,
         "problem": 0,
         "cause": 21998
     },
     {
         "name": "CNC",
+        "id": 200,
         "problem": 0,
         "cause": 22048
     },
     {
         "name": "CNC",
+        "id": 201,
         "problem": 0,
         "cause": 22073
     },
     {
         "name": "CNC",
+        "id": 202,
         "problem": 0,
         "cause": 22101
     },
     {
         "name": "CNC",
+        "id": 203,
         "problem": 0,
         "cause": 22196
     },
     {
         "name": "CNC",
+        "id": 204,
         "problem": 0,
         "cause": 22275
     },
     {
         "name": "CNC",
+        "id": 205,
         "problem": 0,
         "cause": 22314
     },
     {
         "name": "CNC",
+        "id": 206,
         "problem": 0,
         "cause": 22324
     },
     {
         "name": "CNC",
+        "id": 207,
         "problem": 0,
         "cause": 22337
     },
     {
         "name": "CNC",
+        "id": 208,
         "problem": 0,
         "cause": 22348
     },
     {
         "name": "CNC",
+        "id": 209,
         "problem": 0,
         "cause": 22374
     },
     {
         "name": "CNC",
+        "id": 210,
         "problem": 0,
         "cause": 22459
     },
     {
         "name": "CNC",
+        "id": 211,
         "problem": 0,
         "cause": 22477
     },
     {
         "name": "CNC",
+        "id": 212,
         "problem": 0,
         "cause": 22561
     },
     {
         "name": "CNC",
+        "id": 213,
         "problem": 0,
         "cause": 22562
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 214,
         "problem": 22420,
         "cause": 21470
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 215,
         "problem": 22430,
         "cause": 21522
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 216,
         "problem": 22479,
         "cause": 21524
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 217,
         "problem": 22480,
         "cause": 21526
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 218,
         "problem": 22484,
         "cause": 21529
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 219,
         "problem": 22425,
         "cause": 21511
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 220,
         "problem": 22534,
         "cause": 21553
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 221,
         "problem": 22549,
         "cause": 21554
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 222,
         "problem": 22566,
         "cause": 21555
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 223,
         "problem": 22569,
         "cause": 21557
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 224,
         "problem": 22607,
         "cause": 21655
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 225,
         "problem": 22641,
         "cause": 21690
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 226,
         "problem": 22657,
         "cause": 21713
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 227,
         "problem": 22586,
         "cause": 21863
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 228,
         "problem": 22573,
         "cause": 21860
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 229,
         "problem": 0,
         "cause": 21868
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 230,
         "problem": 0,
         "cause": 21882
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 231,
         "problem": 0,
         "cause": 21917
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 232,
         "problem": 0,
         "cause": 22087
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 233,
         "problem": 0,
         "cause": 22088
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 234,
         "problem": 0,
         "cause": 22090
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 235,
         "problem": 0,
         "cause": 22093
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 236,
         "problem": 0,
         "cause": 22284
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 237,
         "problem": 0,
         "cause": 22286
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 238,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 239,
         "problem": 0,
         "cause": 22320
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 240,
         "problem": 0,
         "cause": 22493
     },
     {
         "name": "Compressor-Centrifugal",
+        "id": 241,
         "problem": 0,
         "cause": 22476
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 242,
         "problem": 22550,
         "cause": 21522
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 243,
         "problem": 22430,
         "cause": 21524
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 244,
         "problem": 22479,
         "cause": 21526
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 245,
         "problem": 22480,
         "cause": 21529
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 246,
         "problem": 22484,
         "cause": 21511
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 247,
         "problem": 0,
         "cause": 21553
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 248,
         "problem": 22425,
         "cause": 21554
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 249,
         "problem": 22534,
         "cause": 21555
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 250,
         "problem": 22527,
         "cause": 21557
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 251,
         "problem": 22549,
         "cause": 21618
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 252,
         "problem": 22566,
         "cause": 21655
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 253,
         "problem": 22568,
         "cause": 21650
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 254,
         "problem": 22569,
         "cause": 21651
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 255,
         "problem": 22607,
         "cause": 21652
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 256,
         "problem": 22657,
         "cause": 22555
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 257,
         "problem": 22586,
         "cause": 21674
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 258,
         "problem": 22573,
         "cause": 21673
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 259,
         "problem": 0,
         "cause": 21676
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 260,
         "problem": 0,
         "cause": 21675
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 261,
         "problem": 0,
         "cause": 21690
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 262,
         "problem": 0,
         "cause": 21713
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 263,
         "problem": 0,
         "cause": 21863
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 264,
         "problem": 0,
         "cause": 21860
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 265,
         "problem": 0,
         "cause": 21868
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 266,
         "problem": 0,
         "cause": 21882
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 267,
         "problem": 0,
         "cause": 21917
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 268,
         "problem": 0,
         "cause": 22087
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 269,
         "problem": 0,
         "cause": 22088
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 270,
         "problem": 0,
         "cause": 22090
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 271,
         "problem": 0,
         "cause": 22093
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 272,
         "problem": 0,
         "cause": 22096
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 273,
         "problem": 0,
         "cause": 22109
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 274,
         "problem": 0,
         "cause": 22129
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 275,
         "problem": 0,
         "cause": 22131
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 276,
         "problem": 0,
         "cause": 22136
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 277,
         "problem": 0,
         "cause": 22203
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 278,
         "problem": 0,
         "cause": 22207
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 279,
         "problem": 0,
         "cause": 22208
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 280,
         "problem": 0,
         "cause": 22209
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 281,
         "problem": 0,
         "cause": 22210
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 282,
         "problem": 0,
         "cause": 22211
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 283,
         "problem": 0,
         "cause": 22212
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 284,
         "problem": 0,
         "cause": 22214
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 285,
         "problem": 0,
         "cause": 22215
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 286,
         "problem": 0,
         "cause": 22162
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 287,
         "problem": 0,
         "cause": 22252
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 288,
         "problem": 0,
         "cause": 22236
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 289,
         "problem": 0,
         "cause": 22249
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 290,
         "problem": 0,
         "cause": 22250
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 291,
         "problem": 0,
         "cause": 22274
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 292,
         "problem": 0,
         "cause": 22284
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 293,
         "problem": 0,
         "cause": 22280
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 294,
         "problem": 0,
         "cause": 22292
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 295,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 296,
         "problem": 0,
         "cause": 22320
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 297,
         "problem": 0,
         "cause": 22353
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 298,
         "problem": 0,
         "cause": 22453
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 299,
         "problem": 0,
         "cause": 22483
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 300,
         "problem": 0,
         "cause": 22488
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 301,
         "problem": 0,
         "cause": 22493
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 302,
         "problem": 0,
         "cause": 22501
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 303,
         "problem": 0,
         "cause": 22502
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 304,
         "problem": 0,
         "cause": 22500
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 305,
         "problem": 0,
         "cause": 22505
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 306,
         "problem": 0,
         "cause": 22513
     },
     {
         "name": "Compressor-Reciprocating",
+        "id": 307,
         "problem": 0,
         "cause": 22476
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 308,
         "problem": 22358,
         "cause": 21441
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 309,
         "problem": 22550,
         "cause": 21444
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 310,
         "problem": 22400,
         "cause": 21522
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 311,
         "problem": 22430,
         "cause": 21524
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 312,
         "problem": 22442,
         "cause": 21526
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 313,
         "problem": 22479,
         "cause": 21529
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 314,
         "problem": 22480,
         "cause": 21489
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 315,
         "problem": 22484,
         "cause": 21485
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 316,
         "problem": 22534,
         "cause": 21511
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 317,
         "problem": 22527,
         "cause": 21579
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 318,
         "problem": 22549,
         "cause": 21655
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 319,
         "problem": 22566,
         "cause": 21637
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 320,
         "problem": 22568,
         "cause": 21641
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 321,
         "problem": 22569,
         "cause": 21690
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 322,
         "problem": 22607,
         "cause": 21719
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 323,
         "problem": 22657,
         "cause": 21713
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 324,
         "problem": 22586,
         "cause": 21790
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 325,
         "problem": 0,
         "cause": 21863
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 326,
         "problem": 0,
         "cause": 21860
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 327,
         "problem": 0,
         "cause": 21868
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 328,
         "problem": 0,
         "cause": 21882
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 329,
         "problem": 0,
         "cause": 22087
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 330,
         "problem": 0,
         "cause": 22088
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 331,
         "problem": 0,
         "cause": 22090
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 332,
         "problem": 0,
         "cause": 22093
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 333,
         "problem": 0,
         "cause": 22094
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 334,
         "problem": 0,
         "cause": 22096
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 335,
         "problem": 0,
         "cause": 22109
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 336,
         "problem": 0,
         "cause": 22129
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 337,
         "problem": 0,
         "cause": 22131
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 338,
         "problem": 0,
         "cause": 22135
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 339,
         "problem": 0,
         "cause": 22137
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 340,
         "problem": 0,
         "cause": 22189
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 341,
         "problem": 0,
         "cause": 22225
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 342,
         "problem": 0,
         "cause": 22252
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 343,
         "problem": 0,
         "cause": 22236
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 344,
         "problem": 0,
         "cause": 22258
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 345,
         "problem": 0,
         "cause": 22264
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 346,
         "problem": 0,
         "cause": 22266
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 347,
         "problem": 0,
         "cause": 22274
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 348,
         "problem": 0,
         "cause": 22284
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 349,
         "problem": 0,
         "cause": 22280
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 350,
         "problem": 0,
         "cause": 22292
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 351,
         "problem": 0,
         "cause": 22302
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 352,
         "problem": 0,
         "cause": 22311
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 353,
         "problem": 0,
         "cause": 22318
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 354,
         "problem": 0,
         "cause": 22320
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 355,
         "problem": 0,
         "cause": 22321
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 356,
         "problem": 0,
         "cause": 22327
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 357,
         "problem": 0,
         "cause": 22339
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 358,
         "problem": 0,
         "cause": 22353
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 359,
         "problem": 0,
         "cause": 22421
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 360,
         "problem": 0,
         "cause": 22453
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 361,
         "problem": 0,
         "cause": 22483
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 362,
         "problem": 0,
         "cause": 22486
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 363,
         "problem": 0,
         "cause": 22488
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 364,
         "problem": 0,
         "cause": 22493
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 365,
         "problem": 0,
         "cause": 22500
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 366,
         "problem": 0,
         "cause": 22505
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 367,
         "problem": 0,
         "cause": 22513
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 368,
         "problem": 0,
         "cause": 22475
     },
     {
         "name": "Compressor-Rotary Screw",
+        "id": 369,
         "problem": 0,
         "cause": 22476
     },
     {
         "name": "Controller Electronic",
+        "id": 370,
         "problem": 22422,
         "cause": 21658
     },
     {
         "name": "Controller Electronic",
+        "id": 371,
         "problem": 0,
         "cause": 21659
     },
     {
         "name": "Controller Electronic",
+        "id": 372,
         "problem": 22530,
         "cause": 21742
     },
     {
         "name": "Controller Electronic",
+        "id": 373,
         "problem": 22413,
         "cause": 22221
     },
     {
         "name": "Controller Pneumatic",
+        "id": 374,
         "problem": 22430,
         "cause": 21450
     },
     {
         "name": "Controller Pneumatic",
+        "id": 375,
         "problem": 0,
         "cause": 21451
     },
     {
         "name": "Controller Pneumatic",
+        "id": 376,
         "problem": 22413,
         "cause": 21502
     },
     {
         "name": "Controller Pneumatic",
+        "id": 377,
         "problem": 0,
         "cause": 21558
     },
     {
         "name": "Controller Pneumatic",
+        "id": 378,
         "problem": 0,
         "cause": 21661
     },
     {
         "name": "Controller Pneumatic",
+        "id": 379,
         "problem": 0,
         "cause": 21658
     },
     {
         "name": "Controller Pneumatic",
+        "id": 380,
         "problem": 0,
         "cause": 21659
     },
     {
         "name": "Controller Pneumatic",
+        "id": 381,
         "problem": 0,
         "cause": 21663
     },
     {
         "name": "Controller Pneumatic",
+        "id": 382,
         "problem": 0,
         "cause": 21813
     },
     {
         "name": "Controller Pneumatic",
+        "id": 383,
         "problem": 0,
         "cause": 21808
     },
     {
         "name": "Controller Pneumatic",
+        "id": 384,
         "problem": 0,
         "cause": 21806
     },
     {
         "name": "Controller Pneumatic",
+        "id": 385,
         "problem": 0,
         "cause": 21938
     },
     {
         "name": "Controller Pneumatic",
+        "id": 386,
         "problem": 0,
         "cause": 21982
     },
     {
         "name": "Controller Pneumatic",
+        "id": 387,
         "problem": 0,
         "cause": 22064
     },
     {
         "name": "Controller Pneumatic",
+        "id": 388,
         "problem": 0,
         "cause": 22065
     },
     {
         "name": "Controller Pneumatic",
+        "id": 389,
         "problem": 0,
         "cause": 22085
     },
     {
         "name": "Control Station",
+        "id": 390,
         "problem": 0,
         "cause": 21755
     },
     {
         "name": "Control Station",
+        "id": 391,
         "problem": 22610,
         "cause": 22111
     },
     {
         "name": "Control Station",
+        "id": 392,
         "problem": 0,
         "cause": 21960
     },
     {
         "name": "Control Station",
+        "id": 393,
         "problem": 0,
         "cause": 22219
     },
     {
         "name": "Contactor/Relay",
+        "id": 394,
         "problem": 22381,
         "cause": 0
     },
     {
         "name": "Contactor/Relay",
+        "id": 395,
         "problem": 0,
         "cause": 22246
     },
     {
         "name": "Contactor/Relay",
+        "id": 396,
         "problem": 22607,
         "cause": 21631
     },
     {
         "name": "Contactor/Relay",
+        "id": 397,
         "problem": 22523,
         "cause": 21632
     },
     {
         "name": "Conveyor",
+        "id": 398,
         "problem": 22430,
         "cause": 21520
     },
     {
         "name": "Conveyor",
+        "id": 399,
         "problem": 22440,
         "cause": 21522
     },
     {
         "name": "Conveyor",
+        "id": 400,
         "problem": 22607,
         "cause": 21490
     },
     {
         "name": "Conveyor",
+        "id": 401,
         "problem": 22616,
         "cause": 21597
     },
     {
         "name": "Conveyor",
+        "id": 402,
         "problem": 0,
         "cause": 21629
     },
     {
         "name": "Conveyor",
+        "id": 403,
         "problem": 0,
         "cause": 21710
     },
     {
         "name": "Conveyor",
+        "id": 404,
         "problem": 0,
         "cause": 21715
     },
     {
         "name": "Conveyor",
+        "id": 405,
         "problem": 0,
         "cause": 22310
     },
     {
         "name": "Conveyor",
+        "id": 406,
         "problem": 0,
         "cause": 22319
     },
     {
         "name": "Conveyor",
+        "id": 407,
         "problem": 0,
         "cause": 22351
     },
     {
         "name": "Cooling Tower",
+        "id": 408,
         "problem": 22420,
         "cause": 21445
     },
     {
         "name": "Cooling Tower",
+        "id": 409,
         "problem": 22595,
         "cause": 21490
     },
     {
         "name": "Cooling Tower",
+        "id": 410,
         "problem": 0,
         "cause": 21639
     },
     {
         "name": "Cooling Tower",
+        "id": 411,
         "problem": 0,
         "cause": 21785
     },
     {
         "name": "Cooling Tower",
+        "id": 412,
         "problem": 0,
         "cause": 21814
     },
     {
         "name": "Cooling Tower",
+        "id": 413,
         "problem": 0,
         "cause": 21845
     },
     {
         "name": "Cooling Tower",
+        "id": 414,
         "problem": 0,
         "cause": 21972
     },
     {
         "name": "Cooling Tower",
+        "id": 415,
         "problem": 0,
         "cause": 22005
     },
     {
         "name": "Cooling Tower",
+        "id": 416,
         "problem": 0,
         "cause": 22268
     },
     {
         "name": "CMM",
+        "id": 417,
         "problem": 22542,
         "cause": 21449
     },
     {
         "name": "CMM",
+        "id": 418,
         "problem": 22404,
         "cause": 21529
     },
     {
         "name": "CMM",
+        "id": 419,
         "problem": 22507,
         "cause": 21517
     },
     {
         "name": "CMM",
+        "id": 420,
         "problem": 22516,
         "cause": 21584
     },
     {
         "name": "CMM",
+        "id": 421,
         "problem": 22515,
         "cause": 21586
     },
     {
         "name": "CMM",
+        "id": 422,
         "problem": 22517,
         "cause": 21588
     },
     {
         "name": "CMM",
+        "id": 423,
         "problem": 22564,
         "cause": 21604
     },
     {
         "name": "CMM",
+        "id": 424,
         "problem": 0,
         "cause": 21619
     },
     {
         "name": "CMM",
+        "id": 425,
         "problem": 22600,
         "cause": 21662
     },
     {
         "name": "CMM",
+        "id": 426,
         "problem": 22610,
         "cause": 21649
     },
     {
         "name": "CMM",
+        "id": 427,
         "problem": 0,
         "cause": 21906
     },
     {
         "name": "CMM",
+        "id": 428,
         "problem": 0,
         "cause": 21773
     },
     {
         "name": "CMM",
+        "id": 429,
         "problem": 0,
         "cause": 21495
     },
     {
         "name": "CMM",
+        "id": 430,
         "problem": 0,
         "cause": 22550
     },
     {
         "name": "CMM",
+        "id": 431,
         "problem": 0,
         "cause": 22553
     },
     {
         "name": "CMM",
+        "id": 432,
         "problem": 0,
         "cause": 21448
     },
     {
         "name": "CMM",
+        "id": 433,
         "problem": 0,
         "cause": 22018
     },
     {
         "name": "CMM",
+        "id": 434,
         "problem": 0,
         "cause": 22017
     },
     {
         "name": "CMM",
+        "id": 435,
         "problem": 0,
         "cause": 22019
     },
     {
         "name": "CMM",
+        "id": 436,
         "problem": 0,
         "cause": 22020
     },
     {
         "name": "CMM",
+        "id": 437,
         "problem": 0,
         "cause": 22072
     },
     {
         "name": "CMM",
+        "id": 438,
         "problem": 0,
         "cause": 22075
     },
     {
         "name": "CMM",
+        "id": 439,
         "problem": 0,
         "cause": 22099
     },
     {
         "name": "CMM",
+        "id": 440,
         "problem": 0,
         "cause": 21467
     },
     {
         "name": "CMM",
+        "id": 441,
         "problem": 0,
         "cause": 22171
     },
     {
         "name": "CMM",
+        "id": 442,
         "problem": 0,
         "cause": 22217
     },
     {
         "name": "CMM",
+        "id": 443,
         "problem": 0,
         "cause": 22192
     },
     {
         "name": "CMM",
+        "id": 444,
         "problem": 0,
         "cause": 22194
     },
     {
         "name": "CMM",
+        "id": 445,
         "problem": 0,
         "cause": 22193
     },
     {
         "name": "CMM",
+        "id": 446,
         "problem": 0,
         "cause": 22195
     },
     {
         "name": "CMM",
+        "id": 447,
         "problem": 0,
         "cause": 22267
     },
     {
         "name": "CMM",
+        "id": 448,
         "problem": 0,
         "cause": 22269
     },
     {
         "name": "CMM",
+        "id": 449,
         "problem": 0,
         "cause": 22304
     },
     {
         "name": "CMM",
+        "id": 450,
         "problem": 0,
         "cause": 22518
     },
     {
         "name": "CMM",
+        "id": 451,
         "problem": 0,
         "cause": 22042
     },
     {
         "name": "Coupling-Flexible",
+        "id": 452,
         "problem": 22372,
         "cause": 21511
     },
     {
         "name": "Coupling-Flexible",
+        "id": 453,
         "problem": 22607,
         "cause": 21714
     },
     {
         "name": "Coupling-Flexible",
+        "id": 454,
         "problem": 22616,
         "cause": 21817
     },
     {
         "name": "Coupling-Flexible",
+        "id": 455,
         "problem": 22657,
         "cause": 21892
     },
     {
         "name": "Coupling-Fluid",
+        "id": 456,
         "problem": 0,
         "cause": 21642
     },
     {
         "name": "Coupling-Fluid",
+        "id": 457,
         "problem": 22607,
         "cause": 21643
     },
     {
         "name": "Coupling-Fluid",
+        "id": 458,
         "problem": 22594,
         "cause": 21648
     },
     {
         "name": "Coupling-Fluid",
+        "id": 459,
         "problem": 22657,
         "cause": 21990
     },
     {
         "name": "Coupling-Fluid",
+        "id": 460,
         "problem": 0,
         "cause": 21646
     },
     {
         "name": "Coupling-Gear",
+        "id": 461,
         "problem": 22657,
         "cause": 21648
     },
     {
         "name": "Coupling-Gear",
+        "id": 462,
         "problem": 22607,
         "cause": 22251
     },
     {
         "name": "Coupling-Gear",
+        "id": 463,
         "problem": 0,
         "cause": 22284
     },
     {
         "name": "Coupling Grid",
+        "id": 464,
         "problem": 22657,
         "cause": 21645
     },
     {
         "name": "Coupling Grid",
+        "id": 465,
         "problem": 22456,
         "cause": 21647
     },
     {
         "name": "Coupling Grid",
+        "id": 466,
         "problem": 22457,
         "cause": 21648
     },
     {
         "name": "Coupling Grid",
+        "id": 467,
         "problem": 0,
         "cause": 22316
     },
     {
         "name": "Coupling Grid",
+        "id": 468,
         "problem": 0,
         "cause": 22349
     },
     {
         "name": "Coupling-Magnetic/Eddy Current",
+        "id": 469,
         "problem": 22500,
         "cause": 21858
     },
     {
         "name": "Coupling-Magnetic/Eddy Current",
+        "id": 470,
         "problem": 0,
         "cause": 21859
     },
     {
         "name": "Coupling-Magnetic/Eddy Current",
+        "id": 471,
         "problem": 0,
         "cause": 21892
     },
     {
         "name": "Coupling-Magnetic/Eddy Current",
+        "id": 472,
         "problem": 0,
         "cause": 22283
     },
     {
         "name": "Crane (Overhead /Portable/ Grid)",
+        "id": 473,
         "problem": 22430,
         "cause": 21582
     },
     {
         "name": "Crane (Overhead /Portable/ Grid)",
+        "id": 474,
         "problem": 22651,
         "cause": 21587
     },
     {
         "name": "Crane (Overhead /Portable/ Grid)",
+        "id": 475,
         "problem": 22599,
         "cause": 21589
     },
     {
         "name": "Crane (Overhead /Portable/ Grid)",
+        "id": 476,
         "problem": 22616,
         "cause": 21590
     },
     {
         "name": "Crane (Overhead /Portable/ Grid)",
+        "id": 477,
         "problem": 22636,
         "cause": 21715
     },
     {
         "name": "Crane (Overhead /Portable/ Grid)",
+        "id": 478,
         "problem": 0,
         "cause": 21708
     },
     {
         "name": "Crane (Overhead /Portable/ Grid)",
+        "id": 479,
         "problem": 0,
         "cause": 21709
     },
     {
         "name": "Crane (Overhead /Portable/ Grid)",
+        "id": 480,
         "problem": 0,
         "cause": 22407
     },
     {
         "name": "Dehumidifier",
+        "id": 481,
         "problem": 22422,
         "cause": 21691
     },
     {
         "name": "Dehumidifier",
+        "id": 482,
         "problem": 22430,
         "cause": 21692
     },
     {
         "name": "Dehumidifier",
+        "id": 483,
         "problem": 22649,
         "cause": 21813
     },
     {
         "name": "Dehumidifier",
+        "id": 484,
         "problem": 0,
         "cause": 22056
     },
     {
         "name": "Detector",
+        "id": 485,
         "problem": 22430,
         "cause": 21730
     },
     {
         "name": "Detector",
+        "id": 486,
         "problem": 22530,
         "cause": 21731
     },
     {
         "name": "Detector",
+        "id": 487,
         "problem": 22528,
         "cause": 21732
     },
     {
         "name": "Detector",
+        "id": 488,
         "problem": 0,
         "cause": 22541
     },
     {
         "name": "Dryer",
+        "id": 489,
         "problem": 22406,
         "cause": 21447
     },
     {
         "name": "Dryer",
+        "id": 490,
         "problem": 22476,
         "cause": 21528
     },
     {
         "name": "Dryer",
+        "id": 491,
         "problem": 0,
         "cause": 21500
     },
     {
         "name": "Dryer",
+        "id": 492,
         "problem": 22425,
         "cause": 21504
     },
     {
         "name": "Dryer",
+        "id": 493,
         "problem": 22564,
         "cause": 21505
     },
     {
         "name": "Dryer",
+        "id": 494,
         "problem": 22607,
         "cause": 21507
     },
     {
         "name": "Dryer",
+        "id": 495,
         "problem": 22648,
         "cause": 21653
     },
     {
         "name": "Dryer",
+        "id": 496,
         "problem": 22657,
         "cause": 22097
     },
     {
         "name": "Dryer",
+        "id": 497,
         "problem": 0,
         "cause": 22130
     },
     {
         "name": "Eductor",
+        "id": 498,
         "problem": 22429,
         "cause": 21736
     },
     {
         "name": "Eductor",
+        "id": 499,
         "problem": 0,
         "cause": 21737
     },
     {
         "name": "Eductor",
+        "id": 500,
         "problem": 22576,
         "cause": 21738
     },
     {
         "name": "Ejector",
+        "id": 501,
         "problem": 22429,
         "cause": 21739
     },
     {
         "name": "Ejector",
+        "id": 502,
         "problem": 22576,
         "cause": 21740
     },
     {
         "name": "Electrical Wiring",
+        "id": 503,
         "problem": 22388,
         "cause": 21581
     },
     {
         "name": "Electrical Wiring",
+        "id": 504,
         "problem": 22530,
         "cause": 0
     },
     {
         "name": "Electrical Wiring",
+        "id": 505,
         "problem": 22564,
         "cause": 22543
     },
     {
         "name": "Electrical Wiring",
+        "id": 506,
         "problem": 22473,
         "cause": 22542
     },
     {
         "name": "Electrical Wiring",
+        "id": 507,
         "problem": 0,
         "cause": 22544
     },
     {
         "name": "Electrical Wiring",
+        "id": 508,
         "problem": 0,
         "cause": 22545
     },
     {
         "name": "Electrical Wiring",
+        "id": 509,
         "problem": 0,
         "cause": 22546
     },
     {
         "name": "Electrical Wiring",
+        "id": 510,
         "problem": 0,
         "cause": 22539
     },
     {
         "name": "Electrical Wiring",
+        "id": 511,
         "problem": 0,
         "cause": 22547
     },
     {
         "name": "Element/filter unit",
+        "id": 512,
         "problem": 22449,
         "cause": 21758
     },
     {
         "name": "Element/filter unit",
+        "id": 513,
         "problem": 22400,
         "cause": 21760
     },
     {
         "name": "Element/filter unit",
+        "id": 514,
         "problem": 22584,
         "cause": 21762
     },
     {
         "name": "Element/filter unit",
+        "id": 515,
         "problem": 0,
         "cause": 21763
     },
     {
         "name": "Element/filter unit",
+        "id": 516,
         "problem": 0,
         "cause": 22297
     },
     {
         "name": "Enclosure",
+        "id": 517,
         "problem": 22408,
         "cause": 21768
     },
     {
         "name": "Enclosure",
+        "id": 518,
         "problem": 0,
         "cause": 21769
     },
     {
         "name": "Expansion joint",
+        "id": 519,
         "problem": 22408,
         "cause": 21639
     },
     {
         "name": "Expansion joint",
+        "id": 520,
         "problem": 22662,
         "cause": 21686
     },
     {
         "name": "Expansion joint",
+        "id": 521,
         "problem": 0,
         "cause": 21927
     },
     {
         "name": "Expansion joint",
+        "id": 522,
         "problem": 0,
         "cause": 22322
     },
     {
         "name": "Expansion joint",
+        "id": 523,
         "problem": 0,
         "cause": 22409
     },
     {
         "name": "Extinguisher Fire",
+        "id": 524,
         "problem": 22387,
         "cause": 21576
     },
     {
         "name": "Extinguisher Fire",
+        "id": 525,
         "problem": 22556,
         "cause": 21782
     },
     {
         "name": "Extinguisher Fire",
+        "id": 526,
         "problem": 22454,
         "cause": 21783
     },
     {
         "name": "Extinguisher Fire",
+        "id": 527,
         "problem": 22574,
         "cause": 21850
     },
     {
         "name": "Extinguisher Fire",
+        "id": 528,
         "problem": 22605,
         "cause": 22134
     },
     {
         "name": "Extinguisher Fire",
+        "id": 529,
         "problem": 0,
         "cause": 22279
     },
     {
         "name": "Fan",
+        "id": 530,
         "problem": 22408,
         "cause": 21523
     },
     {
         "name": "Fan",
+        "id": 531,
         "problem": 22367,
         "cause": 21525
     },
     {
         "name": "Fan",
+        "id": 532,
         "problem": 22406,
         "cause": 21499
     },
     {
         "name": "Fan",
+        "id": 533,
         "problem": 22465,
         "cause": 21713
     },
     {
         "name": "Fan",
+        "id": 534,
         "problem": 22564,
         "cause": 21786
     },
     {
         "name": "Fan",
+        "id": 535,
         "problem": 22657,
         "cause": 21787
     },
     {
         "name": "Fan",
+        "id": 536,
         "problem": 0,
         "cause": 21788
     },
     {
         "name": "Fan",
+        "id": 537,
         "problem": 0,
         "cause": 21789
     },
     {
         "name": "Fan",
+        "id": 538,
         "problem": 0,
         "cause": 22310
     },
     {
         "name": "Fan Centrifugal",
+        "id": 539,
         "problem": 22434,
         "cause": 21919
     },
     {
         "name": "Fan Centrifugal",
+        "id": 540,
         "problem": 22527,
         "cause": 21881
     },
     {
         "name": "Fan Centrifugal",
+        "id": 541,
         "problem": 22657,
         "cause": 21916
     },
     {
         "name": "Fan Centrifugal",
+        "id": 542,
         "problem": 22537,
         "cause": 21997
     },
     {
         "name": "Fan Centrifugal",
+        "id": 543,
         "problem": 22465,
         "cause": 22310
     },
     {
         "name": "Fan Centrifugal",
+        "id": 544,
         "problem": 0,
         "cause": 21992
     },
     {
         "name": "Fan Centrifugal",
+        "id": 545,
         "problem": 0,
         "cause": 21484
     },
     {
         "name": "Fan Centrifugal",
+        "id": 546,
         "problem": 0,
         "cause": 22007
     },
     {
         "name": "Fan Centrifugal",
+        "id": 547,
         "problem": 0,
         "cause": 21993
     },
     {
         "name": "Fan Centrifugal",
+        "id": 548,
         "problem": 0,
         "cause": 21834
     },
     {
         "name": "Fan Centrifugal",
+        "id": 549,
         "problem": 0,
         "cause": 21996
     },
     {
         "name": "Fan Centrifugal",
+        "id": 550,
         "problem": 0,
         "cause": 22520
     },
     {
         "name": "Fan Centrifugal",
+        "id": 551,
         "problem": 0,
         "cause": 21541
     },
     {
         "name": "Fan Centrifugal",
+        "id": 552,
         "problem": 0,
         "cause": 22068
     },
     {
         "name": "Fan Centrifugal",
+        "id": 553,
         "problem": 0,
         "cause": 21811
     },
     {
         "name": "Fan Centrifugal",
+        "id": 554,
         "problem": 0,
         "cause": 21918
     },
     {
         "name": "Fan Centrifugal",
+        "id": 555,
         "problem": 0,
         "cause": 22476
     },
     {
         "name": "Fan Centrifugal",
+        "id": 556,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Fan Centrifugal",
+        "id": 557,
         "problem": 0,
         "cause": 21639
     },
     {
         "name": "Fastener/Hardware",
+        "id": 558,
         "problem": 0,
         "cause": 21511
     },
     {
         "name": "Fastener/Hardware",
+        "id": 559,
         "problem": 0,
         "cause": 21714
     },
     {
         "name": "Fastener/Hardware",
+        "id": 560,
         "problem": 22420,
         "cause": 21817
     },
     {
         "name": "Fastener/Hardware",
+        "id": 561,
         "problem": 0,
         "cause": 21892
     },
     {
         "name": "Fire Suppression System",
+        "id": 562,
         "problem": 22434,
         "cause": 22066
     },
     {
         "name": "Fire Suppression System",
+        "id": 563,
         "problem": 0,
         "cause": 22474
     },
     {
         "name": "Fire Suppression System",
+        "id": 564,
         "problem": 0,
         "cause": 21613
     },
     {
         "name": "Fire Suppression System",
+        "id": 565,
         "problem": 0,
         "cause": 22554
     },
     {
         "name": "Fire Suppression System",
+        "id": 566,
         "problem": 0,
         "cause": 22182
     },
     {
         "name": "Floor scrubber",
+        "id": 567,
         "problem": 22377,
         "cause": 21442
     },
     {
         "name": "Floor scrubber",
+        "id": 568,
         "problem": 22508,
         "cause": 21564
     },
     {
         "name": "Floor scrubber",
+        "id": 569,
         "problem": 22546,
         "cause": 21559
     },
     {
         "name": "Floor scrubber",
+        "id": 570,
         "problem": 22543,
         "cause": 21560
     },
     {
         "name": "Floor scrubber",
+        "id": 571,
         "problem": 22601,
         "cause": 21561
     },
     {
         "name": "Floor scrubber",
+        "id": 572,
         "problem": 22602,
         "cause": 21562
     },
     {
         "name": "Floor scrubber",
+        "id": 573,
         "problem": 22603,
         "cause": 21486
     },
     {
         "name": "Floor scrubber",
+        "id": 574,
         "problem": 22630,
         "cause": 0
     },
     {
         "name": "Floor scrubber",
+        "id": 575,
         "problem": 22655,
         "cause": 21625
     },
     {
         "name": "Floor scrubber",
+        "id": 576,
         "problem": 22653,
         "cause": 21687
     },
     {
         "name": "Floor scrubber",
+        "id": 577,
         "problem": 0,
         "cause": 21695
     },
     {
         "name": "Floor scrubber",
+        "id": 578,
         "problem": 0,
         "cause": 21705
     },
     {
         "name": "Floor scrubber",
+        "id": 579,
         "problem": 0,
         "cause": 21765
     },
     {
         "name": "Floor scrubber",
+        "id": 580,
         "problem": 0,
         "cause": 21800
     },
     {
         "name": "Floor scrubber",
+        "id": 581,
         "problem": 0,
         "cause": 21801
     },
     {
         "name": "Floor scrubber",
+        "id": 582,
         "problem": 0,
         "cause": 21834
     },
     {
         "name": "Floor scrubber",
+        "id": 583,
         "problem": 0,
         "cause": 22048
     },
     {
         "name": "Floor scrubber",
+        "id": 584,
         "problem": 0,
         "cause": 22074
     },
     {
         "name": "Floor scrubber",
+        "id": 585,
         "problem": 0,
         "cause": 22077
     },
     {
         "name": "Floor scrubber",
+        "id": 586,
         "problem": 0,
         "cause": 22101
     },
     {
         "name": "Floor scrubber",
+        "id": 587,
         "problem": 0,
         "cause": 22191
     },
     {
         "name": "Floor scrubber",
+        "id": 588,
         "problem": 0,
         "cause": 22167
     },
     {
         "name": "Floor scrubber",
+        "id": 589,
         "problem": 0,
         "cause": 22224
     },
     {
         "name": "Floor scrubber",
+        "id": 590,
         "problem": 0,
         "cause": 22242
     },
     {
         "name": "Floor scrubber",
+        "id": 591,
         "problem": 0,
         "cause": 22271
     },
     {
         "name": "Floor scrubber",
+        "id": 592,
         "problem": 0,
         "cause": 22270
     },
     {
         "name": "Floor scrubber",
+        "id": 593,
         "problem": 0,
         "cause": 22341
     },
     {
         "name": "Floor scrubber",
+        "id": 594,
         "problem": 0,
         "cause": 22343
     },
     {
         "name": "Floor scrubber",
+        "id": 595,
         "problem": 0,
         "cause": 22344
     },
     {
         "name": "Floor scrubber",
+        "id": 596,
         "problem": 0,
         "cause": 22345
     },
     {
         "name": "Floor scrubber",
+        "id": 597,
         "problem": 0,
         "cause": 22366
     },
     {
         "name": "Floor scrubber",
+        "id": 598,
         "problem": 0,
         "cause": 22367
     },
     {
         "name": "Floor scrubber",
+        "id": 599,
         "problem": 0,
         "cause": 22368
     },
     {
         "name": "Floor scrubber",
+        "id": 600,
         "problem": 0,
         "cause": 22401
     },
     {
         "name": "Floor scrubber",
+        "id": 601,
         "problem": 0,
         "cause": 22466
     },
     {
         "name": "Floor scrubber",
+        "id": 602,
         "problem": 0,
         "cause": 22467
     },
     {
         "name": "Floor scrubber",
+        "id": 603,
         "problem": 0,
         "cause": 22465
     },
     {
         "name": "Floor scrubber",
+        "id": 604,
         "problem": 0,
         "cause": 22469
     },
     {
         "name": "Floor scrubber",
+        "id": 605,
         "problem": 0,
         "cause": 22470
     },
     {
         "name": "Floor scrubber",
+        "id": 606,
         "problem": 0,
         "cause": 22471
     },
     {
         "name": "Floor scrubber",
+        "id": 607,
         "problem": 0,
         "cause": 22472
     },
     {
         "name": "Floor scrubber",
+        "id": 608,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Floor sweeper",
+        "id": 609,
         "problem": 22667,
         "cause": 21462
     },
     {
         "name": "Floor sweeper",
+        "id": 610,
         "problem": 22496,
         "cause": 21550
     },
     {
         "name": "Floor sweeper",
+        "id": 611,
         "problem": 22508,
         "cause": 21547
     },
     {
         "name": "Floor sweeper",
+        "id": 612,
         "problem": 22530,
         "cause": 21685
     },
     {
         "name": "Floor sweeper",
+        "id": 613,
         "problem": 22582,
         "cause": 21734
     },
     {
         "name": "Floor sweeper",
+        "id": 614,
         "problem": 22654,
         "cause": 21766
     },
     {
         "name": "Floor sweeper",
+        "id": 615,
         "problem": 0,
         "cause": 21878
     },
     {
         "name": "Floor sweeper",
+        "id": 616,
         "problem": 0,
         "cause": 21879
     },
     {
         "name": "Floor sweeper",
+        "id": 617,
         "problem": 0,
         "cause": 21880
     },
     {
         "name": "Floor sweeper",
+        "id": 618,
         "problem": 0,
         "cause": 21974
     },
     {
         "name": "Floor sweeper",
+        "id": 619,
         "problem": 0,
         "cause": 21566
     },
     {
         "name": "Floor sweeper",
+        "id": 620,
         "problem": 0,
         "cause": 21565
     },
     {
         "name": "Floor sweeper",
+        "id": 621,
         "problem": 0,
         "cause": 22034
     },
     {
         "name": "Floor sweeper",
+        "id": 622,
         "problem": 0,
         "cause": 22033
     },
     {
         "name": "Floor sweeper",
+        "id": 623,
         "problem": 0,
         "cause": 22101
     },
     {
         "name": "Floor sweeper",
+        "id": 624,
         "problem": 0,
         "cause": 22167
     },
     {
         "name": "Floor sweeper",
+        "id": 625,
         "problem": 0,
         "cause": 22463
     },
     {
         "name": "Floor sweeper",
+        "id": 626,
         "problem": 0,
         "cause": 22464
     },
     {
         "name": "Floor sweeper",
+        "id": 627,
         "problem": 0,
         "cause": 22468
     },
     {
         "name": "Floor sweeper",
+        "id": 628,
         "problem": 0,
         "cause": 22531
     },
     {
         "name": "Floor sweeper",
+        "id": 629,
         "problem": 0,
         "cause": 22549
     },
     {
         "name": "Furnace",
+        "id": 630,
         "problem": 22649,
         "cause": 21793
     },
     {
         "name": "Furnace",
+        "id": 631,
         "problem": 22632,
         "cause": 21825
     },
     {
         "name": "Furnace",
+        "id": 632,
         "problem": 22408,
         "cause": 21826
     },
     {
         "name": "Furnace",
+        "id": 633,
         "problem": 22464,
         "cause": 21827
     },
     {
         "name": "Furnace",
+        "id": 634,
         "problem": 0,
         "cause": 21828
     },
     {
         "name": "Fuse (general)",
+        "id": 635,
         "problem": 22530,
         "cause": 21834
     },
     {
         "name": "Fuse (general)",
+        "id": 636,
         "problem": 0,
         "cause": 21836
     },
     {
         "name": "Fuse (general)",
+        "id": 637,
         "problem": 0,
         "cause": 21838
     },
     {
         "name": "Fuse (general)",
+        "id": 638,
         "problem": 0,
         "cause": 21841
     },
     {
         "name": "Fuse (general)",
+        "id": 639,
         "problem": 0,
         "cause": 21842
     },
     {
         "name": "Gauge",
+        "id": 640,
         "problem": 22511,
         "cause": 21851
     },
     {
         "name": "Gauge",
+        "id": 641,
         "problem": 22372,
         "cause": 21853
     },
     {
         "name": "Gauge",
+        "id": 642,
         "problem": 0,
         "cause": 21852
     },
     {
         "name": "Gauge",
+        "id": 643,
         "problem": 0,
         "cause": 21854
     },
     {
         "name": "Gauge",
+        "id": 644,
         "problem": 0,
         "cause": 22063
     },
     {
         "name": "Gear Box",
+        "id": 645,
         "problem": 22408,
         "cause": 21530
     },
     {
         "name": "Gear Box",
+        "id": 646,
         "problem": 22400,
         "cause": 21844
     },
     {
         "name": "Gear Box",
+        "id": 647,
         "problem": 0,
         "cause": 21847
     },
     {
         "name": "Gear Box",
+        "id": 648,
         "problem": 22527,
         "cause": 21848
     },
     {
         "name": "Gear Box",
+        "id": 649,
         "problem": 22657,
         "cause": 0
     },
     {
         "name": "Gear Box",
+        "id": 650,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Gear Box",
+        "id": 651,
         "problem": 22607,
         "cause": 0
     },
     {
         "name": "Heater - Electric",
+        "id": 652,
         "problem": 22418,
         "cause": 21536
     },
     {
         "name": "Heater - Electric",
+        "id": 653,
         "problem": 22524,
         "cause": 21537
     },
     {
         "name": "Heater - Electric",
+        "id": 654,
         "problem": 0,
         "cause": 21764
     },
     {
         "name": "Heater - Electric",
+        "id": 655,
         "problem": 0,
         "cause": 21886
     },
     {
         "name": "Heater - Electric",
+        "id": 656,
         "problem": 0,
         "cause": 21887
     },
     {
         "name": "Heater - Electric",
+        "id": 657,
         "problem": 0,
         "cause": 21889
     },
     {
         "name": "Heater - Electric",
+        "id": 658,
         "problem": 0,
         "cause": 21891
     },
     {
         "name": "Heater - Electric",
+        "id": 659,
         "problem": 0,
         "cause": 22398
     },
     {
         "name": "Heater - Electric",
+        "id": 660,
         "problem": 0,
         "cause": 22420
     },
     {
         "name": "Heater - Electric",
+        "id": 661,
         "problem": 0,
         "cause": 22537
     },
     {
         "name": "Heater - Steam",
+        "id": 662,
         "problem": 22524,
         "cause": 21432
     },
     {
         "name": "Heater - Steam",
+        "id": 663,
         "problem": 22489,
         "cause": 21884
     },
     {
         "name": "Heater - Steam",
+        "id": 664,
         "problem": 22522,
         "cause": 21885
     },
     {
         "name": "Heater - Steam",
+        "id": 665,
         "problem": 0,
         "cause": 21888
     },
     {
         "name": "Heater - Steam",
+        "id": 666,
         "problem": 0,
         "cause": 21890
     },
     {
         "name": "Heater - Steam",
+        "id": 667,
         "problem": 0,
         "cause": 22377
     },
     {
         "name": "Heater - Steam",
+        "id": 668,
         "problem": 0,
         "cause": 22435
     },
     {
         "name": "Heat Exchanger",
+        "id": 669,
         "problem": 22564,
         "cause": 21455
     },
     {
         "name": "Heat Exchanger",
+        "id": 670,
         "problem": 0,
         "cause": 21432
     },
     {
         "name": "Heat Exchanger",
+        "id": 671,
         "problem": 0,
         "cause": 21493
     },
     {
         "name": "Heat Exchanger",
+        "id": 672,
         "problem": 22408,
         "cause": 21492
     },
     {
         "name": "Heat Exchanger",
+        "id": 673,
         "problem": 22406,
         "cause": 21603
     },
     {
         "name": "Heat Exchanger",
+        "id": 674,
         "problem": 22429,
         "cause": 21630
     },
     {
         "name": "Heat Exchanger",
+        "id": 675,
         "problem": 0,
         "cause": 21727
     },
     {
         "name": "Heat Exchanger",
+        "id": 676,
         "problem": 0,
         "cause": 21728
     },
     {
         "name": "Heat Exchanger",
+        "id": 677,
         "problem": 0,
         "cause": 21729
     },
     {
         "name": "Heat Exchanger",
+        "id": 678,
         "problem": 0,
         "cause": 21775
     },
     {
         "name": "Heat Exchanger",
+        "id": 679,
         "problem": 0,
         "cause": 21776
     },
     {
         "name": "Heat Exchanger",
+        "id": 680,
         "problem": 0,
         "cause": 21781
     },
     {
         "name": "Heat Exchanger",
+        "id": 681,
         "problem": 0,
         "cause": 21863
     },
     {
         "name": "Heat Exchanger",
+        "id": 682,
         "problem": 0,
         "cause": 21946
     },
     {
         "name": "Heat Exchanger",
+        "id": 683,
         "problem": 0,
         "cause": 21963
     },
     {
         "name": "Heat Exchanger",
+        "id": 684,
         "problem": 0,
         "cause": 21970
     },
     {
         "name": "Heat Exchanger",
+        "id": 685,
         "problem": 0,
         "cause": 21984
     },
     {
         "name": "Heat Exchanger",
+        "id": 686,
         "problem": 0,
         "cause": 22082
     },
     {
         "name": "Heat Exchanger",
+        "id": 687,
         "problem": 0,
         "cause": 22080
     },
     {
         "name": "Heat Exchanger",
+        "id": 688,
         "problem": 0,
         "cause": 22083
     },
     {
         "name": "Heat Exchanger",
+        "id": 689,
         "problem": 0,
         "cause": 22084
     },
     {
         "name": "Heat Exchanger",
+        "id": 690,
         "problem": 0,
         "cause": 22081
     },
     {
         "name": "Heat Exchanger",
+        "id": 691,
         "problem": 0,
         "cause": 22277
     },
     {
         "name": "Heat Exchanger",
+        "id": 692,
         "problem": 0,
         "cause": 22276
     },
     {
         "name": "Heat Exchanger",
+        "id": 693,
         "problem": 0,
         "cause": 22308
     },
     {
         "name": "Heat Exchanger",
+        "id": 694,
         "problem": 0,
         "cause": 22432
     },
     {
         "name": "Heat Exchanger",
+        "id": 695,
         "problem": 0,
         "cause": 22435
     },
     {
         "name": "Heat Exchanger",
+        "id": 696,
         "problem": 0,
         "cause": 22438
     },
     {
         "name": "Heat Exchanger",
+        "id": 697,
         "problem": 0,
         "cause": 22521
     },
     {
         "name": "Heat Exchanger",
+        "id": 698,
         "problem": 0,
         "cause": 22522
     },
     {
         "name": "Heat Exchanger",
+        "id": 699,
         "problem": 0,
         "cause": 22526
     },
     {
         "name": "Heat Exchanger",
+        "id": 700,
         "problem": 0,
         "cause": 22525
     },
     {
         "name": "Heat Exchanger",
+        "id": 701,
         "problem": 0,
         "cause": 22528
     },
     {
         "name": "Heat Exchanger",
+        "id": 702,
         "problem": 0,
         "cause": 22527
     },
     {
         "name": "Heat Exchanger",
+        "id": 703,
         "problem": 0,
         "cause": 22529
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 704,
         "problem": 22564,
         "cause": 21455
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 705,
         "problem": 0,
         "cause": 21432
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 706,
         "problem": 0,
         "cause": 21493
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 707,
         "problem": 22408,
         "cause": 21492
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 708,
         "problem": 22406,
         "cause": 21603
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 709,
         "problem": 22429,
         "cause": 21630
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 710,
         "problem": 0,
         "cause": 21606
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 711,
         "problem": 0,
         "cause": 21727
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 712,
         "problem": 0,
         "cause": 21728
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 713,
         "problem": 0,
         "cause": 21729
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 714,
         "problem": 0,
         "cause": 21775
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 715,
         "problem": 0,
         "cause": 21780
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 716,
         "problem": 0,
         "cause": 21863
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 717,
         "problem": 0,
         "cause": 21946
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 718,
         "problem": 0,
         "cause": 21963
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 719,
         "problem": 0,
         "cause": 21970
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 720,
         "problem": 0,
         "cause": 21984
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 721,
         "problem": 0,
         "cause": 22082
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 722,
         "problem": 0,
         "cause": 22080
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 723,
         "problem": 0,
         "cause": 22083
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 724,
         "problem": 0,
         "cause": 22084
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 725,
         "problem": 0,
         "cause": 22081
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 726,
         "problem": 0,
         "cause": 22277
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 727,
         "problem": 0,
         "cause": 22276
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 728,
         "problem": 0,
         "cause": 22308
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 729,
         "problem": 0,
         "cause": 22432
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 730,
         "problem": 0,
         "cause": 22435
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 731,
         "problem": 0,
         "cause": 22438
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 732,
         "problem": 0,
         "cause": 22521
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 733,
         "problem": 0,
         "cause": 22522
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 734,
         "problem": 0,
         "cause": 22526
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 735,
         "problem": 0,
         "cause": 22525
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 736,
         "problem": 0,
         "cause": 22528
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 737,
         "problem": 0,
         "cause": 22527
     },
     {
         "name": "Heat Exchanger - Condenser",
+        "id": 738,
         "problem": 0,
         "cause": 22529
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 739,
         "problem": 22564,
         "cause": 21455
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 740,
         "problem": 0,
         "cause": 21432
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 741,
         "problem": 0,
         "cause": 21493
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 742,
         "problem": 22408,
         "cause": 21492
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 743,
         "problem": 22406,
         "cause": 21603
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 744,
         "problem": 22429,
         "cause": 21630
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 745,
         "problem": 0,
         "cause": 21606
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 746,
         "problem": 0,
         "cause": 21727
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 747,
         "problem": 0,
         "cause": 21728
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 748,
         "problem": 0,
         "cause": 21729
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 749,
         "problem": 0,
         "cause": 21775
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 750,
         "problem": 0,
         "cause": 21780
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 751,
         "problem": 0,
         "cause": 21863
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 752,
         "problem": 0,
         "cause": 21946
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 753,
         "problem": 0,
         "cause": 21963
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 754,
         "problem": 0,
         "cause": 21970
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 755,
         "problem": 0,
         "cause": 21984
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 756,
         "problem": 0,
         "cause": 22082
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 757,
         "problem": 0,
         "cause": 22080
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 758,
         "problem": 0,
         "cause": 22083
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 759,
         "problem": 0,
         "cause": 22084
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 760,
         "problem": 0,
         "cause": 22081
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 761,
         "problem": 0,
         "cause": 22277
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 762,
         "problem": 0,
         "cause": 22276
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 763,
         "problem": 0,
         "cause": 22308
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 764,
         "problem": 0,
         "cause": 22432
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 765,
         "problem": 0,
         "cause": 22435
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 766,
         "problem": 0,
         "cause": 22438
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 767,
         "problem": 0,
         "cause": 22521
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 768,
         "problem": 0,
         "cause": 22522
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 769,
         "problem": 0,
         "cause": 22526
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 770,
         "problem": 0,
         "cause": 22525
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 771,
         "problem": 0,
         "cause": 22528
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 772,
         "problem": 0,
         "cause": 22527
     },
     {
         "name": "Heat Exchanger - Cooler",
+        "id": 773,
         "problem": 0,
         "cause": 22529
     },
     {
         "name": "Hoist",
+        "id": 774,
         "problem": 22664,
         "cause": 22538
     },
     {
         "name": "Hoist",
+        "id": 775,
         "problem": 22359,
         "cause": 22536
     },
     {
         "name": "Hoist",
+        "id": 776,
         "problem": 22647,
         "cause": 22535
     },
     {
         "name": "Hoist",
+        "id": 777,
         "problem": 22592,
         "cause": 21784
     },
     {
         "name": "Hoist",
+        "id": 778,
         "problem": 22367,
         "cause": 21834
     },
     {
         "name": "Hoist",
+        "id": 779,
         "problem": 22537,
         "cause": 22533
     },
     {
         "name": "Hoist",
+        "id": 780,
         "problem": 22484,
         "cause": 22462
     },
     {
         "name": "Hoist",
+        "id": 781,
         "problem": 0,
         "cause": 22516
     },
     {
         "name": "Hoist",
+        "id": 782,
         "problem": 0,
         "cause": 22517
     },
     {
         "name": "Hoist",
+        "id": 783,
         "problem": 0,
         "cause": 22286
     },
     {
         "name": "Hoist",
+        "id": 784,
         "problem": 0,
         "cause": 22055
     },
     {
         "name": "Humidifier",
+        "id": 785,
         "problem": 22418,
         "cause": 21522
     },
     {
         "name": "Humidifier",
+        "id": 786,
         "problem": 0,
         "cause": 21654
     },
     {
         "name": "Humidifier",
+        "id": 787,
         "problem": 22657,
         "cause": 21813
     },
     {
         "name": "Humidifier",
+        "id": 788,
         "problem": 0,
         "cause": 21873
     },
     {
         "name": "Humidifier",
+        "id": 789,
         "problem": 0,
         "cause": 21874
     },
     {
         "name": "Humidifier",
+        "id": 790,
         "problem": 0,
         "cause": 21875
     },
     {
         "name": "Ignitor",
+        "id": 791,
         "problem": 22510,
         "cause": 21908
     },
     {
         "name": "Ignitor",
+        "id": 792,
         "problem": 22530,
         "cause": 21907
     },
     {
         "name": "Ignitor",
+        "id": 793,
         "problem": 0,
         "cause": 21909
     },
     {
         "name": "Injection Molder",
+        "id": 794,
         "problem": 22381,
         "cause": 21602
     },
     {
         "name": "Injection Molder",
+        "id": 795,
         "problem": 22419,
         "cause": 21627
     },
     {
         "name": "Injection Molder",
+        "id": 796,
         "problem": 22441,
         "cause": 21638
     },
     {
         "name": "Injection Molder",
+        "id": 797,
         "problem": 22448,
         "cause": 22558
     },
     {
         "name": "Injection Molder",
+        "id": 798,
         "problem": 22475,
         "cause": 21876
     },
     {
         "name": "Injection Molder",
+        "id": 799,
         "problem": 22583,
         "cause": 21877
     },
     {
         "name": "Injection Molder",
+        "id": 800,
         "problem": 22604,
         "cause": 21925
     },
     {
         "name": "Injection Molder",
+        "id": 801,
         "problem": 22612,
         "cause": 21926
     },
     {
         "name": "Injection Molder",
+        "id": 802,
         "problem": 22614,
         "cause": 21931
     },
     {
         "name": "Injection Molder",
+        "id": 803,
         "problem": 22615,
         "cause": 22552
     },
     {
         "name": "Injection Molder",
+        "id": 804,
         "problem": 22572,
         "cause": 21935
     },
     {
         "name": "Injection Molder",
+        "id": 805,
         "problem": 22640,
         "cause": 21936
     },
     {
         "name": "Injection Molder",
+        "id": 806,
         "problem": 22656,
         "cause": 22052
     },
     {
         "name": "Injection Molder",
+        "id": 807,
         "problem": 22662,
         "cause": 22053
     },
     {
         "name": "Injection Molder",
+        "id": 808,
         "problem": 0,
         "cause": 22037
     },
     {
         "name": "Injection Molder",
+        "id": 809,
         "problem": 0,
         "cause": 22039
     },
     {
         "name": "Injection Molder",
+        "id": 810,
         "problem": 0,
         "cause": 22040
     },
     {
         "name": "Injection Molder",
+        "id": 811,
         "problem": 0,
         "cause": 22041
     },
     {
         "name": "Injection Molder",
+        "id": 812,
         "problem": 0,
         "cause": 22038
     },
     {
         "name": "Injection Molder",
+        "id": 813,
         "problem": 0,
         "cause": 22062
     },
     {
         "name": "Injection Molder",
+        "id": 814,
         "problem": 0,
         "cause": 22078
     },
     {
         "name": "Injection Molder",
+        "id": 815,
         "problem": 0,
         "cause": 22079
     },
     {
         "name": "Injection Molder",
+        "id": 816,
         "problem": 0,
         "cause": 22101
     },
     {
         "name": "Injection Molder",
+        "id": 817,
         "problem": 0,
         "cause": 22164
     },
     {
         "name": "Injection Molder",
+        "id": 818,
         "problem": 0,
         "cause": 22166
     },
     {
         "name": "Injection Molder",
+        "id": 819,
         "problem": 0,
         "cause": 21437
     },
     {
         "name": "Injection Molder",
+        "id": 820,
         "problem": 0,
         "cause": 22423
     },
     {
         "name": "Injection Molder",
+        "id": 821,
         "problem": 0,
         "cause": 22424
     },
     {
         "name": "Injection Molder",
+        "id": 822,
         "problem": 0,
         "cause": 22458
     },
     {
         "name": "Injection Molder",
+        "id": 823,
         "problem": 0,
         "cause": 21816
     },
     {
         "name": "Injection Molder",
+        "id": 824,
         "problem": 0,
         "cause": 22530
     },
     {
         "name": "Inverter (AC/DC)",
+        "id": 825,
         "problem": 22566,
         "cause": 21431
     },
     {
         "name": "Inverter (AC/DC)",
+        "id": 826,
         "problem": 22610,
         "cause": 21637
     },
     {
         "name": "Inverter (AC/DC)",
+        "id": 827,
         "problem": 22646,
         "cause": 21839
     },
     {
         "name": "Inverter (AC/DC)",
+        "id": 828,
         "problem": 22530,
         "cause": 21953
     },
     {
         "name": "Inverter (AC/DC)",
+        "id": 829,
         "problem": 22413,
         "cause": 21956
     },
     {
         "name": "Inverter (AC/DC)",
+        "id": 830,
         "problem": 0,
         "cause": 21958
     },
     {
         "name": "Inverter (AC/DC)",
+        "id": 831,
         "problem": 0,
         "cause": 22272
     },
     {
         "name": "Inverter (AC/DC)",
+        "id": 832,
         "problem": 0,
         "cause": 22273
     },
     {
         "name": "Laser",
+        "id": 833,
         "problem": 22557,
         "cause": 0
     },
     {
         "name": "Ladder",
+        "id": 834,
         "problem": 22634,
         "cause": 22032
     },
     {
         "name": "Ladder",
+        "id": 835,
         "problem": 22616,
         "cause": 22028
     },
     {
         "name": "Ladder",
+        "id": 836,
         "problem": 22452,
         "cause": 22551
     },
     {
         "name": "Ladder",
+        "id": 837,
         "problem": 22367,
         "cause": 0
     },
     {
         "name": "Loop - Instrument",
+        "id": 838,
         "problem": 22552,
         "cause": 21574
     },
     {
         "name": "Loop - Instrument",
+        "id": 839,
         "problem": 22430,
         "cause": 21934
     },
     {
         "name": "Loop - Instrument",
+        "id": 840,
         "problem": 22434,
         "cause": 22098
     },
     {
         "name": "Loop - Instrument",
+        "id": 841,
         "problem": 0,
         "cause": 22100
     },
     {
         "name": "Loop - Instrument",
+        "id": 842,
         "problem": 0,
         "cause": 22299
     },
     {
         "name": "Loop - Instrument",
+        "id": 843,
         "problem": 0,
         "cause": 22329
     },
     {
         "name": "Loop - Instrument",
+        "id": 844,
         "problem": 0,
         "cause": 22536
     },
     {
         "name": "Louvers",
+        "id": 845,
         "problem": 22367,
         "cause": 21434
     },
     {
         "name": "Louvers",
+        "id": 846,
         "problem": 22588,
         "cause": 21654
     },
     {
         "name": "Louvers",
+        "id": 847,
         "problem": 22607,
         "cause": 21999
     },
     {
         "name": "Louvers",
+        "id": 848,
         "problem": 22494,
         "cause": 22001
     },
     {
         "name": "Louvers",
+        "id": 849,
         "problem": 0,
         "cause": 22002
     },
     {
         "name": "Louvers",
+        "id": 850,
         "problem": 0,
         "cause": 22000
     },
     {
         "name": "Meter - Electronic",
+        "id": 851,
         "problem": 22422,
         "cause": 22023
     },
     {
         "name": "Meter - Electronic",
+        "id": 852,
         "problem": 22511,
         "cause": 22024
     },
     {
         "name": "Meter - Electronic",
+        "id": 853,
         "problem": 22525,
         "cause": 22025
     },
     {
         "name": "Meter - Electronic",
+        "id": 854,
         "problem": 22552,
         "cause": 22026
     },
     {
         "name": "Meter - Electronic",
+        "id": 855,
         "problem": 0,
         "cause": 22027
     },
     {
         "name": "Mixer",
+        "id": 856,
         "problem": 22657,
         "cause": 21429
     },
     {
         "name": "Mixer",
+        "id": 857,
         "problem": 22665,
         "cause": 21918
     },
     {
         "name": "Mixer",
+        "id": 858,
         "problem": 22462,
         "cause": 21920
     },
     {
         "name": "Mixer",
+        "id": 859,
         "problem": 22468,
         "cause": 21913
     },
     {
         "name": "Mixer",
+        "id": 860,
         "problem": 22469,
         "cause": 21929
     },
     {
         "name": "Mixer",
+        "id": 861,
         "problem": 22566,
         "cause": 22197
     },
     {
         "name": "Mixer",
+        "id": 862,
         "problem": 0,
         "cause": 22346
     },
     {
         "name": "Mixer",
+        "id": 863,
         "problem": 0,
         "cause": 21869
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 864,
         "problem": 22361,
         "cause": 21464
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 865,
         "problem": 22485,
         "cause": 21535
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 866,
         "problem": 22527,
         "cause": 21536
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 867,
         "problem": 22544,
         "cause": 21571
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 868,
         "problem": 22566,
         "cause": 21585
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 869,
         "problem": 22568,
         "cause": 21656
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 870,
         "problem": 22571,
         "cause": 21664
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 871,
         "problem": 22498,
         "cause": 21665
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 872,
         "problem": 22657,
         "cause": 21964
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 873,
         "problem": 0,
         "cause": 21965
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 874,
         "problem": 0,
         "cause": 21834
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 875,
         "problem": 0,
         "cause": 22121
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 876,
         "problem": 0,
         "cause": 22216
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 877,
         "problem": 0,
         "cause": 22201
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 878,
         "problem": 0,
         "cause": 22383
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 879,
         "problem": 0,
         "cause": 22384
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 880,
         "problem": 0,
         "cause": 22385
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 881,
         "problem": 0,
         "cause": 22386
     },
     {
         "name": "Motor Control Center (< 750VAC",
+        "id": 882,
         "problem": 0,
         "cause": 22430
     },
     {
         "name": "Motor Electric",
+        "id": 883,
         "problem": 22361,
         "cause": 21446
     },
     {
         "name": "Motor Electric",
+        "id": 884,
         "problem": 22485,
         "cause": 21459
     },
     {
         "name": "Motor Electric",
+        "id": 885,
         "problem": 22527,
         "cause": 21460
     },
     {
         "name": "Motor Electric",
+        "id": 886,
         "problem": 22544,
         "cause": 21472
     },
     {
         "name": "Motor Electric",
+        "id": 887,
         "problem": 22566,
         "cause": 21473
     },
     {
         "name": "Motor Electric",
+        "id": 888,
         "problem": 22568,
         "cause": 21474
     },
     {
         "name": "Motor Electric",
+        "id": 889,
         "problem": 22571,
         "cause": 21519
     },
     {
         "name": "Motor Electric",
+        "id": 890,
         "problem": 22498,
         "cause": 21524
     },
     {
         "name": "Motor Electric",
+        "id": 891,
         "problem": 22657,
         "cause": 21528
     },
     {
         "name": "Motor Electric",
+        "id": 892,
         "problem": 22607,
         "cause": 21518
     },
     {
         "name": "Motor Electric",
+        "id": 893,
         "problem": 22625,
         "cause": 21594
     },
     {
         "name": "Motor Electric",
+        "id": 894,
         "problem": 0,
         "cause": 21671
     },
     {
         "name": "Motor Electric",
+        "id": 895,
         "problem": 0,
         "cause": 21670
     },
     {
         "name": "Motor Electric",
+        "id": 896,
         "problem": 0,
         "cause": 21657
     },
     {
         "name": "Motor Electric",
+        "id": 897,
         "problem": 0,
         "cause": 21733
     },
     {
         "name": "Motor Electric",
+        "id": 898,
         "problem": 0,
         "cause": 21770
     },
     {
         "name": "Motor Electric",
+        "id": 899,
         "problem": 0,
         "cause": 21771
     },
     {
         "name": "Motor Electric",
+        "id": 900,
         "problem": 0,
         "cause": 21795
     },
     {
         "name": "Motor Electric",
+        "id": 901,
         "problem": 0,
         "cause": 21798
     },
     {
         "name": "Motor Electric",
+        "id": 902,
         "problem": 0,
         "cause": 21818
     },
     {
         "name": "Motor Electric",
+        "id": 903,
         "problem": 0,
         "cause": 21821
     },
     {
         "name": "Motor Electric",
+        "id": 904,
         "problem": 0,
         "cause": 21823
     },
     {
         "name": "Motor Electric",
+        "id": 905,
         "problem": 0,
         "cause": 21824
     },
     {
         "name": "Motor Electric",
+        "id": 906,
         "problem": 0,
         "cause": 21835
     },
     {
         "name": "Motor Electric",
+        "id": 907,
         "problem": 0,
         "cause": 21837
     },
     {
         "name": "Motor Electric",
+        "id": 908,
         "problem": 0,
         "cause": 21882
     },
     {
         "name": "Motor Electric",
+        "id": 909,
         "problem": 0,
         "cause": 21942
     },
     {
         "name": "Motor Electric",
+        "id": 910,
         "problem": 0,
         "cause": 21949
     },
     {
         "name": "Motor Electric",
+        "id": 911,
         "problem": 0,
         "cause": 21971
     },
     {
         "name": "Motor Electric",
+        "id": 912,
         "problem": 0,
         "cause": 22008
     },
     {
         "name": "Motor Electric",
+        "id": 913,
         "problem": 0,
         "cause": 22044
     },
     {
         "name": "Motor Electric",
+        "id": 914,
         "problem": 0,
         "cause": 22049
     },
     {
         "name": "Motor Electric",
+        "id": 915,
         "problem": 0,
         "cause": 22054
     },
     {
         "name": "Motor Electric",
+        "id": 916,
         "problem": 0,
         "cause": 22056
     },
     {
         "name": "Motor Electric",
+        "id": 917,
         "problem": 0,
         "cause": 22043
     },
     {
         "name": "Motor Electric",
+        "id": 918,
         "problem": 0,
         "cause": 22060
     },
     {
         "name": "Motor Electric",
+        "id": 919,
         "problem": 0,
         "cause": 22061
     },
     {
         "name": "Motor Electric",
+        "id": 920,
         "problem": 0,
         "cause": 22119
     },
     {
         "name": "Motor Electric",
+        "id": 921,
         "problem": 0,
         "cause": 22132
     },
     {
         "name": "Motor Electric",
+        "id": 922,
         "problem": 0,
         "cause": 22202
     },
     {
         "name": "Motor Electric",
+        "id": 923,
         "problem": 0,
         "cause": 22245
     },
     {
         "name": "Motor Electric",
+        "id": 924,
         "problem": 0,
         "cause": 22231
     },
     {
         "name": "Motor Electric",
+        "id": 925,
         "problem": 0,
         "cause": 22254
     },
     {
         "name": "Motor Electric",
+        "id": 926,
         "problem": 0,
         "cause": 22255
     },
     {
         "name": "Motor Electric",
+        "id": 927,
         "problem": 0,
         "cause": 22256
     },
     {
         "name": "Motor Electric",
+        "id": 928,
         "problem": 0,
         "cause": 22259
     },
     {
         "name": "Motor Electric",
+        "id": 929,
         "problem": 0,
         "cause": 22260
     },
     {
         "name": "Motor Electric",
+        "id": 930,
         "problem": 0,
         "cause": 22262
     },
     {
         "name": "Motor Electric",
+        "id": 931,
         "problem": 0,
         "cause": 22263
     },
     {
         "name": "Motor Electric",
+        "id": 932,
         "problem": 0,
         "cause": 22410
     },
     {
         "name": "Motor Electric",
+        "id": 933,
         "problem": 0,
         "cause": 22279
     },
     {
         "name": "Motor Electric",
+        "id": 934,
         "problem": 0,
         "cause": 22286
     },
     {
         "name": "Motor Electric",
+        "id": 935,
         "problem": 0,
         "cause": 22310
     },
     {
         "name": "Motor Electric",
+        "id": 936,
         "problem": 0,
         "cause": 22317
     },
     {
         "name": "Motor Electric",
+        "id": 937,
         "problem": 0,
         "cause": 22318
     },
     {
         "name": "Motor Electric",
+        "id": 938,
         "problem": 0,
         "cause": 22321
     },
     {
         "name": "Motor Electric",
+        "id": 939,
         "problem": 0,
         "cause": 22333
     },
     {
         "name": "Motor Electric",
+        "id": 940,
         "problem": 0,
         "cause": 22387
     },
     {
         "name": "Motor Electric",
+        "id": 941,
         "problem": 0,
         "cause": 22388
     },
     {
         "name": "Motor Electric",
+        "id": 942,
         "problem": 0,
         "cause": 22389
     },
     {
         "name": "Motor Electric",
+        "id": 943,
         "problem": 0,
         "cause": 22390
     },
     {
         "name": "Motor Electric",
+        "id": 944,
         "problem": 0,
         "cause": 22391
     },
     {
         "name": "Motor Electric",
+        "id": 945,
         "problem": 0,
         "cause": 22392
     },
     {
         "name": "Motor Electric",
+        "id": 946,
         "problem": 0,
         "cause": 22393
     },
     {
         "name": "Motor Electric",
+        "id": 947,
         "problem": 0,
         "cause": 22394
     },
     {
         "name": "Motor-Hydraulic/Pneumatic",
+        "id": 948,
         "problem": 0,
         "cause": 21556
     },
     {
         "name": "Motor-Hydraulic/Pneumatic",
+        "id": 949,
         "problem": 22560,
         "cause": 21572
     },
     {
         "name": "Motor-Hydraulic/Pneumatic",
+        "id": 950,
         "problem": 0,
         "cause": 21849
     },
     {
         "name": "Motor-Hydraulic/Pneumatic",
+        "id": 951,
         "problem": 22607,
         "cause": 21898
     },
     {
         "name": "Motor-Hydraulic/Pneumatic",
+        "id": 952,
         "problem": 22408,
         "cause": 22437
     },
     {
         "name": "Motor - Stepper",
+        "id": 953,
         "problem": 22544,
         "cause": 21911
     },
     {
         "name": "Motor - Stepper",
+        "id": 954,
         "problem": 22423,
         "cause": 22347
     },
     {
         "name": "Motor - Stepper",
+        "id": 955,
         "problem": 22610,
         "cause": 22515
     },
     {
         "name": "Motor - Stepper",
+        "id": 956,
         "problem": 22625,
         "cause": 22117
     },
     {
         "name": "Motor - Stepper",
+        "id": 957,
         "problem": 22566,
         "cause": 22070
     },
     {
         "name": "Motor - Stepper",
+        "id": 958,
         "problem": 0,
         "cause": 21987
     },
     {
         "name": "Motor - Stepper",
+        "id": 959,
         "problem": 0,
         "cause": 22476
     },
     {
         "name": "Oil",
+        "id": 960,
         "problem": 22443,
         "cause": 21870
     },
     {
         "name": "Oil",
+        "id": 961,
         "problem": 22400,
         "cause": 22004
     },
     {
         "name": "Oil",
+        "id": 962,
         "problem": 0,
         "cause": 22086
     },
     {
         "name": "Oil",
+        "id": 963,
         "problem": 22548,
         "cause": 22089
     },
     {
         "name": "Oil",
+        "id": 964,
         "problem": 22597,
         "cause": 22091
     },
     {
         "name": "Panel (electrical)",
+        "id": 965,
         "problem": 22418,
         "cause": 21626
     },
     {
         "name": "Piping",
+        "id": 966,
         "problem": 22408,
         "cause": 21433
     },
     {
         "name": "Piping",
+        "id": 967,
         "problem": 0,
         "cause": 22138
     },
     {
         "name": "Piping",
+        "id": 968,
         "problem": 22576,
         "cause": 22140
     },
     {
         "name": "Piping",
+        "id": 969,
         "problem": 22657,
         "cause": 22141
     },
     {
         "name": "Piping",
+        "id": 970,
         "problem": 0,
         "cause": 22142
     },
     {
         "name": "Piping",
+        "id": 971,
         "problem": 0,
         "cause": 22524
     },
     {
         "name": "Pipe - PVC",
+        "id": 972,
         "problem": 0,
         "cause": 21927
     },
     {
         "name": "Pipe - PVC",
+        "id": 973,
         "problem": 22434,
         "cause": 21778
     },
     {
         "name": "Pipe - PVC",
+        "id": 974,
         "problem": 22408,
         "cause": 21871
     },
     {
         "name": "Pipe - PVC",
+        "id": 975,
         "problem": 22629,
         "cause": 21779
     },
     {
         "name": "Pipe - PVC",
+        "id": 976,
         "problem": 22576,
         "cause": 22114
     },
     {
         "name": "Pipe - PVC",
+        "id": 977,
         "problem": 0,
         "cause": 22476
     },
     {
         "name": "Pipe - PVC",
+        "id": 978,
         "problem": 0,
         "cause": 21867
     },
     {
         "name": "Pipe - PVC",
+        "id": 979,
         "problem": 0,
         "cause": 21684
     },
     {
         "name": "Plenum (air)",
+        "id": 980,
         "problem": 22424,
         "cause": 22003
     },
     {
         "name": "Plenum (air)",
+        "id": 981,
         "problem": 22408,
         "cause": 22381
     },
     {
         "name": "Power Supply",
+        "id": 982,
         "problem": 22564,
         "cause": 22200
     },
     {
         "name": "Power Supply",
+        "id": 983,
         "problem": 0,
         "cause": 22548
     },
     {
         "name": "Precipitator - Electrostatic",
+        "id": 984,
         "problem": 0,
         "cause": 21743
     },
     {
         "name": "Precipitator - Electrostatic",
+        "id": 985,
         "problem": 22539,
         "cause": 22178
     },
     {
         "name": "Precipitator - Electrostatic",
+        "id": 986,
         "problem": 0,
         "cause": 22177
     },
     {
         "name": "Precipitator - Electrostatic",
+        "id": 987,
         "problem": 0,
         "cause": 22174
     },
     {
         "name": "Precipitator - Electrostatic",
+        "id": 988,
         "problem": 0,
         "cause": 22175
     },
     {
         "name": "Precipitator - Electrostatic",
+        "id": 989,
         "problem": 0,
         "cause": 22176
     },
     {
         "name": "Programable Logic Controller",
+        "id": 990,
         "problem": 0,
         "cause": 21959
     },
     {
         "name": "Programable Logic Controller",
+        "id": 991,
         "problem": 22530,
         "cause": 22219
     },
     {
         "name": "Programable Logic Controller",
+        "id": 992,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Programable Logic Controller",
+        "id": 993,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 994,
         "problem": 22577,
         "cause": 21478
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 995,
         "problem": 22586,
         "cause": 21516
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 996,
         "problem": 0,
         "cause": 21522
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 997,
         "problem": 0,
         "cause": 21528
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 998,
         "problem": 22415,
         "cause": 21490
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 999,
         "problem": 22408,
         "cause": 21552
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1000,
         "problem": 0,
         "cause": 21556
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1001,
         "problem": 22522,
         "cause": 21576
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1002,
         "problem": 22566,
         "cause": 21577
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1003,
         "problem": 22607,
         "cause": 21578
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1004,
         "problem": 22657,
         "cause": 21830
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1005,
         "problem": 0,
         "cause": 21831
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1006,
         "problem": 0,
         "cause": 21820
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1007,
         "problem": 0,
         "cause": 21861
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1008,
         "problem": 0,
         "cause": 21855
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1009,
         "problem": 0,
         "cause": 21856
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1010,
         "problem": 0,
         "cause": 21912
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1011,
         "problem": 0,
         "cause": 21915
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1012,
         "problem": 0,
         "cause": 21914
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1013,
         "problem": 0,
         "cause": 21917
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1014,
         "problem": 0,
         "cause": 21921
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1015,
         "problem": 0,
         "cause": 21940
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1016,
         "problem": 0,
         "cause": 21941
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1017,
         "problem": 0,
         "cause": 21947
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1018,
         "problem": 0,
         "cause": 21948
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1019,
         "problem": 0,
         "cause": 21967
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1020,
         "problem": 0,
         "cause": 21969
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1021,
         "problem": 0,
         "cause": 21968
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1022,
         "problem": 0,
         "cause": 21976
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1023,
         "problem": 0,
         "cause": 21977
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1024,
         "problem": 0,
         "cause": 21979
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1025,
         "problem": 0,
         "cause": 22021
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1026,
         "problem": 0,
         "cause": 22094
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1027,
         "problem": 0,
         "cause": 22095
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1028,
         "problem": 0,
         "cause": 22107
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1029,
         "problem": 0,
         "cause": 22106
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1030,
         "problem": 0,
         "cause": 22127
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1031,
         "problem": 0,
         "cause": 22130
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1032,
         "problem": 0,
         "cause": 22154
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1033,
         "problem": 0,
         "cause": 22156
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1034,
         "problem": 0,
         "cause": 22159
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1035,
         "problem": 0,
         "cause": 22161
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1036,
         "problem": 0,
         "cause": 22232
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1037,
         "problem": 0,
         "cause": 22233
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1038,
         "problem": 0,
         "cause": 22234
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1039,
         "problem": 0,
         "cause": 22235
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1040,
         "problem": 0,
         "cause": 22238
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1041,
         "problem": 0,
         "cause": 22239
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1042,
         "problem": 0,
         "cause": 22278
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1043,
         "problem": 0,
         "cause": 22281
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1044,
         "problem": 0,
         "cause": 22282
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1045,
         "problem": 0,
         "cause": 22310
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1046,
         "problem": 0,
         "cause": 22312
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1047,
         "problem": 0,
         "cause": 22313
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1048,
         "problem": 0,
         "cause": 22315
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1049,
         "problem": 0,
         "cause": 22334
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1050,
         "problem": 0,
         "cause": 22354
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1051,
         "problem": 0,
         "cause": 22363
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1052,
         "problem": 0,
         "cause": 22397
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1053,
         "problem": 0,
         "cause": 22365
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1054,
         "problem": 0,
         "cause": 22416
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1055,
         "problem": 0,
         "cause": 22417
     },
     {
         "name": "Pump - Centrifugal",
+        "id": 1056,
         "problem": 0,
         "cause": 22532
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1057,
         "problem": 22573,
         "cause": 21477
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1058,
         "problem": 22566,
         "cause": 21478
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1059,
         "problem": 22415,
         "cause": 21516
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1060,
         "problem": 22408,
         "cause": 21522
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1061,
         "problem": 22607,
         "cause": 21528
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1062,
         "problem": 22657,
         "cause": 21551
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1063,
         "problem": 22522,
         "cause": 21556
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1064,
         "problem": 0,
         "cause": 21576
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1065,
         "problem": 0,
         "cause": 21577
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1066,
         "problem": 0,
         "cause": 21578
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1067,
         "problem": 0,
         "cause": 21580
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1068,
         "problem": 0,
         "cause": 21711
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1069,
         "problem": 0,
         "cause": 21861
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1070,
         "problem": 0,
         "cause": 21912
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1071,
         "problem": 0,
         "cause": 21915
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1072,
         "problem": 0,
         "cause": 21916
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1073,
         "problem": 0,
         "cause": 21917
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1074,
         "problem": 0,
         "cause": 21922
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1075,
         "problem": 0,
         "cause": 21940
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1076,
         "problem": 0,
         "cause": 21941
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1077,
         "problem": 0,
         "cause": 21947
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1078,
         "problem": 0,
         "cause": 21948
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1079,
         "problem": 0,
         "cause": 21967
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1080,
         "problem": 0,
         "cause": 21969
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1081,
         "problem": 0,
         "cause": 21968
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1082,
         "problem": 0,
         "cause": 22021
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1083,
         "problem": 0,
         "cause": 22107
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1084,
         "problem": 0,
         "cause": 22106
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1085,
         "problem": 0,
         "cause": 22160
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1086,
         "problem": 0,
         "cause": 22161
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1087,
         "problem": 0,
         "cause": 22310
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1088,
         "problem": 0,
         "cause": 22312
     },
     {
         "name": "Pump - Centrifugal Vertical",
+        "id": 1089,
         "problem": 0,
         "cause": 22321
     },
     {
         "name": "Pump - Rotary",
+        "id": 1090,
         "problem": 22573,
         "cause": 21521
     },
     {
         "name": "Pump - Rotary",
+        "id": 1091,
         "problem": 22566,
         "cause": 21644
     },
     {
         "name": "Pump - Rotary",
+        "id": 1092,
         "problem": 22415,
         "cause": 21819
     },
     {
         "name": "Pump - Rotary",
+        "id": 1093,
         "problem": 22408,
         "cause": 21983
     },
     {
         "name": "Pump - Rotary",
+        "id": 1094,
         "problem": 22607,
         "cause": 22159
     },
     {
         "name": "Pump - Rotary",
+        "id": 1095,
         "problem": 22657,
         "cause": 22257
     },
     {
         "name": "Pump - Rotary",
+        "id": 1096,
         "problem": 22522,
         "cause": 22284
     },
     {
         "name": "Pump - Rotary",
+        "id": 1097,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Pump - Rotary",
+        "id": 1098,
         "problem": 22476,
         "cause": 0
     },
     {
         "name": "Pump Vacuum",
+        "id": 1099,
         "problem": 22573,
         "cause": 21428
     },
     {
         "name": "Pump Vacuum",
+        "id": 1100,
         "problem": 22566,
         "cause": 21528
     },
     {
         "name": "Pump Vacuum",
+        "id": 1101,
         "problem": 22408,
         "cause": 21595
     },
     {
         "name": "Pump Vacuum",
+        "id": 1102,
         "problem": 22607,
         "cause": 21596
     },
     {
         "name": "Pump Vacuum",
+        "id": 1103,
         "problem": 22657,
         "cause": 21676
     },
     {
         "name": "Pump Vacuum",
+        "id": 1104,
         "problem": 0,
         "cause": 21677
     },
     {
         "name": "Pump Vacuum",
+        "id": 1105,
         "problem": 22476,
         "cause": 21863
     },
     {
         "name": "Pump Vacuum",
+        "id": 1106,
         "problem": 0,
         "cause": 21902
     },
     {
         "name": "Pump Vacuum",
+        "id": 1107,
         "problem": 0,
         "cause": 21903
     },
     {
         "name": "Pump Vacuum",
+        "id": 1108,
         "problem": 0,
         "cause": 21894
     },
     {
         "name": "Pump Vacuum",
+        "id": 1109,
         "problem": 0,
         "cause": 21895
     },
     {
         "name": "Pump Vacuum",
+        "id": 1110,
         "problem": 0,
         "cause": 21896
     },
     {
         "name": "Pump Vacuum",
+        "id": 1111,
         "problem": 0,
         "cause": 21897
     },
     {
         "name": "Pump Vacuum",
+        "id": 1112,
         "problem": 0,
         "cause": 21901
     },
     {
         "name": "Pump Vacuum",
+        "id": 1113,
         "problem": 0,
         "cause": 22139
     },
     {
         "name": "Pump Vacuum",
+        "id": 1114,
         "problem": 0,
         "cause": 22211
     },
     {
         "name": "Pump Vacuum",
+        "id": 1115,
         "problem": 0,
         "cause": 22214
     },
     {
         "name": "Pump Vacuum",
+        "id": 1116,
         "problem": 0,
         "cause": 22173
     },
     {
         "name": "Pump Vacuum",
+        "id": 1117,
         "problem": 0,
         "cause": 22158
     },
     {
         "name": "Pump Vacuum",
+        "id": 1118,
         "problem": 0,
         "cause": 22237
     },
     {
         "name": "Pump Vacuum",
+        "id": 1119,
         "problem": 0,
         "cause": 22356
     },
     {
         "name": "Pump Vacuum",
+        "id": 1120,
         "problem": 0,
         "cause": 22360
     },
     {
         "name": "Pump Vacuum",
+        "id": 1121,
         "problem": 0,
         "cause": 22478
     },
     {
         "name": "Pump Vacuum",
+        "id": 1122,
         "problem": 0,
         "cause": 22479
     },
     {
         "name": "Pump Vacuum",
+        "id": 1123,
         "problem": 0,
         "cause": 22480
     },
     {
         "name": "Pump Vacuum",
+        "id": 1124,
         "problem": 0,
         "cause": 22485
     },
     {
         "name": "Pump Vacuum",
+        "id": 1125,
         "problem": 0,
         "cause": 22490
     },
     {
         "name": "Pump Vacuum",
+        "id": 1126,
         "problem": 0,
         "cause": 22491
     },
     {
         "name": "Pump Vacuum",
+        "id": 1127,
         "problem": 0,
         "cause": 22507
     },
     {
         "name": "Pump Vacuum",
+        "id": 1128,
         "problem": 0,
         "cause": 22508
     },
     {
         "name": "Pump Vacuum",
+        "id": 1129,
         "problem": 0,
         "cause": 22509
     },
     {
         "name": "Pump Vacuum",
+        "id": 1130,
         "problem": 0,
         "cause": 22510
     },
     {
         "name": "Pump Vacuum",
+        "id": 1131,
         "problem": 0,
         "cause": 22514
     },
     {
         "name": "Rectifier",
+        "id": 1132,
         "problem": 0,
         "cause": 22067
     },
     {
         "name": "Rectifier",
+        "id": 1133,
         "problem": 0,
         "cause": 21454
     },
     {
         "name": "Rectifier",
+        "id": 1134,
         "problem": 0,
         "cause": 21670
     },
     {
         "name": "Rectifier",
+        "id": 1135,
         "problem": 0,
         "cause": 21834
     },
     {
         "name": "Rectifier",
+        "id": 1136,
         "problem": 0,
         "cause": 22112
     },
     {
         "name": "Rectifier",
+        "id": 1137,
         "problem": 0,
         "cause": 21688
     },
     {
         "name": "Rectifier",
+        "id": 1138,
         "problem": 0,
         "cause": 21514
     },
     {
         "name": "Rectifier",
+        "id": 1139,
         "problem": 0,
         "cause": 22441
     },
     {
         "name": "Rectifier",
+        "id": 1140,
         "problem": 0,
         "cause": 22295
     },
     {
         "name": "Rectifier",
+        "id": 1141,
         "problem": 0,
         "cause": 21694
     },
     {
         "name": "Rectifier",
+        "id": 1142,
         "problem": 0,
         "cause": 21680
     },
     {
         "name": "Rectifier",
+        "id": 1143,
         "problem": 0,
         "cause": 21681
     },
     {
         "name": "Regulator - Pressure",
+        "id": 1144,
         "problem": 22408,
         "cause": 21701
     },
     {
         "name": "Regulator - Pressure",
+        "id": 1145,
         "problem": 0,
         "cause": 22223
     },
     {
         "name": "Regulator - Pressure",
+        "id": 1146,
         "problem": 0,
         "cause": 22229
     },
     {
         "name": "Regulator - Pressure",
+        "id": 1147,
         "problem": 0,
         "cause": 22230
     },
     {
         "name": "Relay Electronic",
+        "id": 1148,
         "problem": 22381,
         "cause": 21741
     },
     {
         "name": "Relay Electronic",
+        "id": 1149,
         "problem": 0,
         "cause": 22246
     },
     {
         "name": "Relay Electronic",
+        "id": 1150,
         "problem": 22607,
         "cause": 22335
     },
     {
         "name": "Relay Electronic",
+        "id": 1151,
         "problem": 22523,
         "cause": 22338
     },
     {
         "name": "Relay Hydraulic",
+        "id": 1152,
         "problem": 22381,
         "cause": 22243
     },
     {
         "name": "Relay Hydraulic",
+        "id": 1153,
         "problem": 22564,
         "cause": 22244
     },
     {
         "name": "Relay Hydraulic",
+        "id": 1154,
         "problem": 22528,
         "cause": 22247
     },
     {
         "name": "Relay Hydraulic",
+        "id": 1155,
         "problem": 22607,
         "cause": 0
     },
     {
         "name": "Relay Pneumatic",
+        "id": 1156,
         "problem": 0,
         "cause": 22285
     },
     {
         "name": "Relay Pneumatic",
+        "id": 1157,
         "problem": 22528,
         "cause": 21621
     },
     {
         "name": "Relay Pneumatic",
+        "id": 1158,
         "problem": 22607,
         "cause": 21905
     },
     {
         "name": "Robot",
+        "id": 1159,
         "problem": 22365,
         "cause": 21465
     },
     {
         "name": "Robot",
+        "id": 1160,
         "problem": 22427,
         "cause": 22240
     },
     {
         "name": "Robot",
+        "id": 1161,
         "problem": 22426,
         "cause": 21540
     },
     {
         "name": "Robot",
+        "id": 1162,
         "problem": 22530,
         "cause": 21834
     },
     {
         "name": "Robot",
+        "id": 1163,
         "problem": 22526,
         "cause": 21660
     },
     {
         "name": "Robot",
+        "id": 1164,
         "problem": 22563,
         "cause": 21679
     },
     {
         "name": "Robot",
+        "id": 1165,
         "problem": 22402,
         "cause": 21726
     },
     {
         "name": "Robot",
+        "id": 1166,
         "problem": 22557,
         "cause": 21699
     },
     {
         "name": "Robot",
+        "id": 1167,
         "problem": 0,
         "cause": 21712
     },
     {
         "name": "Robot",
+        "id": 1168,
         "problem": 0,
         "cause": 21925
     },
     {
         "name": "Robot",
+        "id": 1169,
         "problem": 0,
         "cause": 21928
     },
     {
         "name": "Robot",
+        "id": 1170,
         "problem": 0,
         "cause": 21929
     },
     {
         "name": "Robot",
+        "id": 1171,
         "problem": 0,
         "cause": 22553
     },
     {
         "name": "Robot",
+        "id": 1172,
         "problem": 0,
         "cause": 21961
     },
     {
         "name": "Robot",
+        "id": 1173,
         "problem": 0,
         "cause": 21998
     },
     {
         "name": "Robot",
+        "id": 1174,
         "problem": 0,
         "cause": 22048
     },
     {
         "name": "Robot",
+        "id": 1175,
         "problem": 0,
         "cause": 22073
     },
     {
         "name": "Robot",
+        "id": 1176,
         "problem": 0,
         "cause": 22101
     },
     {
         "name": "Robot",
+        "id": 1177,
         "problem": 0,
         "cause": 22196
     },
     {
         "name": "Robot",
+        "id": 1178,
         "problem": 0,
         "cause": 22298
     },
     {
         "name": "Scale",
+        "id": 1179,
         "problem": 22430,
         "cause": 21985
     },
     {
         "name": "Scale",
+        "id": 1180,
         "problem": 22666,
         "cause": 22036
     },
     {
         "name": "Scale",
+        "id": 1181,
         "problem": 22521,
         "cause": 22411
     },
     {
         "name": "Scale",
+        "id": 1182,
         "problem": 0,
         "cause": 21751
     },
     {
         "name": "Scale",
+        "id": 1183,
         "problem": 0,
         "cause": 22476
     },
     {
         "name": "Scale",
+        "id": 1184,
         "problem": 0,
         "cause": 22179
     },
     {
         "name": "Scale",
+        "id": 1185,
         "problem": 0,
         "cause": 22328
     },
     {
         "name": "Scale",
+        "id": 1186,
         "problem": 0,
         "cause": 22098
     },
     {
         "name": "Sensor (Element)",
+        "id": 1187,
         "problem": 22420,
         "cause": 22536
     },
     {
         "name": "Sensor (Element)",
+        "id": 1188,
         "problem": 22528,
         "cause": 21759
     },
     {
         "name": "Sensor (Element)",
+        "id": 1189,
         "problem": 22564,
         "cause": 22296
     },
     {
         "name": "Sensor -Air Flow",
+        "id": 1190,
         "problem": 22573,
         "cause": 22476
     },
     {
         "name": "Sensor -Air Flow",
+        "id": 1191,
         "problem": 0,
         "cause": 21746
     },
     {
         "name": "Sensor -Air Flow",
+        "id": 1192,
         "problem": 0,
         "cause": 21759
     },
     {
         "name": "Sensor -Air Flow",
+        "id": 1193,
         "problem": 0,
         "cause": 21627
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1194,
         "problem": 22528,
         "cause": 22301
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1195,
         "problem": 22562,
         "cause": 22462
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1196,
         "problem": 22652,
         "cause": 21468
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1197,
         "problem": 22472,
         "cause": 21583
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1198,
         "problem": 0,
         "cause": 21532
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1199,
         "problem": 0,
         "cause": 21747
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1200,
         "problem": 0,
         "cause": 22369
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1201,
         "problem": 0,
         "cause": 22342
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1202,
         "problem": 0,
         "cause": 21569
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1203,
         "problem": 0,
         "cause": 21749
     },
     {
         "name": "Sensor - Conductivity",
+        "id": 1204,
         "problem": 0,
         "cause": 21748
     },
     {
         "name": "Sensor - Pressure",
+        "id": 1205,
         "problem": 22454,
         "cause": 22031
     },
     {
         "name": "Sensor - Pressure",
+        "id": 1206,
         "problem": 22479,
         "cause": 22476
     },
     {
         "name": "Sensor - Pressure",
+        "id": 1207,
         "problem": 22502,
         "cause": 22323
     },
     {
         "name": "Sensor - Pressure",
+        "id": 1208,
         "problem": 22417,
         "cause": 22123
     },
     {
         "name": "Sensor - Pressure",
+        "id": 1209,
         "problem": 0,
         "cause": 22188
     },
     {
         "name": "Sensor - Pressure",
+        "id": 1210,
         "problem": 22561,
         "cause": 22036
     },
     {
         "name": "Sensor - Pressure",
+        "id": 1211,
         "problem": 22478,
         "cause": 21752
     },
     {
         "name": "Sensor - Pressure",
+        "id": 1212,
         "problem": 22355,
         "cause": 21600
     },
     {
         "name": "Sensor - Pressure",
+        "id": 1213,
         "problem": 0,
         "cause": 22411
     },
     {
         "name": "Sensor - Temperature",
+        "id": 1214,
         "problem": 22435,
         "cause": 22330
     },
     {
         "name": "Sensor - Temperature",
+        "id": 1215,
         "problem": 22454,
         "cause": 22540
     },
     {
         "name": "Sensor - Temperature",
+        "id": 1216,
         "problem": 22434,
         "cause": 21639
     },
     {
         "name": "Sensor - Temperature",
+        "id": 1217,
         "problem": 22580,
         "cause": 22324
     },
     {
         "name": "Sensor - Temperature",
+        "id": 1218,
         "problem": 22564,
         "cause": 0
     },
     {
         "name": "Silencer",
+        "id": 1219,
         "problem": 22429,
         "cause": 21475
     },
     {
         "name": "Silencer",
+        "id": 1220,
         "problem": 0,
         "cause": 22011
     },
     {
         "name": "Silencer",
+        "id": 1221,
         "problem": 22576,
         "cause": 22010
     },
     {
         "name": "Silencer",
+        "id": 1222,
         "problem": 22527,
         "cause": 22012
     },
     {
         "name": "Silencer",
+        "id": 1223,
         "problem": 0,
         "cause": 22013
     },
     {
         "name": "Silencer",
+        "id": 1224,
         "problem": 0,
         "cause": 22014
     },
     {
         "name": "Silencer",
+        "id": 1225,
         "problem": 0,
         "cause": 22015
     },
     {
         "name": "Silencer",
+        "id": 1226,
         "problem": 0,
         "cause": 22332
     },
     {
         "name": "Silencer",
+        "id": 1227,
         "problem": 0,
         "cause": 22447
     },
     {
         "name": "Silencer",
+        "id": 1228,
         "problem": 0,
         "cause": 22448
     },
     {
         "name": "Silencer",
+        "id": 1229,
         "problem": 0,
         "cause": 22449
     },
     {
         "name": "Silencer",
+        "id": 1230,
         "problem": 0,
         "cause": 22450
     },
     {
         "name": "Silencer",
+        "id": 1231,
         "problem": 0,
         "cause": 22451
     },
     {
         "name": "Silencer",
+        "id": 1232,
         "problem": 0,
         "cause": 22452
     },
     {
         "name": "Silencer",
+        "id": 1233,
         "problem": 0,
         "cause": 22331
     },
     {
         "name": "Structure",
+        "id": 1234,
         "problem": 22494,
         "cause": 22378
     },
     {
         "name": "Structure",
+        "id": 1235,
         "problem": 22657,
         "cause": 22380
     },
     {
         "name": "Structure",
+        "id": 1236,
         "problem": 0,
         "cause": 22379
     },
     {
         "name": "Structure",
+        "id": 1237,
         "problem": 0,
         "cause": 22382
     },
     {
         "name": "Switch - Electric",
+        "id": 1238,
         "problem": 22518,
         "cause": 21622
     },
     {
         "name": "Switch - Electric",
+        "id": 1239,
         "problem": 22420,
         "cause": 21893
     },
     {
         "name": "Switch - Electric",
+        "id": 1240,
         "problem": 0,
         "cause": 22406
     },
     {
         "name": "Switch - Hydraulic",
+        "id": 1241,
         "problem": 0,
         "cause": 22436
     },
     {
         "name": "Switch - Hydraulic",
+        "id": 1242,
         "problem": 22639,
         "cause": 22204
     },
     {
         "name": "Switch - Pneumatic",
+        "id": 1243,
         "problem": 0,
         "cause": 22436
     },
     {
         "name": "Switch - Pneumatic",
+        "id": 1244,
         "problem": 22639,
         "cause": 21700
     },
     {
         "name": "Switch - Pneumatic",
+        "id": 1245,
         "problem": 0,
         "cause": 21863
     },
     {
         "name": "Switch Flow",
+        "id": 1246,
         "problem": 22552,
         "cause": 22399
     },
     {
         "name": "Switch Flow",
+        "id": 1247,
         "problem": 22607,
         "cause": 22353
     },
     {
         "name": "Switch Flow",
+        "id": 1248,
         "problem": 0,
         "cause": 22361
     },
     {
         "name": "Switch Flow",
+        "id": 1249,
         "problem": 0,
         "cause": 21883
     },
     {
         "name": "Switch Flow",
+        "id": 1250,
         "problem": 0,
         "cause": 21756
     },
     {
         "name": "Switch Flow",
+        "id": 1251,
         "problem": 0,
         "cause": 21754
     },
     {
         "name": "Switch Flow",
+        "id": 1252,
         "problem": 0,
         "cause": 22226
     },
     {
         "name": "Switch Level",
+        "id": 1253,
         "problem": 22552,
         "cause": 22408
     },
     {
         "name": "Switch Level",
+        "id": 1254,
         "problem": 22607,
         "cause": 21833
     },
     {
         "name": "Switch Level",
+        "id": 1255,
         "problem": 0,
         "cause": 21802
     },
     {
         "name": "Switch Level",
+        "id": 1256,
         "problem": 0,
         "cause": 22399
     },
     {
         "name": "Switch Level",
+        "id": 1257,
         "problem": 0,
         "cause": 21589
     },
     {
         "name": "Switch Level",
+        "id": 1258,
         "problem": 0,
         "cause": 21436
     },
     {
         "name": "Switch Level",
+        "id": 1259,
         "problem": 0,
         "cause": 22016
     },
     {
         "name": "Switch Temperature",
+        "id": 1260,
         "problem": 22607,
         "cause": 21761
     },
     {
         "name": "Switch Temperature",
+        "id": 1261,
         "problem": 22552,
         "cause": 21435
     },
     {
         "name": "Switchgear - Electric",
+        "id": 1262,
         "problem": 22518,
         "cause": 22402
     },
     {
         "name": "Switchgear - Electric",
+        "id": 1263,
         "problem": 22610,
         "cause": 22403
     },
     {
         "name": "Switchgear - Electric",
+        "id": 1264,
         "problem": 0,
         "cause": 22404
     },
     {
         "name": "Tank - Storage",
+        "id": 1265,
         "problem": 0,
         "cause": 22523
     },
     {
         "name": "Tank - Storage",
+        "id": 1266,
         "problem": 22406,
         "cause": 22534
     },
     {
         "name": "Tank - Storage",
+        "id": 1267,
         "problem": 0,
         "cause": 21863
     },
     {
         "name": "Temperature Regulator",
+        "id": 1268,
         "problem": 22531,
         "cause": 22103
     },
     {
         "name": "Temperature Regulator",
+        "id": 1269,
         "problem": 22532,
         "cause": 0
     },
     {
         "name": "Temperature Regulator",
+        "id": 1270,
         "problem": 22511,
         "cause": 0
     },
     {
         "name": "Transducer",
+        "id": 1271,
         "problem": 22532,
         "cause": 22439
     },
     {
         "name": "Transducer",
+        "id": 1272,
         "problem": 22613,
         "cause": 22440
     },
     {
         "name": "Transfer Switches",
+        "id": 1273,
         "problem": 22538,
         "cause": 21621
     },
     {
         "name": "Transfer Switches",
+        "id": 1274,
         "problem": 0,
         "cause": 22400
     },
     {
         "name": "Transfer Switches",
+        "id": 1275,
         "problem": 0,
         "cause": 22133
     },
     {
         "name": "Transformer Control",
+        "id": 1276,
         "problem": 22480,
         "cause": 22444
     },
     {
         "name": "Transformer Control",
+        "id": 1277,
         "problem": 22530,
         "cause": 22445
     },
     {
         "name": "Transformer Control",
+        "id": 1278,
         "problem": 0,
         "cause": 22442
     },
     {
         "name": "Transformer Distribution",
+        "id": 1279,
         "problem": 22480,
         "cause": 22444
     },
     {
         "name": "Transformer Distribution",
+        "id": 1280,
         "problem": 22530,
         "cause": 22445
     },
     {
         "name": "Transformer Distribution",
+        "id": 1281,
         "problem": 0,
         "cause": 22442
     },
     {
         "name": "Transformer Distribution",
+        "id": 1282,
         "problem": 0,
         "cause": 22443
     },
     {
         "name": "Uninterrupted Power Supply (UPS system)",
+        "id": 1283,
         "problem": 22380,
         "cause": 21670
     },
     {
         "name": "Uninterrupted Power Supply (UPS system)",
+        "id": 1284,
         "problem": 0,
         "cause": 21952
     },
     {
         "name": "Uninterrupted Power Supply (UPS system)",
+        "id": 1285,
         "problem": 0,
         "cause": 22446
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1286,
         "problem": 22466,
         "cause": 21488
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1287,
         "problem": 22545,
         "cause": 21937
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1288,
         "problem": 22527,
         "cause": 22155
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1289,
         "problem": 22461,
         "cause": 21995
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1290,
         "problem": 22589,
         "cause": 21994
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1291,
         "problem": 22564,
         "cause": 22284
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1292,
         "problem": 22540,
         "cause": 22153
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1293,
         "problem": 22551,
         "cause": 22476
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1294,
         "problem": 22425,
         "cause": 22157
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1295,
         "problem": 0,
         "cause": 22154
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1296,
         "problem": 0,
         "cause": 21528
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1297,
         "problem": 0,
         "cause": 21929
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1298,
         "problem": 0,
         "cause": 22473
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1299,
         "problem": 0,
         "cause": 22092
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1300,
         "problem": 0,
         "cause": 21744
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1301,
         "problem": 0,
         "cause": 21696
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1302,
         "problem": 0,
         "cause": 22396
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1303,
         "problem": 0,
         "cause": 22180
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1304,
         "problem": 0,
         "cause": 21981
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1305,
         "problem": 0,
         "cause": 21868
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1306,
         "problem": 0,
         "cause": 22165
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1307,
         "problem": 0,
         "cause": 22412
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1308,
         "problem": 0,
         "cause": 22462
     },
     {
         "name": "Vacuum evaporation and distillation",
+        "id": 1309,
         "problem": 0,
         "cause": 21697
     },
     {
         "name": "Vacuum filters",
+        "id": 1310,
         "problem": 22429,
         "cause": 21443
     },
     {
         "name": "Vacuum filters",
+        "id": 1311,
         "problem": 0,
         "cause": 21601
     },
     {
         "name": "Vacuum filters",
+        "id": 1312,
         "problem": 22446,
         "cause": 21744
     },
     {
         "name": "Vacuum filters",
+        "id": 1313,
         "problem": 0,
         "cause": 21923
     },
     {
         "name": "Vacuum filters",
+        "id": 1314,
         "problem": 22492,
         "cause": 21924
     },
     {
         "name": "Vacuum filters",
+        "id": 1315,
         "problem": 22536,
         "cause": 21929
     },
     {
         "name": "Vacuum filters",
+        "id": 1316,
         "problem": 22545,
         "cause": 21932
     },
     {
         "name": "Vacuum filters",
+        "id": 1317,
         "problem": 22589,
         "cause": 21937
     },
     {
         "name": "Vacuum filters",
+        "id": 1318,
         "problem": 22540,
         "cause": 21980
     },
     {
         "name": "Vacuum filters",
+        "id": 1319,
         "problem": 0,
         "cause": 21994
     },
     {
         "name": "Vacuum filters",
+        "id": 1320,
         "problem": 0,
         "cause": 22069
     },
     {
         "name": "Vacuum filters",
+        "id": 1321,
         "problem": 0,
         "cause": 22181
     },
     {
         "name": "Vacuum filters",
+        "id": 1322,
         "problem": 0,
         "cause": 22155
     },
     {
         "name": "Vacuum filters",
+        "id": 1323,
         "problem": 0,
         "cause": 22284
     },
     {
         "name": "Vacuum filters",
+        "id": 1324,
         "problem": 0,
         "cause": 22395
     },
     {
         "name": "Vacuum filters",
+        "id": 1325,
         "problem": 0,
         "cause": 22456
     },
     {
         "name": "Valve Actuator - Electric",
+        "id": 1326,
         "problem": 0,
         "cause": 22370
     },
     {
         "name": "Valve Actuator - Electric",
+        "id": 1327,
         "problem": 22607,
         "cause": 0
     },
     {
         "name": "Valve Actuator - Fluid/Hydraulic",
+        "id": 1328,
         "problem": 22357,
         "cause": 21863
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1329,
         "problem": 22635,
         "cause": 21479
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1330,
         "problem": 0,
         "cause": 21481
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1331,
         "problem": 22639,
         "cause": 21482
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1332,
         "problem": 0,
         "cause": 21509
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1333,
         "problem": 22564,
         "cause": 21508
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1334,
         "problem": 0,
         "cause": 21720
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1335,
         "problem": 0,
         "cause": 21722
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1336,
         "problem": 0,
         "cause": 21723
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1337,
         "problem": 0,
         "cause": 21822
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1338,
         "problem": 0,
         "cause": 21862
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1339,
         "problem": 0,
         "cause": 21846
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1340,
         "problem": 0,
         "cause": 21945
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1341,
         "problem": 0,
         "cause": 21943
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1342,
         "problem": 0,
         "cause": 22289
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1343,
         "problem": 0,
         "cause": 22291
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1344,
         "problem": 0,
         "cause": 22293
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1345,
         "problem": 0,
         "cause": 22357
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1346,
         "problem": 0,
         "cause": 22370
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1347,
         "problem": 0,
         "cause": 22305
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1348,
         "problem": 0,
         "cause": 22306
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1349,
         "problem": 0,
         "cause": 22429
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1350,
         "problem": 0,
         "cause": 22497
     },
     {
         "name": "Valve Actuator - Manual",
+        "id": 1351,
         "problem": 0,
         "cause": 22372
     },
     {
         "name": "Valve Actuator - Pneumatic",
+        "id": 1352,
         "problem": 22639,
         "cause": 21702
     },
     {
         "name": "Valve Actuator - Pneumatic",
+        "id": 1353,
         "problem": 0,
         "cause": 22249
     },
     {
         "name": "Valve Actuator - Pneumatic",
+        "id": 1354,
         "problem": 22356,
         "cause": 0
     },
     {
         "name": "Valve Ball",
+        "id": 1355,
         "problem": 0,
         "cause": 21469
     },
     {
         "name": "Valve Ball",
+        "id": 1356,
         "problem": 22607,
         "cause": 22293
     },
     {
         "name": "Valve Ball",
+        "id": 1357,
         "problem": 22383,
         "cause": 21863
     },
     {
         "name": "Valve Ball",
+        "id": 1358,
         "problem": 0,
         "cause": 22373
     },
     {
         "name": "Valve Ball",
+        "id": 1359,
         "problem": 0,
         "cause": 22371
     },
     {
         "name": "Valve Butterfly",
+        "id": 1360,
         "problem": 0,
         "cause": 21479
     },
     {
         "name": "Valve Butterfly",
+        "id": 1361,
         "problem": 22607,
         "cause": 21481
     },
     {
         "name": "Valve Butterfly",
+        "id": 1362,
         "problem": 22665,
         "cause": 21724
     },
     {
         "name": "Valve Butterfly",
+        "id": 1363,
         "problem": 0,
         "cause": 21725
     },
     {
         "name": "Valve Butterfly",
+        "id": 1364,
         "problem": 0,
         "cause": 22128
     },
     {
         "name": "Valve Butterfly",
+        "id": 1365,
         "problem": 0,
         "cause": 22310
     },
     {
         "name": "Valve Check",
+        "id": 1366,
         "problem": 22639,
         "cause": 21480
     },
     {
         "name": "Valve Check",
+        "id": 1367,
         "problem": 0,
         "cause": 21479
     },
     {
         "name": "Valve Check",
+        "id": 1368,
         "problem": 0,
         "cause": 21481
     },
     {
         "name": "Valve Check",
+        "id": 1369,
         "problem": 0,
         "cause": 21482
     },
     {
         "name": "Valve Check",
+        "id": 1370,
         "problem": 0,
         "cause": 21510
     },
     {
         "name": "Valve Check",
+        "id": 1371,
         "problem": 0,
         "cause": 21512
     },
     {
         "name": "Valve Check",
+        "id": 1372,
         "problem": 0,
         "cause": 21509
     },
     {
         "name": "Valve Check",
+        "id": 1373,
         "problem": 0,
         "cause": 21772
     },
     {
         "name": "Valve Check",
+        "id": 1374,
         "problem": 0,
         "cause": 21804
     },
     {
         "name": "Valve Check",
+        "id": 1375,
         "problem": 0,
         "cause": 21805
     },
     {
         "name": "Valve Check",
+        "id": 1376,
         "problem": 0,
         "cause": 21807
     },
     {
         "name": "Valve Check",
+        "id": 1377,
         "problem": 0,
         "cause": 21809
     },
     {
         "name": "Valve Check",
+        "id": 1378,
         "problem": 0,
         "cause": 21822
     },
     {
         "name": "Valve Check",
+        "id": 1379,
         "problem": 0,
         "cause": 21862
     },
     {
         "name": "Valve Check",
+        "id": 1380,
         "problem": 0,
         "cause": 21863
     },
     {
         "name": "Valve Check",
+        "id": 1381,
         "problem": 0,
         "cause": 21864
     },
     {
         "name": "Valve Check",
+        "id": 1382,
         "problem": 0,
         "cause": 21865
     },
     {
         "name": "Valve Check",
+        "id": 1383,
         "problem": 0,
         "cause": 21944
     },
     {
         "name": "Valve Check",
+        "id": 1384,
         "problem": 0,
         "cause": 22205
     },
     {
         "name": "Valve Check",
+        "id": 1385,
         "problem": 0,
         "cause": 22206
     },
     {
         "name": "Valve Check",
+        "id": 1386,
         "problem": 0,
         "cause": 22287
     },
     {
         "name": "Valve Check",
+        "id": 1387,
         "problem": 0,
         "cause": 22288
     },
     {
         "name": "Valve Check",
+        "id": 1388,
         "problem": 0,
         "cause": 22289
     },
     {
         "name": "Valve Check",
+        "id": 1389,
         "problem": 0,
         "cause": 22290
     },
     {
         "name": "Valve Check",
+        "id": 1390,
         "problem": 0,
         "cause": 22293
     },
     {
         "name": "Valve Check",
+        "id": 1391,
         "problem": 0,
         "cause": 22355
     },
     {
         "name": "Valve Check",
+        "id": 1392,
         "problem": 0,
         "cause": 22357
     },
     {
         "name": "Valve Check",
+        "id": 1393,
         "problem": 0,
         "cause": 22428
     },
     {
         "name": "Valve Check",
+        "id": 1394,
         "problem": 0,
         "cause": 22429
     },
     {
         "name": "Valve Check",
+        "id": 1395,
         "problem": 0,
         "cause": 22484
     },
     {
         "name": "Valve Check",
+        "id": 1396,
         "problem": 0,
         "cause": 22492
     },
     {
         "name": "Valve Check",
+        "id": 1397,
         "problem": 0,
         "cause": 22497
     },
     {
         "name": "Valve Diaphragm",
+        "id": 1398,
         "problem": 0,
         "cause": 21479
     },
     {
         "name": "Valve Diaphragm",
+        "id": 1399,
         "problem": 22607,
         "cause": 0
     },
     {
         "name": "Valve - Flow control",
+        "id": 1400,
         "problem": 22528,
         "cause": 21682
     },
     {
         "name": "Valve - Flow control",
+        "id": 1401,
         "problem": 22570,
         "cause": 21904
     },
     {
         "name": "Valve - Flow control",
+        "id": 1402,
         "problem": 22356,
         "cause": 21466
     },
     {
         "name": "Valve - Flow control",
+        "id": 1403,
         "problem": 22660,
         "cause": 22376
     },
     {
         "name": "Valve - Flow control",
+        "id": 1404,
         "problem": 0,
         "cause": 22455
     },
     {
         "name": "Valve - Flow control",
+        "id": 1405,
         "problem": 0,
         "cause": 22022
     },
     {
         "name": "Valve - Flow control",
+        "id": 1406,
         "problem": 0,
         "cause": 22124
     },
     {
         "name": "Valve - Flow control",
+        "id": 1407,
         "problem": 0,
         "cause": 22457
     },
     {
         "name": "Valve - Flow control",
+        "id": 1408,
         "problem": 0,
         "cause": 21633
     },
     {
         "name": "Valve - Flow control",
+        "id": 1409,
         "problem": 0,
         "cause": 21434
     },
     {
         "name": "Valve - Flow control",
+        "id": 1410,
         "problem": 0,
         "cause": 22169
     },
     {
         "name": "Valve - Flow control",
+        "id": 1411,
         "problem": 0,
         "cause": 21929
     },
     {
         "name": "Valve - Flow control",
+        "id": 1412,
         "problem": 0,
         "cause": 22476
     },
     {
         "name": "Valve - Flow control",
+        "id": 1413,
         "problem": 0,
         "cause": 22051
     },
     {
         "name": "Valve - Flow control",
+        "id": 1414,
         "problem": 0,
         "cause": 22415
     },
     {
         "name": "Valve - Flow control",
+        "id": 1415,
         "problem": 0,
         "cause": 22125
     },
     {
         "name": "Valve - Flow control",
+        "id": 1416,
         "problem": 0,
         "cause": 21666
     },
     {
         "name": "Valve Gate",
+        "id": 1417,
         "problem": 0,
         "cause": 22130
     },
     {
         "name": "Valve Gate",
+        "id": 1418,
         "problem": 22607,
         "cause": 22373
     },
     {
         "name": "Valve Gate",
+        "id": 1419,
         "problem": 0,
         "cause": 22371
     },
     {
         "name": "Valve Globe",
+        "id": 1420,
         "problem": 0,
         "cause": 22130
     },
     {
         "name": "Valve Globe",
+        "id": 1421,
         "problem": 22607,
         "cause": 22373
     },
     {
         "name": "Valve Globe",
+        "id": 1422,
         "problem": 0,
         "cause": 22371
     },
     {
         "name": "Valve Knife",
+        "id": 1423,
         "problem": 0,
         "cause": 22130
     },
     {
         "name": "Valve Knife",
+        "id": 1424,
         "problem": 22607,
         "cause": 22373
     },
     {
         "name": "Valve Knife",
+        "id": 1425,
         "problem": 0,
         "cause": 22371
     },
     {
         "name": "Valve Needle",
+        "id": 1426,
         "problem": 0,
         "cause": 22130
     },
     {
         "name": "Valve Needle",
+        "id": 1427,
         "problem": 22607,
         "cause": 22373
     },
     {
         "name": "Valve Needle",
+        "id": 1428,
         "problem": 22576,
         "cause": 22371
     },
     {
         "name": "Valve Plug",
+        "id": 1429,
         "problem": 0,
         "cause": 22130
     },
     {
         "name": "Valve Plug",
+        "id": 1430,
         "problem": 22607,
         "cause": 22373
     },
     {
         "name": "Valve Plug",
+        "id": 1431,
         "problem": 0,
         "cause": 22371
     },
     {
         "name": "Valve Poppet",
+        "id": 1432,
         "problem": 0,
         "cause": 22293
     },
     {
         "name": "Valve Poppet",
+        "id": 1433,
         "problem": 22639,
         "cause": 22168
     },
     {
         "name": "Valve - Pressure Control",
+        "id": 1434,
         "problem": 22501,
         "cause": 21498
     },
     {
         "name": "Valve - Pressure Control",
+        "id": 1435,
         "problem": 22659,
         "cause": 22187
     },
     {
         "name": "Valve - Pressure Control",
+        "id": 1436,
         "problem": 22660,
         "cause": 22559
     },
     {
         "name": "Valve - Pressure Control",
+        "id": 1437,
         "problem": 22529,
         "cause": 21534
     },
     {
         "name": "Valve - Pressure Control",
+        "id": 1438,
         "problem": 0,
         "cause": 22035
     },
     {
         "name": "Valve - Pressure Control",
+        "id": 1439,
         "problem": 22585,
         "cause": 21871
     },
     {
         "name": "Valve Regulator",
+        "id": 1440,
         "problem": 0,
         "cause": 21863
     },
     {
         "name": "Valve Regulator",
+        "id": 1441,
         "problem": 22639,
         "cause": 21703
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1442,
         "problem": 0,
         "cause": 21501
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1443,
         "problem": 22639,
         "cause": 22105
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1444,
         "problem": 22553,
         "cause": 22148
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1445,
         "problem": 0,
         "cause": 22144
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1446,
         "problem": 0,
         "cause": 22145
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1447,
         "problem": 0,
         "cause": 22146
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1448,
         "problem": 0,
         "cause": 22147
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1449,
         "problem": 0,
         "cause": 22149
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1450,
         "problem": 0,
         "cause": 22150
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1451,
         "problem": 0,
         "cause": 22151
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1452,
         "problem": 0,
         "cause": 22152
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1453,
         "problem": 0,
         "cause": 22213
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1454,
         "problem": 0,
         "cause": 22203
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1455,
         "problem": 0,
         "cause": 22214
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1456,
         "problem": 0,
         "cause": 22353
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1457,
         "problem": 0,
         "cause": 22362
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1458,
         "problem": 0,
         "cause": 22496
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1459,
         "problem": 0,
         "cause": 22481
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1460,
         "problem": 0,
         "cause": 22482
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1461,
         "problem": 0,
         "cause": 22487
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1462,
         "problem": 0,
         "cause": 22489
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1463,
         "problem": 0,
         "cause": 22494
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1464,
         "problem": 0,
         "cause": 22495
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1465,
         "problem": 0,
         "cause": 22498
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1466,
         "problem": 0,
         "cause": 22499
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1467,
         "problem": 0,
         "cause": 22503
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1468,
         "problem": 0,
         "cause": 22504
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1469,
         "problem": 0,
         "cause": 22506
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1470,
         "problem": 0,
         "cause": 22511
     },
     {
         "name": "Valve Safety/Relief",
+        "id": 1471,
         "problem": 0,
         "cause": 22513
     },
     {
         "name": "Valve Solenoid",
+        "id": 1472,
         "problem": 22607,
         "cause": 21628
     },
     {
         "name": "Valve Solenoid",
+        "id": 1473,
         "problem": 22564,
         "cause": 21721
     },
     {
         "name": "Valve Solenoid",
+        "id": 1474,
         "problem": 0,
         "cause": 22108
     },
     {
         "name": "Valve Solenoid",
+        "id": 1475,
         "problem": 0,
         "cause": 22143
     },
     {
         "name": "Valve Solenoid",
+        "id": 1476,
         "problem": 0,
         "cause": 22336
     },
     {
         "name": "Valve Solenoid",
+        "id": 1477,
         "problem": 0,
         "cause": 22512
     },
     {
         "name": "Valve Solenoid-(subclass) Electrical",
+        "id": 1478,
         "problem": 22607,
         "cause": 21622
     },
     {
         "name": "Valve Solenoid-(subclass) Electrical",
+        "id": 1479,
         "problem": 22564,
         "cause": 22335
     },
     {
         "name": "Valve Solenoid-(subclass) Electrical",
+        "id": 1480,
         "problem": 0,
         "cause": 22325
     },
     {
         "name": "Valve Solenoid- (subclass) Hydraulic",
+        "id": 1481,
         "problem": 22430,
         "cause": 21622
     },
     {
         "name": "Valve Solenoid- (subclass) Hydraulic",
+        "id": 1482,
         "problem": 0,
         "cause": 22335
     },
     {
         "name": "Valve Solenoid- (subclass) Hydraulic",
+        "id": 1483,
         "problem": 22607,
         "cause": 22325
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1484,
         "problem": 22430,
         "cause": 21430
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1485,
         "problem": 22413,
         "cause": 21585
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1486,
         "problem": 22566,
         "cause": 21573
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1487,
         "problem": 22646,
         "cause": 21637
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1488,
         "problem": 0,
         "cause": 21962
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1489,
         "problem": 0,
         "cause": 21693
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1490,
         "problem": 0,
         "cause": 21726
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1491,
         "problem": 0,
         "cause": 21718
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1492,
         "problem": 0,
         "cause": 21735
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1493,
         "problem": 0,
         "cause": 21745
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1494,
         "problem": 0,
         "cause": 22556
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1495,
         "problem": 0,
         "cause": 22557
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1496,
         "problem": 0,
         "cause": 21810
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1497,
         "problem": 0,
         "cause": 21829
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1498,
         "problem": 0,
         "cause": 21835
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1499,
         "problem": 0,
         "cause": 21966
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1500,
         "problem": 0,
         "cause": 22113
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1501,
         "problem": 0,
         "cause": 22118
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1502,
         "problem": 0,
         "cause": 22116
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1503,
         "problem": 0,
         "cause": 22126
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1504,
         "problem": 0,
         "cause": 22120
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1505,
         "problem": 0,
         "cause": 22122
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1506,
         "problem": 0,
         "cause": 22241
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1507,
         "problem": 0,
         "cause": 22253
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1508,
         "problem": 0,
         "cause": 22405
     },
     {
         "name": "VFD (Variable Frequency Drive)",
+        "id": 1509,
         "problem": 0,
         "cause": 22515
     },
     {
         "name": "Tool changer",
+        "id": 1510,
         "problem": 22542,
         "cause": 21520
     },
     {
         "name": "Tool changer",
+        "id": 1511,
         "problem": 22404,
         "cause": 21522
     },
     {
         "name": "Tool changer",
+        "id": 1512,
         "problem": 22507,
         "cause": 21490
     },
     {
         "name": "Tool changer",
+        "id": 1513,
         "problem": 22516,
         "cause": 21597
     },
     {
         "name": "Tool changer",
+        "id": 1514,
         "problem": 22515,
         "cause": 21629
     },
     {
         "name": "Tool changer",
+        "id": 1515,
         "problem": 22517,
         "cause": 21710
     },
     {
         "name": "Tool changer",
+        "id": 1516,
         "problem": 22566,
         "cause": 21715
     },
     {
         "name": "Tool changer",
+        "id": 1517,
         "problem": 22355,
         "cause": 22310
     },
     {
         "name": "Tool changer",
+        "id": 1518,
         "problem": 22610,
         "cause": 22319
     },
     {
         "name": "Tool changer",
+        "id": 1519,
         "problem": 22365,
         "cause": 22351
     },
     {
         "name": "Tool changer",
+        "id": 1520,
         "problem": 22563,
         "cause": 0
     },
     {
         "name": "Tool changer",
+        "id": 1521,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Tool changer",
+        "id": 1522,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Tool changer",
+        "id": 1523,
         "problem": 0,
         "cause": 0
     },
     {
         "name": "Tool Pod",
+        "id": 1524,
         "problem": 22578,
         "cause": 0
     },
     {
         "name": "Encoder",
+        "id": 1525,
         "problem": 22557,
         "cause": 22325
     },
     {
         "name": "Encoder",
+        "id": 1526,
         "problem": 0,
         "cause": 21589
     },
     {
         "name": "Encoder",
+        "id": 1527,
         "problem": 0,
         "cause": 21585
     },
     {
         "name": "Encoder",
+        "id": 1528,
         "problem": 0,
         "cause": 21810
     },
     {
         "name": "Encoder",
+        "id": 1529,
         "problem": 0,
         "cause": 22113
     },
     {
         "name": "Encoder",
+        "id": 1530,
         "problem": 0,
         "cause": 21640
     },
     {
         "name": "Hopper",
+        "id": 1531,
         "problem": 22355,
         "cause": 21497
     },
     {
         "name": "Hopper",
+        "id": 1532,
         "problem": 22439,
         "cause": 21811
     },
     {
         "name": "Hopper",
+        "id": 1533,
         "problem": 22512,
         "cause": 21689
     },
     {
         "name": "Hopper",
+        "id": 1534,
         "problem": 22596,
         "cause": 21791
     },
     {
         "name": "Hopper",
+        "id": 1535,
         "problem": 0,
         "cause": 21929
     },
     {
         "name": "Hopper",
+        "id": 1536,
         "problem": 0,
         "cause": 21986
     },
     {
         "name": "Hopper",
+        "id": 1537,
         "problem": 0,
         "cause": 19658
     },
     {
         "name": "Hopper",
+        "id": 1538,
         "problem": 0,
         "cause": 22047
     },
     {
         "name": "Hopper",
+        "id": 1539,
         "problem": 0,
         "cause": 22190
     },
     {
         "name": "Hopper",
+        "id": 1540,
         "problem": 0,
         "cause": 22050
     },
     {
         "name": "Hopper",
+        "id": 1541,
         "problem": 0,
         "cause": 22299
     }

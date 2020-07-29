@@ -13,18 +13,22 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 import ITM.maint.fiix_custom_mobile.data.model.Converters.Converters;
+import ITM.maint.fiix_custom_mobile.data.model.dao.IAssetDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.ILookupTablesDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IPartDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IRCADao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IUserDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Action;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
+import ITM.maint.fiix_custom_mobile.data.model.entity.AssetCategory;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
 import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Source;
 import ITM.maint.fiix_custom_mobile.data.model.entity.User;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
@@ -32,7 +36,8 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
 @Database(entities = {Part.class, User.class, WorkOrder.class, WorkOrderTask.class,
         Priority.class, Problem.class, Cause.class, Action.class, FailureCodeNesting.class,
-        FailureCodeNesting.Source.class, MaintenanceType.class, WorkOrderStatus.class},version = 1)
+        Source.class, MaintenanceType.class, WorkOrderStatus.class,
+        Asset.class, AssetCategory.class},version = 1)
 @TypeConverters({Converters.class})
 public abstract class FiixDatabase extends RoomDatabase {
 
@@ -41,6 +46,7 @@ public abstract class FiixDatabase extends RoomDatabase {
     public abstract IWorkOrderDao workOrderDao();
     public abstract ILookupTablesDao lookupTablesDao();
     public abstract IRCADao rcaDao();
+    public abstract IAssetDao assetDao();
 
     // marking the instance as volatile to ensure atomic access to the variable
     private static volatile FiixDatabase INSTANCE;

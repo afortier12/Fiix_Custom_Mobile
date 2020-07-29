@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.Source;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Source;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
 

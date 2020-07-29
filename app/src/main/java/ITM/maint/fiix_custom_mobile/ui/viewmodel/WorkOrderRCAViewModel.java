@@ -14,18 +14,21 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
 import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Source;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
+import ITM.maint.fiix_custom_mobile.data.repository.AssetRepository;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 
 public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrder.IWorkOrderRCA {
 
+    private AssetRepository assetRepository;
     private WorkOrderRepository workOrderRepository;
-    private LiveData<List<FailureCodeNesting>> failureCodeNestingLiveData;
-    private LiveData<List<FailureCodeNesting.Source>> sourceLiveData;
-    private LiveData<List<Problem>>problemLiveData;
-    private LiveData<List<Cause>> causeLiveData;
-    private LiveData<List<Action>> actionLiveData;
+    private LiveData<List<String>> failureCodeNestingLiveData;
+    private LiveData<List<String>> sourceLiveData;
+    private LiveData<List<String>>problemLiveData;
+    private LiveData<List<String>> causeLiveData;
+    private LiveData<List<String>> actionLiveData;
     private LiveData<String> responseStatus;
 
     public WorkOrderRCAViewModel(@NonNull Application application) {
@@ -33,6 +36,8 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
     }
 
     public void init(){
+
+        assetRepository = new AssetRepository(this.getApplication());
         workOrderRepository = new WorkOrderRepository(this.getApplication());
         failureCodeNestingLiveData = workOrderRepository.getFailureCodeNestingMutableLiveData();
         sourceLiveData = workOrderRepository.getSourceMutableLiveData();
@@ -44,7 +49,7 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
 
     @Override
     public void getCategoryList() {
-
+        workOrderRepository.getCategories();
     }
 
     @Override
@@ -67,23 +72,23 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
         workOrderRepository.getActions();
     }
 
-    public LiveData<List<FailureCodeNesting>> getFailureCodeNestingLiveData() {
+    public LiveData<List<String>> getFailureCodeNestingLiveData() {
         return failureCodeNestingLiveData;
     }
 
-    public LiveData<List<FailureCodeNesting.Source>> getSourceLiveData() {
+    public LiveData<List<String>> getSourceLiveData() {
         return sourceLiveData;
     }
 
-    public LiveData<List<Problem>> getProblemLiveData() {
+    public LiveData<List<String>> getProblemLiveData() {
         return problemLiveData;
     }
 
-    public LiveData<List<Cause>> getCauseLiveData() {
+    public LiveData<List<String>> getCauseLiveData() {
         return causeLiveData;
     }
 
-    public LiveData<List<Action>> getActionLiveData() {
+    public LiveData<List<String>> getActionLiveData() {
         return actionLiveData;
     }
 

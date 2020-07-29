@@ -36,6 +36,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
 import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Source;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
@@ -68,11 +69,11 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     private MutableLiveData<Status> status;
 
 
-    private MutableLiveData<List<FailureCodeNesting>> failureCodeNestingMutableLiveData;
-    private MutableLiveData<List<FailureCodeNesting.Source>> sourceMutableLiveData;
-    private MutableLiveData<List<Problem>> problemMutableLiveData;
-    private MutableLiveData<List<Cause>> causeMutableLiveData;
-    private MutableLiveData<List<Action>> actionMutableLiveData;
+    private MutableLiveData<List<String>> failureCodeNestingMutableLiveData;
+    private MutableLiveData<List<String>> sourceMutableLiveData;
+    private MutableLiveData<List<String>> problemMutableLiveData;
+    private MutableLiveData<List<String>> causeMutableLiveData;
+    private MutableLiveData<List<String>> actionMutableLiveData;
 
     private IWorkOrderDao workOrderDao;
     private ILookupTablesDao lookupTablesDao;
@@ -96,11 +97,11 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         status = new MutableLiveData<Status>();
         workOrderService = ServiceGenerator.createService(IWorkOrderService.class);
 
-        failureCodeNestingMutableLiveData = new MutableLiveData<List<FailureCodeNesting>>();
-        sourceMutableLiveData = new MutableLiveData<List<FailureCodeNesting.Source>>();
-        problemMutableLiveData = new MutableLiveData<List<Problem>>();
-        causeMutableLiveData = new MutableLiveData<List<Cause>>();
-        actionMutableLiveData = new MutableLiveData<List<Action>>();
+        failureCodeNestingMutableLiveData = new MutableLiveData<List<String>>();
+        sourceMutableLiveData = new MutableLiveData<List<String>>();
+        problemMutableLiveData = new MutableLiveData<List<String>>();
+        causeMutableLiveData = new MutableLiveData<List<String>>();
+        actionMutableLiveData = new MutableLiveData<List<String>>();
 
         workOrderIdList = new ArrayList<>();
 
@@ -868,7 +869,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         Single single = fiixDatabase.rcaDao().getCategories();
-        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<FailureCodeNesting>>() {
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<String>>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -876,7 +877,8 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
             }
 
             @Override
-            public void onSuccess(List<FailureCodeNesting> failureCodeNestings) {
+            public void onSuccess(List<String> failureCodeNestings) {
+                failureCodeNestingMutableLiveData.postValue(failureCodeNestings);
                 Log.d(TAG, "RCA nesting added to DB");
             }
 
@@ -909,23 +911,23 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     }
 
-    public MutableLiveData<List<FailureCodeNesting>> getFailureCodeNestingMutableLiveData() {
+    public MutableLiveData<List<String>> getFailureCodeNestingMutableLiveData() {
         return failureCodeNestingMutableLiveData;
     }
 
-    public MutableLiveData<List<FailureCodeNesting.Source>> getSourceMutableLiveData() {
+    public MutableLiveData<List<String>> getSourceMutableLiveData() {
         return sourceMutableLiveData;
     }
 
-    public MutableLiveData<List<Problem>> getProblemMutableLiveData() {
+    public MutableLiveData<List<String>> getProblemMutableLiveData() {
         return problemMutableLiveData;
     }
 
-    public MutableLiveData<List<Cause>> getCauseMutableLiveData() {
+    public MutableLiveData<List<String>> getCauseMutableLiveData() {
         return causeMutableLiveData;
     }
 
-    public MutableLiveData<List<Action>> getActionMutableLiveData() {
+    public MutableLiveData<List<String>> getActionMutableLiveData() {
         return actionMutableLiveData;
     }
 }

@@ -34,6 +34,7 @@ import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Source;
 import io.reactivex.Completable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;
@@ -72,8 +73,8 @@ public class RCASourceWorker extends Worker {
             }
 
             Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<FailureCodeNesting.Source>>() {}.getType();
-            ArrayList<FailureCodeNesting.Source> sourceNesting =gson.fromJson(jsonString, listType);
+            Type listType = new TypeToken<ArrayList<Source>>() {}.getType();
+            ArrayList<Source> sourceNesting =gson.fromJson(jsonString, listType);
 
             FiixDatabase fiixDatabase = FiixDatabase.getDatabase(getApplicationContext());
             CompositeDisposable compositeDisposable = new CompositeDisposable();

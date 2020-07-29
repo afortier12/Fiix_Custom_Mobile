@@ -117,12 +117,12 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         sharedPreferences = getSharedPreferences(PREFERENCE_KEY, Context.MODE_PRIVATE);
         dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
         Date updatedDate = compareDates();
-        if (updatedDate != null){
+        /*if (updatedDate != null){
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString("LastUpdate", dateFormat.format(updatedDate));
-            editor.apply();
+            editor.apply();*/
             updateTables();
-        }
+        //}
 
         checkCameraPermissions();
     }
@@ -179,6 +179,8 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                 .then(causeRequest)
                 .then(rcaSourceRequest)
                 .then(rcaNestingRequest)
+                .then(maintenanceTypeRequest)
+                .then(workOrderStatusRequest)
                 .enqueue();
 
         //                .then(workOrderStatusRequest)
