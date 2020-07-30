@@ -47,13 +47,13 @@ public interface IWorkOrderRepository {
 
         public interface WorkOrderRCA {
 
-            void getCategories();
+            void getRCACategories();
 
-            void getSources(int categoryId);
+            void getSources(String categoryName);
 
-            void getProblems(int sourceId);
+            void getProblems(String sourceName);
 
-            void getCauses(int sourceId);
+            void getCauses(String sourceName);
 
             void getActions();
         }

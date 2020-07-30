@@ -28,6 +28,14 @@ public class Asset {
     @Expose
     @ColumnInfo(name="description")
     private String description;
+    @SerializedName("intKind")
+    @Expose
+    @ColumnInfo(name="type")
+    private int type;
+    @SerializedName("intCategoryID")
+    @Expose
+    @ColumnInfo(name="categoryId")
+    private String categoryId;
     @SerializedName("strMake")
     @Expose
     @ColumnInfo(name="make")
@@ -50,10 +58,10 @@ public class Asset {
     private int count;
     @SerializedName("dv_intCategoryID")
     @Expose
-    @ColumnInfo(name="category_id")
-    private String category_id;
-    @ColumnInfo(name="site_id")
-    private int site_id;
+    @ColumnInfo(name="category_id__description")
+    private String dvCategoryID;
+    @ColumnInfo(name="site_id_description")
+    private int dvSiteId;
     @ColumnInfo(name="cf_intDefaultImageFileThumbnailID")
     private int thumbnail;
     @SerializedName("strUnspcCode")
@@ -147,27 +155,43 @@ public class Asset {
         this.count = count;
     }
 
-    public String getCategory_id() {
-        return category_id;
-    }
-
-    public void setCategory_id(String category_id) {
-        this.category_id = category_id;
-    }
-
-    public int getSite_id() {
-        return site_id;
-    }
-
-    public void setSite_id(int site_id) {
-        this.site_id = site_id;
-    }
-
     public Date getLastRefresh() {
         return lastRefresh;
     }
 
     public void setLastRefresh(Date lastRefresh) {
         this.lastRefresh = lastRefresh;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public String getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(String categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    public String getDvCategoryID() {
+        return dvCategoryID;
+    }
+
+    public void setDvCategoryID(String dvCategoryID) {
+        this.dvCategoryID = dvCategoryID;
+    }
+
+    public int getDvSiteId() {
+        return dvSiteId;
+    }
+
+    public void setDvSiteId(int dvSiteId) {
+        this.dvSiteId = dvSiteId;
     }
 }

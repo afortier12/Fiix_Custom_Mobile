@@ -221,6 +221,10 @@ public class WorkOrder implements Parcelable {
     private int priorityOrder;
     @ColumnInfo(name="lastRefresh")
     private Date lastRefresh;
+    @ColumnInfo(name="rcaCategory")
+    private String rcaCategory;
+    @ColumnInfo(name="rcaSource")
+    private String rcaSource;
 
     public WorkOrder() {
     }
@@ -759,5 +763,21 @@ public class WorkOrder implements Parcelable {
 
     public void setEstTime(String estTime) {
         this.estTime = estTime;
+    }
+
+    public String getRcaCategory() {
+        return rcaCategory;
+    }
+
+    public void setRcaCategory(String rcaCategory) {
+        this.rcaCategory = rcaCategory;
+    }
+
+    public String getRcaSource() {
+        return rcaSource;
+    }
+
+    public void setRcaSource(String rcaSource) {
+        this.rcaSource = rcaSource;
     }
 }

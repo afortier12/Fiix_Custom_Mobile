@@ -4,6 +4,7 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.api.requests.ChangeRequest;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 
 public interface IWorkOrder {
 
@@ -41,13 +42,17 @@ public interface IWorkOrder {
 
     public interface IWorkOrderRCA{
 
+        public void getAssets(WorkOrder workOrder);
+
+        public void getAssetCategory(int assetCategoryId);
+
         public void getCategoryList();
 
-        public void getSourceList(int categoryId);
+        public void getSourceList(String categoryName);
 
-        public void getProblemList(int sourceId);
+        public void getProblemList(String sourceName);
 
-        public void getCauseList(int sourceId);
+        public void getCauseList(String sourceName);
 
         public void getActionList();
     }

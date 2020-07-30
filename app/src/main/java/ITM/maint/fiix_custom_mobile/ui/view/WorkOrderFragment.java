@@ -38,6 +38,8 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
     private String username;
     private int userId;
     private WorkOrder workOrder;
+    private String rcaCategory;
+    private String rcaSource;
 
     private static final int DETAIL_TAB_POSITION = 0;
     private static final int TASK_TAB_POSITION = 1;
@@ -68,7 +70,8 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
 
         username = sharedViewModel.getUsername().getValue();
         userId = sharedViewModel.getUserId().getValue();
-
+        rcaCategory = "";
+        rcaSource = "";
         return root;
     }
 
@@ -112,7 +115,7 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
             public void onClick(View v) {
                 //add code to update RCA (dialog, view model, snackbar)
                 subFABContainer.setVisibility(View.INVISIBLE);
-                WorkOrderRCADialog dialog = new WorkOrderRCADialog(workOrder);
+                WorkOrderRCADialog dialog = new WorkOrderRCADialog(workOrder, rcaCategory, rcaSource);
                 dialog.setTargetFragment(WorkOrderFragment.this, RCA_FRAGMENT_REQUEST_CODE);
                 dialog.show(getParentFragmentManager(), "RCA");
                 Log.d(TAG, "RCA clicked");
@@ -190,6 +193,10 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
 
     @Override
     public void sendRCA(String category, String source, String problem, String cause, String action) {
+        rcaCategory = category;
+        rcaSource = source;
+        workOrder.setRcaCategory(rcaCategory);
+        workOrder.setRcaSource(rcaSource);
 
     }
 }

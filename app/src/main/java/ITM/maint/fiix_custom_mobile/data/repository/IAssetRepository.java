@@ -10,8 +10,11 @@ public interface IAssetRepository {
     //get specific group/single asset
     public void findAsset(List<Integer> assetIds);
 
-    //retrieve asset categories
-    public void findAssetCategory(List<Integer> assetCategoryIds);
+    //get list of assets by type
+    public void findAssetsByType(int assetType);
+
+    //retrieve asset category by Id
+    public void findAssetCategory(int categoryId);
 
 
 }

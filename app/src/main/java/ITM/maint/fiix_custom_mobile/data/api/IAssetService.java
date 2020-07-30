@@ -15,12 +15,13 @@ import retrofit2.http.POST;
 public interface IAssetService {
 
     //FindRequest, Assets
-    @FormUrlEncoded
     @POST("/api/")
     Call<List<Asset>> findAssets(@Body FindRequest assetRequest);
 
-    @FormUrlEncoded
     @POST("/api/")
     Call<List<AssetCategory>> findAssetCategories(@Body FindRequest assetCategoriesRequest);
+
+    @POST("/api/")
+    Call<AssetCategory> findAssetCategory(@Body FindRequest assetCategoriesRequest);
 
 }
