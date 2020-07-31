@@ -25,6 +25,7 @@ import java.util.List;
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
 import ITM.maint.fiix_custom_mobile.data.model.entity.AssetCategory;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.FailureCodeNestingJoinSource;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Source;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
@@ -40,6 +41,8 @@ public class WorkOrderRCADialog extends DialogFragment  {
     private WorkOrder workOrder;
     private String category;
     private String source;
+    private int categoryLastPosition;
+    private int sourceLastPosition;
 
     private List<String> categoryList;
     private List<String> sourceList;
@@ -50,6 +53,9 @@ public class WorkOrderRCADialog extends DialogFragment  {
 
     private ArrayAdapter<String> categoryAdapter;
     private ArrayAdapter<String> sourceAdapter;
+    private ArrayAdapter<String> problemAdapter;
+    private ArrayAdapter<String> causeAdapter;
+    private ArrayAdapter<String> actionAdapter;
 
     private TextInputLayout layoutCategory;
     private AutoCompleteTextView txtCategory;
@@ -75,6 +81,8 @@ public class WorkOrderRCADialog extends DialogFragment  {
         assetList = new ArrayList<>();
         this.category = category;
         this.source = source;
+        categoryLastPosition = 0;
+        sourceLastPosition = 0;
     }
 
     @Override
@@ -124,10 +132,31 @@ public class WorkOrderRCADialog extends DialogFragment  {
         txtCategory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (categoryLastPosition != position){
+                    sourceAdapter.clear();
+                    if (position >= 0) {
+                        category = categoryList.get(position);
+                        txtCategory.dismissDropDown();
+                        txtSource.clearListSelection();
+                        txtSource.setText("");
+                        viewModel.getSourceList(category);
+                    }
+                }
+                categoryLastPosition = position;
                 String category = (String) parent.getItemAtPosition(position);
                 Log.d(TAG, "Category selected = " + category);
             }
         });
+
+        txtCategory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                categoryLastPosition = -1;
+                txtCategory.setText("");
+                txtCategory.clearListSelection();
+            }
+        });
+
 
         layoutSource = (TextInputLayout) view.findViewById(R.id.detail_problem_source_layout);
         txtSource = (AutoCompleteTextView) view.findViewById(R.id.detail_problem_source_dropdown);
@@ -137,10 +166,36 @@ public class WorkOrderRCADialog extends DialogFragment  {
         txtSource.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (sourceLastPosition != position){
+                    problemAdapter.clear();
+                    if (position >= 0) {
+                        source = sourceList.get(position);
+                        txtSource.dismissDropDown();
+                        txtProblem.clearListSelection();
+                        txtProblem.setText("");
+                        txtCause.clearListSelection();
+                        txtCause.setText("");
+                        viewModel.getProblemList(source);
+                    }
+                }
+                sourceLastPosition = position;
                 String category = (String) parent.getItemAtPosition(position);
                 Log.d(TAG, "Source selected = " + category);
             }
         });
+
+        layoutProblem = (TextInputLayout) view.findViewById(R.id.detail_problem_layout);
+        txtProblem = (AutoCompleteTextView) view.findViewById(R.id.detail_problem_dropdown);
+        problemAdapter = new ArrayAdapter<String>(this.getContext(), R.layout.rca_list_item, problemList);
+        txtProblem.setAdapter(problemAdapter);
+        txtProblem.setThreshold(1);
+
+        layoutCause = (TextInputLayout) view.findViewById(R.id.detail_cause_layout);
+        txtCause = (AutoCompleteTextView) view.findViewById(R.id.detail_cause_dropdown);
+        causeAdapter = new ArrayAdapter<String>(this.getContext(), R.layout.rca_list_item, causeList);
+        txtCause.setAdapter(causeAdapter);
+        txtCause.setThreshold(1);
+
 
         viewModel.getCategoryList();
 
@@ -207,20 +262,45 @@ public class WorkOrderRCADialog extends DialogFragment  {
                         sourceAdapter.add(source.getName());
                 }
                 sourceAdapter.notifyDataSetChanged();
-                if (source.length() == 0){
-                    int position = sourceAdapter.getPosition(category);
-                    if (position >= 0) {
-                        source = category;
-                        txtSource.setText(source);
-                        txtSource.dismissDropDown();
-                    }
+
+                int position = sourceAdapter.getPosition(category);
+                if (position >= 0) {
+                    source = category;
+                    txtSource.setText(source);
+                    txtSource.dismissDropDown();
                 } else {
+                    txtSource.clearListSelection();
+                    txtSource.setText("");
                     txtSource.showDropDown();
                 }
-                if (workOrder.getProblemID() == 0){
-                    //viewModel.getProblemList(source);
+
+
+            }
+        });
+
+        viewModel.getProblemLiveData().observe(getViewLifecycleOwner(), new Observer<List<FailureCodeNesting.SourceJoinProblemCause>>() {
+            @Override
+            public void onChanged(List<FailureCodeNesting.SourceJoinProblemCause> sourceProblems) {
+                problemAdapter.clear();
+                for (FailureCodeNesting.SourceJoinProblemCause sourceProblem: sourceProblems) {
+                    for(Problem source: sourceProblems.)
+                        problemAdapter.add(problem.getName());
+                }
+                problemAdapter.notifyDataSetChanged();
+
+                int position = problemAdapter.getPosition(category);
+                if (position >= 0) {
+                    source = category;
+                    txtProblem.setText(source);
+                    txtProblem.dismissDropDown();
+                } else {
+                    txtProblem.clearListSelection();
+                    txtSource.setText("");
+                    txtSource.showDropDown();
                 }
 
+
+            }
             }
         });
     }
