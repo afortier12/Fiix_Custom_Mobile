@@ -25,8 +25,11 @@ import java.util.List;
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
 import ITM.maint.fiix_custom_mobile.data.model.entity.AssetCategory;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
+import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.SourceJoinProblemCause;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.FailureCodeNestingJoinSource;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Source;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
@@ -79,6 +82,8 @@ public class WorkOrderRCADialog extends DialogFragment  {
         this.workOrder = workOrder;
         categoryList = new ArrayList<>();
         assetList = new ArrayList<>();
+        problemList = new ArrayList<>();
+        causeList = new ArrayList<>();
         this.category = category;
         this.source = source;
         categoryLastPosition = 0;
@@ -175,7 +180,6 @@ public class WorkOrderRCADialog extends DialogFragment  {
                         txtProblem.setText("");
                         txtCause.clearListSelection();
                         txtCause.setText("");
-                        viewModel.getProblemList(source);
                     }
                 }
                 sourceLastPosition = position;
@@ -273,36 +277,34 @@ public class WorkOrderRCADialog extends DialogFragment  {
                     txtSource.setText("");
                     txtSource.showDropDown();
                 }
-
+                viewModel.getProblemList(source);
+                viewModel.getCauseList(source);
 
             }
         });
 
         viewModel.getProblemLiveData().observe(getViewLifecycleOwner(), new Observer<List<FailureCodeNesting.SourceJoinProblemCause>>() {
             @Override
-            public void onChanged(List<FailureCodeNesting.SourceJoinProblemCause> sourceProblems) {
+            public void onChanged(List<SourceJoinProblemCause> sourceProblems) {
                 problemAdapter.clear();
-                for (FailureCodeNesting.SourceJoinProblemCause sourceProblem: sourceProblems) {
-                    for(Problem source: sourceProblems.)
-                        problemAdapter.add(problem.getName());
+                causeAdapter.clear();
+                for (SourceJoinProblemCause sourceProblem: sourceProblems) {
+                    for(Problem problem: sourceProblem.getProblemList())
+                        problemAdapter.add(problem.getDescription());
+                    for(Cause cause: sourceProblem.getCauseList())
+                        causeAdapter.add(cause.getDescription());
                 }
                 problemAdapter.notifyDataSetChanged();
+                causeAdapter.notifyDataSetChanged();
 
-                int position = problemAdapter.getPosition(category);
-                if (position >= 0) {
-                    source = category;
-                    txtProblem.setText(source);
-                    txtProblem.dismissDropDown();
-                } else {
-                    txtProblem.clearListSelection();
-                    txtSource.setText("");
-                    txtSource.showDropDown();
-                }
+                txtProblem.clearListSelection();
+                txtProblem.setText("");
+                txtCause.clearListSelection();
+                txtCause.setText("");
 
-
-            }
             }
         });
+
     }
 
     @Override

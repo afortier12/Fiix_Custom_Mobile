@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 
 import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
 import ITM.maint.fiix_custom_mobile.data.model.entity.AssetCategory;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.FailureCodeNestingJoinSource;
 import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.SourceJoinProblemCause;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
@@ -29,7 +28,6 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
     private LiveData<List<String>> failureCodeNestingLiveData;
     private LiveData<List<FailureCodeNestingJoinSource>> sourceLiveData;
     private LiveData<List<SourceJoinProblemCause>> problemLiveData;
-    private LiveData<List<SourceJoinProblemCause>> causeLiveData;
     private LiveData<List<String>> actionLiveData;
     private LiveData<List<Asset>> assetLiveData;
     private LiveData<List<AssetCategory>> assetCategoryLiveData;
@@ -45,8 +43,7 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
         workOrderRepository = new WorkOrderRepository(this.getApplication());
         failureCodeNestingLiveData = workOrderRepository.getFailureCodeNestingMutableLiveData();
         sourceLiveData = workOrderRepository.getSourceMutableLiveData();
-        problemLiveData = workOrderRepository.getProblemMutableLiveData();
-        causeLiveData = workOrderRepository.getCauseMutableLiveData();
+        problemLiveData = workOrderRepository.getProblemCauseMutableLiveData();
         actionLiveData = workOrderRepository.getActionMutableLiveData();
         assetLiveData = assetRepository.getAssetMutableLiveData();
         assetCategoryLiveData = assetRepository.getAssetCategoryListMutableLiveData();
@@ -89,13 +86,8 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
     }
 
     @Override
-    public void getProblemList(String sourceName) {
-        workOrderRepository.getProblems(sourceName);
-    }
-
-    @Override
-    public void getCauseList(String sourceName) {
-        workOrderRepository.getCauses(sourceName);
+    public void getProblemsCausesList(String sourceName) {
+        workOrderRepository.getSourceProblemsCauses(sourceName);
     }
 
     @Override
@@ -113,10 +105,6 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
 
     public LiveData<List<SourceJoinProblemCause>> getProblemLiveData() {
         return problemLiveData;
-    }
-
-    public LiveData<List<SourceJoinProblemCause>> getCauseLiveData() {
-        return causeLiveData;
     }
 
     public LiveData<List<String>> getActionLiveData() {

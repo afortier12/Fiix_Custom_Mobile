@@ -51,9 +51,7 @@ public interface IWorkOrderRepository {
 
             void getSources(String categoryName);
 
-            void getProblems(String sourceName);
-
-            void getCauses(String sourceName);
+            void getSourceProblemsCauses(String sourceName);
 
             void getActions();
         }

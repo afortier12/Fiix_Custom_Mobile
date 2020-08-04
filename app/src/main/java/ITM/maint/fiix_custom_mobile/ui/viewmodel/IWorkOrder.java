@@ -50,9 +50,7 @@ public interface IWorkOrder {
 
         public void getSourceList(String categoryName);
 
-        public void getProblemList(String sourceName);
-
-        public void getCauseList(String sourceName);
+        public void getProblemsCausesList(String sourceName);
 
         public void getActionList();
     }

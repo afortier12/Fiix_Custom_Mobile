@@ -47,4 +47,11 @@ public interface IRCADao {
             "where nesting_table.name = :category")
     Single<List<FailureCodeNestingJoinSource>> getSourcesForCategory(String category);
 
+    @Transaction
+    @Query("SELECT * FROM rca_source_table inner join problem_table " +
+            "on rca_source_table.problem_id = problem_table.id " +
+            "inner join cause_table " +
+            "on rca_source_table.cause_id = cause_table.id " +
+            "where rca_source_table.name = :source")
+    Single<List<SourceJoinProblemCause>> getProblemsCausesForSource(String source);
 }
