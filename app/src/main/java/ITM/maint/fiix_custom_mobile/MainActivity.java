@@ -40,6 +40,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragmentArgs;
 import ITM.maint.fiix_custom_mobile.utils.Utils;
+import ITM.maint.fiix_custom_mobile.utils.Workers.ActionWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.CauseWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.MaintenanceTypeSyncWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.ProblemWorker;
@@ -168,23 +169,26 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                 .setConstraints(constraints)
                 .build();
 
+        OneTimeWorkRequest actionRequest = new OneTimeWorkRequest.Builder(ActionWorker.class)
+                .setConstraints(constraints)
+                .build();
+
         OneTimeWorkRequest rcaSourceRequest = new OneTimeWorkRequest.Builder(RCASourceWorker.class)
                 .setConstraints(constraints)
                 .build();
+
         OneTimeWorkRequest rcaNestingRequest = new OneTimeWorkRequest.Builder(RCANestingWorker.class)
                 .setConstraints(constraints)
                 .build();
 
         workManager.beginWith(problemRequest)
                 .then(causeRequest)
+                .then(actionRequest)
                 .then(rcaSourceRequest)
                 .then(rcaNestingRequest)
                 .then(maintenanceTypeRequest)
                 .then(workOrderStatusRequest)
                 .enqueue();
-
-        //                .then(workOrderStatusRequest)
-        //                .then(rcaRequest)
 
     }
 

@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.work.ListenableWorker;
 import androidx.work.Worker;
 import androidx.work.WorkerParameters;
 
@@ -23,30 +24,30 @@ import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
-import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Action;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
 import io.reactivex.Completable;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.observers.DisposableCompletableObserver;
 import io.reactivex.schedulers.Schedulers;
 
-public class RCANestingWorker extends Worker {
+public class ActionWorker extends Worker {
 
-    private static final String TAG = "RCANestingWorker";
-    private static final String RESPONSE_KEY = "RCA_NESTING";
+    private static final String TAG = "ActionWorker";
+    private static final String RESPONSE_KEY = "Action";
 
-    private static final String fileName = "asset_category_tree.json";
+    private static final String action_filename = "actions.json";
 
-    public RCANestingWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
+    public ActionWorker(@NonNull Context context, @NonNull WorkerParameters workerParams) {
         super(context, workerParams);
     }
 
     @NonNull
     @Override
-    public Result doWork() {
-
+    public ListenableWorker.Result doWork() {
         AssetManager assetManager = getApplicationContext().getAssets();
         try {
-            InputStream inputStream = assetManager.open(fileName);
+            InputStream inputStream = assetManager.open(action_filename);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
 
             String jsonString =bufferedReader
@@ -62,35 +63,34 @@ public class RCANestingWorker extends Worker {
             }
 
             Gson gson = new Gson();
-            Type listType = new TypeToken<ArrayList<RCACategorySource>>() {}.getType();
-            ArrayList<RCACategorySource> RCACategorySource =gson.fromJson(jsonString, listType);
+            Type listType = new TypeToken<ArrayList<Action>>() {}.getType();
+            ArrayList<Action> actions =gson.fromJson(jsonString, listType);
 
             FiixDatabase fiixDatabase = FiixDatabase.getDatabase(getApplicationContext());
             CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-            Completable completable = fiixDatabase.rcaDao().insertFailureCodeNesting(RCACategorySource);
+            Completable completable = fiixDatabase.rcaDao().insertActions(actions);
             DisposableCompletableObserver disposableCompletableObserver = new DisposableCompletableObserver() {
                 @Override
                 public void onComplete() {
-                    Log.d(TAG, "RCA nesting added to DB");
+                    Log.d(TAG, "Actions added to DB");
                 }
 
                 @Override
                 public void onError(Throwable e) {
+
                     Log.d(TAG, e.getMessage());
-                    Log.d(TAG, "Error adding RCA nesting to DB");
+                    Log.d(TAG, "Error adding actions to DB");
                 }
             };
             completable.subscribeOn(Schedulers.io())
                     .subscribe(disposableCompletableObserver);
             compositeDisposable.add(disposableCompletableObserver);
 
-            return Result.success();
+            return ListenableWorker.Result.success();
         } catch (Exception e){
             Log.d(TAG, e.getMessage());
-            return Result.failure();
+            return ListenableWorker.Result.failure();
         }
     }
-
-
 }

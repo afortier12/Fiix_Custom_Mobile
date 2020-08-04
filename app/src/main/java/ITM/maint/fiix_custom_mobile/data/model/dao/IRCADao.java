@@ -10,13 +10,11 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.model.entity.Action;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.SourceJoinProblemCause;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.FailureCodeNestingJoinSource;
+import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource;
+import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource.SourceJoinProblemCause;
+import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource.CategoryJoinSource;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Source;
-import ITM.maint.fiix_custom_mobile.data.model.entity.User;
-import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import io.reactivex.Completable;
 import io.reactivex.Single;
 
@@ -33,7 +31,7 @@ public interface IRCADao {
     Completable insertActions(List<Action> causes);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    Completable insertFailureCodeNesting(List<FailureCodeNesting> nestings);
+    Completable insertFailureCodeNesting(List<RCACategorySource> nestings);
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     Completable insertSourceNesting(List<Source> sources);
@@ -45,7 +43,7 @@ public interface IRCADao {
     @Query("SELECT * FROM nesting_table inner join rca_source_table " +
             "on nesting_table.source_id = rca_source_table.id " +
             "where nesting_table.name = :category")
-    Single<List<FailureCodeNestingJoinSource>> getSourcesForCategory(String category);
+    Single<List<CategoryJoinSource>> getSourcesForCategory(String category);
 
     @Transaction
     @Query("SELECT * FROM rca_source_table inner join problem_table " +
@@ -54,4 +52,7 @@ public interface IRCADao {
             "on rca_source_table.cause_id = cause_table.id " +
             "where rca_source_table.name = :source")
     Single<List<SourceJoinProblemCause>> getProblemsCausesForSource(String source);
+
+    @Query("SELECT * FROM action_table where id !=0")
+    Single<List<Action>> getActions();
 }

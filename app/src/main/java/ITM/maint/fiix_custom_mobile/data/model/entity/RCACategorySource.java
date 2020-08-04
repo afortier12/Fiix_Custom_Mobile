@@ -26,7 +26,7 @@ import static androidx.room.ForeignKey.NO_ACTION;
                 parentColumns = "id",
                 childColumns = "source_id",
                 onDelete = CASCADE))
-public class FailureCodeNesting {
+public class RCACategorySource {
 
     //{
     //  { "name":"Battery", "source_name":"Battery-Lithium Ion"},
@@ -86,9 +86,9 @@ public class FailureCodeNesting {
                             onDelete = NO_ACTION)})
 
 
-    public static class FailureCodeNestingJoinSource {
+    public static class CategoryJoinSource {
         @Embedded
-        private FailureCodeNesting failureCodeNesting;
+        private RCACategorySource RCACategorySource;
         @Relation(
                 parentColumn = "source_id",
                 entityColumn = "id",
@@ -96,12 +96,12 @@ public class FailureCodeNesting {
         )
         private List<Source> sourceList;
 
-        public FailureCodeNesting getFailureCodeNesting() {
-            return failureCodeNesting;
+        public RCACategorySource getRCACategorySource() {
+            return RCACategorySource;
         }
 
-        public void setFailureCodeNesting(FailureCodeNesting failureCodeNesting) {
-            this.failureCodeNesting = failureCodeNesting;
+        public void setRCACategorySource(RCACategorySource RCACategorySource) {
+            this.RCACategorySource = RCACategorySource;
         }
 
         public List<Source> getSourceList() {
@@ -117,13 +117,13 @@ public class FailureCodeNesting {
         @Embedded
         private Source source;
         @Relation(
-                parentColumn = "problem",
+                parentColumn = "problem_id",
                 entityColumn = "id",
                 entity = Problem.class
         )
         private List<Problem> problemList;
         @Relation(
-                parentColumn = "cause",
+                parentColumn = "cause_id",
                 entityColumn = "id",
                 entity = Cause.class
         )

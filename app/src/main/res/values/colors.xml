@@ -1,14 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#FFD700</color>
-    <color name="colorPrimaryDark">#DAA520</color>
-    <color name="colorAccent">#FFD700</color>
+    <color name="colorPrimary">#263238</color>
+    <color name="colorPrimaryDark">#373737</color>
+    <color name="colorPrimaryLight">#efefef</color>
+    <color name="colorPrimaryVariant">#4f5b62</color>
+    <color name="colorAccent">#FFC400</color>
+    <color name="colorControlHighlight">#FFC400</color>
+    <color name="colorSurface">#FFC400</color>
+    <color name="colorOnSurface">#000000</color>
 
     <color name="transparent">#00000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="lighter_grey">#DDDDDD</color>
-    <color name="gold">#FFFFD700</color>
+    <color name="gold">#FFFFAB00</color>
 
     //work order status colors
     <color name="status_101">#FF0000</color>

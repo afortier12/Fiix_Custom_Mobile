@@ -48,7 +48,7 @@ public class RCAAutoCompleteTextView extends androidx.appcompat.widget.AppCompat
     protected void onFocusChanged(boolean focused, int direction, Rect previouslyFocusedRect) {
         super.onFocusChanged(focused, direction, previouslyFocusedRect);
 
-        showDropDownIfFocused();
+        //showDropDownIfFocused();
     }
 
     private void showDropDownIfFocused() {
@@ -62,7 +62,7 @@ public class RCAAutoCompleteTextView extends androidx.appcompat.widget.AppCompat
     protected void onAttachedToWindow() {
         super.onAttachedToWindow();
 
-        showDropDownIfFocused();
+        //showDropDownIfFocused();
     }
 
     @Override

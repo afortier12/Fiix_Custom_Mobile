@@ -23,7 +23,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.Action;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
 import ITM.maint.fiix_custom_mobile.data.model.entity.AssetCategory;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
+import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource;
 import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
@@ -35,7 +35,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
 @Database(entities = {Part.class, User.class, WorkOrder.class, WorkOrderTask.class,
-        Priority.class, Problem.class, Cause.class, Action.class, FailureCodeNesting.class,
+        Priority.class, Problem.class, Cause.class, Action.class, RCACategorySource.class,
         Source.class, MaintenanceType.class, WorkOrderStatus.class,
         Asset.class, AssetCategory.class},version = 1)
 @TypeConverters({Converters.class})

@@ -28,8 +28,12 @@ import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.dao.ILookupTablesDao;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.FailureCodeNestingJoinSource;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.SourceJoinProblemCause;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Action;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
+import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource;
+import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource.CategoryJoinSource;
+import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource.SourceJoinProblemCause;
 import ITM.maint.fiix_custom_mobile.data.model.entity.MaintenanceType;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
@@ -65,9 +69,14 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
 
     private MutableLiveData<List<String>> failureCodeNestingMutableLiveData;
-    private MutableLiveData<List<FailureCodeNestingJoinSource>> sourceMutableLiveData;
+    private MutableLiveData<List<RCACategorySource.CategoryJoinSource>> sourceMutableLiveData;
     private MutableLiveData<List<SourceJoinProblemCause>> problemCauseMutableLiveData;
-    private MutableLiveData<List<String>> actionMutableLiveData;
+    private MutableLiveData<List<Problem>> problemMutableLiveData;
+    private MutableLiveData<List<Cause>> causeMutableLiveData;
+    private MutableLiveData<List<Action>> actionMutableLiveData;
+    private MutableLiveData<Problem> problemIdMutableLiveData;
+    private MutableLiveData<Cause> causeIdMutableLiveData;
+    private MutableLiveData<Action> actionIdMutableLiveData;
 
     private IWorkOrderDao workOrderDao;
     private ILookupTablesDao lookupTablesDao;
@@ -92,9 +101,12 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         workOrderService = ServiceGenerator.createService(IWorkOrderService.class);
 
         failureCodeNestingMutableLiveData = new MutableLiveData<List<String>>();
-        sourceMutableLiveData = new MutableLiveData<List<FailureCodeNestingJoinSource>>();
+        sourceMutableLiveData = new MutableLiveData<List<RCACategorySource.CategoryJoinSource>>();
         problemCauseMutableLiveData = new MutableLiveData<List<SourceJoinProblemCause>>();
-        actionMutableLiveData = new MutableLiveData<List<String>>();
+        actionMutableLiveData = new MutableLiveData<List<Action>>();
+        problemIdMutableLiveData = new MutableLiveData<Problem>();
+        causeIdMutableLiveData = new MutableLiveData<Cause>();
+        actionIdMutableLiveData = new MutableLiveData<Action>();
 
         workOrderIdList = new ArrayList<>();
 
@@ -891,7 +903,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     public void getSources(String categoryName) {
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         Single single = fiixDatabase.rcaDao().getSourcesForCategory(categoryName);
-        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<FailureCodeNestingJoinSource>>() {
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<CategoryJoinSource>>() {
 
             @Override
             public void onSubscribe(Disposable d) {
@@ -899,7 +911,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
             }
 
             @Override
-            public void onSuccess(List<FailureCodeNestingJoinSource> sources) {
+            public void onSuccess(List<RCACategorySource.CategoryJoinSource> sources) {
                 sourceMutableLiveData.postValue(sources);
                 Log.d(TAG, "RCA nesting added to DB");
             }
@@ -942,14 +954,35 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     @Override
     public void getActions() {
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        Single single = fiixDatabase.rcaDao().getActions();
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<Action>>() {
 
+            @Override
+            public void onSubscribe(Disposable d) {
+                compositeDisposable.add(d);
+            }
+
+            @Override
+            public void onSuccess(List<Action> actions) {
+                actionMutableLiveData.postValue(actions);
+                Log.d(TAG, "RCA nesting added to DB");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                actionMutableLiveData.postValue(null);
+                Log.d(TAG, e.getMessage());
+                Log.d(TAG, "Error adding RCA nesting to DB");
+            }
+        });
     }
 
     public MutableLiveData<List<String>> getFailureCodeNestingMutableLiveData() {
         return failureCodeNestingMutableLiveData;
     }
 
-    public MutableLiveData<List<FailureCodeNestingJoinSource>> getSourceMutableLiveData() {
+    public MutableLiveData<List<CategoryJoinSource>> getSourceMutableLiveData() {
         return sourceMutableLiveData;
     }
 
@@ -958,7 +991,19 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     }
 
 
-    public MutableLiveData<List<String>> getActionMutableLiveData() {
+    public MutableLiveData<List<Action>> getActionMutableLiveData() {
         return actionMutableLiveData;
+    }
+
+    public MutableLiveData<Action> getActionIdMutableLiveData() {
+        return actionIdMutableLiveData;
+    }
+
+    public MutableLiveData<Problem> getProblemMutableLiveData() {
+        return problemIdMutableLiveData;
+    }
+
+    public MutableLiveData<Cause> getCauseMutableLiveData() {
+        return causeIdMutableLiveData;
     }
 }

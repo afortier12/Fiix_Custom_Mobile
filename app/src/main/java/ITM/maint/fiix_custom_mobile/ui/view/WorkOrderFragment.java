@@ -23,7 +23,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderViewPagerAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 
-public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.OnRCAListener {
+public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.OnRCAListener, WorkOrderNoteDialog.OnNoteListener {
 
     private static final String TAG = "WorkOrderFragment";
     private WorkOrderViewPagerAdapter adapter;
@@ -40,13 +40,16 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
     private WorkOrder workOrder;
     private String rcaCategory;
     private String rcaSource;
+    private int rcaProblem;
+    private int rcaCause;
+    private int rcaAction;
 
     private static final int DETAIL_TAB_POSITION = 0;
     private static final int TASK_TAB_POSITION = 1;
     private int visibleTab;
 
     private static final int RCA_FRAGMENT_REQUEST_CODE = 22;
-
+    private static final int NOTE_FRAGMENT_REQUEST_CODE = 23;
 
 
 
@@ -103,8 +106,10 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
         noteFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //add code to add note (dialog, view model, snackbar)
                 subFABContainer.setVisibility(View.INVISIBLE);
+                WorkOrderNoteDialog dialog = new WorkOrderNoteDialog(workOrder);
+                dialog.setTargetFragment(WorkOrderFragment.this, NOTE_FRAGMENT_REQUEST_CODE);
+                dialog.show(getParentFragmentManager(), "Note");
                 Log.d(TAG, "note clicked");
             }
         });
@@ -192,11 +197,24 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
     }
 
     @Override
-    public void sendRCA(String category, String source, String problem, String cause, String action) {
+    public void sendRCA(String category, String source, int problem, int cause, int action) {
         rcaCategory = category;
-        rcaSource = source;
         workOrder.setRcaCategory(rcaCategory);
+        rcaSource = source;
         workOrder.setRcaSource(rcaSource);
+        rcaProblem = problem;
+        workOrder.setProblemID(rcaProblem);
+        rcaCause = cause;
+        workOrder.setCauseID(rcaCause);
+        rcaAction = action;
+        workOrder.setActionID(rcaAction);
 
+
+
+    }
+
+    @Override
+    public void sendNote(String note) {
+        workOrder.setCompletionNotes(note);
     }
 }

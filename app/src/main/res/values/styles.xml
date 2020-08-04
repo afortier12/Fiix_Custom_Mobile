@@ -34,14 +34,17 @@
         <item name="android:strokeColor">@android:color/black</item>
     </style>
 
-    <style name="AutoCompleteDropDown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
-        <item name="android:paddingStart">10dp</item>
-        <item name="android:paddingEnd">10dp</item>
-    </style>
 
     <style name="HintText" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="android:textColor">@android:color/black</item>
         <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="DropdownHintText" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:padding">30dp</item>
+        <item name="android:layout_margin">10dp</item>
     </style>
 
     <style name="Button" parent="Widget.MaterialComponents.Button">
@@ -73,5 +76,54 @@
         <item name="android:windowEnterAnimation">@animator/slide_up</item>
         <item name="android:windowExitAnimation">@animator/slide_down</item>
     </style>
+
+    <style name="AppTheme.ExposedDropdownMenu"
+        parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <!-- color of box ONLY, not dropdown -->
+        <item name="boxBackgroundColor">@color/transparent</item>
+        <!-- the box outline color depending on state
+             (default, enabled, hovered, focused, but NOT error) -->
+        <item name="boxStrokeColor">@color/material_spinner_box</item>
+        <!-- the box outline color just for errors -->
+        <item name="boxStrokeErrorColor">@color/design_default_color_error</item>
+        <!-- enable 8dp space below the box for error message -->
+        <item name="errorEnabled">true</item>
+        <!-- Gain access to additional styling for the child AutoCompleteTextView,
+             which includes this spinner's dropdown/popup menu -->
+        <item name="materialThemeOverlay">@style/AppTheme.ExposedDropdownMenu.MaterialThemeOverlay</item>
+    </style>
+
+    <!-- customization of the material theme for use as
+         an overlay for the ExposedDropdownMenu style  -->
+    <style name="AppTheme.ExposedDropdownMenu.MaterialThemeOverlay"
+        parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+         When this overlay is applied, the AutoCompleteTextView
+         loses padding. Luckily, we can restore it by defining
+         a style that should be applied to all AutoCompletTextView(s)
+         in this theme/overlay
+         -->
+        <item name="autoCompleteTextViewStyle">@style/AppTheme.ExposedDropdownMenu.AutoCompleteStyle</item>
+    </style>
+
+    <!-- style the AutoCompleteTextView of our material spinner -->
+    <style name="AppTheme.ExposedDropdownMenu.AutoCompleteStyle">
+        <!-- restore padding to sanity -->
+        <item name="android:padding">16dp</item>
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <!-- style for material spinner 'item' layout -->
+    <style name="MaterialSpinnerItem" parent="Widget.AppCompat.TextView">
+        <item name="android:textColor">@color/colorOnSurface</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+
+
+
 
 </resources>

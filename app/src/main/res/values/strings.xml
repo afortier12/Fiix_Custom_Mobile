@@ -82,7 +82,7 @@
     <string name="work_orders_added">"Work orders added to database</string>
     <string name="work_order_add_error">"Error adding work order to database</string>
     <string name="hello">hello</string>
-    <string name="problem_hint_text">Problem Code</string>
+    <string name="problem_hint_text">   Problem Code</string>
     <string name="task_complete">DONE</string>
     <string name="estimated_time">Estimated Time</string>
     <string name="actual_time">Actual Time</string>
@@ -90,8 +90,8 @@
     <string name="detail">DETAIL</string>
     <string name="tasks">TASKS</string>
     <string name="title_work_order">WORK ORDER</string>
-    <string name="cause_hint_text">Cause Code</string>
-    <string name="action_hint_text">Action Code</string>
+    <string name="cause_hint_text">   Cause Code</string>
+    <string name="action_hint_text">   Action Code</string>
     <string name="work_order_description">Work Order Description</string>
     <string name="asset">Asset</string>
     <string name="status">Status</string>
@@ -99,7 +99,7 @@
     <string name="requestedBy">Requested By</string>
     <string name="scheduled_date">Scheduled completion date</string>
     <string name="update_fiix">UPDATE FIIX</string>
-    <string name="problem_source_hint_text">Problem Source</string>
+    <string name="problem_source_hint_text">   Problem Source</string>
     <string name="notes">NOTES</string>
     <string name="detail_notes">Notes</string>
     <string name="work_order_task_added">Work order tasks added</string>
@@ -108,5 +108,6 @@
     <string name="problem_description">Problem</string>
     <string name="update">UPDATE</string>
     <string name="cancel">CANCEL</string>
-    <string name="problem_category_hint_text">Category</string>
+    <string name="problem_category_hint_text">   Category</string>
+    <string name="notes_hint_text">Note</string>
 </resources>

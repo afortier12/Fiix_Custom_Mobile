@@ -1,61 +1,66 @@
 [
     {
-        "id": "13,496",
+        "id": 0,
+        "code": "N/A",
+        "description": "N/A"
+    },
+    {
+        "id": 13496,
         "code": "FOUND-OK",
         "description": "Found Ok"
     },
     {
-        "id": "13,497",
+        "id": 13497,
         "code": "OVRHL-REBLD",
         "description": "Overhauled/Rebuilt"
     },
     {
-        "id": "13,498",
+        "id": 13498,
         "code": "MODIFIED",
         "description": "Modified"
     },
     {
-        "id": "13,499",
+        "id": 13499,
         "code": "RECAL-ADJ",
         "description": "Re-Calibrated/Adjusted"
     },
     {
-        "id": "13,500",
+        "id": 13500,
         "code": "REPL-EQPT",
         "description": "Replaced Equipment"
     },
     {
-        "id": "13,501",
+        "id": 13501,
         "code": "REPLN-RCHG",
         "description": "Replenished/Recharged"
     },
     {
-        "id": "13,502",
+        "id": 13502,
         "code": "CLEAN-SRVC",
         "description": "Cleaned/Serviced"
     },
     {
-        "id": "13,503",
+        "id": 13503,
         "code": "INSPECT",
         "description": "Inspect"
     },
     {
-        "id": "13,504",
+        "id": 13504,
         "code": "TRAINNG",
         "description": "Training"
     },
     {
-        "id": "13,505",
+        "id": 13505,
         "code": "RE-HOMED",
         "description": "Re-homed"
     },
     {
-        "id": "13,506",
+        "id": 13506,
         "code": "REMOV-OBSTR",
         "description": "Removed obstruction"
     },
     {
-        "id": "13,507",
+        "id": 13507,
         "code": "SENS-ADJ",
         "description": "Sensor adjustment"
     }

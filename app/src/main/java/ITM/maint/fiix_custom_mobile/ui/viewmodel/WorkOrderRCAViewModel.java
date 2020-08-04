@@ -12,10 +12,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import ITM.maint.fiix_custom_mobile.data.model.entity.Action;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
 import ITM.maint.fiix_custom_mobile.data.model.entity.AssetCategory;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.FailureCodeNestingJoinSource;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting.SourceJoinProblemCause;
+import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource.CategoryJoinSource;
+import ITM.maint.fiix_custom_mobile.data.model.entity.RCACategorySource.SourceJoinProblemCause;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.repository.AssetRepository;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
@@ -25,10 +26,10 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
     public static final String TAG = "WorkOrderRCAViewModel";
     private AssetRepository assetRepository;
     private WorkOrderRepository workOrderRepository;
-    private LiveData<List<String>> failureCodeNestingLiveData;
-    private LiveData<List<FailureCodeNestingJoinSource>> sourceLiveData;
-    private LiveData<List<SourceJoinProblemCause>> problemLiveData;
-    private LiveData<List<String>> actionLiveData;
+    private LiveData<List<String>> categorySourceLiveData;
+    private LiveData<List<CategoryJoinSource>> sourceLiveData;
+    private LiveData<List<SourceJoinProblemCause>> problemCauseLiveData;
+    private LiveData<List<Action>> actionLiveData;
     private LiveData<List<Asset>> assetLiveData;
     private LiveData<List<AssetCategory>> assetCategoryLiveData;
     private LiveData<String> responseStatus;
@@ -41,9 +42,9 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
 
         assetRepository = new AssetRepository(this.getApplication());
         workOrderRepository = new WorkOrderRepository(this.getApplication());
-        failureCodeNestingLiveData = workOrderRepository.getFailureCodeNestingMutableLiveData();
+        categorySourceLiveData = workOrderRepository.getFailureCodeNestingMutableLiveData();
         sourceLiveData = workOrderRepository.getSourceMutableLiveData();
-        problemLiveData = workOrderRepository.getProblemCauseMutableLiveData();
+        problemCauseLiveData = workOrderRepository.getProblemCauseMutableLiveData();
         actionLiveData = workOrderRepository.getActionMutableLiveData();
         assetLiveData = assetRepository.getAssetMutableLiveData();
         assetCategoryLiveData = assetRepository.getAssetCategoryListMutableLiveData();
@@ -95,19 +96,19 @@ public class WorkOrderRCAViewModel extends AndroidViewModel implements IWorkOrde
         workOrderRepository.getActions();
     }
 
-    public LiveData<List<String>> getFailureCodeNestingLiveData() {
-        return failureCodeNestingLiveData;
+    public LiveData<List<String>> getCategorySourceLiveData() {
+        return categorySourceLiveData;
     }
 
-    public LiveData<List<FailureCodeNestingJoinSource>> getSourceLiveData() {
+    public LiveData<List<CategoryJoinSource>> getSourceLiveData() {
         return sourceLiveData;
     }
 
-    public LiveData<List<SourceJoinProblemCause>> getProblemLiveData() {
-        return problemLiveData;
+    public LiveData<List<SourceJoinProblemCause>> getProblemCauseLiveData() {
+        return problemCauseLiveData;
     }
 
-    public LiveData<List<String>> getActionLiveData() {
+    public LiveData<List<Action>> getActionLiveData() {
         return actionLiveData;
     }
 

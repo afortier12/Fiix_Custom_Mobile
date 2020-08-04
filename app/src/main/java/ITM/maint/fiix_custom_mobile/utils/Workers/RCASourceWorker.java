@@ -2,7 +2,6 @@ package ITM.maint.fiix_custom_mobile.utils.Workers;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import android.renderscript.ScriptGroup;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -11,29 +10,19 @@ import androidx.work.WorkerParameters;
 
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
-import com.google.gson.JsonObject;
-import com.google.gson.stream.JsonReader;
-import com.google.gson.stream.JsonToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.StringReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.stream.Collectors;
 
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
-import ITM.maint.fiix_custom_mobile.data.model.entity.Cause;
-import ITM.maint.fiix_custom_mobile.data.model.entity.FailureCodeNesting;
-import ITM.maint.fiix_custom_mobile.data.model.entity.Problem;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Source;
 import io.reactivex.Completable;
 import io.reactivex.disposables.CompositeDisposable;
