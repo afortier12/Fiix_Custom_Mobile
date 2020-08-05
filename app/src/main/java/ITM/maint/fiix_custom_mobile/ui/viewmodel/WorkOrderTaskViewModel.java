@@ -38,6 +38,16 @@ public class WorkOrderTaskViewModel extends AndroidViewModel implements IWorkOrd
         workOrderRepository.getWorkOrderTasks(username, userId, workOrderId);
     }
 
+    @Override
+    public void updateWorkOrderTasks(List<WorkOrderTask> taskList) {
+
+    }
+
+    @Override
+    public void addTask(WorkOrderTask task) {
+
+    }
+
     public LiveData<List<WorkOrderTask>> getWorkOrderTaskResponseLiveData() {
         return workOrderTaskResponseLiveData;
     }

@@ -143,8 +143,8 @@ public class WorkOrderTaskAdapter extends RecyclerView.Adapter<WorkOrderTaskAdap
                 layoutActual.setError("Time is required");
                 requestFocus(layoutActual);
                 return false;
-            } else if (txtActualTime.getText().toString().indexOf(":") == 3){
-                layoutActual.setError("Time must be in format HH:mm");
+            } else if (!(txtActualTime.getText().toString().indexOf(":") == 2) || !(txtActualTime.getText().toString().length() == 5)){
+                 layoutActual.setError("Time must be in format HH:mm");
                 requestFocus(layoutActual);
                 return false;
             } else {

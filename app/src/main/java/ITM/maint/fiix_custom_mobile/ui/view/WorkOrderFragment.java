@@ -50,7 +50,7 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
 
     private static final int RCA_FRAGMENT_REQUEST_CODE = 22;
     private static final int NOTE_FRAGMENT_REQUEST_CODE = 23;
-
+    private static final int TASK_ADD_FRAGMENT_REQUEST_CODE = 24;
 
 
     @Nullable
@@ -95,7 +95,9 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
                     if (visibleTab == DETAIL_TAB_POSITION) {
                         subFABContainer.setVisibility(View.VISIBLE);
                     } else {
-                        //add code to add task to work Order (dialog, view model, snackbar)
+                        WorkOrderAddTaskDialog dialog = new WorkOrderAddTaskDialog(workOrder);
+                        dialog.setTargetFragment(WorkOrderFragment.this, TASK_ADD_FRAGMENT_REQUEST_CODE);
+                        dialog.show(getParentFragmentManager(), "Note");
                     }
                 else
                     subFABContainer.setVisibility(View.INVISIBLE);
@@ -162,6 +164,7 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
                 visibleTab = tab.getPosition();
+                subFABContainer.setVisibility(View.INVISIBLE);
             }
 
             @Override

@@ -110,4 +110,6 @@
     <string name="cancel">CANCEL</string>
     <string name="problem_category_hint_text">   Category</string>
     <string name="notes_hint_text">Note</string>
+    <string name="task_add_description">Description</string>
+    <string name="save">SAVE</string>
 </resources>
