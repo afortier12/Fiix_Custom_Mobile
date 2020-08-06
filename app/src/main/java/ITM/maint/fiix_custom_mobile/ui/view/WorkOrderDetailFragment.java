@@ -340,4 +340,11 @@ public class WorkOrderDetailFragment extends Fragment {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        View current = getActivity().getCurrentFocus();
+        if (current != null) current.clearFocus();
+    }
+
 }

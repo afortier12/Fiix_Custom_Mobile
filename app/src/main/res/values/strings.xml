@@ -112,4 +112,7 @@
     <string name="notes_hint_text">Note</string>
     <string name="task_add_description">Description</string>
     <string name="save">SAVE</string>
+    <string name="work_order_task_add_error">Error adding work order task</string>
+    <string name="add_hour">Add hour</string>
+    <string name="sub_hour">Subtract hour</string>
 </resources>

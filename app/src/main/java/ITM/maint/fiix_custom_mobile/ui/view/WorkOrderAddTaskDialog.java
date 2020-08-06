@@ -17,6 +17,7 @@ import android.view.inputmethod.InputMethodManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.google.android.material.button.MaterialButton;
@@ -24,10 +25,14 @@ import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.util.List;
+
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderTaskViewModel;
+import ITM.maint.fiix_custom_mobile.utils.Status;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 
 public class WorkOrderAddTaskDialog extends DialogFragment {
 
@@ -35,6 +40,9 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
     private static final String INIT_TIME = "00:00";
     private WorkOrderTaskViewModel viewModel;
     private WorkOrder workOrder;
+    private List<WorkOrderTask> workOrderTaskList;
+    private int userId;
+
 
     private TextInputLayout layoutDescription;
     private TextInputEditText txtDescription;
@@ -50,8 +58,9 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
         void sendNewTask(WorkOrderTask newTask);
     }
 
-    public WorkOrderAddTaskDialog(WorkOrder workOrder) {
+    public WorkOrderAddTaskDialog(WorkOrder workOrder, int userId) {
         this.workOrder = workOrder;
+        this.userId = userId;
 
     }
 
@@ -82,16 +91,35 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
         } catch (ClassCastException e){
             Log.d(TAG, "onAttach: ClassCastException" + e.getMessage());
         }
+
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.dialog_work_order_task_add_copy, container, false);
+        View view = inflater.inflate(R.layout.dialog_work_order_task_add, container, false);
 
         viewModel = new ViewModelProvider(this).get(WorkOrderTaskViewModel.class);
         viewModel.init();
+
+        viewModel.getResponseStatus().observe(getViewLifecycleOwner(), new Observer<Status>() {
+            @Override
+            public void onChanged(Status status) {
+                Snackbar.make(getView(), status.getMessage(), Snackbar.LENGTH_LONG).show();
+            }
+        });
+
+        viewModel.getTaskAddLiveData().observe(getViewLifecycleOwner(), new Observer<WorkOrderTask>() {
+            @Override
+            public void onChanged(WorkOrderTask workOrderTask) {
+                if (workOrderTask != null){
+                    onTaskAddListener.sendNewTask(workOrderTask);
+                }
+                dismissFragment();
+            }
+        });
+
 
         return view;
     }
@@ -132,10 +160,11 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
                     ok = Boolean.FALSE;
                 }
 
-                hideKeyboard();
+                getActivity().getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+                //Utils.hideKeyboard(getActivity());
                 if (ok) {
-                    //onNoteListener.sendNote(note);
-                    dismissFragment();
+                    viewModel.addTaskToDB(description, estTime, userId, workOrder.getId());
                 }
             }
         });
@@ -144,7 +173,9 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hideKeyboard();
+                //Utils.hideKeyboard(getActivity());
+                getActivity().getWindow().setSoftInputMode(
+                        WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
                 dismissFragment();
             }
         });
@@ -157,13 +188,6 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
         this.dismiss();
     }
 
-    private void hideKeyboard() {
-        View view = getActivity().getCurrentFocus();
-        if (view != null) {
-            ((InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE)).
-                    hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
-        }
-    }
 
     private boolean validateEstimate() {
         String estTime = txtEstTime.getText().toString();

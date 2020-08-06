@@ -46,4 +46,9 @@ public class WorkOrderViewPagerAdapter extends FragmentStateAdapter {
     public int getItemCount() {
         return totalTabs;
     }
+
+    public Fragment getFragment(int position){
+        return fragmentList.get(position);
+    }
+
 }

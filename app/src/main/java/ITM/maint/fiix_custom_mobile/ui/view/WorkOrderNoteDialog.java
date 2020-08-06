@@ -19,7 +19,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
-import ITM.maint.fiix_custom_mobile.data.repository.IWorkOrderRepository;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 
 public class WorkOrderNoteDialog extends DialogFragment {

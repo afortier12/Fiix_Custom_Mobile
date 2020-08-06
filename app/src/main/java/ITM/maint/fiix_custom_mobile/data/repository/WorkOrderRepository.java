@@ -54,7 +54,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class WorkOrderRepository extends BaseRepository implements IWorkOrderRepository.WorkOrderList, IWorkOrderRepository.WorkOrderDetail, IWorkOrderRepository.WorkOrderRCA {
+public class WorkOrderRepository extends BaseRepository implements IWorkOrderRepository.IWorkOrderList, IWorkOrderRepository.IWorkOrderDetail,
+        IWorkOrderRepository.IWorkOrderRCA, IWorkOrderRepository.IWorkOrderTask {
 
     private static int FRESH_TIMEOUT_IN_MINUTES = 3;
 
@@ -77,6 +78,8 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     private MutableLiveData<Problem> problemIdMutableLiveData;
     private MutableLiveData<Cause> causeIdMutableLiveData;
     private MutableLiveData<Action> actionIdMutableLiveData;
+    private MutableLiveData<WorkOrderTask> taskMutableLiveData;
+
 
     private IWorkOrderDao workOrderDao;
     private ILookupTablesDao lookupTablesDao;
@@ -88,6 +91,9 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
     private String username;
     private int userId;
     private int taskWorkOrderId;
+
+    private String taskDescription;
+    private Double taskEstTime;
 
     public WorkOrderRepository(Application application) {
         super(application);
@@ -107,6 +113,8 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         problemIdMutableLiveData = new MutableLiveData<Problem>();
         causeIdMutableLiveData = new MutableLiveData<Cause>();
         actionIdMutableLiveData = new MutableLiveData<Action>();
+
+        taskMutableLiveData = new MutableLiveData<WorkOrderTask>();
 
         workOrderIdList = new ArrayList<>();
 
@@ -951,7 +959,6 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         });
     }
 
-
     @Override
     public void getActions() {
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
@@ -1005,5 +1012,62 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     public MutableLiveData<Cause> getCauseMutableLiveData() {
         return causeIdMutableLiveData;
+    }
+
+    @Override
+    public void addTaskToDatabase(String description, String estTime, int userId, int workOrderId) {
+
+        taskDescription = description;
+
+        WorkOrderTask task = new WorkOrderTask();
+        task.setDescription(taskDescription);
+        task.setAssignedToId(userId);
+        task.setWorkOrderId(workOrderId);
+
+        String[] estTimeList = String.valueOf(estTime).split(":");
+        String estTimeValue;
+        if (estTimeList.length == 2 ) {
+            estTimeValue = estTimeList[0] + "." + estTimeList[1];
+        } else {
+            estTimeValue = "0.0";
+        }
+
+        taskEstTime = (Double.parseDouble(estTimeValue));
+        task.setEstimatedHours(taskEstTime);
+
+        Completable completable = workOrderDao.insertTask (task);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        disposableCompletableObserver = new DisposableCompletableObserver() {
+            @Override
+            public void onComplete() {
+                String msg = application.getResources().getString(R.string.work_order_task_added);
+                Status newStatus = new Status(StatusCodes.addComplete, "Task", msg);
+                status.postValue(newStatus);
+
+                WorkOrderTask task = new WorkOrderTask();
+                task.setDescription(taskDescription);
+                task.setEstimatedHours(taskEstTime);
+                taskMutableLiveData.postValue(task);
+                Log.d(TAG, msg);
+                Log.d(TAG, "task added to DB");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                String msg = application.getResources().getString(R.string.work_order_task_add_error);
+                Status newStatus = new Status(StatusCodes.addError, "Task", msg);
+                status.postValue(newStatus);
+                taskMutableLiveData.postValue(null);
+                Log.d(TAG, "Error adding task to DB");
+            }
+        };
+        completable.subscribeOn(scheduler)
+                .subscribe(disposableCompletableObserver);
+        compositeDisposable.add(disposableCompletableObserver);
+
+    }
+
+    public MutableLiveData<WorkOrderTask> getTaskMutableLiveData() {
+        return taskMutableLiveData;
     }
 }

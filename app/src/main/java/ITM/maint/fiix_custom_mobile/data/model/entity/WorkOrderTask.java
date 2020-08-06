@@ -1,5 +1,8 @@
 package ITM.maint.fiix_custom_mobile.data.model.entity;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -11,11 +14,27 @@ import com.google.gson.annotations.SerializedName;
 import ITM.maint.fiix_custom_mobile.data.api.responses.APIError;
 
 @Entity(tableName = "work_order_task_table")
-public class WorkOrderTask {
+public class WorkOrderTask implements Parcelable {
+
+    public WorkOrderTask() {
+    }
+
+    public static final Creator<WorkOrder> CREATOR =
+            new Creator<WorkOrder>() {
+                @Override
+                public WorkOrder createFromParcel(Parcel in) {
+                    return new WorkOrder(in);
+                }
+
+                @Override
+                public WorkOrder[] newArray(int size) {
+                    return new WorkOrder[size];
+                }
+            };
 
     @SerializedName("id")
     @Expose
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     @NonNull
     @ColumnInfo(name="id")
     private int id;
@@ -338,5 +357,32 @@ public class WorkOrderTask {
 
     public void setIsCompletable(String isCompletable) {
         this.isCompletable = isCompletable;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(this.id);
+        dest.writeInt(this.workOrderId);
+        dest.writeInt(this.taskType);
+        dest.writeInt(this.assetID);
+        dest.writeInt(this.order);
+        dest.writeString(this.startDate);
+        dest.writeString(this.completedDate);
+        dest.writeInt(this.completedById);
+        dest.writeInt(this.assignedToId);
+        dest.writeDouble(this.estimatedHours);
+        dest.writeDouble(this.timeSpentHours);
+        dest.writeDouble(this.meterReadingId);
+        dest.writeString(this.description);
+        dest.writeString(this.completionNotes);
+        dest.writeInt(this.taskGroupId);
+        dest.writeInt(this.parentWorkOrderTaskId);
+        dest.writeInt(this.isUpdated);
     }
 }

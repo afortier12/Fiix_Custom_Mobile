@@ -33,6 +33,8 @@ public interface IWorkOrder {
         public void updateWorkOrderTasks(List<WorkOrderTask> taskList);
 
         public void addTask(WorkOrderTask task);
+
+        public void addTaskToDB(String description, String estTime, int userId, int workOrderId);
     }
 
     public interface IWorkOrderDetails {

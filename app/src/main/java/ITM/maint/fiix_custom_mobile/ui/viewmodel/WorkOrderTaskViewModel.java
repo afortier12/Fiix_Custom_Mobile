@@ -11,13 +11,15 @@ import java.util.List;
 import ITM.maint.fiix_custom_mobile.data.api.IWorkOrderService;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
+import ITM.maint.fiix_custom_mobile.utils.Status;
 
 public class WorkOrderTaskViewModel extends AndroidViewModel implements IWorkOrder.IWorkOrderTasks{
 
     private WorkOrderRepository workOrderRepository;
     private IWorkOrderService workOrderService;
     private LiveData<List<WorkOrderTask>> workOrderTaskResponseLiveData;
-    private LiveData<String> responseStatus;
+    private LiveData<WorkOrderTask> taskAddLiveData;
+    private LiveData<Status> responseStatus;
 
 
     public WorkOrderTaskViewModel(@NonNull Application application) {
@@ -28,7 +30,8 @@ public class WorkOrderTaskViewModel extends AndroidViewModel implements IWorkOrd
         workOrderRepository = new WorkOrderRepository(this.getApplication());
         workOrderService = workOrderRepository.getWorkOrderService();
         workOrderTaskResponseLiveData = workOrderRepository.getWorkOrderTaskResponseMutableLiveData();
-        //responseStatus = workOrderRepository.getStatus();
+        taskAddLiveData = workOrderRepository.getTaskMutableLiveData();
+        responseStatus = workOrderRepository.getStatus();
 
     }
 
@@ -48,11 +51,20 @@ public class WorkOrderTaskViewModel extends AndroidViewModel implements IWorkOrd
 
     }
 
+    @Override
+    public void addTaskToDB(String description, String estTime, int userId, int workOrderId) {
+        workOrderRepository.addTaskToDatabase(description, estTime, userId, workOrderId);
+    }
+
     public LiveData<List<WorkOrderTask>> getWorkOrderTaskResponseLiveData() {
         return workOrderTaskResponseLiveData;
     }
 
-    public LiveData<String> getResponseStatus() {
+    public LiveData<WorkOrderTask> getTaskAddLiveData() {
+        return taskAddLiveData;
+    }
+
+    public LiveData<Status> getResponseStatus() {
         return responseStatus;
     }
 

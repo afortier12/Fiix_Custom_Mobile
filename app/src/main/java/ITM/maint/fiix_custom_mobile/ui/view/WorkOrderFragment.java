@@ -1,6 +1,7 @@
 package ITM.maint.fiix_custom_mobile.ui.view;
 
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.viewpager2.widget.ViewPager2;
@@ -18,13 +20,21 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.List;
+import java.util.Objects;
+
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderViewPagerAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 
-public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.OnRCAListener, WorkOrderNoteDialog.OnNoteListener {
+public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.OnRCAListener, WorkOrderNoteDialog.OnNoteListener,
+        WorkOrderAddTaskDialog.OnTaskAddListener
+{
 
+    private static long lastClickTime = 0;
     private static final String TAG = "WorkOrderFragment";
     private WorkOrderViewPagerAdapter adapter;
     private TabLayout tabLayout;
@@ -43,6 +53,7 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
     private int rcaProblem;
     private int rcaCause;
     private int rcaAction;
+    private int currentViewPagerPosition;
 
     private static final int DETAIL_TAB_POSITION = 0;
     private static final int TASK_TAB_POSITION = 1;
@@ -71,6 +82,7 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
             sharedViewModel.setUserId(savedInstanceState.getInt("USERID_KEY"));
         }
 
+
         username = sharedViewModel.getUsername().getValue();
         userId = sharedViewModel.getUserId().getValue();
         rcaCategory = "";
@@ -91,11 +103,16 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
         detailFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - lastClickTime < 1000) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
+
                 if (subFABContainer.getVisibility() == View.INVISIBLE)
                     if (visibleTab == DETAIL_TAB_POSITION) {
                         subFABContainer.setVisibility(View.VISIBLE);
                     } else {
-                        WorkOrderAddTaskDialog dialog = new WorkOrderAddTaskDialog(workOrder);
+                        WorkOrderAddTaskDialog dialog = new WorkOrderAddTaskDialog(workOrder, userId);
                         dialog.setTargetFragment(WorkOrderFragment.this, TASK_ADD_FRAGMENT_REQUEST_CODE);
                         dialog.show(getParentFragmentManager(), "Note");
                     }
@@ -108,6 +125,10 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
         noteFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - lastClickTime < 1000) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
                 subFABContainer.setVisibility(View.INVISIBLE);
                 WorkOrderNoteDialog dialog = new WorkOrderNoteDialog(workOrder);
                 dialog.setTargetFragment(WorkOrderFragment.this, NOTE_FRAGMENT_REQUEST_CODE);
@@ -120,6 +141,10 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
         rcaFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - lastClickTime < 1000) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
                 //add code to update RCA (dialog, view model, snackbar)
                 subFABContainer.setVisibility(View.INVISIBLE);
                 WorkOrderRCADialog dialog = new WorkOrderRCADialog(workOrder, rcaCategory, rcaSource);
@@ -133,6 +158,10 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
         updateFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (SystemClock.elapsedRealtime() - lastClickTime < 1000) {
+                    return;
+                }
+                lastClickTime = SystemClock.elapsedRealtime();
                 //add code to add update
                 subFABContainer.setVisibility(View.INVISIBLE);
                 //if status changed to closed -> check if RCA selected
@@ -182,6 +211,7 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
             @Override
             public void onPageSelected(int position) {
                 tabLayout.selectTab(tabLayout.getTabAt(position));
+                currentViewPagerPosition = position;
             }
         });
 
@@ -219,5 +249,12 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
     @Override
     public void sendNote(String note) {
         workOrder.setCompletionNotes(note);
+    }
+
+    @Override
+    public void sendNewTask(WorkOrderTask newTask) {
+        WorkOrderTaskFragment taskFragment = (WorkOrderTaskFragment) adapter.getFragment(currentViewPagerPosition);
+        taskFragment.getTaskList().add(newTask);
+        taskFragment.getTaskAdapter().notifyDataSetChanged();
     }
 }

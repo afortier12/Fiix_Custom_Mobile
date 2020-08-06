@@ -6,9 +6,10 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
+
 public interface IWorkOrderRepository {
 
-        public interface WorkOrderList {
+        public interface IWorkOrderList {
             //get list of work orders from DB
             void getWorkOrdersForUser(String username, int userId);
 
@@ -28,7 +29,7 @@ public interface IWorkOrderRepository {
             void deleteWorkOrder(int workOrderId);
         }
 
-        public interface WorkOrderDetail {
+        public interface IWorkOrderDetail {
             //get list of work order tasks from Fiix
             void getWorkOrderTasks(String username, int userId, int workOrderId);
 
@@ -45,7 +46,7 @@ public interface IWorkOrderRepository {
             void updateWorkOrder(WorkOrder workOrder);
         }
 
-        public interface WorkOrderRCA {
+        public interface IWorkOrderRCA {
 
             void getRCACategories();
 
@@ -54,6 +55,11 @@ public interface IWorkOrderRepository {
             void getSourceProblemsCauses(String sourceName);
 
             void getActions();
+        }
+
+        public interface IWorkOrderTask {
+
+            public void addTaskToDatabase(String description, String estTime, int userId, int workOrderId);
         }
 
 }

@@ -64,4 +64,7 @@ public interface IWorkOrderDao {
     @Query("SELECT * FROM priority_table")
     Single<List<Priority>> getPriorities();
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    Completable insertWorkOrderTask(WorkOrderTask task);
+
 }

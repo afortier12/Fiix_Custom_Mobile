@@ -1,9 +1,11 @@
 package ITM.maint.fiix_custom_mobile.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import androidx.core.content.res.ResourcesCompat;
@@ -26,6 +28,14 @@ public class Utils {
             0,     0, -1.0f,    0, 255, // blue
             0,     0,     0, 1.0f,   0  // alpha
     };
+
+    public static void hideKeyboard(Activity activity) {
+        View view = activity.getCurrentFocus();
+        if (view != null) {
+            ((InputMethodManager) activity.getSystemService(Context.INPUT_METHOD_SERVICE)).
+                    hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+    }
 
     // Serialize a single object.
     public static String serializeToJson(Box box, Type type) {

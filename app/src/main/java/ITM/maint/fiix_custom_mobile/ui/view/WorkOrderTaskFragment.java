@@ -1,6 +1,7 @@
 package ITM.maint.fiix_custom_mobile.ui.view;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -13,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -30,6 +32,7 @@ import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderTaskAdapter;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderTaskViewModel;
 
 public class WorkOrderTaskFragment extends Fragment {
@@ -92,8 +95,6 @@ public class WorkOrderTaskFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         viewModel.getWorkOrderTasks(username, userId, workOrder.getId());
-
-
     }
 
     @Override
@@ -104,6 +105,21 @@ public class WorkOrderTaskFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        View current = getActivity().getCurrentFocus();
+        if (current != null) current.clearFocus();
+    }
+
+    public List<WorkOrderTask> getTaskList(){
+        return workOrderTaskList;
+    }
+
+    public WorkOrderTaskAdapter getTaskAdapter(){
+        return adapter;
     }
 
 

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_marginBottom="56dp"
     android:fillViewport="true"
     android:isScrollContainer="false"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:scrollbars="vertical">
 
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <FrameLayout
-            android:id="@+id/frameLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="0dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/task_add_description_layout"
                 style="@style/TextInputLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="100dp"
                 android:layout_margin="10sp"
                 android:hint="@string/task_add_description"
                 android:paddingStart="4sp"
@@ -38,29 +38,23 @@
                     android:layout_height="match_parent"
                     android:background="@null"
                     android:gravity="top|start"
-                    android:imeOptions="actionNext" />
+                    android:imeOptions="actionNext"
+                    android:inputType="textLongMessage|textMultiLine" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-        </FrameLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/estimated_layout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/task_add_estimated_layout"
                 style="@style/TextInputLayout"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10sp"
                 android:hint="@string/estimated_time"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintHorizontal_weight="2"
-                app:layout_constraintStart_toEndOf="@id/task_add_est_label"
-                app:layout_constraintTop_toTopOf="parent">
+                android:paddingStart="4sp"
+                android:paddingEnd="4sp"
+                app:hintTextAppearance="@style/DropdownHintText"
+                app:hintTextColor="@color/black"
+                app:strokeColor="@color/black">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/task_add_estimated"
@@ -68,68 +62,55 @@
                     android:layout_height="match_parent"
                     android:layout_margin="10dp"
                     android:gravity="center_horizontal|center_vertical"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
+                    android:inputType="number|text"
                     android:maxLines="1" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <TextView
-                android:id="@+id/task_add_est_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10sp"
-                android:padding="4sp"
-                android:text="@string/estimated_time"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/task_add_estimated_layout"
-                app:layout_constraintHorizontal_weight="1"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/task_add_button_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-            </TextView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/task_add_save_button"
+                    style="@style/PrimaryActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="56dp"
+                    android:imeOptions="actionDone"
+                    android:text="@string/save"
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_check_circle_24px"
+                    app:iconGravity="start"
+                    app:iconTint="@null"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/task_add_cancel_button"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@color/black" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/task_add_cancel_button"
+                    style="@style/PrimaryActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="56dp"
+                    android:text="@string/cancel"
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_cancel_24px"
+                    app:iconGravity="start"
+                    app:iconTint="@null"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/task_add_save_button"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:strokeColor="@color/black" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/task_add_button_layout"
-            android:layout_width="match_parent"
-            android:layout_height="0dp">
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/task_add_save_button"
-                style="@style/PrimaryActionButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="56dp"
-                android:text="@string/save"
-                android:textColor="@color/black"
-                app:icon="@drawable/ic_check_circle_24px"
-                app:iconGravity="start"
-                app:iconTint="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/task_add_cancel_button"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@color/black" />
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/task_add_cancel_button"
-                style="@style/PrimaryActionButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="56dp"
-                android:text="@string/cancel"
-                android:textColor="@color/black"
-                app:icon="@drawable/ic_cancel_24px"
-                app:iconGravity="start"
-                app:iconTint="@null"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/task_add_save_button"
-                app:layout_constraintTop_toTopOf="parent"
-                app:strokeColor="@color/black" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-    </RelativeLayout>
+
 </ScrollView>
