@@ -31,12 +31,16 @@ import androidx.work.WorkManager;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.data.repository.RefreshRepository;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragmentArgs;
 import ITM.maint.fiix_custom_mobile.utils.Utils;
@@ -54,7 +58,12 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
     private static final int REQUEST_CAMERA_PERMISSION = 1;
     private static final String TAG = "MainActivity";
     protected static final String PREFERENCE_KEY = "MAIN_KEY";
+    protected static final String SET_KEY = "TASK_LIST_SET";
+    protected static final String WORK_ORDER_TASK_SYNC = "TASK_SYNC";
+    protected static final String USER_KEY = "USER_KEY";
+    private ArrayList<Integer> workOrderTaskList;
     protected static SharedPreferences sharedPreferences;
+    private RefreshRepository refreshRepository;
     private String username;
     private int id;
     private NavArgument idArg;
@@ -62,6 +71,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
 
     private WorkManager workManager;
     private DateFormat dateFormat;
+
 
     @Inject
     AppExecutor appExecutor;
@@ -80,7 +90,6 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         workManager = WorkManager.getInstance(this.getApplication());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
 
         usernameArg = new NavArgument.Builder().setDefaultValue(username).build();
@@ -115,7 +124,17 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
             }
         });
 
+
+
         sharedPreferences = getSharedPreferences(PREFERENCE_KEY, Context.MODE_PRIVATE);
+        Set<String> set = sharedPreferences.getStringSet(PREFERENCE_KEY, null);
+        Set<Integer> setOfInteger = set.stream()
+                .map(Integer::parseInt)
+                .collect(Collectors.toSet());
+        workOrderTaskList = new ArrayList<Integer>(setOfInteger);
+
+        refreshRepository = new RefreshRepository(this.getApplication(), id, workOrderTaskList);
+
         dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
         Date updatedDate = compareDates();
         if (updatedDate != null){
@@ -236,4 +255,33 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
             navController.navigate(navController.getGraph().getStartDestination());
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (refreshRepository.checkIfDisposed()) {
+            refreshRepository.createDisposable();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        refreshRepository.dispose();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        refreshRepository.dispose();
+    }
 }

@@ -9,6 +9,7 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Priority;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;
@@ -30,6 +31,10 @@ public interface IWorkOrderService {
     // Get work order details by id
     @POST("/api/")
     Call<WorkOrder> getWorkOrderDetail(@Body FindRequest workOrderDetailRequest);
+
+    // Refresh work order task list
+    @POST("/api/")
+    Observable<List<WorkOrderTask>> getWorkOrderTaskList(@Body FindRequest workOrderTaskListRequest);
 
 
 }

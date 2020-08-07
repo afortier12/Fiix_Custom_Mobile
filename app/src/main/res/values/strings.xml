@@ -115,4 +115,9 @@
     <string name="work_order_task_add_error">Error adding work order task</string>
     <string name="add_hour">Add hour</string>
     <string name="sub_hour">Subtract hour</string>
+    <string name="add_minute">Increase minutes</string>
+    <string name="sub_minute">Decrease minutes</string>
+    <string name="task_delete">Task delete</string>
+    <string name="channel_name">notification channel</string>
+    <string name="channel_description">Notification channel for Fiix updates</string>
 </resources>
