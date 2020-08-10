@@ -182,7 +182,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     private void getWorkOrdersFromDB() {
         //get from database if available
-        Single<List<WorkOrder>> single = fiixDatabase.workOrderDao().getWorkOrdersforUser(username);
+        Single<List<WorkOrder>> single = fiixDatabase.workOrderDao().getWorkOrders();
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         single.subscribeOn(scheduler).subscribe(new SingleObserver<List<WorkOrder>>() {
             @Override

@@ -8,6 +8,7 @@ import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
+import androidx.room.Update;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -30,6 +31,9 @@ public interface IWorkOrderDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertTask(WorkOrderTask workOrderTask);
 
+    @Update
+    Completable updateTasks(List<WorkOrderTask> workOrderTasks);
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertTasks(List<WorkOrderTask> workOrderTasks);
 
@@ -39,16 +43,19 @@ public interface IWorkOrderDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertWorkOrders(List<WorkOrder> workOrders);
 
+    @Update
+    Completable updateWorkOrders(List<WorkOrder> workOrders);
+
     @Query("SELECT * FROM work_order_task_table where assignedToId = :userId " +
             "and workOrderId = :workOrderId")
     Single<List<WorkOrderTask>> getWorkOrderTasks(int userId, int workOrderId);
 
     @Query("SELECT * FROM work_order_table where " +
-            "username = :userName and dateCompleted is null")
-    Single<List<WorkOrder>> getWorkOrdersforUser(String userName);
+            "dateCompleted is null")
+    Single<List<WorkOrder>> getWorkOrders();
 
-    @Query("SELECT * FROM work_order_table where assignedUsers LIKE :username")
-    Single<List<WorkOrder>> getAssignedWorkOrder(String username);
+    @Query("SELECT * FROM work_order_task_table where assignedToId = :userId")
+    Single<List<WorkOrderTask>> getAssignedWorkOrderTasks(int userId);
 
 
     @Query("SELECT COALESCE(sum(COALESCE(estimatedHours,0)), 0) as hours FROM work_order_task_table where id = :workOrderId")

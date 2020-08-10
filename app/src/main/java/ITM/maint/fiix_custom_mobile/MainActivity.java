@@ -1,11 +1,17 @@
 package ITM.maint.fiix_custom_mobile;
 
 import android.Manifest;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.drawable.Drawable;
+import android.media.AudioAttributes;
+import android.media.RingtoneManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.Toast;
@@ -15,7 +21,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.Observer;
 import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.NavDestination;
@@ -33,6 +43,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -40,6 +51,7 @@ import java.util.stream.Collectors;
 import javax.inject.Inject;
 
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
+import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.data.repository.RefreshRepository;
 import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragmentArgs;
@@ -53,15 +65,23 @@ import ITM.maint.fiix_custom_mobile.utils.Workers.RCASourceWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.WorkOrderStatusSyncWorker;
 import dagger.android.support.DaggerAppCompatActivity;
 
+import static android.graphics.Color.RED;
+import static android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION;
+import static android.media.AudioAttributes.USAGE_NOTIFICATION_RINGTONE;
+
 public class MainActivity extends DaggerAppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 
     private static final int REQUEST_CAMERA_PERMISSION = 1;
+    private static final String CHANNEL_ID = "Notification_Service_Channel";
+    private static final int TASK_NOTIFICATION_ID = 100;
+    private static final int WORK_ORDER_NOTIFICATION_ID = 200;
     private static final String TAG = "MainActivity";
     protected static final String PREFERENCE_KEY = "MAIN_KEY";
     protected static final String SET_KEY = "TASK_LIST_SET";
     protected static final String WORK_ORDER_TASK_SYNC = "TASK_SYNC";
     protected static final String USER_KEY = "USER_KEY";
     private ArrayList<Integer> workOrderTaskList;
+
     protected static SharedPreferences sharedPreferences;
     private RefreshRepository refreshRepository;
     private String username;
@@ -124,17 +144,39 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
             }
         });
 
+        refreshRepository = new RefreshRepository(this.getApplication(), id);
 
+        refreshRepository.getTaskListChangedLiveData().observe(this, new Observer<RefreshRepository.WorkOrderTaskMessage>() {
+            @Override
+            public void onChanged(RefreshRepository.WorkOrderTaskMessage workOrderTaskMessage) {
+
+                String title = "";
+                String message = "";
+                if (workOrderTaskMessage.getOrderList().size() > 3){
+                    title = "Multiple work orders added!";
+                    message = String.valueOf(workOrderTaskMessage.getOrderList().size()) + " new work orders have been assigned to you";
+                    sendNotification(WORK_ORDER_NOTIFICATION_ID, title, message);
+                } else {
+                    int index = 0;
+                    title = "New work order added!";
+                    for (int orderNumber : workOrderTaskMessage.getOrderList()) {
+                        message = "Work order: " + String.valueOf(orderNumber);
+                        sendNotification(WORK_ORDER_NOTIFICATION_ID + index, title, message);
+                        index++;
+                    }
+                    index = 0;
+                    title = "New task added!";
+                    for (WorkOrderTask task : workOrderTaskMessage.getTaskList()) {
+                        message = "Task added to work order: " + String.valueOf(task.getWorkOrderId());
+                        sendNotification(TASK_NOTIFICATION_ID + index, title, message);
+                        index++;
+                    }
+                }
+
+            }
+        });
 
         sharedPreferences = getSharedPreferences(PREFERENCE_KEY, Context.MODE_PRIVATE);
-        Set<String> set = sharedPreferences.getStringSet(PREFERENCE_KEY, null);
-        Set<Integer> setOfInteger = set.stream()
-                .map(Integer::parseInt)
-                .collect(Collectors.toSet());
-        workOrderTaskList = new ArrayList<Integer>(setOfInteger);
-
-        refreshRepository = new RefreshRepository(this.getApplication(), id, workOrderTaskList);
-
         dateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.US);
         Date updatedDate = compareDates();
         if (updatedDate != null){
@@ -224,6 +266,55 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
         return ContextCompat.checkSelfPermission(
                 this, Manifest.permission.CAMERA) ==
                 PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void sendNotification(int notificationID, String title, String message){
+        createNotificationChannel();
+
+        Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        AudioAttributes audioAttributes = new AudioAttributes.Builder().setUsage(USAGE_NOTIFICATION_RINGTONE)
+                .setContentType(CONTENT_TYPE_SONIFICATION).build();
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_notification_icon)
+                .setContentTitle(title)
+                .setContentText(message)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setLights(RED, 300, 1000)
+                .setAutoCancel(true);
+
+        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
+            builder.setSound(alarmSound);
+        }
+
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+
+        notificationManager.notify(notificationID, builder.build());
+    }
+
+    private void createNotificationChannel() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            CharSequence name = getString(R.string.channel_name);
+            String description = getString(R.string.channel_description);
+            NotificationChannel serviceChannel = new NotificationChannel(
+                    CHANNEL_ID,
+                    name,
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            serviceChannel.setDescription(description);
+
+            Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            AudioAttributes audioAttributes = new AudioAttributes.Builder().setUsage(USAGE_NOTIFICATION_RINGTONE)
+                    .setContentType(CONTENT_TYPE_SONIFICATION).build();
+
+            serviceChannel.enableLights(true);
+            serviceChannel.setLightColor(RED);
+            serviceChannel.enableVibration(true);
+            serviceChannel.setVibrationPattern( new long [] {100, 200, 300, 400, 500, 400, 300, 200, 400});
+            serviceChannel.setSound(alarmSound, audioAttributes);
+
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(serviceChannel);
+        }
     }
 
     @Override
