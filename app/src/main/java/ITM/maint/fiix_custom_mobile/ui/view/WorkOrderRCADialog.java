@@ -310,7 +310,7 @@ public class WorkOrderRCADialog extends DialogFragment  {
                 }
                 if (assetList.size() > 0) {
                     try {
-                        viewModel.getAssetCategory(Integer.parseInt(assetList.get(0).getCategoryId()));
+                        viewModel.getAssetCategory(assetList.get(0).getCategoryId());
                     } catch (Exception e){
                         Log.d(TAG, "Error getting asset category " + e.getMessage());
                     }

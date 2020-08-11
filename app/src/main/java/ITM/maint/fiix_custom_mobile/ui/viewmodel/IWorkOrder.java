@@ -15,13 +15,13 @@ public interface IWorkOrder {
 
         public void findWorkOrderTasks(String username, int userId, int workOrderId);
 
-        public void findWorkOrders(List<Integer> ids);
-
         public void getWorkOrderDetails(FindRequest.Filter filter);
 
         public void changeWorkOrderStatus(ChangeRequest changeRequest);
 
         public void updateTask(ChangeRequest changeRequest);
+
+        public void getDepartmentsPlants(List<Integer> assetIds);
 
     }
 

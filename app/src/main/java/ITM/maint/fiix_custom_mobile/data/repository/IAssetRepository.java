@@ -16,5 +16,9 @@ public interface IAssetRepository {
     //retrieve asset category by Id
     public void findAssetCategory(int categoryId);
 
+    //get asset all asset categories
+    public void getAllAssetCategories();
 
+    //get department and plant for work order assets
+    public void getAssetDepartmentPlant(List<Integer> assetIds);
 }

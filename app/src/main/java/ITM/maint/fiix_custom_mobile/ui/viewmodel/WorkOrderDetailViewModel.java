@@ -44,12 +44,12 @@ public class WorkOrderDetailViewModel extends AndroidViewModel implements IWorkO
 
     @Override
     public void getMaintenanceTypeDetails() {
-        workOrderRepository.getMaintenanceTypes();
+        workOrderRepository.getMaintenanceTypesFromDb();
     }
 
     @Override
     public void getWorkOrderStatusDetails() {
-        workOrderRepository.getWorkOrderStatuses();
+        workOrderRepository.getWorkOrderStatusesFromDb();
     }
 
 

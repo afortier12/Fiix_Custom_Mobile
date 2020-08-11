@@ -25,6 +25,7 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.FiixDatabase;
 import ITM.maint.fiix_custom_mobile.data.model.dao.IAssetDao;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Asset.AssetDepartmentPlant;
 import ITM.maint.fiix_custom_mobile.data.model.entity.AssetCategory;
 import ITM.maint.fiix_custom_mobile.utils.Status;
 import io.reactivex.Completable;
@@ -44,6 +45,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
     private IAssetService assetService;
     private MutableLiveData<List<Asset>> assetMutableLiveData;
     private MutableLiveData<List<AssetCategory>> assetCategoryListMutableLiveData;
+    private MutableLiveData<List<AssetDepartmentPlant>> deptPlantMutableLiveData;
     private MutableLiveData<Status> status;
 
     private IAssetDao assetDao;
@@ -59,6 +61,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
         super(application);
         assetMutableLiveData = new MutableLiveData<List<Asset>>();
         assetCategoryListMutableLiveData = new MutableLiveData<List<AssetCategory>>();
+        deptPlantMutableLiveData = new MutableLiveData<List<AssetDepartmentPlant>>();
         assetService = ServiceGenerator.createService(IAssetService.class);
 
         fiixDatabase = FiixDatabase.getDatabase(application);
@@ -72,8 +75,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
 
     @Override
     public void findAsset(List<Integer> assetIds) {
-
-        this.assetIds = assetIds;
+        this.assetIds = new ArrayList<>(assetIds);
         Single<List<Asset>> single =  fiixDatabase.assetDao().getAssetFromIds(assetIds);;
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         single.subscribeOn(scheduler).subscribe(new SingleObserver<List<Asset>>() {
@@ -87,7 +89,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
             public void onSuccess(List<Asset> assets) {
                 if (assets == null || assets.size() == 0) {
                     //no tasks in database -> request from Fiix
-                    getAssetsFromFiix();
+                    setupGetAssetsAPICall();
                 } else {
                     assetMutableLiveData.postValue(assets);
                 }
@@ -96,7 +98,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
             @Override
             public void onError(Throwable e) {
                 // show an error message
-                getAssetsFromFiix();
+                setupGetAssetsAPICall();
                 Log.d(TAG, "Error finding assets from DB");
             }
 
@@ -136,7 +138,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
             public void onSuccess(AssetCategory category) {
                 if (category == null) {
                     //no tasks in database -> request from Fiix
-                    getAssetsCategoryFromFiix();
+                    setupGetAssetsCategoryAPICall();
                 } else {
                     List<AssetCategory> assetCategories = new ArrayList<>();
                     assetCategories.add(category);
@@ -147,7 +149,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
             @Override
             public void onError(Throwable e) {
                 // show an error message
-                getAssetsCategoryFromFiix();
+                setupGetAssetsCategoryAPICall();
                 Log.d(TAG, "Error finding assets from DB");
             }
 
@@ -155,8 +157,115 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
 
     }
 
+    @Override
+    public void getAllAssetCategories() {
+        Single<List<AssetCategory>> single =  fiixDatabase.assetDao().getAssetCategories();
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<AssetCategory>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                // add it to a CompositeDisposable
+                compositeDisposable.add(d);
+            }
 
-    private void getAssetsFromFiix() {
+            @Override
+            public void onSuccess(List<AssetCategory> assetCategories) {
+                if (assetCategories == null || assetCategories.size() == 0) {
+                    //no tasks in database -> request from Fiix
+                    setupGetAllAssetCategoriesAPICall();
+                } else {
+                    Log.d(TAG, "Asset categories retrieved from DB");
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // show an error message
+                setupGetAssetsAPICall();
+                Log.d(TAG, "Error finding assets from DB");
+            }
+
+            //@Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    @Override
+    public void getAssetDepartmentPlant(List<Integer> assetIds) {
+        this.assetIds = new ArrayList<>(assetIds);
+        getDepartmentPlantFromDB();
+
+        Single<List<Asset>> single =  fiixDatabase.assetDao().getAssetFromIds(assetIds);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<Asset>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                // add it to a CompositeDisposable
+                compositeDisposable.add(d);
+            }
+
+            @Override
+            public void onSuccess(List<Asset> assets) {
+                if (assets == null || assets.size() == 0) {
+                    //no tasks in database -> request from Fiix
+                    setupGetAssetsAPICall();
+                } else {
+                    getDepartmentPlantFromDB();
+                    Log.d(TAG, "Asset categories retrieved from DB");
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // show an error message
+                setupGetAssetsAPICall();
+                Log.d(TAG, "Error finding assets from DB");
+            }
+
+            //@Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    private void getDepartmentPlantFromDB(){
+        Single<List<AssetDepartmentPlant>> single =  fiixDatabase.assetDao().getDepartmentPlants(assetIds);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        single.subscribeOn(scheduler).subscribe(new SingleObserver<List<AssetDepartmentPlant>>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                // add it to a CompositeDisposable
+                compositeDisposable.add(d);
+            }
+
+            @Override
+            public void onSuccess(List<AssetDepartmentPlant> departmentPlants) {
+                if (departmentPlants == null || departmentPlants.size() == 0) {
+                    //no tasks in database -> request from Fiix
+
+                } else {
+                    Log.d(TAG, "Asset categories retrieved from DB");
+                }
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                // show an error message
+                setupGetAssetsAPICall();
+                Log.d(TAG, "Error finding assets from DB");
+            }
+
+            //@Override
+            public void onComplete() {
+
+            }
+        });
+    }
+
+    private void setupGetAssetsAPICall() {
 
         FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
                 2, 8, 1);
@@ -165,7 +274,8 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
                 Assets.id.getField(),
                 Assets.name.getField(),
                 Assets.description.getField(),
-                Assets.categoryId.getField()
+                Assets.categoryId.getField(),
+                Assets.assetLocationID.getField()
         ));
         String fields = TextUtils.join(",", assetFields);
 
@@ -186,10 +296,10 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
         filters.add(filter);
 
         FindRequest assetRequest = new FindRequest("FindRequest", clientVersion, "Asset", fields, filters);
-        requestAssetsFromFiix(assetRequest);
+        getAssetsFromFiix(assetRequest);
     }
 
-    private void requestAssetsFromFiix(FindRequest assetRequest){
+    private void getAssetsFromFiix(FindRequest assetRequest){
         assetService.findAssets(assetRequest)
                 .enqueue(new Callback<List<Asset>>() {
 
@@ -217,7 +327,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
     }
 
 
-    private void getAssetsCategoryFromFiix() {
+    private void setupGetAssetsCategoryAPICall() {
 
         FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
                 2, 8, 1);
@@ -241,10 +351,10 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
         filters.add(filter);
 
         FindRequest assetRequest = new FindRequest("FindRequest", clientVersion, "AssetCategory", fields, filters);
-        requestAssetCategoryFromFiix(assetRequest);
+        getAssetCategoryFromFiix(assetRequest);
     }
 
-    private void requestAssetCategoryFromFiix(FindRequest assetRequest){
+    private void getAssetCategoryFromFiix(FindRequest assetRequest){
         assetService.findAssetCategories(assetRequest)
                 .enqueue(new Callback<List<AssetCategory>>() {
 
@@ -270,14 +380,34 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
                 });
     }
 
-    private void requestAssetCategoriesFromFiix(FindRequest assetRequest){
+    private void setupGetAllAssetCategoriesAPICall() {
+
+        FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
+                2, 8, 1);
+
+        List<String> assetFields = new ArrayList<>(Arrays.asList(
+                AssetCategories.id.getField(),
+                AssetCategories.name.getField(),
+                AssetCategories.sysCode.getField(),
+                AssetCategories.parentId.getField()
+        ));
+        String fields = TextUtils.join(",", assetFields);
+
+        List<FindRequest.Filter> filters = null;
+
+        FindRequest assetRequest = new FindRequest("FindRequest", clientVersion, "AssetCategory", fields, filters);
+        getAllAssetCategoriesFromFiix(assetRequest);
+    }
+
+    private void getAllAssetCategoriesFromFiix(FindRequest assetRequest){
         assetService.findAssetCategories(assetRequest)
                 .enqueue(new Callback<List<AssetCategory>>() {
 
                     @Override
                     public void onResponse(Call<List<AssetCategory>> call, retrofit2.Response<List<AssetCategory>> response) {
                         if (response.body() != null){
-                            assetCategoryListMutableLiveData.postValue(response.body());
+                            Log.d(TAG, "retrieved all asset categories from Fiix");
+                            addAssetCategories(response.body());
                         }
                     }
 
@@ -295,7 +425,6 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
                     }
                 });
     }
-
 
     private void addAssets(List<Asset> assets){
         Completable completable = fiixDatabase.assetDao().insertAssets(assets);
@@ -331,13 +460,13 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
                 Status newStatus = new Status(StatusCodes.addComplete, "Asset", msg);
                 status.postValue(newStatus);
                 Log.d(TAG, msg);
-                Log.d(TAG, "priorities added to DB");
+                Log.d(TAG, "asset categories added to DB");
             }
 
             @Override
             public void onError(Throwable e) {
                 String msg = application.getResources().getString(R.string.work_order_add_error);
-                Log.d(TAG, "Error adding priorities to DB");
+                Log.d(TAG, "Error adding asset categories to DB");
             }
         };
         completable.subscribeOn(scheduler)
@@ -366,6 +495,10 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
 
     public void setAssetCategoryListMutableLiveData(MutableLiveData<List<AssetCategory>> assetCategoryListMutableLiveData) {
         this.assetCategoryListMutableLiveData = assetCategoryListMutableLiveData;
+    }
+
+    public MutableLiveData<List<AssetDepartmentPlant>> getDeptPlantMutableLiveData() {
+        return deptPlantMutableLiveData;
     }
 
     public MutableLiveData<Status> getStatus() {

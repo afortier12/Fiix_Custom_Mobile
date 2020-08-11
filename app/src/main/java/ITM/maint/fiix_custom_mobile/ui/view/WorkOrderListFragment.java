@@ -40,6 +40,7 @@ import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderListAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderListViewModel;
 import ITM.maint.fiix_custom_mobile.utils.Status;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 
 public class WorkOrderListFragment extends Fragment  {
 
@@ -83,6 +84,7 @@ public class WorkOrderListFragment extends Fragment  {
         viewModel.getWorkOrderDBLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrderJoinPriority>>() {
             @Override
             public void onChanged(List<WorkOrderJoinPriority> workOrderJoinPriorities) {
+                List<Integer> assetIds = new ArrayList<>();
                 if (workOrderJoinPriorities != null) {
                     workOrderList.clear();
                     Gson gson = new Gson();
@@ -91,6 +93,12 @@ public class WorkOrderListFragment extends Fragment  {
                             String jsonString = gson.toJson(workOrder);
                             WorkOrder joinedWorkOrder = gson.fromJson(jsonString, WorkOrder.class);
                             joinedWorkOrder.setPriorityOrder(workOrderJoinPriority.getPriority().getOrder());
+                            try {
+                                List<Integer> workOrderAssetIds = Utils.splitStringToListOfInt(joinedWorkOrder.getAssetIds());
+                                assetIds.add(workOrderAssetIds.get(0));
+                            } catch (Exception e){
+                                Log.d(TAG, e.getMessage());
+                            }
                             workOrderList.add(joinedWorkOrder);
                         }
                     }
@@ -100,6 +108,8 @@ public class WorkOrderListFragment extends Fragment  {
                             return Integer.compare(o1.getPriorityOrder(), o2.getPriorityOrder());
                         }
                     });
+
+                    viewModel.getDepartmentsPlants(workOrderList);
                     adapter.notifyDataSetChanged();
                 }
                 progressBarDialog.dismiss();
@@ -216,6 +226,11 @@ public class WorkOrderListFragment extends Fragment  {
         super.onSaveInstanceState(outState);
         outState.putString("USERNAME_KEY", username);
         outState.putInt("USERID_KEY", id);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
     }
 
     class OnWorkOrderSelectedListener implements WorkOrderListAdapter.OnItemClickListener {

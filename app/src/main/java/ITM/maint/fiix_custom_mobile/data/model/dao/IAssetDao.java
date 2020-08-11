@@ -4,6 +4,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.RawQuery;
 
 import java.util.Date;
 import java.util.List;
@@ -46,5 +47,14 @@ public interface IAssetDao {
 
     @Query("DELETE FROM asset_table")
     Completable deleteAll();
+
+    @Query ("select dept.id as id, dept.description as department, plant.description as plant from ( " +
+            "select asset_table1.id, asset_table2.description, asset_table2.locationId from  asset_table as asset_table1 " +
+            "inner join asset_table as asset_table2 " +
+            "on asset_table1.locationId = asset_table2.id " +
+            "where asset_table1.id in (:ids)) as dept " +
+            "inner join asset_table as plant " +
+            "on dept.locationId = plant.id")
+    Single<List<Asset.AssetDepartmentPlant>> getDepartmentPlants(List<Integer> ids);
 
 }

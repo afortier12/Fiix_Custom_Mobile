@@ -50,6 +50,7 @@ import java.util.stream.Collectors;
 
 import javax.inject.Inject;
 
+import ITM.maint.fiix_custom_mobile.data.model.entity.AssetCategory;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.data.repository.RefreshRepository;
@@ -57,6 +58,7 @@ import ITM.maint.fiix_custom_mobile.di.AppExecutor;
 import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragmentArgs;
 import ITM.maint.fiix_custom_mobile.utils.Utils;
 import ITM.maint.fiix_custom_mobile.utils.Workers.ActionWorker;
+import ITM.maint.fiix_custom_mobile.utils.Workers.AssetCategoryWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.CauseWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.MaintenanceTypeSyncWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.ProblemWorker;
@@ -144,7 +146,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
             }
         });
 
-        refreshRepository = new RefreshRepository(this.getApplication(), id);
+        refreshRepository = new RefreshRepository(this.getApplication(), id, username);
 
         refreshRepository.getTaskListChangedLiveData().observe(this, new Observer<RefreshRepository.WorkOrderTaskMessage>() {
             @Override
@@ -242,6 +244,10 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                 .setConstraints(constraints)
                 .build();
 
+        OneTimeWorkRequest assetCategoryRequest = new OneTimeWorkRequest.Builder(AssetCategoryWorker.class)
+                .setConstraints(constraints)
+                .build();
+
         workManager.beginWith(problemRequest)
                 .then(causeRequest)
                 .then(actionRequest)
@@ -249,6 +255,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                 .then(rcaNestingRequest)
                 .then(maintenanceTypeRequest)
                 .then(workOrderStatusRequest)
+                .then(assetCategoryRequest)
                 .enqueue();
 
     }

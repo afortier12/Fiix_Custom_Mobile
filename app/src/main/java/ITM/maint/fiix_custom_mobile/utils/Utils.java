@@ -17,17 +17,20 @@ import com.google.common.io.Resources;
 import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
 
 public class Utils {
 
     public static final float[] NEGATIVE = {
-            -1.0f,     0,     0,    0, 255, // red
-            0, -1.0f,     0,    0, 255, // green
-            0,     0, -1.0f,    0, 255, // blue
-            0,     0,     0, 1.0f,   0  // alpha
+            -1.0f, 0, 0, 0, 255, // red
+            0, -1.0f, 0, 0, 255, // green
+            0, 0, -1.0f, 0, 255, // blue
+            0, 0, 0, 1.0f, 0  // alpha
     };
+    public static final String SYS_DELETE_DATE = "18000"; //Jan 1 1970, 00:00:00
 
     public static void hideKeyboard(Activity activity) {
         View view = activity.getCurrentFocus();
@@ -63,8 +66,10 @@ public class Utils {
         }
     }
 
-    public static Drawable getPriorityIcon(int order, Context itemView){
-        if (order < 7){
+    public static Drawable getPriorityIcon(int order, Context itemView) {
+        if (order < 6) {
+            return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_one, null);
+        } else if (order < 8) {
             return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_high_priority, null);
         } else if (order < 9) {
             return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_medium_priority, null);
@@ -74,6 +79,18 @@ public class Utils {
     }
 
 
+    public static String convertDateTimeToUNIXEpochms(String datetime) {
+        return null;
+    }
+
+    public static List<Integer> splitStringToListOfInt(String stringToSplit) throws Exception {
+        String[] splitStrings = stringToSplit.split(" ");
+        List<Integer> returnList = new ArrayList<>();
+        for (String string : splitStrings) {
+            returnList.add(Integer.parseInt(string));
+        }
+        return returnList;
+    }
 
 
 }

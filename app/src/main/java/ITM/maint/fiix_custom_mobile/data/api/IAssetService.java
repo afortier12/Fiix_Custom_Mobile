@@ -6,6 +6,7 @@ import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
 import ITM.maint.fiix_custom_mobile.data.model.entity.AssetCategory;
 import ITM.maint.fiix_custom_mobile.data.model.entity.Part;
+import io.reactivex.Completable;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.FormUrlEncoded;
@@ -23,5 +24,8 @@ public interface IAssetService {
 
     @POST("/api/")
     Call<AssetCategory> findAssetCategory(@Body FindRequest assetCategoriesRequest);
+
+    @POST("/api/")
+    Call<List<AssetCategory>> getAllAssetCategories(@Body FindRequest assetCategoriesRequest);
 
 }

@@ -26,52 +26,70 @@ import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 @Dao
-public interface IWorkOrderDao {
+public abstract class IWorkOrderDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertTask(WorkOrderTask workOrderTask);
+    public abstract Completable insertTask(WorkOrderTask workOrderTask);
 
     @Update
-    Completable updateTasks(List<WorkOrderTask> workOrderTasks);
+    public abstract Completable updateTasks(List<WorkOrderTask> workOrderTasks);
+
+    @Transaction
+    public void deleteWorkOrdersandTasks(List<Integer> workOrderIds){
+        deleteWorkOrders(workOrderIds);
+        deleteWorkOrderTasks(workOrderIds);
+    }
+
+    @Query("DELETE FROM work_order_table")
+    public abstract void deleteAllWorkOrders();
+
+    @Query("DELETE FROM work_order_task_table")
+    public abstract void deleteAllWorkOrderTasks();
+
+    @Query("DELETE from work_order_table where id in (:idList) ")
+    abstract void deleteWorkOrders(List<Integer> idList);
+
+    @Query("DELETE from work_order_task_table where workOrderId in (:idList) ")
+    abstract void deleteWorkOrderTasks(List<Integer> idList);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertTasks(List<WorkOrderTask> workOrderTasks);
+    public abstract Completable insertTasks(List<WorkOrderTask> workOrderTasks);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertWorkOrder(WorkOrder workOrder);
+    public abstract Completable insertWorkOrder(WorkOrder workOrder);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertWorkOrders(List<WorkOrder> workOrders);
+    public abstract Completable insertWorkOrders(List<WorkOrder> workOrders);
 
     @Update
-    Completable updateWorkOrders(List<WorkOrder> workOrders);
+    public abstract Completable updateWorkOrders(List<WorkOrder> workOrders);
 
     @Query("SELECT * FROM work_order_task_table where assignedToId = :userId " +
             "and workOrderId = :workOrderId")
-    Single<List<WorkOrderTask>> getWorkOrderTasks(int userId, int workOrderId);
+    public abstract Single<List<WorkOrderTask>> getWorkOrderTasks(int userId, int workOrderId);
 
     @Query("SELECT * FROM work_order_table where " +
             "dateCompleted is null")
-    Single<List<WorkOrder>> getWorkOrders();
+    public abstract Single<List<WorkOrder>> getWorkOrders();
 
     @Query("SELECT * FROM work_order_task_table where assignedToId = :userId")
-    Single<List<WorkOrderTask>> getAssignedWorkOrderTasks(int userId);
+    public abstract Single<List<WorkOrderTask>> getAssignedWorkOrderTasks(int userId);
 
 
     @Query("SELECT COALESCE(sum(COALESCE(estimatedHours,0)), 0) as hours FROM work_order_task_table where id = :workOrderId")
-    Single<Double> getWorkOrderEstimatedTime(int workOrderId);
+    public abstract Single<Double> getWorkOrderEstimatedTime(int workOrderId);
 
     @Transaction
     @Query("SELECT * FROM work_order_table inner join priority_table " +
             "on priorityId = priority_table.id " +
             "where username = :userName and dateCompleted is null " +
             "GROUP BY priorityId")
-    Single<List<WorkOrderJoinPriority>> getWorkOrdersforUserWithPriorities(String userName);
+    public abstract Single<List<WorkOrderJoinPriority>> getWorkOrdersforUserWithPriorities(String userName);
 
     @Query("SELECT * FROM priority_table")
-    Single<List<Priority>> getPriorities();
+    public abstract Single<List<Priority>> getPriorities();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertWorkOrderTask(WorkOrderTask task);
+    public abstract Completable insertWorkOrderTask(WorkOrderTask task);
 
 }

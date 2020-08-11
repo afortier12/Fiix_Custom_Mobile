@@ -88,21 +88,9 @@ public abstract class FiixDatabase extends RoomDatabase {
             databaseOpenExecutor.execute(() -> {
                 // Populate the database in the background.
                 // If you want to start with more words, just add them.
-                /*ILookupTablesDao lookupTablesDao= INSTANCE.lookupTablesDao();
-                lookupTablesDao.deleteAllTypes();
-                lookupTablesDao.deleteAllStatuses();
-
-                List<Priority> priorities = new ArrayList<>();
-                priorities.add(new Priority(2665,"High", 1));
-                priorities.add(new Priority(2666,"High", 2));
-                priorities.add(new Priority(2667,"Medium", 3));
-                priorities.add(new Priority(2668,"Low", 4));
-                priorities.add(new Priority(2669,"Low",5 ));
-
-                lookupTablesDao.insert(priorities);*/
-
-
-
+                /*IWorkOrderDao workOrderDao= INSTANCE.workOrderDao();
+                workOrderDao.deleteAllWorkOrders();
+                workOrderDao.deleteAllWorkOrderTasks();*/
             });
 
 

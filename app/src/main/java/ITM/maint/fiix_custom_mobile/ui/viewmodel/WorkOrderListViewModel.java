@@ -8,20 +8,24 @@ import androidx.lifecycle.LiveData;
 
 import java.util.List;
 
-import ITM.maint.fiix_custom_mobile.data.api.IWorkOrderService;
 import ITM.maint.fiix_custom_mobile.data.api.requests.ChangeRequest;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
+import ITM.maint.fiix_custom_mobile.data.repository.AssetRepository;
 import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 import ITM.maint.fiix_custom_mobile.utils.Status;
 
 public class WorkOrderListViewModel extends AndroidViewModel implements IWorkOrder.IWorkOrderList {
 
     private WorkOrderRepository workOrderRepository;
-    private IWorkOrderService workOrderService;
+    private AssetRepository assetRepository;
+
     private LiveData<List<WorkOrder>> workOrderResponseLiveData;
     private LiveData<List<WorkOrderJoinPriority>> workOrderDBLiveData;
+    private LiveData<List<Asset.AssetDepartmentPlant>> deptPlantResponseLiveData;
+    private LiveData<List<Asset>> assetResponseLiveData;
     private LiveData<Status> responseStatus;
 
     public WorkOrderListViewModel(@NonNull Application application) {
@@ -30,9 +34,11 @@ public class WorkOrderListViewModel extends AndroidViewModel implements IWorkOrd
 
     public void init() {
         workOrderRepository = new WorkOrderRepository(this.getApplication());
-        workOrderService = workOrderRepository.getWorkOrderService();
+        assetRepository = new AssetRepository(this.getApplication());
         workOrderResponseLiveData = workOrderRepository.getWorkOrderResponseMutableLiveData();;
         workOrderDBLiveData = workOrderRepository.getWorkOrderDBMutableLiveData();
+        assetResponseLiveData = assetRepository.getAssetMutableLiveData();
+        deptPlantResponseLiveData = assetRepository.getDeptPlantMutableLiveData();
         responseStatus = workOrderRepository.getStatus();
     }
 
@@ -44,11 +50,6 @@ public class WorkOrderListViewModel extends AndroidViewModel implements IWorkOrd
     @Override
     public void findWorkOrderTasks(String username, int userId, int workOrderId) {
         //workOrderRepository.getWorkOrderTasks(username, userId, workOrderId);
-    }
-
-    @Override
-    public void findWorkOrders(List<Integer> ids) {
-        workOrderRepository.getWorkOrders(ids);
     }
 
     @Override
@@ -66,6 +67,11 @@ public class WorkOrderListViewModel extends AndroidViewModel implements IWorkOrd
 
     }
 
+    @Override
+    public void getDepartmentsPlants(List<Integer> assetIds) {
+        assetRepository.getAssetDepartmentPlant(assetIds);
+    }
+
 
     public LiveData<List<WorkOrder>> getWorkOrderResponseLiveData() {
         return workOrderResponseLiveData;
@@ -78,6 +84,14 @@ public class WorkOrderListViewModel extends AndroidViewModel implements IWorkOrd
 
     public LiveData<Status> getResponseStatus() {
         return responseStatus;
+    }
+
+    public LiveData<List<Asset.AssetDepartmentPlant>> getDeptPlantResponseLiveData() {
+        return deptPlantResponseLiveData;
+    }
+
+    public LiveData<List<Asset>> getAssetResponseLiveData() {
+        return assetResponseLiveData;
     }
 
     public void dispose(){

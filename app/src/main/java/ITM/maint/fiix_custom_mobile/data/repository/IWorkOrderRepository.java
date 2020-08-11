@@ -17,10 +17,7 @@ public interface IWorkOrderRepository {
             void getPrioritiesFromDB();
 
             //get list of work orders with priorities for user
-            void getWorkOrdersWithPriorities();
-
-            //get list of work orders from DB/Fiix
-            void getWorkOrders(List<Integer> workOrders);
+            void getWorkOrdersWithPrioritiesFromDb();
 
             //insert work orders in DB
             void addWorkOrders(List<WorkOrder> workOrderList);
@@ -37,10 +34,10 @@ public interface IWorkOrderRepository {
             void addWorkOrderTasks(List<WorkOrderTask> taskList);
 
             //get list of maintenance types from DB
-            void getMaintenanceTypes();
+            void getMaintenanceTypesFromDb();
 
             //get list of work order statuses from DB
-            void getWorkOrderStatuses();
+            void getWorkOrderStatusesFromDb();
 
             //update work order in Fiix
             void updateWorkOrder(WorkOrder workOrder);

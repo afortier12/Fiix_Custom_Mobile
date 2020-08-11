@@ -28,6 +28,7 @@ import ITM.maint.fiix_custom_mobile.data.model.dao.IWorkOrderDao;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.utils.Status;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 import io.reactivex.Completable;
 import io.reactivex.Observable;
 import io.reactivex.Scheduler;
@@ -58,15 +59,17 @@ public class RefreshRepository extends BaseRepository {
     private FiixDatabase fiixDatabase;
 
     private int userId;
+    private String username;
     private List<WorkOrderTask> dbWorkOrderTaskList;
     private List<WorkOrder> dbWorkOrderList;
 
     private MutableLiveData<Status> status;
 
-    public RefreshRepository(Application application, int userId) {
+    public RefreshRepository(Application application, int userId, String username) {
         super(application);
 
         this.userId = userId;
+        this.username = username;
 
         taskListChangedLiveData = new MutableLiveData<WorkOrderTaskMessage>();
         status = new MutableLiveData<Status>();
@@ -154,6 +157,7 @@ public class RefreshRepository extends BaseRepository {
                 WorkOrderTasks.id.getField(),
                 WorkOrderTasks.assignedToId.getField(),
                 WorkOrderTasks.workOrderId.getField(),
+                WorkOrderTasks.description.getField(),
                 WorkOrderTasks.completedDate.getField()
         ));
 
@@ -300,6 +304,7 @@ public class RefreshRepository extends BaseRepository {
             for (WorkOrderTask oldTask: dbWorkOrderTaskList){
                 if (oldTask.getId() == newTask.getId()) {
                     taskFound = true;
+                    orderFound = true;
                     break;
                 }
                 if (oldTask.getWorkOrderId() == newTask.getWorkOrderId()){
@@ -314,7 +319,6 @@ public class RefreshRepository extends BaseRepository {
         }
 
         if (msg.getTaskList().size() > 0 || msg.getOrderList().size() > 0) {
-            dbWorkOrderTaskList = new ArrayList<WorkOrderTask>(workOrderTasks);
             taskListChangedLiveData.postValue(msg);
             return true;
         }
@@ -327,6 +331,7 @@ public class RefreshRepository extends BaseRepository {
 
         boolean updateDBFlag = false;
         List<WorkOrder> newWorkOrders = new ArrayList<>();
+        List<Integer> activeIds = new ArrayList<>();
         for (WorkOrder apiWorkOrder: workOrders) {
             boolean found = false;
             for (WorkOrder dbWorkOrder : dbWorkOrderList) {
@@ -341,7 +346,36 @@ public class RefreshRepository extends BaseRepository {
             }
             if (!found)
                 newWorkOrders.add(apiWorkOrder);
+            activeIds.add(apiWorkOrder.getId());
         }
+
+        List<Integer> deletedWorkOrderIds = new ArrayList<>();
+        for (WorkOrder dbWorkOrder : dbWorkOrderList) {
+            if(!activeIds.contains(dbWorkOrder.getId()))
+                deletedWorkOrderIds.add(dbWorkOrder.getId());
+        }
+
+        if (deletedWorkOrderIds.size() > 0)
+            for (Integer deletedId: deletedWorkOrderIds)
+                for (WorkOrder dbWorkOrder : dbWorkOrderList) {
+                    if (dbWorkOrder.getId() == deletedId) {
+                        dbWorkOrder.setDateCompleted(Utils.SYS_DELETE_DATE);
+                        break;
+                    }
+                }
+            /*Completable.fromAction(() -> workOrderDao.deleteWorkOrdersandTasks(deletedWorkOrderIds))
+                    .subscribeOn(Schedulers.io())
+                    .subscribeWith(new DisposableCompletableObserver() {
+                        @Override
+                        public void onComplete() {
+                            Log.d(TAG, "work order deleted from DB");
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            Log.d(TAG, "Error deleting work order from DB");
+                        }
+                    });*/
 
         if (newWorkOrders.size() > 0)
             insertWorkOrders(newWorkOrders);
@@ -367,6 +401,9 @@ public class RefreshRepository extends BaseRepository {
     }
 
     private void insertWorkOrders(List<WorkOrder> workOrders){
+        for (WorkOrder order : workOrders) {
+            order.setUsername(username);
+        }
         Completable completable = fiixDatabase.workOrderDao().insertWorkOrders(workOrders);
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         disposableCompletableObserver = new DisposableCompletableObserver() {
@@ -390,6 +427,7 @@ public class RefreshRepository extends BaseRepository {
 
         boolean updateDBFlag = false;
         List<WorkOrderTask> newWorkOrderTasks = new ArrayList<>();
+        List<Integer> activeIds = new ArrayList<>();
         for (WorkOrderTask apiTask: workOrderTasks) {
             boolean found = false;
             for (WorkOrderTask dbWorkOrderTask : dbWorkOrderTaskList) {
@@ -402,10 +440,27 @@ public class RefreshRepository extends BaseRepository {
             }
             if (!found)
                 newWorkOrderTasks.add(apiTask);
+            activeIds.add(apiTask.getId());
         }
 
         if (newWorkOrderTasks.size() > 0)
             insertWorkOrderTasks(newWorkOrderTasks);
+
+
+        List<Integer> deletedTaskIds = new ArrayList<>();
+        for (WorkOrderTask dbTask : dbWorkOrderTaskList) {
+            if(!activeIds.contains(dbTask.getId()))
+                deletedTaskIds.add(dbTask.getId());
+        }
+
+        if (deletedTaskIds.size() > 0)
+            for (Integer deletedId: deletedTaskIds)
+                for (WorkOrderTask dbTask : dbWorkOrderTaskList) {
+                    if (dbTask.getId() == deletedId) {
+                        dbTask.setCompletedDate(Utils.SYS_DELETE_DATE);
+                        break;
+                    }
+                }
 
         if (updateDBFlag) {
             Completable completable = fiixDatabase.workOrderDao().updateTasks(dbWorkOrderTaskList);
@@ -425,6 +480,8 @@ public class RefreshRepository extends BaseRepository {
                     .subscribe(disposableCompletableObserver);
             compositeDisposable.add(disposableCompletableObserver);
         }
+
+        dbWorkOrderTaskList = new ArrayList<>(workOrderTasks);
     }
 
     private void insertWorkOrderTasks(List<WorkOrderTask> workOrderTasks){
@@ -433,12 +490,12 @@ public class RefreshRepository extends BaseRepository {
         disposableCompletableObserver = new DisposableCompletableObserver() {
             @Override
             public void onComplete() {
-                Log.d(TAG, "work order added to DB");
+                Log.d(TAG, "work order tasks added to DB");
             }
 
             @Override
             public void onError(Throwable e) {
-                Log.d(TAG, "Error adding work order to DB");
+                Log.d(TAG, "Error adding work order tasks to DB");
             }
         };
         completable.subscribeOn(scheduler)
@@ -453,7 +510,7 @@ public class RefreshRepository extends BaseRepository {
     }
 
     private Disposable getDisposable(){
-        return Observable.interval(1,2, TimeUnit.MINUTES)
+        return Observable.interval(1,10, TimeUnit.MINUTES)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(this::updateTaskList, this::handleError);
