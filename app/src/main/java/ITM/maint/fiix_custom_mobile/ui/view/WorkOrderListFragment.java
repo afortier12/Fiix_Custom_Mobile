@@ -34,6 +34,8 @@ import java.util.Comparator;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Asset.AssetDepartmentPlant;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder.WorkOrderJoinPriority;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderListAdapter;
@@ -85,6 +87,7 @@ public class WorkOrderListFragment extends Fragment  {
             @Override
             public void onChanged(List<WorkOrderJoinPriority> workOrderJoinPriorities) {
                 List<Integer> assetIds = new ArrayList<>();
+                boolean updatePlantDepartment = false;
                 if (workOrderJoinPriorities != null) {
                     workOrderList.clear();
                     Gson gson = new Gson();
@@ -93,27 +96,34 @@ public class WorkOrderListFragment extends Fragment  {
                             String jsonString = gson.toJson(workOrder);
                             WorkOrder joinedWorkOrder = gson.fromJson(jsonString, WorkOrder.class);
                             joinedWorkOrder.setPriorityOrder(workOrderJoinPriority.getPriority().getOrder());
-                            try {
-                                List<Integer> workOrderAssetIds = Utils.splitStringToListOfInt(joinedWorkOrder.getAssetIds());
-                                assetIds.add(workOrderAssetIds.get(0));
-                            } catch (Exception e){
-                                Log.d(TAG, e.getMessage());
-                            }
+                            if (joinedWorkOrder.getPlant() == null || joinedWorkOrder.getDepartment()==null)
+                                updatePlantDepartment = true;
+                                try {
+                                    List<Integer> workOrderAssetIds = Utils.splitStringToListOfInt(joinedWorkOrder.getAssetIds());
+                                    assetIds.add(workOrderAssetIds.get(0));
+                                } catch (Exception e){
+                                    Log.d(TAG, e.getMessage());
+                                }
                             workOrderList.add(joinedWorkOrder);
                         }
                     }
-                    Collections.sort(workOrderList, new Comparator<WorkOrder>() {
-                        @Override
-                        public int compare(WorkOrder o1, WorkOrder o2) {
-                            return Integer.compare(o1.getPriorityOrder(), o2.getPriorityOrder());
-                        }
-                    });
 
-                    viewModel.getDepartmentsPlants(workOrderList);
-                    adapter.notifyDataSetChanged();
+                    if (updatePlantDepartment)
+                        viewModel.getDepartmentsPlants(assetIds);
+                    else
+                        Collections.sort(workOrderList, new Comparator<WorkOrder>() {
+                            @Override
+                            public int compare(WorkOrder o1, WorkOrder o2) {
+                                return Integer.compare(o1.getPriorityOrder(), o2.getPriorityOrder());
+                            }
+                        });
+                        if (recyclerView.getAdapter() == null)
+                            recyclerView.setAdapter(adapter);
+                        else
+                            adapter.notifyDataSetChanged();
                 }
                 progressBarDialog.dismiss();
-                }
+            }
         });
 
         viewModel.getWorkOrderResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<WorkOrder>>() {
@@ -133,6 +143,28 @@ public class WorkOrderListFragment extends Fragment  {
             public void onChanged(Status status) {
                 Snackbar.make(getView(), status.getMessage(), Snackbar.LENGTH_LONG).show();
                 progressBarDialog.dismiss();
+            }
+        });
+
+        viewModel.getDeptPlantResponseLiveData().observe(getViewLifecycleOwner(), new Observer<List<AssetDepartmentPlant>>() {
+            @Override
+            public void onChanged(List<AssetDepartmentPlant> departmentPlants) {
+
+                if (departmentPlants != null) {
+                    List<WorkOrder> updatedWorkOrders = viewModel.updateWorkOrders(workOrderList, departmentPlants);
+                    workOrderList.clear();
+                    workOrderList.addAll(updatedWorkOrders);
+                }
+                Collections.sort(workOrderList, new Comparator<WorkOrder>() {
+                    @Override
+                    public int compare(WorkOrder o1, WorkOrder o2) {
+                        return Integer.compare(o1.getPriorityOrder(), o2.getPriorityOrder());
+                    }
+                });
+                if (recyclerView.getAdapter() == null)
+                    recyclerView.setAdapter(adapter);
+                else
+                    adapter.notifyDataSetChanged();
             }
         });
 

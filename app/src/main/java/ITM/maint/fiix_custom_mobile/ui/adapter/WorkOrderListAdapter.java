@@ -8,7 +8,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -45,7 +44,8 @@ public class WorkOrderListAdapter extends RecyclerView.Adapter<WorkOrderListAdap
         int order = workOrder.getPriorityOrder();
         String priority = workOrder.getExtraFields().getPriorityName();
         String code = workOrder.getCode();
-        String type = workOrder.getExtraFields().getMaintenanceType();
+        String plant = workOrder.getPlant();
+        String department = workOrder.getDepartment();
         String asset = workOrder.getAssets();
         String description = workOrder.getDescription();
         //String problemCode = workOrder.getExtraFields().getProblem();
@@ -55,7 +55,8 @@ public class WorkOrderListAdapter extends RecyclerView.Adapter<WorkOrderListAdap
         holder.priorityIcon.setImageDrawable(img);
         holder.priorityText.setText(priority);
         holder.codeText.setText(code);
-        holder.typeText.setText(type);
+        holder.plantText.setText(plant);
+        holder.departmentText.setText(department);
         holder.assetText.setText(asset);
         holder.descriptionText.setText(description);
         //holder.problemCodeText.setText(problemCode);
@@ -82,7 +83,8 @@ public class WorkOrderListAdapter extends RecyclerView.Adapter<WorkOrderListAdap
     class WorkOrderResultsHolder extends RecyclerView.ViewHolder{
         private TextView priorityText;
         private TextView codeText;
-        private TextView typeText;
+        private TextView plantText;
+        private TextView departmentText;
         private TextView assetText;
         private TextView descriptionText;
         //private TextView problemCodeText;
@@ -93,7 +95,8 @@ public class WorkOrderListAdapter extends RecyclerView.Adapter<WorkOrderListAdap
 
             priorityText = itemView.findViewById(R.id.work_order_priority);
             codeText = itemView.findViewById(R.id.work_order_code);
-            typeText = itemView.findViewById(R.id.work_order_type);
+            plantText = itemView.findViewById(R.id.work_order_plant);
+            departmentText = itemView.findViewById(R.id.work_order_department);
             assetText = itemView.findViewById(R.id.work_order_asset);
             descriptionText = itemView.findViewById(R.id.work_order_description);
             //problemCodeText = itemView.findViewById(R.id.work_order_problem_code);

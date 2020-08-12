@@ -30,9 +30,7 @@ import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderViewPagerAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 import ITM.maint.fiix_custom_mobile.utils.Utils;
 
-public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.OnRCAListener, WorkOrderNoteDialog.OnNoteListener,
-        WorkOrderAddTaskDialog.OnTaskAddListener
-{
+public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.OnRCAListener, WorkOrderNoteDialog.OnNoteListener {
 
     private static long lastClickTime = 0;
     private static final String TAG = "WorkOrderFragment";
@@ -242,8 +240,6 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
         rcaAction = action;
         workOrder.setActionID(rcaAction);
 
-
-
     }
 
     @Override
@@ -251,10 +247,5 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
         workOrder.setCompletionNotes(note);
     }
 
-    @Override
-    public void sendNewTask(WorkOrderTask newTask) {
-        WorkOrderTaskFragment taskFragment = (WorkOrderTaskFragment) adapter.getFragment(currentViewPagerPosition);
-        taskFragment.getTaskList().add(newTask);
-        taskFragment.getTaskAdapter().notifyDataSetChanged();
-    }
+
 }

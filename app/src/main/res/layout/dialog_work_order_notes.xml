@@ -8,7 +8,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/detail_note_layout"
+        android:id="@+id/note_layout"
         style="@style/TextInputLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -40,17 +40,17 @@
         android:id="@+id/frameLayout2"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        app:layout_constraintBottom_toTopOf="@+id/rca_button_layout"
+        app:layout_constraintBottom_toTopOf="@+id/update_button_layout"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detail_note_layout"
+        app:layout_constraintTop_toBottomOf="@+id/note_layout"
         app:layout_constraintVertical_chainStyle="packed">
 
     </FrameLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rca_button_layout"
+        android:id="@+id/update_button_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

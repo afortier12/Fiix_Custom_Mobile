@@ -53,6 +53,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
     private CompositeDisposable compositeDisposable;
 
     private List<Integer> assetIds;
+    private boolean addAssetForDeptPlantFlag = false;
     private List<Integer> assetCategoryIds;
     private int assetType;
     private int assetCategoryId;
@@ -62,6 +63,7 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
         assetMutableLiveData = new MutableLiveData<List<Asset>>();
         assetCategoryListMutableLiveData = new MutableLiveData<List<AssetCategory>>();
         deptPlantMutableLiveData = new MutableLiveData<List<AssetDepartmentPlant>>();
+        status = new MutableLiveData<Status>();
         assetService = ServiceGenerator.createService(IAssetService.class);
 
         fiixDatabase = FiixDatabase.getDatabase(application);
@@ -195,8 +197,6 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
     @Override
     public void getAssetDepartmentPlant(List<Integer> assetIds) {
         this.assetIds = new ArrayList<>(assetIds);
-        getDepartmentPlantFromDB();
-
         Single<List<Asset>> single =  fiixDatabase.assetDao().getAssetFromIds(assetIds);
         Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
         single.subscribeOn(scheduler).subscribe(new SingleObserver<List<Asset>>() {
@@ -209,8 +209,8 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
             @Override
             public void onSuccess(List<Asset> assets) {
                 if (assets == null || assets.size() == 0) {
-                    //no tasks in database -> request from Fiix
-                    setupGetAssetsAPICall();
+                    //no assets in database -> request from Fiix
+                    setupGetAssetsForDeptPlantAPICall();
                 } else {
                     getDepartmentPlantFromDB();
                     Log.d(TAG, "Asset categories retrieved from DB");
@@ -224,10 +224,6 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
                 Log.d(TAG, "Error finding assets from DB");
             }
 
-            //@Override
-            public void onComplete() {
-
-            }
         });
     }
 
@@ -245,23 +241,21 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
             public void onSuccess(List<AssetDepartmentPlant> departmentPlants) {
                 if (departmentPlants == null || departmentPlants.size() == 0) {
                     //no tasks in database -> request from Fiix
-
+                    deptPlantMutableLiveData.postValue(null);
+                    Log.d(TAG, "Error finding departments and plants from DB");
                 } else {
-                    Log.d(TAG, "Asset categories retrieved from DB");
+                    deptPlantMutableLiveData.postValue(departmentPlants);
+                    Log.d(TAG, "Plants and departments retrieved from DB");
                 }
             }
 
             @Override
             public void onError(Throwable e) {
                 // show an error message
-                setupGetAssetsAPICall();
-                Log.d(TAG, "Error finding assets from DB");
+                deptPlantMutableLiveData.postValue(null);
+                Log.d(TAG, "Error finding departments and plants from DB");
             }
 
-            //@Override
-            public void onComplete() {
-
-            }
         });
     }
 
@@ -273,9 +267,13 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
         List<String> assetFields = new ArrayList<>(Arrays.asList(
                 Assets.id.getField(),
                 Assets.name.getField(),
-                Assets.description.getField(),
                 Assets.categoryId.getField(),
-                Assets.assetLocationID.getField()
+                Assets.assetLocationID.getField(),
+                Assets.assetType.getField(),
+                Assets.description.getField(),
+                Assets.displayCategoryId.getField(),
+                Assets.make.getField(),
+                Assets.model.getField()
         ));
         String fields = TextUtils.join(",", assetFields);
 
@@ -326,6 +324,77 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
                 });
     }
 
+
+    private void setupGetAssetsForDeptPlantAPICall() {
+
+        FindRequest.ClientVersion clientVersion = new FindRequest.ClientVersion(
+                2, 8, 1);
+
+        List<String> assetFields = new ArrayList<>(Arrays.asList(
+                Assets.id.getField(),
+                Assets.name.getField(),
+                Assets.categoryId.getField(),
+                Assets.assetLocationID.getField(),
+                Assets.assetType.getField(),
+                Assets.description.getField(),
+                Assets.displayCategoryId.getField(),
+                Assets.make.getField(),
+                Assets.model.getField()
+        ));
+        String fields = TextUtils.join(",", assetFields);
+
+        List<String> placeHolders = new ArrayList<>();
+        List<Integer> parameters = new ArrayList<>();
+        for (Integer id : assetIds) {
+            parameters.add(id);
+            placeHolders.add("?");
+        }
+        parameters.add(1); // for intKind = 1 (facility, plant, department, building)
+
+        String placeHolderList = TextUtils.join(",", placeHolders);
+
+        FindRequest.Filter filter = new FindRequest.Filter(
+                "id in (" + placeHolderList + ") OR intKind = ?",
+                parameters
+        );
+
+        List<FindRequest.Filter> filters = new ArrayList<>();
+        filters.add(filter);
+
+        FindRequest assetRequest = new FindRequest("FindRequest", clientVersion, "Asset", fields, filters);
+        getAssetsForDeptPlantFromFiix(assetRequest);
+    }
+
+    private void getAssetsForDeptPlantFromFiix(FindRequest assetRequest){
+        assetService.findAssets(assetRequest)
+                .enqueue(new Callback<List<Asset>>() {
+
+                    @Override
+                    public void onResponse(Call<List<Asset>> call, retrofit2.Response<List<Asset>> response) {
+                        if (response.body() != null){
+                            addAssetForDeptPlantFlag = true;
+                            addAssets(response.body());
+                        } else {
+                            deptPlantMutableLiveData.postValue(null);
+                            Log.d(TAG, "Error finding departments and plants from DB");
+
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<List<Asset>> call, Throwable t) {
+                        deptPlantMutableLiveData.postValue(null);
+
+                        if (t instanceof IOException) {
+                            Log.d(TAG, "this is an actual network failure: " + t.getMessage());
+                            // logging probably not necessary
+                        }
+                        else {
+                            Log.d(TAG, "conversion issue! big problems: " + t.getMessage());
+                        }
+                    }
+                });
+    }
 
     private void setupGetAssetsCategoryAPICall() {
 
@@ -432,17 +501,23 @@ public class AssetRepository extends BaseRepository implements IAssetRepository{
         disposableCompletableObserver = new DisposableCompletableObserver() {
             @Override
             public void onComplete() {
-                String msg = application.getResources().getString(R.string.work_orders_added);
+                String msg = "Assets added to database";
                 Status newStatus = new Status(StatusCodes.addComplete, "Asset", msg);
                 status.postValue(newStatus);
                 Log.d(TAG, msg);
-                Log.d(TAG, "priorities added to DB");
+                Log.d(TAG, "assets added to DB");
+
+                if (addAssetForDeptPlantFlag)
+                    getDepartmentPlantFromDB();
+
+                addAssetForDeptPlantFlag = false;
             }
 
             @Override
             public void onError(Throwable e) {
-                String msg = application.getResources().getString(R.string.work_order_add_error);
-                Log.d(TAG, "Error adding priorities to DB");
+                addAssetForDeptPlantFlag = false;
+                String msg = "error adding asset to DB";
+                Log.d(TAG, "Error adding assets to DB");
             }
         };
         completable.subscribeOn(scheduler)

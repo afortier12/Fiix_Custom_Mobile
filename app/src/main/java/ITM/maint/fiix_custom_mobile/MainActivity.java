@@ -59,6 +59,7 @@ import ITM.maint.fiix_custom_mobile.ui.view.WorkOrderFragmentArgs;
 import ITM.maint.fiix_custom_mobile.utils.Utils;
 import ITM.maint.fiix_custom_mobile.utils.Workers.ActionWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.AssetCategoryWorker;
+import ITM.maint.fiix_custom_mobile.utils.Workers.AssetFacilityWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.CauseWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.MaintenanceTypeSyncWorker;
 import ITM.maint.fiix_custom_mobile.utils.Workers.ProblemWorker;
@@ -244,7 +245,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                 .setConstraints(constraints)
                 .build();
 
-        OneTimeWorkRequest assetCategoryRequest = new OneTimeWorkRequest.Builder(AssetCategoryWorker.class)
+        OneTimeWorkRequest assetFacilityRequest = new OneTimeWorkRequest.Builder(AssetFacilityWorker.class)
                 .setConstraints(constraints)
                 .build();
 
@@ -255,7 +256,7 @@ public class MainActivity extends DaggerAppCompatActivity implements ActivityCom
                 .then(rcaNestingRequest)
                 .then(maintenanceTypeRequest)
                 .then(workOrderStatusRequest)
-                .then(assetCategoryRequest)
+                .then(assetFacilityRequest)
                 .enqueue();
 
     }

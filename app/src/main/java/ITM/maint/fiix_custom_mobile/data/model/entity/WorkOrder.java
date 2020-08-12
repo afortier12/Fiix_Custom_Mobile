@@ -225,6 +225,10 @@ public class WorkOrder implements Parcelable {
     private String rcaCategory;
     @ColumnInfo(name="rcaSource")
     private String rcaSource;
+    @ColumnInfo(name="plant")
+    private String plant;
+    @ColumnInfo(name="department")
+    private String department;
 
     public WorkOrder() {
     }
@@ -265,6 +269,8 @@ public class WorkOrder implements Parcelable {
         this.updated = in.readInt();
         this.scheduledMaintenanceId = in.readInt();
         this.priorityOrder = in.readInt();
+        this.plant = in.readString();
+        this.department = in.readString();
     }
     @Override
     public int describeContents() {
@@ -307,6 +313,8 @@ public class WorkOrder implements Parcelable {
         dest.writeInt(this.updated);
         dest.writeInt(this.scheduledMaintenanceId);
         dest.writeInt(this.priorityOrder);
+        dest.writeString(this.plant);
+        dest.writeString(this.department);
     }
 
 
@@ -351,6 +359,7 @@ public class WorkOrder implements Parcelable {
         @Expose
         @ColumnInfo(name = "scheduledMaintenance")
         private String scheduledMaintenance;
+
         /*@SerializedName("dv_intSignedByUserID")
         @Expose
         @ColumnInfo(name="signedByUser")*/
@@ -779,5 +788,21 @@ public class WorkOrder implements Parcelable {
 
     public void setRcaSource(String rcaSource) {
         this.rcaSource = rcaSource;
+    }
+
+    public String getPlant() {
+        return plant;
+    }
+
+    public void setPlant(String plant) {
+        this.plant = plant;
+    }
+
+    public String getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(String department) {
+        this.department = department;
     }
 }

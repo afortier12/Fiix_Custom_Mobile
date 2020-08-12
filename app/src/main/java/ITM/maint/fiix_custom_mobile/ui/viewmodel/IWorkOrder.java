@@ -4,6 +4,8 @@ import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.data.api.requests.ChangeRequest;
 import ITM.maint.fiix_custom_mobile.data.api.requests.FindRequest;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Asset;
+import ITM.maint.fiix_custom_mobile.data.model.entity.Asset.AssetDepartmentPlant;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
@@ -23,6 +25,8 @@ public interface IWorkOrder {
 
         public void getDepartmentsPlants(List<Integer> assetIds);
 
+        public List<WorkOrder> updateWorkOrders(List<WorkOrder> workOrders, List<AssetDepartmentPlant> departmentPlants);
+
     }
 
 
@@ -31,6 +35,8 @@ public interface IWorkOrder {
         public void getWorkOrderTasks(String username, int userId, int workOrderId);
 
         public void updateWorkOrderTasks(List<WorkOrderTask> taskList);
+
+        public void updateWorkOrderTask(WorkOrderTask task);
 
         public void addTask(WorkOrderTask task);
 

@@ -593,7 +593,10 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
             @Override
             public void onError(Throwable e) {
+                workOrderDBMutableLiveData.postValue(null);
                 String msg = application.getResources().getString(R.string.work_order_add_error);
+                Status newStatus = new Status(StatusCodes.addComplete, "WorkOrder", msg);
+                status.postValue(newStatus);
                 Log.d(TAG, "Error adding work order to DB");
             }
         };
@@ -829,6 +832,45 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
 
     }
 
+    @Override
+    public void updateWorkOrders(List<WorkOrder> workOrders) {
+        Completable completable = fiixDatabase.workOrderDao().updateWorkOrders(workOrders);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        disposableCompletableObserver = new DisposableCompletableObserver() {
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "work orders updated in DB");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "Error updating work orders in DB");
+            }
+        };
+        completable.subscribeOn(scheduler)
+                .subscribe(disposableCompletableObserver);
+        compositeDisposable.add(disposableCompletableObserver);
+    }
+
+    @Override
+    public void updateTask(WorkOrderTask task) {
+        Completable completable = fiixDatabase.workOrderDao().updateTask(task);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        disposableCompletableObserver = new DisposableCompletableObserver() {
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "task updated in DB");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "Error updating task in DB");
+            }
+        };
+        completable.subscribeOn(scheduler)
+                .subscribe(disposableCompletableObserver);
+        compositeDisposable.add(disposableCompletableObserver);
+    }
 
     private Date getMaxRefreshTime(Date currentDate) {
         Calendar cal = Calendar.getInstance();

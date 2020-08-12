@@ -27,142 +27,38 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@id/task_time_layout"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/task_time_layout"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/task_estimate"
+                style="@style/TextInputLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:hint="@string/estimated_time"
+                android:padding="4dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                app:layout_constraintTop_toBottomOf="@id/task_description"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/task_description">
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
-
-                <androidx.constraintlayout.widget.ConstraintLayout
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/task_estimate_time"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
+                    android:gravity="center_horizontal|center_vertical"
+                    android:imeOptions="actionUnspecified"
+                    android:inputType="none"
+                    android:maxLines="1"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:textSize="16sp" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/task_estimate"
-                        style="@style/TextInputLayout"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/estimated_time"
-                        android:padding="10dp"
-                        app:layout_constraintBottom_toTopOf="@id/task_actual"
-                        app:layout_constraintEnd_toEndOf="@id/task_actual"
-                        app:layout_constraintStart_toStartOf="@id/task_actual"
-                        app:layout_constraintTop_toTopOf="parent">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/task_estimate_time"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:imeOptions="actionUnspecified"
-                            android:inputType="none"
-                            android:maxLines="1"
-                            android:textSize="14sp" />
-
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <LinearLayout
-                        android:id="@+id/hour_button_layout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/task_actual"
-                        app:layout_constraintHorizontal_chainStyle="packed"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/task_estimate">
-
-                        <ImageButton
-                            android:id="@+id/addActualHour"
-                            style="@style/buttonIcon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="48dp"
-                            android:layout_gravity="end"
-                            android:layout_marginStart="0dp"
-                            android:layout_marginTop="0dp"
-                            android:contentDescription="@string/add_hour"
-                            app:srcCompat="@drawable/ic_add_box_24px" />
-
-                        <ImageButton
-                            android:id="@+id/decActualHour"
-                            style="@style/buttonIcon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="48dp"
-                            android:layout_gravity="end"
-                            android:layout_marginTop="0dp"
-                            android:contentDescription="@string/sub_hour"
-                            app:srcCompat="@drawable/ic_remove_box_24px" />
-
-                    </LinearLayout>
-
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/task_actual"
-                        style="@style/TextInputLayout"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/actual_time"
-                        android:padding="10dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@id/minute_button_layout"
-                        app:layout_constraintStart_toEndOf="@id/hour_button_layout"
-                        app:layout_constraintTop_toBottomOf="@id/task_estimate">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/task_actual_time"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="1dp"
-                            android:gravity="center_horizontal|center_vertical"
-                            android:imeOptions="actionNext"
-                            android:inputType="number"
-                            android:maxLines="1"
-                            android:textSize="20sp" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
-                    <LinearLayout
-                        android:id="@+id/minute_button_layout"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginRight="20dp"
-                        android:orientation="vertical"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/task_actual"
-                        app:layout_constraintTop_toBottomOf="@id/task_estimate">
-
-                        <ImageButton
-                            android:id="@+id/addActualMin"
-                            style="@style/buttonIcon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="48dp"
-                            android:layout_gravity="start"
-                            android:layout_marginTop="2dp"
-                            android:contentDescription="@string/add_minute"
-                            app:srcCompat="@drawable/ic_add_box_24px" />
-
-                        <ImageButton
-                            android:id="@+id/decActualMinute"
-                            style="@style/buttonIcon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="48dp"
-                            android:layout_gravity="start"
-                            android:layout_marginTop="0dp"
-                            android:contentDescription="@string/sub_minute"
-                            app:srcCompat="@drawable/ic_remove_box_24px" />
-                    </LinearLayout>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </com.google.android.material.textfield.TextInputLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -182,6 +78,7 @@
                 android:id="@+id/task_complete"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
+                android:layout_margin="10dp"
                 android:checked="false"
                 android:padding="10dp"
                 app:layout_constraintBottom_toTopOf="@id/task_delete"
@@ -194,6 +91,7 @@
                 android:id="@+id/task_delete"
                 android:layout_width="48dp"
                 android:layout_height="0dp"
+                android:layout_margin="10dp"
                 android:background="#00FFFFFF"
                 android:contentDescription="@string/task_delete"
                 android:scaleType="fitCenter"

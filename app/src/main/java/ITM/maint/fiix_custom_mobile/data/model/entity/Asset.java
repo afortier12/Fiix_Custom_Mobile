@@ -32,11 +32,11 @@ public class Asset {
     @Expose
     @ColumnInfo(name="type")
     private int type;
-    @SerializedName("intAssetLocationID")
+    @SerializedName("intCategoryID")
     @Expose
     @ColumnInfo(name="categoryId")
     private int categoryId;
-    @SerializedName("intCategoryID")
+    @SerializedName("intAssetLocationID")
     @Expose
     @ColumnInfo(name="locationId")
     private int assetLocationId;

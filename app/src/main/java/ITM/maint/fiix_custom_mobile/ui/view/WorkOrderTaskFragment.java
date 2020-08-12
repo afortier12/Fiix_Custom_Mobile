@@ -35,7 +35,8 @@ import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderTaskAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderTaskViewModel;
 
-public class WorkOrderTaskFragment extends Fragment {
+public class WorkOrderTaskFragment extends Fragment implements WorkOrderAddTaskDialog.OnTaskAddListener,
+        WorkOrderTaskUpdateDialog.OnUpdateListener{
 
     public static final String TAG = "WorkOrderTaskFragment";
 
@@ -114,13 +115,15 @@ public class WorkOrderTaskFragment extends Fragment {
         if (current != null) current.clearFocus();
     }
 
-    public List<WorkOrderTask> getTaskList(){
-        return workOrderTaskList;
+    @Override
+    public void sendNewTask(WorkOrderTask newTask) {
+        workOrderTaskList.add(newTask);
+        adapter.notifyDataSetChanged();
     }
 
-    public WorkOrderTaskAdapter getTaskAdapter(){
-        return adapter;
+
+    @Override
+    public void sendUpdate(String note, String timeActual) {
+
     }
-
-
 }

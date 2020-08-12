@@ -291,12 +291,10 @@ public class WorkOrderRCADialog extends DialogFragment  {
         viewModel.getActionList();
     }
 
+
     private void dismissFragment(){
         this.dismiss();
     }
-
-
-
 
 
     private void liveDataListeners(){

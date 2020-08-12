@@ -68,7 +68,7 @@ public class Utils {
 
     public static Drawable getPriorityIcon(int order, Context itemView) {
         if (order < 6) {
-            return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_one, null);
+            return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_report_24px, null);
         } else if (order < 8) {
             return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_high_priority, null);
         } else if (order < 9) {
@@ -84,7 +84,7 @@ public class Utils {
     }
 
     public static List<Integer> splitStringToListOfInt(String stringToSplit) throws Exception {
-        String[] splitStrings = stringToSplit.split(" ");
+        String[] splitStrings = stringToSplit.trim().split(" ");
         List<Integer> returnList = new ArrayList<>();
         for (String string : splitStrings) {
             returnList.add(Integer.parseInt(string));

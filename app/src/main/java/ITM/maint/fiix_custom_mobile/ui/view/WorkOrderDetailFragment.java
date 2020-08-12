@@ -3,7 +3,6 @@ package ITM.maint.fiix_custom_mobile.ui.view;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,7 +13,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -92,7 +90,7 @@ public class WorkOrderDetailFragment extends Fragment {
         statusLayout.bringToFront();
         LinearLayout descriptionLayout = root.findViewById(R.id.detail_description_layout);
         descriptionLayout.bringToFront();
-        LinearLayout notesLayout = root.findViewById(R.id.detail_note_layout);
+        LinearLayout notesLayout = root.findViewById(R.id.note_layout);
         notesLayout.bringToFront();
         LinearLayout scheduleLayout = root.findViewById(R.id.detail_scheduled_layout);
         scheduleLayout.bringToFront();

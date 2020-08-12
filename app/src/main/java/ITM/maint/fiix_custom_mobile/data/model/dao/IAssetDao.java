@@ -48,8 +48,8 @@ public interface IAssetDao {
     @Query("DELETE FROM asset_table")
     Completable deleteAll();
 
-    @Query ("select dept.id as id, dept.description as department, plant.description as plant from ( " +
-            "select asset_table1.id, asset_table2.description, asset_table2.locationId from  asset_table as asset_table1 " +
+    @Query ("select dept.id as id, dept.name as department, plant.name as plant from ( " +
+            "select asset_table1.id, asset_table2.name, asset_table2.locationId from  asset_table as asset_table1 " +
             "inner join asset_table as asset_table2 " +
             "on asset_table1.locationId = asset_table2.id " +
             "where asset_table1.id in (:ids)) as dept " +

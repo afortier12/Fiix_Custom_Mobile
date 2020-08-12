@@ -24,6 +24,9 @@ public interface IWorkOrderRepository {
 
             //delete work orders
             void deleteWorkOrder(int workOrderId);
+
+            //update work orders
+            void updateWorkOrders(List<WorkOrder> workOrders);
         }
 
         public interface IWorkOrderDetail {
@@ -57,6 +60,8 @@ public interface IWorkOrderRepository {
         public interface IWorkOrderTask {
 
             public void addTaskToDatabase(String description, String estTime, int userId, int workOrderId);
+
+            public void updateTask(WorkOrderTask task);
         }
 
 }

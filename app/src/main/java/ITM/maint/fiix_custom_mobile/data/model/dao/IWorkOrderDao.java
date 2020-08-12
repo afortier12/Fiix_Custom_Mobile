@@ -34,6 +34,9 @@ public abstract class IWorkOrderDao {
     @Update
     public abstract Completable updateTasks(List<WorkOrderTask> workOrderTasks);
 
+    @Update
+    public abstract Completable updateTask(WorkOrderTask workOrderTasks);
+
     @Transaction
     public void deleteWorkOrdersandTasks(List<Integer> workOrderIds){
         deleteWorkOrders(workOrderIds);

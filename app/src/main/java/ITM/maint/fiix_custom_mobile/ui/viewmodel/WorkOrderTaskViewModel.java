@@ -47,6 +47,11 @@ public class WorkOrderTaskViewModel extends AndroidViewModel implements IWorkOrd
     }
 
     @Override
+    public void updateWorkOrderTask(WorkOrderTask task) {
+        workOrderRepository.updateTask(task);
+    }
+
+    @Override
     public void addTask(WorkOrderTask task) {
 
     }
