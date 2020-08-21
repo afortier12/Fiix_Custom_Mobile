@@ -4,6 +4,7 @@ import android.text.TextUtils;
 
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
@@ -30,6 +31,9 @@ public abstract class IWorkOrderDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     public abstract Completable insertTask(WorkOrderTask workOrderTask);
+
+    @Delete
+    public abstract Completable deleteTask(WorkOrderTask task);
 
     @Update
     public abstract Completable updateTasks(List<WorkOrderTask> workOrderTasks);

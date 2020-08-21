@@ -11,6 +11,8 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
 public interface IWorkOrder {
 
+    public void addTask(WorkOrderTask task);
+
     public interface IWorkOrderList {
 
         public void getWorkOrders(String username, int userId);
@@ -39,6 +41,8 @@ public interface IWorkOrder {
         public void updateWorkOrderTask(WorkOrderTask task);
 
         public void addTask(WorkOrderTask task);
+
+        public void deleteTask(WorkOrderTask task);
 
         public void addTaskToDB(String description, String estTime, int userId, int workOrderId);
     }

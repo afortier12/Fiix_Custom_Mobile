@@ -85,8 +85,8 @@ public class WorkOrderNoteDialog extends DialogFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        layoutNotes = (TextInputLayout) view.findViewById(R.id.note_layout);
-        txtNotes = (TextInputEditText) view.findViewById(R.id.detail_note);
+        layoutNotes = (TextInputLayout) view.findViewById(R.id.task_update_note_layout);
+        txtNotes = (TextInputEditText) view.findViewById(R.id.task_update_note);
         txtNotes.setText(workOrder.getCompletionNotes());
 
         update = (MaterialButton) view.findViewById(R.id.rca_update_button);

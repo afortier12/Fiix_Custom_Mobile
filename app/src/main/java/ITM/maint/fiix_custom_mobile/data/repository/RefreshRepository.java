@@ -432,6 +432,7 @@ public class RefreshRepository extends BaseRepository {
             boolean found = false;
             for (WorkOrderTask dbWorkOrderTask : dbWorkOrderTaskList) {
                 if (dbWorkOrderTask.getId() == (apiTask.getId())) {
+                    dbWorkOrderTask.setDescription(apiTask.getDescription());
                     dbWorkOrderTask.setEstimatedHours(apiTask.getEstimatedHours());
                     dbWorkOrderTask.setCompletedDate(apiTask.getCompletedDate());
                     found = true;
@@ -447,7 +448,7 @@ public class RefreshRepository extends BaseRepository {
             insertWorkOrderTasks(newWorkOrderTasks);
 
 
-        List<Integer> deletedTaskIds = new ArrayList<>();
+/*        List<Integer> deletedTaskIds = new ArrayList<>();
         for (WorkOrderTask dbTask : dbWorkOrderTaskList) {
             if(!activeIds.contains(dbTask.getId()))
                 deletedTaskIds.add(dbTask.getId());
@@ -460,7 +461,7 @@ public class RefreshRepository extends BaseRepository {
                         dbTask.setCompletedDate(Utils.SYS_DELETE_DATE);
                         break;
                     }
-                }
+                }*/
 
         if (updateDBFlag) {
             Completable completable = fiixDatabase.workOrderDao().updateTasks(dbWorkOrderTaskList);

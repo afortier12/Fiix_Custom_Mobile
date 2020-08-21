@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -28,9 +29,8 @@ import java.util.Date;
 
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
-import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderTaskAdapter;
-import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderRCAViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderTaskViewModel;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 
 public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.OnClickListener {
 
@@ -42,15 +42,17 @@ public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.On
     private ImageButton btnDecMinute;
     private TextInputEditText txtActualTime;
     private TextInputLayout layoutActual;
+    private TextInputEditText txtNote;
+    private TextInputLayout layoutNote;
     private WorkOrderTaskViewModel viewModel;
 
     private WorkOrderTask task;
 
     public interface OnUpdateListener {
-        void sendUpdate(String note, String timeActual);
+        void sendUpdate(WorkOrderTask task, String note, Double timeActual);
     }
 
-    public WorkOrderNoteDialog.OnNoteListener onNoteListener;
+    public OnUpdateListener onUpdateListener;
 
     public WorkOrderTaskUpdateDialog(WorkOrderTask task) {
         this.task = task;
@@ -72,17 +74,19 @@ public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.On
         viewModel = new ViewModelProvider(this).get(WorkOrderTaskViewModel.class);
         viewModel.init();
 
-        txtActualTime = view.findViewById(R.id.task_actual_time);
-        txtActualTime.addTextChangedListener(new ValidationTextWatcher(txtActualTime));
+        //txtActualTime = view.findViewById(R.id.task_update_actual_time);
+        //txtActualTime.addTextChangedListener(new ValidationTextWatcher(txtActualTime));
 
-        btnIncHour = view.findViewById(R.id.incrActualHour);
+        txtNote = view.findViewById(R.id.task_update_note);
+
+        /*btnIncHour = view.findViewById(R.id.task_update_incrEstHour);
         btnIncHour.setOnClickListener(this);
-        btnDecHour = view.findViewById(R.id.decActualHour);
+        btnDecHour = view.findViewById(R.id.task_update_decEstHour);
         btnDecHour.setOnClickListener(this);
-        btnIncMinute = view.findViewById(R.id.incrActualMin);
+        btnIncMinute = view.findViewById(R.id.task_update_incrEstlMin);
         btnIncMinute.setOnClickListener(this);
-        btnDecMinute = view.findViewById(R.id.decActualMinute);
-        btnDecMinute.setOnClickListener(this);
+        btnDecMinute = view.findViewById(R.id.task_update_decEstMinute);
+        btnDecMinute.setOnClickListener(this);*/
 
 
         return view;
@@ -123,19 +127,27 @@ public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.On
         }
     }
 
-    private void dismissFragment(){
-        this.dismiss();
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+
+        try {
+            onUpdateListener = (OnUpdateListener) getTargetFragment();
+            Log.d(TAG, "onAttach: " + onUpdateListener);
+        } catch (ClassCastException e){
+            Log.d(TAG, "onAttach: ClassCastException" + e.getMessage());
+        }
     }
 
     @Override
     public void onClick(View v) {
-
+    /*
         String[] actTimeList = String.valueOf(txtActualTime.getText()).split(":");
         int hour = 0;
         int minute = 0;
         String newTime = "00:00";
         switch (v.getId()) {
-            case R.id.incrActualHour:
+            case R.id.task_update_incrEstHour:
                 if (actTimeList.length == 2) {
                     hour = Integer.parseInt(actTimeList[0]);
                     hour++;
@@ -146,7 +158,7 @@ public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.On
                 newTime  = newTime + ":" + actTimeList[1];
                 txtActualTime.setText(newTime);
                 break;
-            case R.id.decActualHour:
+            case R.id.task_update_decEstHour:
                 if (actTimeList.length == 2) {
                     hour = Integer.parseInt(actTimeList[0]);
                     hour--;
@@ -157,7 +169,7 @@ public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.On
                 newTime  = newTime + ":" + actTimeList[1];
                 txtActualTime.setText(newTime);
                 break;
-            case R.id.incrActualMin:
+            case R.id.task_update_incrEstlMin:
                 if (actTimeList.length == 2) {
                     minute = Integer.parseInt(actTimeList[1]);
                     minute++;
@@ -168,7 +180,7 @@ public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.On
                 newTime  = actTimeList[0] + ":" + newTime;
                 txtActualTime.setText(newTime);
                 break;
-            case R.id.decActualMinute:
+            case R.id.task_update_decEstMinute:
                 if (actTimeList.length == 2) {
                     minute = Integer.parseInt(actTimeList[1]);
                     minute--;
@@ -179,9 +191,28 @@ public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.On
                 newTime  = actTimeList[0] + ":" + newTime;
                 txtActualTime.setText(newTime);
                 break;
+
+            case R.id.task_update_button:
+               Double actualTime = 0.0;
+               if(!validateActual()) {
+                    Snackbar.make(getView(), "Please enter a valid time!", Snackbar.LENGTH_LONG).show();
+                } else {
+                   try {
+                       actualTime = Utils.timeToDouble(txtActualTime.getText().toString());
+                   } catch (Exception e) {
+                       Log.d(TAG, e.getMessage());
+                   }
+                   onUpdateListener.sendUpdate(task, txtNote.getText().toString(), actualTime);
+                   dismissFragment();
+               }
+
+                break;
+            case R.id.task_update_cancel_button:
+                dismissFragment();
+                break;
             default:
                 break;
-        }
+        }*/
     }
 
     private boolean validateActual() {
@@ -197,6 +228,10 @@ public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.On
             layoutActual.setErrorEnabled(false);
         }
         return true;
+    }
+
+    private void dismissFragment(){
+        this.dismiss();
     }
 
     private void requestFocus(View view) {
@@ -238,11 +273,11 @@ public class WorkOrderTaskUpdateDialog extends DialogFragment implements View.On
                 s.insert(2,":");
 
 
-            switch (view.getId()) {
-                case R.id.task_actual_time:
+            /*switch (view.getId()) {
+                case R.id.task_update_actual_time:
                     validateActual();
                     break;
-            }
+            }*/
         }
 
 

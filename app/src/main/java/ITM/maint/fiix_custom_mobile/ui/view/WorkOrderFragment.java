@@ -26,17 +26,22 @@ import java.util.Objects;
 import ITM.maint.fiix_custom_mobile.R;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
+import ITM.maint.fiix_custom_mobile.data.repository.WorkOrderRepository;
 import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderViewPagerAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderTaskViewModel;
+import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderViewModel;
 import ITM.maint.fiix_custom_mobile.utils.Utils;
 
-public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.OnRCAListener, WorkOrderNoteDialog.OnNoteListener {
+public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.OnRCAListener,
+        WorkOrderAddTaskDialog.OnTaskAddListener, WorkOrderNoteDialog.OnNoteListener {
 
     private static long lastClickTime = 0;
     private static final String TAG = "WorkOrderFragment";
     private WorkOrderViewPagerAdapter adapter;
     private TabLayout tabLayout;
     private ViewPager2 viewPager;
+    private WorkOrderViewModel viewModel;
     private FloatingActionButton detailFAB;
     private FloatingActionButton noteFAB;
     private FloatingActionButton rcaFAB;
@@ -52,6 +57,7 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
     private int rcaCause;
     private int rcaAction;
     private int currentViewPagerPosition;
+    private List<WorkOrderTask> workOrderTaskList;
 
     private static final int DETAIL_TAB_POSITION = 0;
     private static final int TASK_TAB_POSITION = 1;
@@ -61,12 +67,14 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
     private static final int NOTE_FRAGMENT_REQUEST_CODE = 23;
     private static final int TASK_ADD_FRAGMENT_REQUEST_CODE = 24;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View root = inflater.inflate(R.layout.fragment_work_order, container, false);
+
+        viewModel = new ViewModelProvider(this).get(WorkOrderViewModel.class);
+        viewModel.init();
 
         SavedStateViewModelFactory factory = new SavedStateViewModelFactory(getActivity().getApplication(), this);
         SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity(), factory).get(SharedViewModel.class);
@@ -79,6 +87,14 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
             sharedViewModel.setUsername(savedInstanceState.getString("USERNAME_KEY"));
             sharedViewModel.setUserId(savedInstanceState.getInt("USERID_KEY"));
         }
+
+        sharedViewModel.getWorkOrderTaskList().observe(getViewLifecycleOwner(), new Observer<List<WorkOrderTask>>() {
+            @Override
+            public void onChanged(List<WorkOrderTask> workOrderTasks) {
+                workOrderTaskList = workOrderTasks;
+            }
+        });
+
 
 
         username = sharedViewModel.getUsername().getValue();
@@ -245,6 +261,14 @@ public class WorkOrderFragment extends Fragment implements WorkOrderRCADialog.On
     @Override
     public void sendNote(String note) {
         workOrder.setCompletionNotes(note);
+    }
+
+    @Override
+    public void sendNewTask(WorkOrderTask newTask) {
+        newTask.setUserCreated(1);
+        SavedStateViewModelFactory factory = new SavedStateViewModelFactory(getActivity().getApplication(), getActivity());
+        SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity(), factory).get(SharedViewModel.class);
+        sharedViewModel.addWorkOrderTask(newTask);
     }
 
 

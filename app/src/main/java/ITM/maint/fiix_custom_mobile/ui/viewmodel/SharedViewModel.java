@@ -15,6 +15,7 @@ public class SharedViewModel extends ViewModel {
     private static final String USERNAME_KEY = "username";
     private static final String USERID_KEY = "userId";
     private static final String WORK_ORDER_TASK_LIST = "taskList";
+    private static final String WORK_ORDER_TASK = "task";
 
     public SharedViewModel(SavedStateHandle stateHandle) {
         this.stateHandle = stateHandle;
@@ -32,6 +33,10 @@ public class SharedViewModel extends ViewModel {
         stateHandle.set(WORK_ORDER_TASK_LIST, workOrderTaskList);
     }
 
+    public void addWorkOrderTask(WorkOrderTask task){
+        stateHandle.set(WORK_ORDER_TASK, task);
+    }
+
     public LiveData<String> getUsername() {
         return stateHandle.getLiveData(USERNAME_KEY);
     }
@@ -43,6 +48,8 @@ public class SharedViewModel extends ViewModel {
     public LiveData<List<WorkOrderTask>> getWorkOrderTaskList(){
         return stateHandle.getLiveData(WORK_ORDER_TASK_LIST);
     }
+
+    public LiveData<WorkOrderTask> getTask(){ return stateHandle.getLiveData(WORK_ORDER_TASK); }
 
     public SavedStateHandle getStateHandle() {
         return stateHandle;

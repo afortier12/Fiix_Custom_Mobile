@@ -120,4 +120,9 @@
     <string name="task_delete">Task delete</string>
     <string name="channel_name">notification channel</string>
     <string name="channel_description">Notification channel for Fiix updates</string>
+    <string name="delete_task_dialog_message">Are you sure?</string>
+    <string name="delete_task_dialog_title">Delete User Task</string>
+    <string name="task_deleted">Task deleted from database</string>
+    <string name="task_added">Task added to database</string>
+    <string name="colon">:</string>
 </resources>

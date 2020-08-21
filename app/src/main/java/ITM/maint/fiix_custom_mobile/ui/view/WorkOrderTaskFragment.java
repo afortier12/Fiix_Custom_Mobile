@@ -13,6 +13,7 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.SavedStateViewModelFactory;
 import androidx.lifecycle.ViewModelProvider;
@@ -35,10 +36,14 @@ import ITM.maint.fiix_custom_mobile.ui.adapter.WorkOrderTaskAdapter;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.SharedViewModel;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderTaskViewModel;
 
-public class WorkOrderTaskFragment extends Fragment implements WorkOrderAddTaskDialog.OnTaskAddListener,
-        WorkOrderTaskUpdateDialog.OnUpdateListener{
+public class WorkOrderTaskFragment extends Fragment implements WorkOrderTaskUpdateDialog.OnUpdateListener,
+        WorkOrderTaskAdapter.OnDeleteTaskListener{
 
     public static final String TAG = "WorkOrderTaskFragment";
+
+    private static final int TASK_UPDATE_FRAGMENT_REQUEST_CODE = 25;
+    private static final int TASK_DELETE_FRAGMENT_REQUEST_CODE = 26;
+
 
     private RecyclerView recyclerView;
     private WorkOrderTaskAdapter adapter;
@@ -68,7 +73,11 @@ public class WorkOrderTaskFragment extends Fragment implements WorkOrderAddTaskD
         View root = inflater.inflate(R.layout.fragment_work_order_task, container, false);
 
         workOrderTaskList.clear();
-        adapter = new WorkOrderTaskAdapter(workOrderTaskList, getActivity());
+
+        SavedStateViewModelFactory factory = new SavedStateViewModelFactory(getActivity().getApplication(), this);
+        SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity(), factory).get(SharedViewModel.class);
+
+        adapter = new WorkOrderTaskAdapter(workOrderTaskList,  this);
 
         recyclerView = root.findViewById(R.id.work_order_task_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -80,6 +89,10 @@ public class WorkOrderTaskFragment extends Fragment implements WorkOrderAddTaskD
             @Override
             public void onChanged(List<WorkOrderTask> workOrderTasks) {
                 if (workOrderTasks != null) {
+                    SavedStateViewModelFactory factory = new SavedStateViewModelFactory(getActivity().getApplication(), getActivity());
+                    SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity(), factory).get(SharedViewModel.class);
+                    sharedViewModel.setWorkOrderTaskList(workOrderTasks);
+
                     workOrderTaskList.clear();
                     workOrderTaskList.addAll(workOrderTasks);
                     adapter.notifyDataSetChanged();
@@ -96,6 +109,16 @@ public class WorkOrderTaskFragment extends Fragment implements WorkOrderAddTaskD
         super.onViewCreated(view, savedInstanceState);
 
         viewModel.getWorkOrderTasks(username, userId, workOrder.getId());
+
+        SavedStateViewModelFactory factory = new SavedStateViewModelFactory(getActivity().getApplication(), getActivity());
+        SharedViewModel sharedViewModel = new ViewModelProvider(requireActivity(), factory).get(SharedViewModel.class);
+        sharedViewModel.getTask().observe(getViewLifecycleOwner(), new Observer<WorkOrderTask>() {
+            @Override
+            public void onChanged(WorkOrderTask workOrderTask) {
+                workOrderTaskList.add(workOrderTask);
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     @Override
@@ -115,15 +138,36 @@ public class WorkOrderTaskFragment extends Fragment implements WorkOrderAddTaskD
         if (current != null) current.clearFocus();
     }
 
+    //From WorkOrderUpdateDialog
     @Override
-    public void sendNewTask(WorkOrderTask newTask) {
-        workOrderTaskList.add(newTask);
+    public void sendUpdate(WorkOrderTask task, String note, Double timeActual) {
+        int index = 0;
+        task.setCompletionNotes(note);
+        task.setTimeSpentHours(timeActual);
+        for (WorkOrderTask taskFromList: workOrderTaskList){
+            if (taskFromList.getId() == task.getId()){
+                workOrderTaskList.set(index, task);
+                viewModel.updateWorkOrderTask(task);
+                break;
+            }
+            index++;
+        }
+
+    }
+
+    //From WorkOrderTaskAdapter
+    @Override
+    public void sendDelete(WorkOrderTask task) {
+        viewModel.deleteTask(task);
+        workOrderTaskList.remove(task);
         adapter.notifyDataSetChanged();
     }
 
-
+    //From WorkOrderTaskAdapter
     @Override
-    public void sendUpdate(String note, String timeActual) {
-
+    public void sendClose(WorkOrderTask task) {
+        WorkOrderTaskUpdateDialog dialog = new WorkOrderTaskUpdateDialog(task);
+        dialog.setTargetFragment(WorkOrderTaskFragment.this, TASK_UPDATE_FRAGMENT_REQUEST_CODE);
+        dialog.show(getParentFragmentManager(), "Close Task");
     }
 }

@@ -2,6 +2,8 @@ package ITM.maint.fiix_custom_mobile.ui.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.InputFilter;
@@ -12,10 +14,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.LinearLayout;
+import android.widget.NumberPicker;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -32,7 +37,6 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrder;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 import ITM.maint.fiix_custom_mobile.ui.viewmodel.WorkOrderTaskViewModel;
 import ITM.maint.fiix_custom_mobile.utils.Status;
-import ITM.maint.fiix_custom_mobile.utils.Utils;
 
 public class WorkOrderAddTaskDialog extends DialogFragment {
 
@@ -46,8 +50,9 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
 
     private TextInputLayout layoutDescription;
     private TextInputEditText txtDescription;
-    private TextInputLayout layoutEstTime;
-    private TextInputEditText txtEstTime;
+    private NumberPicker actualHourPicker;
+    private NumberPicker actualMinutePicker;
+    private TextView txtActualLabel;
 
     private MaterialButton save;
     private MaterialButton cancel;
@@ -134,14 +139,61 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
         layoutDescription.setLayoutParams(layoutParams);
         txtDescription = (TextInputEditText) view.findViewById(R.id.task_add_description);
 
-        txtEstTime = view.findViewById(R.id.task_add_estimated);
-        layoutEstTime = (TextInputLayout) view.findViewById(R.id.task_add_estimated_layout);
-        txtEstTime.addTextChangedListener(new ValidationTextWatcher(txtEstTime, layoutEstTime, txtEstTime));
+        LinearLayout actualLayout = view.findViewById(R.id.detail_add_actual_layout);
+        actualLayout.bringToFront();
+        txtActualLabel = view.findViewById(R.id.task_update_actual_label);
 
-        txtEstTime.setText(INIT_TIME);
+        actualHourPicker = view.findViewById(R.id.task_add_hour_picker);
+        actualHourPicker.setMinValue(0);
+        actualHourPicker.setMaxValue(23);
+
+        actualHourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @RequiresApi(api = Build.VERSION_CODES.Q)
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                txtActualLabel.setTextColor(Color.BLACK);
+                actualHourPicker.setTextColor(Color.BLACK);
+                actualMinutePicker.setTextColor(Color.BLACK);
+            }
+        });
+
+
+        actualHourPicker.setFormatter(new NumberPicker.Formatter() {
+            @Override
+            public String format(int value) {
+                return String.format("%02d", value);
+            }
+        });
+
+        actualHourPicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                txtActualLabel.setTextColor(Color.BLACK);
+            }
+        });
+
+        actualMinutePicker = view.findViewById(R.id.task_add_minute_picker);
+        actualMinutePicker.setMinValue(0);
+        actualMinutePicker.setMaxValue(59);
+
+        actualMinutePicker.setFormatter(new NumberPicker.Formatter() {
+            @Override
+            public String format(int value) {
+                return String.format("%02d", value);
+            }
+        });
+
+        actualMinutePicker.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+                txtActualLabel.setTextColor(Color.BLACK);
+
+            }
+        });
 
         save = (MaterialButton) view.findViewById(R.id.task_add_save_button);
         save.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.Q)
             @Override
             public void onClick(View v) {
                 String description = txtDescription.getText().toString();
@@ -152,11 +204,11 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
                     ok = Boolean.FALSE;
                 }
 
-                String estTime = txtEstTime.getText().toString();
+                String estTime = String.format("%02d", actualHourPicker.getValue()) + ":" + String.format("%02d",actualMinutePicker.getValue());
 
-                if(!validateEstimate() || estTime.equalsIgnoreCase(INIT_TIME)){
+                if ((estTime.equalsIgnoreCase(INIT_TIME) || (actualHourPicker.getValue()) > 23) || (actualHourPicker.getValue() >59)){
                     Snackbar.make(getView(), "Time estimate not valid!", Snackbar.LENGTH_LONG).show();
-                    layoutEstTime.setError("Please enter a valid time estimate");
+                    txtActualLabel.setTextColor(Color.RED);
                     ok = Boolean.FALSE;
                 }
 
@@ -188,136 +240,4 @@ public class WorkOrderAddTaskDialog extends DialogFragment {
         this.dismiss();
     }
 
-
-    private boolean validateEstimate() {
-        String estTime = txtEstTime.getText().toString();
-        int estLength = estTime.length();
-        int estPos = estTime.indexOf(":");
-        if (estTime.trim().isEmpty()) {
-            layoutEstTime.setError("Time is required");
-            requestFocus(layoutEstTime);
-            return false;
-        } else if (!(estTime.indexOf(":") == 2) || !(estTime.length() == 5)){
-            layoutEstTime.setError("Time must be in format HH:mm");
-            requestFocus(layoutEstTime);
-            return false;
-        } else {
-            layoutEstTime.setErrorEnabled(false);
-        }
-        return true;
-    }
-
-    private void requestFocus(View view) {
-        if (view.requestFocus()) {
-            getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
-        }
-    }
-
-    private class ValidationTextWatcher implements TextWatcher {
-
-        private View view;
-        private String before;
-        private TextInputEditText txtEdit;
-        private TextInputLayout layoutEdit;
-
-        private ValidationTextWatcher(View view, TextInputLayout layoutEdit, TextInputEditText txtEdit) {
-            this.view = view;
-            this.txtEdit = txtEdit;
-            this.layoutEdit =layoutEdit;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            before = s.toString();
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-
-            if (s.length() > 1)
-                s.setFilters(new InputFilter[]{new ValidationTextWatcher.NumberFilter(12, 59, 0)});
-            else
-                s.setFilters(new InputFilter[]{});
-
-            if (s.length() == 2 && !(s.toString().contains(":")) && !(before.contains(":")))
-                txtEdit.setText(s + ":");
-            else if (s.length() > 2 && !(s.toString().contains(":")))
-                s.insert(2, ":");
-
-            validateEstimate();
-        }
-
-
-        class NumberFilter implements InputFilter {
-
-            private int maxHour;
-            private int maxMinute;
-            private int minValue;
-
-            public NumberFilter(int maxHour, int maxMinute, int minValue) {
-                this.maxHour = maxHour;
-                this.maxMinute = maxMinute;
-                this.minValue = minValue;
-            }
-
-
-            @Override
-            public CharSequence filter(CharSequence source, int start, int end, Spanned dest, int dstart, int dend) {
-
-                if (dstart == 0 && dest.length() == 5)
-                    return null;
-                if (source.length() == 0 && dend == 3)
-                    return "";
-
-                if (source.toString().equalsIgnoreCase(" ") ||
-                        source.toString().equalsIgnoreCase(",") ||
-                        source.toString().equalsIgnoreCase("-"))       // ||
-                    // ((start == 0) && (end == 0) && (dend > dstart)))  //backspace
-                    return "";
-
-                try {
-                    StringBuilder sb = new StringBuilder(dest);
-                    sb.insert(dstart, source);
-
-                    String newText = sb.toString();
-                    if (newText.length() <= 2) {
-                        if (isInRange(Integer.parseInt(newText), maxHour))
-                            return null;
-                    } else if (newText.length() == 3) {
-                        if (source.toString().equalsIgnoreCase(":")) {
-                            return null;
-                        } else if (dend == 3) {
-                            return ":";
-                        }
-                    } else if (newText.length() < 6) {
-                        String[] time = String.valueOf(newText).split("\\:");
-                        if (time.length == 2)
-                            if (isInRange(Integer.parseInt(time[1]), maxMinute))
-                                return null;
-                    } else {
-                        return "";
-                    }
-                } catch (NumberFormatException nfe) {
-                    return "";
-                }
-                return "";
-            }
-
-            private boolean isInRange(Integer number, int maxValue) {
-                if ((number.compareTo(maxValue) <= 0) && (number.compareTo((minValue)) >= 0))
-                    return true;
-                else {
-                    Log.d(TAG, "Number entered " + String.valueOf(number) + "is out of range");
-                    layoutEdit.setError("Invalid entry");
-                    requestFocus(layoutEdit);
-                    return false;
-                }
-            }
-        }
-    }
 }

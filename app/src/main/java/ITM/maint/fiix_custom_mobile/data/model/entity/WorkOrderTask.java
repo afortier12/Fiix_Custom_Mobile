@@ -142,6 +142,8 @@ public class WorkOrderTask implements Parcelable {
     @Expose
     @ColumnInfo(name="isCompletable")
     private String isCompletable;
+    @ColumnInfo(name="userCreated")
+    private int userCreated;
 
     public int getId() {
         return id;
@@ -364,6 +366,13 @@ public class WorkOrderTask implements Parcelable {
         return 0;
     }
 
+    public int getUserCreated() {
+        return userCreated;
+    }
+
+    public void setUserCreated(int userCreated) {
+        this.userCreated = userCreated;
+    }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
@@ -385,4 +394,6 @@ public class WorkOrderTask implements Parcelable {
         dest.writeInt(this.parentWorkOrderTaskId);
         dest.writeInt(this.isUpdated);
     }
+
+
 }

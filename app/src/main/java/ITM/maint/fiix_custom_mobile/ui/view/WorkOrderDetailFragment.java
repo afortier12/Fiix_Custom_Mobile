@@ -90,7 +90,7 @@ public class WorkOrderDetailFragment extends Fragment {
         statusLayout.bringToFront();
         LinearLayout descriptionLayout = root.findViewById(R.id.detail_description_layout);
         descriptionLayout.bringToFront();
-        LinearLayout notesLayout = root.findViewById(R.id.note_layout);
+        LinearLayout notesLayout = root.findViewById(R.id.task_update_note_layout);
         notesLayout.bringToFront();
         LinearLayout scheduleLayout = root.findViewById(R.id.detail_scheduled_layout);
         scheduleLayout.bringToFront();
@@ -189,7 +189,7 @@ public class WorkOrderDetailFragment extends Fragment {
             TextView tvRequestedByEmail = view.findViewById(R.id.detail_requestedBy_email);
             TextView tvScheduledDate = view.findViewById(R.id.detail_scheduled_date);
             TextView tvEstTime = view.findViewById(R.id.detail_estimated_time);
-            TextView tvNotes = view.findViewById(R.id.detail_note);
+            TextView tvNotes = view.findViewById(R.id.task_update_note);
 
             DrawerLayout sideDrawer = view.findViewById(R.id.detail_drawer_right);
             sideDrawer.closeDrawer(Gravity.RIGHT);

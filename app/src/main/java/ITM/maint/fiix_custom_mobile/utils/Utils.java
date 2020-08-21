@@ -18,6 +18,7 @@ import com.google.gson.Gson;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import ITM.maint.fiix_custom_mobile.R;
@@ -67,11 +68,11 @@ public class Utils {
     }
 
     public static Drawable getPriorityIcon(int order, Context itemView) {
-        if (order < 6) {
+        if (order < 7) {
             return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_report_24px, null);
-        } else if (order < 8) {
-            return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_high_priority, null);
         } else if (order < 9) {
+            return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_high_priority, null);
+        } else if (order < 10) {
             return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_medium_priority, null);
         } else {
             return ResourcesCompat.getDrawable(itemView.getResources(), R.drawable.ic_calendar, null);
@@ -79,9 +80,11 @@ public class Utils {
     }
 
 
-    public static String convertDateTimeToUNIXEpochms(String datetime) {
+    public static String convertDateTimeToUNIXEpochms(Date timestamp) {
         return null;
     }
+
+
 
     public static List<Integer> splitStringToListOfInt(String stringToSplit) throws Exception {
         String[] splitStrings = stringToSplit.trim().split(" ");
@@ -90,6 +93,15 @@ public class Utils {
             returnList.add(Integer.parseInt(string));
         }
         return returnList;
+    }
+
+    public static Double timeToDouble(String stringToSplit) throws Exception {
+        String[] splitStrings = stringToSplit.trim().split(":");
+        Double doubleTime = 0.0;
+        for (String string : splitStrings) {
+            doubleTime = Double.parseDouble(splitStrings[1])/100 + Double.parseDouble(splitStrings[0]);
+        }
+        return doubleTime;
     }
 
 

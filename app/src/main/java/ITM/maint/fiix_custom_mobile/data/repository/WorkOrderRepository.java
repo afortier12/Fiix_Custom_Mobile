@@ -42,6 +42,7 @@ import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderStatus;
 import ITM.maint.fiix_custom_mobile.data.model.entity.WorkOrderTask;
 
 import ITM.maint.fiix_custom_mobile.utils.Status;
+import ITM.maint.fiix_custom_mobile.utils.Utils;
 import io.reactivex.Completable;
 import io.reactivex.Scheduler;
 import io.reactivex.Single;
@@ -872,6 +873,82 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         compositeDisposable.add(disposableCompletableObserver);
     }
 
+    @Override
+    public void addTask(WorkOrderTask task) {
+
+        Completable completable = fiixDatabase.workOrderDao().insertTask(task);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        disposableCompletableObserver = new DisposableCompletableObserver() {
+            @Override
+            public void onComplete() {
+                String msg = application.getResources().getString(R.string.task_added);
+                Status newStatus = new Status(StatusCodes.addComplete, "Task", msg);
+                status.postValue(newStatus);
+                Log.d(TAG, msg);
+                Log.d(TAG, "tasks added to DB");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                String msg = application.getResources().getString(R.string.work_order_add_error);
+                Log.d(TAG, "Error adding tasks to DB");
+            }
+        };
+        completable.subscribeOn(scheduler)
+                .subscribe(disposableCompletableObserver);
+        compositeDisposable.add(disposableCompletableObserver);
+    }
+
+    @Override
+    public void deleteTask(WorkOrderTask task) {
+
+        Completable completable = fiixDatabase.workOrderDao().deleteTask(task);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        disposableCompletableObserver = new DisposableCompletableObserver() {
+            @Override
+            public void onComplete() {
+                String msg = application.getResources().getString(R.string.task_deleted);
+                Status newStatus = new Status(StatusCodes.deleteComplete, "Task", msg);
+                status.postValue(newStatus);
+                Log.d(TAG, msg);
+                getWorkOrdersFromDB();
+                Log.d(TAG, "tasks deleted to DB");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                //String msg = application.getResources().getString(R.string.work_order_add_error);
+                Log.d(TAG, "Error deleting tasks to DB");
+            }
+        };
+        completable.subscribeOn(scheduler)
+                .subscribe(disposableCompletableObserver);
+        compositeDisposable.add(disposableCompletableObserver);
+
+    }
+
+    @Override
+    public void updateTasks(List<WorkOrderTask> taskList) {
+
+        Completable completable = fiixDatabase.workOrderDao().updateTasks(taskList);
+        Scheduler scheduler = Schedulers.from(getRepositoryExecutor().databaseThread());
+        disposableCompletableObserver = new DisposableCompletableObserver() {
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "work order tasks added to DB");
+            }
+
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "Error adding work order tasks to DB");
+            }
+        };
+        completable.subscribeOn(scheduler)
+                .subscribe(disposableCompletableObserver);
+        compositeDisposable.add(disposableCompletableObserver);
+
+    }
+
     private Date getMaxRefreshTime(Date currentDate) {
         Calendar cal = Calendar.getInstance();
         cal.setTime(currentDate);
@@ -1060,6 +1137,7 @@ public class WorkOrderRepository extends BaseRepository implements IWorkOrderRep
         task.setDescription(taskDescription);
         task.setAssignedToId(userId);
         task.setWorkOrderId(workOrderId);
+        task.setUserCreated(1);
 
         String[] estTimeList = String.valueOf(estTime).split(":");
         String estTimeValue;

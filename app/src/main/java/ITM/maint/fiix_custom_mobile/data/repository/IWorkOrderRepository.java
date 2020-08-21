@@ -62,6 +62,12 @@ public interface IWorkOrderRepository {
             public void addTaskToDatabase(String description, String estTime, int userId, int workOrderId);
 
             public void updateTask(WorkOrderTask task);
+
+            public void addTask(WorkOrderTask task);
+
+            public void deleteTask(WorkOrderTask task);
+
+            public void updateTasks(List<WorkOrderTask> taskList);
         }
 
 }
