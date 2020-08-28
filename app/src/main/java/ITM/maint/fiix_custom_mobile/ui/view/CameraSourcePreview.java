@@ -153,7 +153,7 @@ public class CameraSourcePreview extends RelativeLayout {
 
         List<Size> surfaceSizes = Arrays.asList(map.getOutputSizes(SurfaceHolder.class));
         Size[] surfaceSizeArray = surfaceSizes.stream().toArray(n->new Size[n]);
-        cameraPreviewSize = chooseOptimalSize(surfaceSizeArray,
+        cameraPreviewSize = chooseOptimalSize(swappedDimensions,surfaceSizeArray,
                 rotatedPreviewWidth, rotatedPreviewHeight, maxPreviewWidth,
                 maxPreviewHeight, largest);
 
@@ -169,16 +169,18 @@ public class CameraSourcePreview extends RelativeLayout {
         surfaceView.setLayoutParams(layoutParams);
     }
 
-    private static Size chooseOptimalSize(Size[] choices, int viewWidth,
+    private static Size chooseOptimalSize(boolean swappedDimensions, Size[] choices, int viewWidth,
                                           int viewHeight, int maxWidth, int maxHeight, Size aspectRatio) {
         List<Size> bigEnough = new ArrayList<>();
         List<Size> notBigEnough = new ArrayList<>();
-        int w = aspectRatio.getWidth();
-        int h = aspectRatio.getHeight();
+        int w, h;
+
+        w = aspectRatio.getWidth();
+        h = aspectRatio.getHeight();
+
         for (Size option : choices) {
             int widthRatio = option.getWidth() * h / w;
-            if (option.getWidth() <= maxWidth && option.getHeight() <= maxHeight &&
-                    option.getHeight() == widthRatio) {
+            if (option.getWidth() <= maxWidth && option.getHeight() <= maxHeight) {
                 if (option.getWidth() >= viewWidth &&
                         option.getHeight() >= viewHeight) {
                     bigEnough.add(option);

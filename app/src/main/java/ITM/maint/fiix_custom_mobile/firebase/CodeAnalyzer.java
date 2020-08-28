@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
+import android.graphics.Rect;
 import android.graphics.RectF;
 import android.util.Log;
 import android.util.SparseIntArray;
@@ -101,13 +102,13 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
 
         FirebaseVisionBarcodeDetectorOptions options =
                 new FirebaseVisionBarcodeDetectorOptions.Builder()
-                        .setBarcodeFormats(FirebaseVisionBarcode.FORMAT_ALL_FORMATS)
+                        .setBarcodeFormats(FirebaseVisionBarcode.FORMAT_QR_CODE)
                         .build();
         barcodeDetector = FirebaseVision.getInstance().getVisionBarcodeDetector(options);
 
         int rotation = getFirebaseRotation(context);
         FirebaseVisionImage visionImage = FirebaseVisionImage.fromMediaImage(image.getImage(), rotation);
-
+        Log.d(TAG, String.format("Image size = %d x %d", image.getImage().getWidth(), image.getImage().getHeight()));
         //Log.d(TAG, String.format("Width = %d", visionImage.getBitmap().getWidth()));
         //Log.d(TAG, String.format("Height = %d", visionImage.getBitmap().getHeight()));
 
@@ -115,45 +116,17 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
         task = barcodeDetector.detectInImage(visionImage);
         task.addOnSuccessListener(executor, barcodes -> {
                     if (!barcodes.isEmpty()) {
-                        int x, y, left, right, top, bottom;
-                        Point[] corners = null;
-                        FirebaseVisionBarcode barcodeInCenter = null;
-                        for (FirebaseVisionBarcode barcode : barcodes) {
-                            RectF centerBox = PreferenceUtils.getBarcodeReticleBox(graphicOverlay);
-                            RectF box = graphicOverlay.translateRect(Objects.requireNonNull(barcode.getBoundingBox()));
-                            corners = barcode.getCornerPoints();
-                            for (Point point : corners) {
 
-                                if (rotation == 0 || rotation == 180){
-                                    x = point.y;
-                                    y = point.x;
-                                } else {
-                                    x = point.x;
-                                    y = point.y;
-                                }
-
-                                left = (int)centerBox.left;
-                                right = (int)centerBox.right;
-                                top = (int)centerBox.top;
-                                bottom = (int)centerBox.bottom;
-                                if ((x <= right && x >= left) &&  (y <= bottom && y >= top)){
-                                    barcodeInCenter = barcode;
-                                } else {
-                                    barcodeInCenter = null;
-                                    Log.d(TAG, "Not in center");
-                                    break;
-                                }
-                            }
-                            if (barcodeInCenter != null) break;
-                        }
-
+                        FirebaseVisionBarcode barcode  = barcodes.get(0);
+                        Rect box = barcode.getBoundingBox();//graphicOverlay.translateRect(Objects.requireNonNull(barcode.getBoundingBox()));
+                        RectF fBox = new RectF();
+                        fBox.set(box);
                         graphicOverlay.clear();
-                        if (barcodeInCenter == null) {
-                            cameraReticleAnimator.start();
-                            //graphicOverlay.add(new BarcodeBoundGraphic(graphicOverlay, box));
-                            graphicOverlay.add(new BarcodeReticleGraphic(graphicOverlay, cameraReticleAnimator, corners));
-                            workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTING);
-                            Log.d(TAG, "Detecting");
+                        cameraReticleAnimator.start();
+                        graphicOverlay.add(new BarcodeBoundGraphic(graphicOverlay, fBox));
+                        //workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTED);
+
+                        /*Log.d(TAG, "Detecting");
                         } else {
                             cameraReticleAnimator.cancel();
                             float sizeProgress =
@@ -180,16 +153,15 @@ public class CodeAnalyzer  implements ImageAnalysis.Analyzer {
                                     //workflowModel.detectedBarcode.setValue(barcodeInCenter);
                                     Log.d(TAG, "Detected");
                                 }
-                            }
-                        }
-                        graphicOverlay.invalidate();
-                    } /*else {
+                            }*/
+                    } else {
                         graphicOverlay.clear();
                         cameraReticleAnimator.start();
                         graphicOverlay.add(new BarcodeReticleGraphic(graphicOverlay, cameraReticleAnimator));
                         workflowModel.setWorkflowState(WorkflowModel.WorkflowState.DETECTING);
-                        graphicOverlay.postInvalidate();
-                    }*/
+                    }
+                    graphicOverlay.invalidate();
+
                 });
         image.close();
     }
